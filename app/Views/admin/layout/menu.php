@@ -493,6 +493,34 @@
             </a>
           </li>
 
+          <!-- Keuangan -->
+          <li class="nav-item <?php if($uri->getSegment(2)=='biaya' || $uri->getSegment(2)=='tagihan'){echo 'menu-open';}?>">
+            <a href="#" class="nav-link <?php if($uri->getSegment(2)=='biaya' || $uri->getSegment(2)=='tagihan'){echo 'active';}?>">
+              <i class="nav-icon fas fa-money-bill-wave"></i>
+              <p>Keuangan <i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url('admin/biaya') ?>" class="nav-link <?php if($uri->getSegment(2)=='biaya'){echo 'active';}?>">
+                  <i class="fa fa-arrow-right nav-icon"></i>
+                  <p>Master Biaya</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('admin/tagihan') ?>" class="nav-link <?php if($uri->getSegment(2)=='tagihan' && $uri->getSegment(3)!='rekap'){echo 'active';}?>">
+                  <i class="fa fa-arrow-right nav-icon"></i>
+                  <p>Tagihan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('admin/tagihan/rekap') ?>" class="nav-link <?php if($uri->getSegment(3)=='rekap'){echo 'active';}?>">
+                  <i class="fa fa-arrow-right nav-icon"></i>
+                  <p>Rekap Per Siswa</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <!-- konfigurasi -->
           <li class="nav-item <?php if($uri->getSegment(2)=="konfigurasi"){echo 'menu-open';}?>">
             <a href="#" class="nav-link <?php if($uri->getSegment(2)=="konfigurasi"){echo 'active';}?>">
