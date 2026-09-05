@@ -15,7 +15,7 @@ Sistem informasi profil dan manajemen sekolah berbasis web, dibangun dengan Code
 | MySQL | 8.x |
 | Template Admin | AdminLTE 3.2.0 |
 | Template Frontend | Sandbox Bootstrap 5 Template 3.4.0 |
-| Database | 51 tabel |
+| Database | 54 tabel |
 
 ### PHP Extensions yang Diperlukan
 
@@ -65,6 +65,33 @@ Sistem informasi profil dan manajemen sekolah berbasis web, dibangun dengan Code
 | 16 | Kelola Pengguna Sistem |
 | 17 | Konfigurasi Website (Logo, Email, SEO, Sekolah) |
 | 18 | Pendaftaran Siswa Baru (PSB) |
+| 19 | **Keuangan — Biaya Pendidikan (SPP)** |
+
+### 💰 Modul Keuangan (SPP)
+
+| Fitur | Keterangan |
+|-------|-----------|
+| Master Biaya | CRUD tarif per jenjang (PAUD, TK A, TK B) — flat rate bulanan/tahunan |
+| Generate Tagihan | Bulk generate tagihan per bulan untuk semua siswa aktif |
+| Input Pembayaran | Admin verifikasi bayar — upload bukti, pilih metode (Cash/Transfer) |
+| Rekap Per Siswa | Lihat ringkasan: total tagihan, total dibayar, sisa — per siswa |
+| Audit Trail | Log pembayaran otomatis (siapa bayar, kapan, metode apa) |
+
+**Contoh biaya default:**
+
+| Jenjang | SPP Bulanan | Uang Tahunan |
+|---------|------------|-------------|
+| PAUD | Rp 300.000 | Rp 1.500.000 |
+| TK A | Rp 400.000 | Rp 2.000.000 |
+| TK B | Rp 450.000 | Rp 2.200.000 |
+
+**Tabel baru:**
+
+| Tabel | Fungsi |
+|-------|--------|
+| `biaya` | Master tarif biaya per jenjang |
+| `tagihan` | Tagihan per siswa per bulan (auto-generated) |
+| `log_pembayaran` | Audit trail pembayaran |
 
 ---
 
@@ -82,6 +109,10 @@ cd websitesekolah-ci
 ```bash
 mysql -u root -p -e "CREATE DATABASE javawebmedia_sekolah CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 mysql -u root -p javawebmedia_sekolah < db/javawebmedia_sekolah.sql
+
+# (Opsional) Import data seed untuk testing SPP
+mysql -u root -p javawebmedia_sekolah < db/migration_spp.sql
+mysql -u root -p javawebmedia_sekolah < db/seed_data.sql
 ```
 
 ### 3. Konfigurasi `.env`
@@ -204,7 +235,9 @@ websitesekolah-ci/
 │   ├── css/             # Custom CSS
 │   └── jquery-ui/       # jQuery UI
 ├── db/
-│   └── javawebmedia_sekolah.sql  # Database dump
+│   ├── javawebmedia_sekolah.sql  # Database dump
+│   ├── migration_spp.sql         # Tabel SPP (biaya, tagihan, log_pembayaran)
+│   └── seed_data.sql             # Data test (siswa, kelas, biaya)
 ├── public/              # Public directory (CI4 front controller)
 ├── system/              # CodeIgniter 4 framework
 ├── vendor/              # Composer dependencies
@@ -235,6 +268,10 @@ composer install
 mysql -u root -p -e "CREATE DATABASE javawebmedia_sekolah CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 mysql -u root -p javawebmedia_sekolah < db/javawebmedia_sekolah.sql
 
+# (Opsional) Setup data SPP untuk testing
+mysql -u root -p javawebmedia_sekolah < db/migration_spp.sql
+mysql -u root -p javawebmedia_sekolah < db/seed_data.sql
+
 # Copy dan edit .env
 cp env .env
 # Edit .env sesuai konfigurasi database Anda
@@ -253,6 +290,18 @@ php -S 0.0.0.0:8080 dev-router.php
 | `/siswa/*` | Siswa | Panel siswa |
 | `/client/*` | Client | Panel client |
 
+### Menu Keuangan (Admin)
+
+| Endpoint | Keterangan |
+|----------|-----------|
+| `/admin/biaya` | Master Biaya Pendidikan |
+| `/admin/biaya/tambah` | Tambah Biaya |
+| `/admin/biaya/edit/{id}` | Edit Biaya |
+| `/admin/tagihan` | Daftar Tagihan + Filter |
+| `/admin/tagihan/generate` | Generate Tagihan Bulk |
+| `/admin/tagihan/bayar/{id}` | Verifikasi Pembayaran |
+| `/admin/tagihan/rekap` | Rekap Per Siswa |
+
 ---
 
 ## ⚠️ Catatan Penting
@@ -262,6 +311,7 @@ php -S 0.0.0.0:8080 dev-router.php
 3. **Router** `dev-router.php` hanya untuk development. Di produksi, gunakan Apache/Nginx dengan document root yang benar
 4. **Password admin** harus diganti setelah instalasi
 5. **CI_ENVIRONMENT** harus `production` di server production
+6. **Data seed** (`db/seed_data.sql`) hanya untuk testing — berisi 15 siswa dummy di PAUD/TK
 
 ---
 
