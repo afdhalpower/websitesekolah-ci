@@ -13,21 +13,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Judul/Nama Fasilitas</label>
 	<div class="col-md-9">
-		<input type="text" name="judul_fasilitas" class="form-control" value="<?php echo $fasilitas->judul_fasilitas ?>" required>
+		<input type="text" name="judul_fasilitas" class="form-control" value="<?php echo esc($fasilitas->judul_fasilitas) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Kode/Nomor Fasilitas</label>
 	<div class="col-md-6">
-		<input type="text" name="kode_nomor_fasilitas" class="form-control" value="<?php echo $fasilitas->kode_nomor_fasilitas ?>">
+		<input type="text" name="kode_nomor_fasilitas" class="form-control" value="<?php echo esc($fasilitas->kode_nomor_fasilitas) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload Gambar Fasilitas</label>
 	<div class="col-md-5">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $fasilitas->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($fasilitas->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$fasilitas->gambar) ?>" class="img img-thumbnail">
@@ -45,11 +45,11 @@ echo csrf_field();
 		<small class="text-secondary">Kondisi Fasilitas</small>
 	</div>
 	<div class="col-md-2">
-		<input type="number" name="tahun_fasilitas" class="form-control" value="<?php echo $fasilitas->tahun_fasilitas ?>">
+		<input type="number" name="tahun_fasilitas" class="form-control" value="<?php echo esc($fasilitas->tahun_fasilitas) ?>">
 		<small class="text-secondary">Tahun Fasilitas</small>
 	</div>
 	<div class="col-md-2">
-		<input type="text" name="tanggal_fasilitas" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($fasilitas->tanggal_fasilitas) ?>">
+		<input type="text" name="tanggal_fasilitas" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($fasilitas->tanggal_fasilitas)) ?>">
 		<small class="text-secondary">Tanggal Fasilitas</small>
 	</div>
 </div>
@@ -59,8 +59,8 @@ echo csrf_field();
 	<div class="col-md-4">
 		<select name="id_kategori_fasilitas" class="form-control select2">
 			<?php foreach($kategori_fasilitas as $kategori_fasilitas) { ?>
-			<option value="<?php echo $kategori_fasilitas->id_kategori_fasilitas ?>" <?php if($fasilitas->id_kategori_fasilitas==$kategori_fasilitas->id_kategori_fasilitas) { echo 'selected'; } ?>>
-				<?php echo $kategori_fasilitas->nama_kategori_fasilitas ?>
+			<option value="<?php echo esc($kategori_fasilitas->id_kategori_fasilitas) ?>" <?php if($fasilitas->id_kategori_fasilitas==$kategori_fasilitas->id_kategori_fasilitas) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_fasilitas->nama_kategori_fasilitas) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -94,21 +94,21 @@ echo csrf_field();
 						<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 							<i class="fa fa-download"></i> Lihat File
 						</button>
-		<textarea name="isi" class="form-control konten"><?php echo $fasilitas->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($fasilitas->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Text untuk tombol link</label>
 	<div class="col-md-9">
-		<input type="text" name="text_website" class="form-control" value="<?php echo $fasilitas->text_website ?>">
+		<input type="text" name="text_website" class="form-control" value="<?php echo esc($fasilitas->text_website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Link/URL untuk Banner</label>
 	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo $fasilitas->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($fasilitas->website) ?>">
 	</div>
 </div>
 

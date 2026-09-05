@@ -9,8 +9,8 @@ echo csrf_field();
 						<select name="id_menu" class="form-control" required>
 							<option value="">Pilih Parent Menu</option>
 							<?php foreach($menu2 as $menu2) { ?>
-							<option value="<?php echo $menu2->id_menu ?>" <?php if($sub_menu->id_menu==$menu2->id_menu) { echo 'selected'; } ?>>
-								<?php echo $menu2->nama_menu ?>
+							<option value="<?php echo esc($menu2->id_menu) ?>" <?php if($sub_menu->id_menu==$menu2->id_menu) { echo 'selected'; } ?>>
+								<?php echo esc($menu2->nama_menu) ?>
 							</option>
 						<?php } ?>
 						</select>
@@ -20,7 +20,7 @@ echo csrf_field();
 				<div class="form-group row">
 					<label class="col-3">Nama Menu</label>
 					<div class="col-9">
-						<input type="text" name="nama_menu" class="form-control" placeholder="Nama menu" value="<?php echo $sub_menu->nama_sub_menu ?>" required>
+						<input type="text" name="nama_menu" class="form-control" placeholder="Nama menu" value="<?php echo esc($sub_menu->nama_sub_menu) ?>" required>
 					</div>
 				</div>
 
@@ -28,7 +28,7 @@ echo csrf_field();
 					<label class="col-3">Alamat/Link</label>
 					<div class="col-9">
 						
-							<input type="text" name="link" class="form-control" placeholder="Alamat/link menu" value="<?php echo $sub_menu->link ?>" required>
+							<input type="text" name="link" class="form-control" placeholder="Alamat/link menu" value="<?php echo esc($sub_menu->link) ?>" required>
 						<small>Format: <strong><?php echo base_url() ?></strong></small>
 					</div>
 				</div>
@@ -46,7 +46,7 @@ echo csrf_field();
 				<div class="form-group row">
 					<label class="col-3">Icon</label>
 					<div class="col-9">
-						<input type="text" name="icon" class="form-control" placeholder="Icon menu" value="<?php echo $sub_menu->icon ?>">
+						<input type="text" name="icon" class="form-control" placeholder="Icon menu" value="<?php echo esc($sub_menu->icon) ?>">
 						<small>Icon menggunakan referensi: <a href="https://fontawesome.com/v5/search" target="_blank">https://fontawesome.com/v5/search</a></small>
 					</div>
 				</div>
@@ -54,14 +54,14 @@ echo csrf_field();
 				<div class="form-group row">
 					<label class="col-3">Nomor urut</label>
 					<div class="col-9">
-						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut" value="<?php echo $sub_menu->urutan ?>">
+						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut" value="<?php echo esc($sub_menu->urutan) ?>">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Keterangan lain</label>
 					<div class="col-9">
-						<textarea class="form-control" name="keterangan" placeholder="Keterangan"><?php echo $sub_menu->keterangan ?></textarea>
+						<textarea class="form-control" name="keterangan" placeholder="Keterangan"><?php echo esc($sub_menu->keterangan) ?></textarea>
 					</div>
 				</div>
 

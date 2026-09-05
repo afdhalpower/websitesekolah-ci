@@ -13,25 +13,25 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Tahun Ajaran</label>
 	<div class="col-2">
-		<input type="number" name="tahun_mulai" class="form-control" placeholder="Tahun Mulai" value="<?php if(isset($_POST['tahun_mulai'])) { echo set_value('tahun_mulai'); }else{ echo $tahun->tahun_mulai; } ?>" required>
+		<input type="number" name="tahun_mulai" class="form-control" placeholder="Tahun Mulai" value="<?php if(isset($_POST['tahun_mulai'])) { echo set_value('tahun_mulai'); }else{ echo esc($tahun->tahun_mulai); } ?>" required>
 	</div>
 	<div class="col-1 text-center">/</div>
 	<div class="col-2">
-		<input type="number" name="tahun_selesai" class="form-control" placeholder="Tahun Selesai" value="<?php if(isset($_POST['tahun_selesai'])) { echo set_value('tahun_selesai'); }else{ echo $tahun->tahun_selesai; } ?>" required>
+		<input type="number" name="tahun_selesai" class="form-control" placeholder="Tahun Selesai" value="<?php if(isset($_POST['tahun_selesai'])) { echo set_value('tahun_selesai'); }else{ echo esc($tahun->tahun_selesai); } ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Nama Jenjang</label>
 	<div class="col-9">
-		<input type="text" name="nama_tahun" class="form-control" placeholder="Nama tahun" value="<?php echo $tahun->nama_tahun ?>" required>
+		<input type="text" name="nama_tahun" class="form-control" placeholder="Nama tahun" value="<?php echo esc($tahun->nama_tahun) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Keterangan</label>
 	<div class="col-9">
-		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo $tahun->keterangan ?></textarea>
+		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo esc($tahun->keterangan) ?></textarea>
 	</div>
 </div>
 

@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-12 pt-md-14 pb-md-14 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -33,7 +33,7 @@
                 <thead>
                   <tr>
                     <th width="25%">Nama Prestasi</th>
-                    <th><?php echo $portfolio->judul_portfolio ?></th>
+                    <th><?php echo esc($portfolio->judul_portfolio) ?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,13 +41,13 @@
                   
                   <tr>
                     <td class="bg-light">Info lain</td>
-                    <td><?php echo $portfolio->isi ?></td>
+                    <td><?php echo esc($portfolio->isi) ?></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="card-footer">
-              Tanggal: <?php echo $this->website->tanggal_bulan_menit($portfolio->tanggal) ?>
+              Tanggal: <?php echo esc($this->website->tanggal_bulan_menit($portfolio->tanggal)) ?>
             </div>
           </div>
           

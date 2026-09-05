@@ -3,7 +3,7 @@
 <div class="form-group row">
 	<label class="col-3">Nama &amp; Status</label>
 	<div class="col-5">
-		<input type="text" name="nama_tingkatan" class="form-control" placeholder="Nama kategori anggota" value="<?php echo $tingkatan->nama_tingkatan ?>" required>
+		<input type="text" name="nama_tingkatan" class="form-control" placeholder="Nama kategori anggota" value="<?php echo esc($tingkatan->nama_tingkatan) ?>" required>
 		<small class="text-secondary">Nama Tingkatan</small>
 	</div>
 	<div class="col-2">
@@ -27,7 +27,7 @@
 	<label class="col-3">Gambar/ Logo</label>
 	
 	<div class="col-8">
-		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo $tingkatan->gambar ?>">
+		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo esc($tingkatan->gambar) ?>">
 	</div>
 	<div class="col-1">
 		<?php if($tingkatan->gambar=="") { echo '-'; }else{ ?>
@@ -39,14 +39,14 @@
 <div class="form-group row">
 	<label class="col-3">Keterangan</label>
 	<div class="col-9">
-		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo $tingkatan->keterangan ?></textarea>
+		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo esc($tingkatan->keterangan) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo $tingkatan->urutan ?>">
+		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo esc($tingkatan->urutan) ?>">
 	</div>
 </div>
 

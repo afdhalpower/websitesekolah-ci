@@ -21,7 +21,7 @@
                       <div class="card">
                         <figure class="card-img-top overlay overlay-1 hover-scale">
                           <a href="<?php echo base_url('berita/read/'.$berita->slug_berita) ?>"> 
-                            <img src="<?php echo base_url('assets/upload/image/'.$berita->gambar) ?>" alt="<?php echo $berita->judul_berita ?>" />
+                            <img src="<?php echo base_url('assets/upload/image/'.$berita->gambar) ?>" alt="<?php echo esc($berita->judul_berita) ?>" />
                           </a>
                           <figcaption>
                             <h5 class="from-top mb-0">Baca detail...</h5>
@@ -31,7 +31,7 @@
                           <div class="post-header">
                             <h2 class="post-title h3 mt-1 mb-3">
                               <a class="link-dark" href="<?php echo base_url('berita/read/'.$berita->slug_berita) ?>">
-                                <?php echo $berita->judul_berita ?>
+                                <?php echo esc($berita->judul_berita) ?>
                               </a>
                             </h2>
                           </div>
@@ -44,10 +44,10 @@
                         <!--/.card-body -->
                         <div class="card-footer">
                           <ul class="post-meta d-flex mb-0">
-                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo $this->website->tanggal_bulan_menit($berita->tanggal_publish) ?></span></li>
+                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo esc($this->website->tanggal_bulan_menit($berita->tanggal_publish)) ?></span></li>
                             <li class="post-comments">
                               <a href="<?php echo base_url('berita/kategori/'.$berita->slug_kategori) ?>">
-                                <i class="uil uil-file-alt fs-15"></i><?php echo $berita->nama_kategori ?>
+                                <i class="uil uil-file-alt fs-15"></i><?php echo esc($berita->nama_kategori) ?>
                               </a>
                             </li>
                           </ul>

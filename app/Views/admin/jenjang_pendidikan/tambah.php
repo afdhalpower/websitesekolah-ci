@@ -29,8 +29,8 @@ echo csrf_field();
 	<div class="col-md-3">
 		<select name="id_jenjang" class="form-control">
 			<?php foreach($jenjang as $jenjang) { ?>
-			<option value="<?php echo $jenjang->id_jenjang ?>">
-				<?php echo $jenjang->nama_jenjang ?>
+			<option value="<?php echo esc($jenjang->id_jenjang) ?>">
+				<?php echo esc($jenjang->nama_jenjang) ?>
 			</option>
 			<?php } ?>
 		</select>

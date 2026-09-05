@@ -3,7 +3,7 @@
 <div class="form-group row">
 					<label class="col-3">Nama Periode PPDB</label>
 					<div class="col-9">
-						<input type="text" name="judul" class="form-control" placeholder="Nama Periode PPDB" value="<?php echo $gelombang->judul ?>" required>
+						<input type="text" name="judul" class="form-control" placeholder="Nama Periode PPDB" value="<?php echo esc($gelombang->judul) ?>" required>
 						<small class="text-secondary">Nama Periode PPDB. Misal: <strong>PPDB Tahap 1 - Tahun Ajaran <?php echo date('Y')+1; ?>/<?php echo date('Y')+2; ?></strong></small>
 					</div>
 				
@@ -14,12 +14,12 @@
 					<label class="col-3">Tahun ajaran dan status</label>
 
 					<div class="col-3">
-						<input type="number" name="tahun" value="<?php echo $gelombang->tahun ?>" placeholder="Tahun" class="form-control" required>
+						<input type="number" name="tahun" value="<?php echo esc($gelombang->tahun) ?>" placeholder="Tahun" class="form-control" required>
 						<small class="text-secondary">Tahun: <?php echo date('Y') ?></small>
 					</div>
 
 					<div class="col-3">
-						<input type="text" name="tahun_ajaran" value="<?php echo $gelombang->tahun_ajaran ?>" placeholder="Tahun ajaran" class="form-control" required>
+						<input type="text" name="tahun_ajaran" value="<?php echo esc($gelombang->tahun_ajaran) ?>" placeholder="Tahun ajaran" class="form-control" required>
 						<small class="text-secondary">Tahun Ajaran: <?php echo date('Y') ?>/<?php echo date('Y')+1; ?></small>
 					</div>
 
@@ -38,7 +38,7 @@
 					<label class="col-3">Gambar / Banner</label>
 					
 					<div class="col-6">
-						<input type="file" name="gambar" class="form-control" placeholder="Gambar? logo" value="<?php echo $gelombang->gambar ?>">
+						<input type="file" name="gambar" class="form-control" placeholder="Gambar? logo" value="<?php echo esc($gelombang->gambar) ?>">
 					</div>
 					<div class="col-md-2">
 						<?php if($gelombang->gambar=="") { echo '-'; }else{ ?>
@@ -59,7 +59,7 @@
 						<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 							<i class="fa fa-download"></i> Lihat File
 						</button>
-						<textarea name="isi" placeholder="Keterangan" class="form-control konten"><?php echo $gelombang->isi ?></textarea>
+						<textarea name="isi" placeholder="Keterangan" class="form-control konten"><?php echo esc($gelombang->isi) ?></textarea>
 					</div>
 				</div>
 

@@ -18,27 +18,27 @@
 						$gambar = base_url('assets/upload/image/'.$user->gambar);
 					} 
 					?>
-					<img class="profile-user-img img-fluid img-circle" src="<?php echo $gambar ?>" alt="<?php echo $user->nama ?>" style="width: 100px; height: 100px;">
+					<img class="profile-user-img img-fluid img-circle" src="<?php echo esc($gambar) ?>" alt="<?php echo esc($user->nama) ?>" style="width: 100px; height: 100px;">
 				</p>
 
 				<div class="form-group row">
 					<label class="col-3">Nama Pengguna</label>
 					<div class="col-9">
-						<input type="text" name="nama" class="form-control" placeholder="Nama user" value="<?php echo $user->nama ?>" required>
+						<input type="text" name="nama" class="form-control" placeholder="Nama user" value="<?php echo esc($user->nama) ?>" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Email</label>
 					<div class="col-9">
-						<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $user->email ?>" required>
+						<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo esc($user->email) ?>" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Upload Foto</label>
 					<div class="col-9">
-						<input type="file" name="gambar" class="form-control" placeholder="Upload foto" value="<?php echo $user->gambar ?>">
+						<input type="file" name="gambar" class="form-control" placeholder="Upload foto" value="<?php echo esc($user->gambar) ?>">
 						<small class="text-gray">Format: jpg, png, gif</small>
 					</div>
 				</div>
@@ -46,14 +46,14 @@
 				<div class="form-group row">
 					<label class="col-3">Username</label>
 					<div class="col-9">
-						<input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $user->username ?>" readonly>
+						<input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo esc($user->username) ?>" readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Level</label>
 					<div class="col-9">
-						<input type="text" name="akses_level" class="form-control" placeholder="Akses level" value="<?php echo $user->akses_level ?>" disabled>
+						<input type="text" name="akses_level" class="form-control" placeholder="Akses level" value="<?php echo esc($user->akses_level) ?>" disabled>
 					</div>
 				</div>
 
@@ -78,7 +78,7 @@
 				echo form_open_multipart(base_url('admin/akun')); 
 				echo csrf_field(); 
 				?>
-				<input type="hidden" name="nama" class="form-control" placeholder="Nama user" value="<?php echo $user->nama ?>">
+				<input type="hidden" name="nama" class="form-control" placeholder="Nama user" value="<?php echo esc($user->nama) ?>">
 				<div class="form-group row">
 					<label class="col-4">Password baru</label>
 					<div class="col-8">
@@ -123,14 +123,14 @@
 						$gambar = base_url('assets/upload/image/'.$staff->gambar);
 					} 
 					?>
-					<img class="profile-user-img img-fluid img-circle" src="<?php echo $gambar ?>" alt="<?php echo $staff->nama ?>" style="width: 100px; height: 100px;">
+					<img class="profile-user-img img-fluid img-circle" src="<?php echo esc($gambar) ?>" alt="<?php echo esc($staff->nama) ?>" style="width: 100px; height: 100px;">
 				</p>
 
 				<?php echo form_open_multipart(base_url('admin/akun')) ?>
 				<div class="form-group row">
 					<label class="col-3">Nama Staff</label>
 					<div class="col-6">
-						<input type="text" name="nama" class="form-control" placeholder="Nama staff" value="<?php echo $staff->nama ?>" required>
+						<input type="text" name="nama" class="form-control" placeholder="Nama staff" value="<?php echo esc($staff->nama) ?>" required>
 					</div>
 				</div>
 
@@ -153,20 +153,20 @@
 				<div class="form-group row">
 					<label class="col-3">Jabatan &amp; No Urut Tampil</label>
 					<div class="col-4">
-						<input type="text" name="jabatan" class="form-control" placeholder="Jabatan" value="<?php echo $staff->jabatan ?>">
+						<input type="text" name="jabatan" class="form-control" placeholder="Jabatan" value="<?php echo esc($staff->jabatan) ?>">
 					</div>
 					<div class="col-2">
-						<input type="number" name="urutan" class="form-control" placeholder="No Urut tampil" value="<?php echo $staff->urutan ?>">
+						<input type="number" name="urutan" class="form-control" placeholder="No Urut tampil" value="<?php echo esc($staff->urutan) ?>">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Tempat, tanggal lahir</label>
 					<div class="col-3">
-						<input type="text" name="tempat_lahir" class="form-control" placeholder="Tempat lahir" value="<?php echo $staff->tempat_lahir ?>">
+						<input type="text" name="tempat_lahir" class="form-control" placeholder="Tempat lahir" value="<?php echo esc($staff->tempat_lahir) ?>">
 					</div>
 					<div class="col-3">
-						<input type="text" name="tanggal_lahir" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?php echo $this->website->tanggal_id($staff->tanggal_lahir) ?>">
+						<input type="text" name="tanggal_lahir" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?php echo esc($this->website->tanggal_id($staff->tanggal_lahir)) ?>">
 					</div>
 				</div>
 
@@ -175,7 +175,7 @@
 					<div class="col-3">
 						<select name="id_kategori_staff" class="form-control">
 							<?php foreach($kategori_staff as $kategori_staff) { ?>
-							<option value="<?php echo $kategori_staff->id_kategori_staff ?>" <?php if($staff->id_kategori_staff==$kategori_staff->id_kategori_staff) { echo 'selected'; } ?>><?php echo $kategori_staff->nama_kategori_staff ?></option>
+							<option value="<?php echo esc($kategori_staff->id_kategori_staff) ?>" <?php if($staff->id_kategori_staff==$kategori_staff->id_kategori_staff) { echo 'selected'; } ?>><?php echo esc($kategori_staff->nama_kategori_staff) ?></option>
 							<?php } ?>
 						</select>
 						<small class="text-secondary">Jenis Staff</small>
@@ -192,10 +192,10 @@
 				<div class="form-group row">
 					<label class="col-3">Upload Foto dan Website</label>
 					<div class="col-4">
-						<input type="text" name="telepon" class="form-control" placeholder="Telepon" value="<?php echo $staff->telepon ?>">
+						<input type="text" name="telepon" class="form-control" placeholder="Telepon" value="<?php echo esc($staff->telepon) ?>">
 					</div>
 					<div class="col-5">
-						<input type="text" name="email" class="form-control" placeholder="Email staff" value="<?php echo $staff->email ?>">
+						<input type="text" name="email" class="form-control" placeholder="Email staff" value="<?php echo esc($staff->email) ?>">
 					</div>
 					
 				</div>
@@ -203,24 +203,24 @@
 				<div class="form-group row">
 					<label class="col-3">Website dan logo</label>
 					<div class="col-4">
-						<input type="text" name="website" class="form-control" placeholder="Website" value="<?php echo $staff->website ?>">
+						<input type="text" name="website" class="form-control" placeholder="Website" value="<?php echo esc($staff->website) ?>">
 					</div>
 					<div class="col-5">
-						<input type="file" name="gambar" class="form-control" placeholder="gambar" value="<?php echo $staff->gambar ?>">
+						<input type="file" name="gambar" class="form-control" placeholder="gambar" value="<?php echo esc($staff->gambar) ?>">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Alamat</label>
 					<div class="col-9">
-						<textarea name="alamat" placeholder="Alamat" class="form-control"><?php echo $staff->alamat ?></textarea>
+						<textarea name="alamat" placeholder="Alamat" class="form-control"><?php echo esc($staff->alamat) ?></textarea>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label class="col-3">Keahlian</label>
 					<div class="col-9">
-						<textarea name="keahlian" placeholder="Keahlian" class="form-control"><?php echo $staff->keahlian ?></textarea>
+						<textarea name="keahlian" placeholder="Keahlian" class="form-control"><?php echo esc($staff->keahlian) ?></textarea>
 					</div>
 				</div>
 

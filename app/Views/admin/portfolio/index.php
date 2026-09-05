@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/portfolio'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_portfolio" class="form-control">
 		<?php foreach($kategori_portfolio as $kategori_portfolio) { ?>
-		<option value="<?php echo $kategori_portfolio->id_kategori_portfolio ?>">
-			<?php echo $kategori_portfolio->nama_kategori_portfolio ?>
+		<option value="<?php echo esc($kategori_portfolio->id_kategori_portfolio) ?>">
+			<?php echo esc($kategori_portfolio->nama_kategori_portfolio) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -70,29 +70,29 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_portfolio[]" value="<?php echo $portfolio->id_portfolio ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_portfolio[]" value="<?php echo esc($portfolio->id_portfolio) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($portfolio->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$portfolio->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $portfolio->judul_portfolio ?>
+			<td><?php echo esc($portfolio->judul_portfolio) ?>
 				<small>
-					<br><i class="fa fa-link"></i> <?php echo $portfolio->website ?>
-					<br><i class="fa fa-tasks"></i> <?php echo $portfolio->status_text ?>
-					<br><i class="fa fa-thumbs"></i> <?php echo $portfolio->text_website ?>
+					<br><i class="fa fa-link"></i> <?php echo esc($portfolio->website) ?>
+					<br><i class="fa fa-tasks"></i> <?php echo esc($portfolio->status_text) ?>
+					<br><i class="fa fa-thumbs"></i> <?php echo esc($portfolio->text_website) ?>
 					<textarea title="Copy link gambar/file ini" class="form-control"><?php echo base_url('assets/upload/image/'.$portfolio->gambar) ?></textarea>
 				</small>
 			</td>
-			<td><small><i class="fa fa-tags"></i> <?php echo $portfolio->nama_kategori_portfolio ?>
-				<br><i class="fa fa-home"></i> <?php echo $portfolio->jenis_portfolio ?></small></td>
+			<td><small><i class="fa fa-tags"></i> <?php echo esc($portfolio->nama_kategori_portfolio) ?>
+				<br><i class="fa fa-home"></i> <?php echo esc($portfolio->jenis_portfolio) ?></small></td>
 			<td><?php if($portfolio->status_portfolio=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $portfolio->status_portfolio ?>
+						<i class="fa fa-eye"></i> <?php echo esc($portfolio->status_portfolio) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
@@ -101,7 +101,7 @@
 				<?php } ?>
 				
 			</td>
-			<td><?php echo $portfolio->nama ?></td>
+			<td><?php echo esc($portfolio->nama) ?></td>
 			<td>
 				
 				<a href="<?php echo base_url('admin/portfolio/edit/'.$portfolio->id_portfolio) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>

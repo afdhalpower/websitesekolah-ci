@@ -15,23 +15,23 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <?php if ($gelombang->gambar == "") { ?>
-                                    <img src="<?php echo $this->website->icon() ?>" class="img img-thumbnail">
+                                    <img src="<?php echo esc($this->website->icon()) ?>" class="img img-thumbnail">
                                 <?php } else { ?>
                                     <img src="<?php echo base_url('assets/upload/image/' . $gelombang->gambar) ?>" class="img img-thumbnail">
                                 <?php } ?>
                             </div>
                             <div class="col-md-9">
-                                <h2><?php echo $gelombang->judul ?></h2>
+                                <h2><?php echo esc($gelombang->judul) ?></h2>
                                 <p>
-                                    <span class="text-secondary">Tahun:</span> <?php echo $gelombang->tahun_ajaran ?>
-                                    <br><span class="text-secondary">Pembukaan:</span> <?php echo $this->website->hari($gelombang->tanggal_buka) ?>
-                                    <br><span class="text-secondary">Penutupan:</span> <?php echo $this->website->hari($gelombang->tanggal_tutup) ?>
-                                    <br><span class="text-secondary">Pengumuman:</span> <?php echo $this->website->hari($gelombang->tanggal_pengumuman) ?>
+                                    <span class="text-secondary">Tahun:</span> <?php echo esc($gelombang->tahun_ajaran) ?>
+                                    <br><span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
+                                    <br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
+                                    <br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
                                 </p>
                                 <p>
                                     <button type="button" class="btn btn-primary btn-sm rounded text-white mb-1" 
                                             data-toggle="modal" 
-                                            data-target="#Gelombang<?php echo $gelombang->id_gelombang ?>">
+                                            data-target="#Gelombang<?php echo esc($gelombang->id_gelombang) ?>">
                                         Lihat Detail &nbsp;<i class="fa fa-eye"></i>
                                     </button>
                                     <?php if (Session()->get('username_siswa') != '') { ?>
@@ -65,13 +65,13 @@
 
             <?php foreach($gelombang2 as $gelombang) { ?>
 <!-- Modal -->
-                <div class="modal fade" id="Gelombang<?php echo $gelombang->id_gelombang ?>" tabindex="10700" 
-                     aria-labelledby="modalTitle<?php echo $gelombang->id_gelombang ?>" aria-hidden="true">
+                <div class="modal fade" id="Gelombang<?php echo esc($gelombang->id_gelombang) ?>" tabindex="10700" 
+                     aria-labelledby="modalTitle<?php echo esc($gelombang->id_gelombang) ?>" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title"><?php echo $gelombang->judul ?></h4>
+                                <h4 class="modal-title"><?php echo esc($gelombang->judul) ?></h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -81,13 +81,13 @@
                               <div class="row">
                                 <div class="col-md-3">
                                     <?php if ($gelombang->gambar == "") { ?>
-                                        <img src="<?php echo $this->website->icon() ?>" class="img img-thumbnail">
+                                        <img src="<?php echo esc($this->website->icon()) ?>" class="img img-thumbnail">
                                     <?php } else { ?>
                                         <img src="<?php echo base_url('assets/upload/image/' . $gelombang->gambar) ?>" class="img img-thumbnail">
                                     <?php } ?>
                                 </div>
                                 <div class="col-md-9">
-                                  <?php echo $gelombang->isi ?>
+                                  <?php echo esc($gelombang->isi) ?>
                                
                                   <p>
                                     <?php if (Session()->get('username_siswa') != '') { ?>

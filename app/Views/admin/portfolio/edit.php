@@ -13,14 +13,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Judul Portfolio</label>
 	<div class="col-md-9">
-		<input type="text" name="judul_portfolio" class="form-control" value="<?php echo $portfolio->judul_portfolio ?>" required>
+		<input type="text" name="judul_portfolio" class="form-control" value="<?php echo esc($portfolio->judul_portfolio) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload Gambar Portfolio</label>
 	<div class="col-md-8">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $portfolio->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($portfolio->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$portfolio->gambar) ?>" class="img img-thumbnail">
@@ -32,8 +32,8 @@ echo csrf_field();
 	<div class="col-md-3">
 		<select name="id_kategori_portfolio" class="form-control">
 			<?php foreach($kategori_portfolio as $kategori_portfolio) { ?>
-			<option value="<?php echo $kategori_portfolio->id_kategori_portfolio ?>" <?php if($portfolio->id_kategori_portfolio==$kategori_portfolio->id_kategori_portfolio) { echo 'selected'; } ?>>
-				<?php echo $kategori_portfolio->nama_kategori_portfolio ?>
+			<option value="<?php echo esc($kategori_portfolio->id_kategori_portfolio) ?>" <?php if($portfolio->id_kategori_portfolio==$kategori_portfolio->id_kategori_portfolio) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_portfolio->nama_kategori_portfolio) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -68,21 +68,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Isi Portfolio</label>
 	<div class="col-md-9">
-		<textarea name="isi" class="form-control konten"><?php echo $portfolio->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($portfolio->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Text untuk tombol link</label>
 	<div class="col-md-9">
-		<input type="text" name="text_website" class="form-control" value="<?php echo $portfolio->text_website ?>">
+		<input type="text" name="text_website" class="form-control" value="<?php echo esc($portfolio->text_website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Link/URL untuk Banner</label>
 	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo $portfolio->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($portfolio->website) ?>">
 	</div>
 </div>
 

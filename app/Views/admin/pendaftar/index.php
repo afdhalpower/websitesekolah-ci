@@ -26,27 +26,27 @@
 			$diterima 		= $m_siswa->status_siswa_gelombang('Diterima',$id_gelombang);
 		 ?>
 		<tr>
-			<td><?php echo $no ?></td>
-			<td><strong><?php echo $gelombang->judul ?></strong>
+			<td><?php echo esc($no) ?></td>
+			<td><strong><?php echo esc($gelombang->judul) ?></strong>
 				<small>
-					<br>Buka: <?php echo $gelombang->tanggal_buka ?>
-					<br>Tutup: <?php echo $gelombang->tanggal_tutup ?>
-					<br>Pengumuman: <?php echo $gelombang->tanggal_pengumuman ?>
+					<br>Buka: <?php echo esc($gelombang->tanggal_buka) ?>
+					<br>Tutup: <?php echo esc($gelombang->tanggal_tutup) ?>
+					<br>Pengumuman: <?php echo esc($gelombang->tanggal_pengumuman) ?>
 				</small>
 			</td>
 			<td class="text-center">
 				<a href="<?php echo base_url('admin/pendaftar/gelombang/'.$gelombang->id_gelombang.'/Menunggu') ?>">
-					<?php echo $this->website->angka($menunggu->total) ?>
+					<?php echo esc($this->website->angka($menunggu->total)) ?>
 				</a>
 			</td>
 			<td class="text-center">
 				<a href="<?php echo base_url('admin/pendaftar/gelombang/'.$gelombang->id_gelombang.'/Ditolak') ?>">
-					<?php echo $this->website->angka($ditolak->total) ?>
+					<?php echo esc($this->website->angka($ditolak->total)) ?>
 				</a>
 			</td>
 			<td class="text-center">
 				<a href="<?php echo base_url('admin/pendaftar/gelombang/'.$gelombang->id_gelombang.'/Diterima') ?>">
-					<?php echo $this->website->angka($diterima->total) ?>
+					<?php echo esc($this->website->angka($diterima->total)) ?>
 				</a>
 			</td>
 			<td>

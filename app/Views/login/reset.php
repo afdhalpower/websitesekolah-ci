@@ -1,5 +1,5 @@
 <p class="text-center">
-	Halo <strong><?php echo $user->nama ?></strong>.<br> Silakan ganti password Anda. Password minimal 6 dan maksimal 32 karakter
+	Halo <strong><?php echo esc($user->nama) ?></strong>.<br> Silakan ganti password Anda. Password minimal 6 dan maksimal 32 karakter
 </p>
 
 <?php 

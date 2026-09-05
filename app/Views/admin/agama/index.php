@@ -11,9 +11,9 @@
 	<tbody>
 		<?php $no=1; foreach($agama as $agama) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $agama->nama_agama ?></td>
-			<td><?php echo $agama->urutan ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($agama->nama_agama) ?></td>
+			<td><?php echo esc($agama->urutan) ?></td>
 			<td>
 				
 				<a href="<?php echo base_url('admin/agama/edit/'.$agama->id_agama) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>

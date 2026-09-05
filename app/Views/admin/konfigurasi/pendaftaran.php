@@ -16,15 +16,15 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Periode Pendaftaran Online</label>
 	<div class="col-2">
-		<input type="text" name="mulai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->mulai_pendaftaran) ?>">
+		<input type="text" name="mulai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->mulai_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal mulai</small>
 	</div>
 	<div class="col-2">
-		<input type="text" name="selesai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->selesai_pendaftaran) ?>">
+		<input type="text" name="selesai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->selesai_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal selesai</small>
 	</div>
 	<div class="col-2">
-		<input type="text" name="pengumuman_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->pengumuman_pendaftaran) ?>">
+		<input type="text" name="pengumuman_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->pengumuman_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal pengumuman</small>
 	</div>
 </div>
@@ -32,7 +32,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Informasi pendaftaran</label>
 	<div class="col-9">
-		<textarea name="keterangan_pendaftaran" class="form-control konten" rows="5"><?php echo $konfigurasi->keterangan_pendaftaran ?></textarea>
+		<textarea name="keterangan_pendaftaran" class="form-control konten" rows="5"><?php echo esc($konfigurasi->keterangan_pendaftaran) ?></textarea>
 	</div>
 </div>
 

@@ -53,4 +53,10 @@ $paths = new Config\Paths();
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
 
+// Security Headers
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+header('X-XSS-Protection: 1; mode=block');
+
 exit(CodeIgniter\Boot::bootWeb($paths));

@@ -14,15 +14,15 @@
 	<tbody>
 		<?php $no=1; foreach($kategori_agenda as $kategori_agenda) { ?>
 		<tr>
-			<td><?php echo $no ?></td>
+			<td><?php echo esc($no) ?></td>
 			<td><?php if($kategori_agenda['gambar']=="") { echo '-'; }else{ ?>
 				<img src="<?php echo base_url('assets/upload/kategori_agenda/thumbs/'.$kategori_agenda['gambar']) ?>" class="img img-thumbnail">
 			<?php } ?>
 			</td>
-			<td><?php echo $kategori_agenda['nama_kategori_agenda'] ?></td>
-			<td><?php echo $kategori_agenda['keterangan'] ?></td>
-			<td><?php echo $kategori_agenda['slug_kategori_agenda'] ?></td>
-			<td><?php echo $kategori_agenda['urutan'] ?></td>
+			<td><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></td>
+			<td><?php echo esc($kategori_agenda['keterangan']) ?></td>
+			<td><?php echo esc($kategori_agenda['slug_kategori_agenda']) ?></td>
+			<td><?php echo esc($kategori_agenda['urutan']) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kategori_agenda/edit/'.$kategori_agenda['id_kategori_agenda']) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kategori_agenda/delete/'.$kategori_agenda['id_kategori_agenda']) ?>" class="btn btn-secondary btn-xs mb-1 delete-link" onclick="confirmation(event)"><i class="fa fa-trash"></i></a>

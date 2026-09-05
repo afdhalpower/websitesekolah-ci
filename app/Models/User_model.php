@@ -22,10 +22,30 @@ class User_model extends Model
         $builder = $this->db->table('users');
         $builder->select('users.*,staff.nama AS nama_staff, staff.jabatan');
         $builder->join('staff','staff.id_staff = users.id_staff','LEFT');
-        $builder->where([   'username'  => $username,
-                            'password'  => SHA1($password)]);
+        $builder->where('username', $username);
         $query = $builder->get();
-        return $query->getRow();
+        $user = $query->getRow();
+
+        if (!$user) {
+            return null;
+        }
+
+        // Try bcrypt password_verify first
+        if (password_verify($password, $user->password)) {
+            return $user;
+        }
+
+        // Legacy SHA1 fallback: check if stored hash is 40 chars (SHA1 length)
+        if (strlen($user->password) === 40 && hash_equals($user->password, sha1($password))) {
+            // Auto-upgrade to bcrypt
+            $newHash = password_hash($password, PASSWORD_BCRYPT);
+            $this->db->table('users')
+                ->where('id_user', $user->id_user)
+                ->update(['password' => $newHash]);
+            return $user;
+        }
+
+        return null;
     }
 
     // listing

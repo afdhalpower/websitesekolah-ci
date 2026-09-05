@@ -16,8 +16,8 @@ echo csrf_field();
 		<select name="id_jenjang" class="form-control select2" required>
 			<option value="">Pilih Jenjang</option>
 			<?php foreach($jenjang as $jenjang) { ?>
-				<option value="<?php echo $jenjang->id_jenjang ?>" <?php if($kelas->id_jenjang==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-					<?php echo $jenjang->nama_jenjang ?> - <?php echo $jenjang->keterangan ?>
+				<option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if($kelas->id_jenjang==$jenjang->id_jenjang) { echo 'selected'; } ?>>
+					<?php echo esc($jenjang->nama_jenjang) ?> - <?php echo esc($jenjang->keterangan) ?>
 				</option>
 			<?php } ?>
 		</select>
@@ -33,21 +33,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Kelas</label>
 	<div class="col-9">
-		<input type="text" name="nama_kelas" class="form-control" placeholder="Nama kelas" value="<?php echo $kelas->nama_kelas ?>" required>
+		<input type="text" name="nama_kelas" class="form-control" placeholder="Nama kelas" value="<?php echo esc($kelas->nama_kelas) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Keterangan Lengkap</label>
 	<div class="col-9">
-		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo $kelas->keterangan ?></textarea>
+		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo esc($kelas->keterangan) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $kelas->urutan ?>" required>
+		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($kelas->urutan) ?>" required>
 	</div>
 </div>
 

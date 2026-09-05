@@ -46,7 +46,7 @@ echo csrf_field();
 	<div class="col-sm-2">
 		<select name="id_kategori_agenda" class="form-control select2">
 			<?php foreach($kategori_agenda as $kategori_agenda) { ?>
-				<option value="<?php echo $kategori_agenda['id_kategori_agenda'] ?>"><?php echo $kategori_agenda['nama_kategori_agenda'] ?></option>
+				<option value="<?php echo esc($kategori_agenda['id_kategori_agenda']) ?>"><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></option>
 			<?php } ?>
 		</select>
 		<small class="text-gray">Kategori Agenda</small>

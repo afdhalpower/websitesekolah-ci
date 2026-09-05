@@ -17,20 +17,20 @@
 			$client 	= $m_kategori_client->client($kategori_client->id_kategori_client);
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td class="text-center">
 				<?php if($kategori_client->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$kategori_client->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $kategori_client->nama_kategori_client ?>
+			<td><?php echo esc($kategori_client->nama_kategori_client) ?>
 				<small>
-					<br>Slug: <?php echo $kategori_client->slug_kategori_client ?>
+					<br>Slug: <?php echo esc($kategori_client->slug_kategori_client) ?>
 				</small>
 			</td>
-			<td><?php echo $kategori_client->keterangan ?></td>
-			<td class="text-center"><?php if($client) { echo $client->total; }else{ echo 0; } ?> Client</td>
-			<td class="text-center"><?php echo $kategori_client->urutan ?></td>
+			<td><?php echo esc($kategori_client->keterangan) ?></td>
+			<td class="text-center"><?php if($client) { echo esc($client->total); }else{ echo 0; } ?> Client</td>
+			<td class="text-center"><?php echo esc($kategori_client->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kategori_client/edit/'.$kategori_client->id_kategori_client) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kategori_client/delete/'.$kategori_client->id_kategori_client) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

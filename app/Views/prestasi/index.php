@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-12 pt-md-14 pb-md-14 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -25,16 +25,16 @@
               <div class="card">
                 <figure class="card-img-top">
                   <a href="<?php echo base_url('prestasi/read/'.$prestasi->slug_prestasi) ?>">
-                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$prestasi->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$prestasi->gambar) ?> 2x" alt="<?php echo $prestasi->judul_prestasi ?>" />
+                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$prestasi->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$prestasi->gambar) ?> 2x" alt="<?php echo esc($prestasi->judul_prestasi) ?>" />
                   </a>
                 </figure>
                 <div class="card-body px-6 py-5">
                   <h4 class="mb-1">
                     <a href="<?php echo base_url('prestasi/read/'.$prestasi->slug_prestasi) ?>">
-                      <?php echo $prestasi->judul_prestasi ?>
+                      <?php echo esc($prestasi->judul_prestasi) ?>
                     </a>
                   </h4>
-                  <p class="mb-0"><?php echo $prestasi->jenjang_prestasi ?> | <?php echo $prestasi->tahun_prestasi ?></p>
+                  <p class="mb-0"><?php echo esc($prestasi->jenjang_prestasi) ?> | <?php echo esc($prestasi->tahun_prestasi) ?></p>
                 </div>
                 <!--/.card-body -->
               </div>

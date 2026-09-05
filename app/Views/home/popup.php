@@ -10,22 +10,22 @@ if($popup) {
             <div class="row">
               <div class="col-md-6 text-center">
                 <figure class="mb-3">
-                    <a href="<?php echo $popup->website ?>" target="_blank">
-                        <img src="<?php echo base_url('assets/upload/image/'.$popup->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$popup->gambar) ?> 2x" alt="<?php echo $popup->judul_galeri ?>" class="img-thumbnail rounded" />
+                    <a href="<?php echo esc($popup->website) ?>" target="_blank">
+                        <img src="<?php echo base_url('assets/upload/image/'.$popup->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$popup->gambar) ?> 2x" alt="<?php echo esc($popup->judul_galeri) ?>" class="img-thumbnail rounded" />
                     </a>
                 </figure>
               </div>
               <!-- /column -->
               <div class="col-md-6">
-                  <h3><a href="<?php echo $popup->website ?>" target="_blank"><?php echo $popup->judul_galeri ?></a></h3>
+                  <h3><a href="<?php echo esc($popup->website) ?>" target="_blank"><?php echo esc($popup->judul_galeri) ?></a></h3>
                   <hr class="mt-0 mb-1 p-0">
                     <div class="mb-3">
-                        <?php echo $popup->isi ?>
+                        <?php echo esc($popup->isi) ?>
                     </div>
 
                     <div id="mc_embed_signup">
                    
-                    <a href="<?php echo $popup->website ?>" class="btn btn-primary btn-sm" target="_blank">
+                    <a href="<?php echo esc($popup->website) ?>" class="btn btn-primary btn-sm" target="_blank">
                         Lihat detail &nbsp;<i class="fa fa-chevron-right"></i>
                     </a>
                   </div>

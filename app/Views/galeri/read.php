@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-12 pt-md-14 pb-md-14 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -32,7 +32,7 @@
                 <thead>
                   <tr>
                     <th width="25%">Judul</th>
-                    <th><?php echo $galeri->judul_galeri ?></th>
+                    <th><?php echo esc($galeri->judul_galeri) ?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,13 +40,13 @@
                   
                   <tr>
                     <td class="bg-light">Keterangan</td>
-                    <td><?php echo $galeri->isi ?></td>
+                    <td><?php echo esc($galeri->isi) ?></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="card-footer">
-              Tanggal: <?php echo $this->website->tanggal_bulan_menit($galeri->tanggal) ?>
+              Tanggal: <?php echo esc($this->website->tanggal_bulan_menit($galeri->tanggal)) ?>
             </div>
           </div>
           
@@ -66,16 +66,16 @@
               <div class="card">
                 <figure class="card-img-top">
                   <a href="<?php echo base_url('galeri/read/'.$galeri->id_galeri) ?>">
-                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?> 2x" alt="<?php echo $galeri->judul_galeri ?>" />
+                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?> 2x" alt="<?php echo esc($galeri->judul_galeri) ?>" />
                   </a>
                 </figure>
                 <div class="card-body px-6 py-5">
                   <h5 class="mb-1">
                     <a href="<?php echo base_url('galeri/read/'.$galeri->id_galeri) ?>">
-                      <?php echo $galeri->judul_galeri ?>
+                      <?php echo esc($galeri->judul_galeri) ?>
                     </a>
                   </h5>
-                  <p class="mb-0"><?php echo $galeri->nama_kategori_galeri ?></p>
+                  <p class="mb-0"><?php echo esc($galeri->nama_kategori_galeri) ?></p>
                 </div>
                 <!--/.card-body -->
               </div>

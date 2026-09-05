@@ -6,14 +6,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Kategori</label>
 	<div class="col-9">
-		<input type="text" name="nama_kategori" class="form-control" placeholder="Nama kategori" value="<?php echo $kategori->nama_kategori ?>" required>
+		<input type="text" name="nama_kategori" class="form-control" placeholder="Nama kategori" value="<?php echo esc($kategori->nama_kategori) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Nomor urut Kategori</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut kategori" value="<?php echo $kategori->urutan ?>" required>
+		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut kategori" value="<?php echo esc($kategori->urutan) ?>" required>
 	</div>
 </div>
 

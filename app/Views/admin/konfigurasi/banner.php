@@ -3,12 +3,12 @@
 echo csrf_field(); 
 ?>
 
-<input type="hidden" name="id_konfigurasi" value="<?php echo $konfigurasi->id_konfigurasi ?>">
+<input type="hidden" name="id_konfigurasi" value="<?php echo esc($konfigurasi->id_konfigurasi) ?>">
 
 <div class="form-group row">
 	<label class="col-3">Ringkasan Tentang Website <span class="text-danger">*</span></label>
 	<div class="col-9">
-		<textarea name="ringkasan" class="form-control"><?php echo $konfigurasi->ringkasan ?></textarea>
+		<textarea name="ringkasan" class="form-control"><?php echo esc($konfigurasi->ringkasan) ?></textarea>
 	</div>
 </div>
 
@@ -24,39 +24,39 @@ echo csrf_field();
 		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 			<i class="fa fa-download"></i> Lihat File
 		</button>
-		<textarea name="tentang" class="form-control konten" rows="5"><?php echo $konfigurasi->tentang ?></textarea>
+		<textarea name="tentang" class="form-control konten" rows="5"><?php echo esc($konfigurasi->tentang) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Text Link About Website <span class="text-danger">*</span></label>
 	<div class="col-9">
-		<input type="text" name="link_text" class="form-control" value="<?php echo $konfigurasi->link_text ?>" required>
+		<input type="text" name="link_text" class="form-control" value="<?php echo esc($konfigurasi->link_text) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Link About Website <span class="text-danger">*</span></label>
 	<div class="col-9">
-		<input type="text" name="link_website" class="form-control" value="<?php echo $konfigurasi->link_website ?>" required>
+		<input type="text" name="link_website" class="form-control" value="<?php echo esc($konfigurasi->link_website) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Link Video Profil <span class="text-danger">*</span></label>
 	<div class="col-9">
-		<input type="text" name="link_video" class="form-control" value="<?php echo $konfigurasi->link_video ?>">
+		<input type="text" name="link_video" class="form-control" value="<?php echo esc($konfigurasi->link_video) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Upload Banner Baru <span class="text-danger">*</span></label>
 	<div class="col-6">
-		<input type="file" name="banner" value="<?php echo $konfigurasi->banner ?>" class="form-control">
+		<input type="file" name="banner" value="<?php echo esc($konfigurasi->banner) ?>" class="form-control">
 		<small class="text-secondary">Format: JPG, PNG, GIF</small>
 	</div>
 	<div class="col-3">
-		<img src="<?php echo $this->website->banner() ?>" class="img img-thumbnail">
+		<img src="<?php echo esc($this->website->banner()) ?>" class="img img-thumbnail">
 	</div>
 </div>
 

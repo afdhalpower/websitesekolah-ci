@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -28,14 +28,14 @@
                         <figure class="card-img-top overlay overlay-1 hover-scale">
                     
                             <?php if($jenjang_pendidikan->gambar !='') { ?>
-                                  <img src="<?php echo base_url('assets/upload/image/'.$jenjang_pendidikan->gambar) ?>" alt="<?php echo $title ?>" class="img-thumbnail">
+                                  <img src="<?php echo base_url('assets/upload/image/'.$jenjang_pendidikan->gambar) ?>" alt="<?php echo esc($title) ?>" class="img-thumbnail">
                               <?php } ?>
                           
                           
                         </figure>
                       </div>
                       <div class="col-md-7">
-                        <?php echo $jenjang_pendidikan->isi ?>
+                        <?php echo esc($jenjang_pendidikan->isi) ?>
                       </div>
                     </div>
                     <!-- /.post-content -->
@@ -43,9 +43,9 @@
                   <!--/.card-body -->
                   <div class="card-footer">
                     <ul class="post-meta d-flex mb-0">
-                      <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo $this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_publish) ?></span></li>
-                      <li class="post-author"><a href="#"><i class="uil uil-user"></i><span><?php echo $jenjang_pendidikan->nama ?></span></a></li>
-                      <li class="post-comments"><a href="#"><i class="fa fa-eye"></i><span> Dibaca <?php echo $jenjang_pendidikan->hits ?> kali</span></a></li>
+                      <li class="post-date"><i class="uil uil-calendar-alt"></i><span><?php echo esc($this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_publish)) ?></span></li>
+                      <li class="post-author"><a href="#"><i class="uil uil-user"></i><span><?php echo esc($jenjang_pendidikan->nama) ?></span></a></li>
+                      <li class="post-comments"><a href="#"><i class="fa fa-eye"></i><span> Dibaca <?php echo esc($jenjang_pendidikan->hits) ?> kali</span></a></li>
                     </ul>
                     <!-- /.post-meta -->
                   </div>

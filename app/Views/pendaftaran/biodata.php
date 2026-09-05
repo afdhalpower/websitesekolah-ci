@@ -8,7 +8,7 @@
           <div class="card-body p-5">
 
               <p class="lead mb-2 text-center">Halo <strong class="text-danger"><?php echo Session()->get('nama') ?></strong>, masukkan data Calon Siswa dengan benar dan lengkap.
-                <br>Anda sedang mendaftar pada <strong><?php echo $gelombang->judul ?></strong> Tahun Ajaran <strong><?php echo $gelombang->tahun_ajaran ?></strong>.
+                <br>Anda sedang mendaftar pada <strong><?php echo esc($gelombang->judul) ?></strong> Tahun Ajaran <strong><?php echo esc($gelombang->tahun_ajaran) ?></strong>.
               </p>
 
               <?php 
@@ -60,8 +60,8 @@
                 <select name="id_jenjang_pendidikan" class="form-control  form-select">
                   <option value="">Pilih Program / Jenjang Pendidikan</option>
                   <?php foreach($jenjang_pendidikan as $jenjang_pendidikan) { ?>
-                    <option value="<?php echo $jenjang_pendidikan->id_jenjang_pendidikan ?>" <?php if(set_value('id_jenjang_pendidikan')==$jenjang_pendidikan->id_jenjang_pendidikan) { echo 'selected'; } ?>>
-                      <?php echo $jenjang_pendidikan->judul_jenjang_pendidikan; ?>
+                    <option value="<?php echo esc($jenjang_pendidikan->id_jenjang_pendidikan) ?>" <?php if(set_value('id_jenjang_pendidikan')==$jenjang_pendidikan->id_jenjang_pendidikan) { echo 'selected'; } ?>>
+                      <?php echo esc($jenjang_pendidikan->judul_jenjang_pendidikan); ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -103,8 +103,8 @@
                 <?php $agama = $m_agama->listing(); ?>
                 <select name="id_agama" class="form-control form-select">
                   <?php foreach($agama as $agama) { ?>
-                    <option value="<?php echo $agama->id_agama ?>" <?php if(set_value('id_agama')==$agama->id_agama) { echo 'selected'; } ?>>
-                      <?php echo $agama->nama_agama ?>
+                    <option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama')==$agama->id_agama) { echo 'selected'; } ?>>
+                      <?php echo esc($agama->nama_agama) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -138,8 +138,8 @@
                 <?php $hubungan = $m_hubungan->listing(); ?>
                 <select name="id_hubungan" class="form-control  form-select">
                   <?php foreach($hubungan as $hubungan) { ?>
-                    <option value="<?php echo $hubungan->id_hubungan ?>" <?php if(set_value('id_hubungan')==$hubungan->id_hubungan) { echo 'selected'; } ?>>
-                      <?php echo $hubungan->nama_hubungan ?>
+                    <option value="<?php echo esc($hubungan->id_hubungan) ?>" <?php if(set_value('id_hubungan')==$hubungan->id_hubungan) { echo 'selected'; } ?>>
+                      <?php echo esc($hubungan->nama_hubungan) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -358,8 +358,8 @@
                 <select name="id_agama_ayah" class="form-control  form-select">
                   <option value="">Pilih Agama</option>
                   <?php foreach($agama as $agama) { ?>
-                    <option value="<?php echo $agama->id_agama ?>" <?php if(set_value('id_agama_ayah')==$agama->id_agama) { echo 'selected'; } ?>>
-                      <?php echo $agama->nama_agama ?>
+                    <option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_ayah')==$agama->id_agama) { echo 'selected'; } ?>>
+                      <?php echo esc($agama->nama_agama) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -373,8 +373,8 @@
                 <select name="id_pekerjaan_ayah" class="form-control form-select">
                   <option value="">Pilih Pekerjaan</option>
                   <?php foreach($pekerjaan as $pekerjaan) { ?>
-                    <option value="<?php echo $pekerjaan->id_pekerjaan ?>" <?php if(set_value('id_pekerjaan_ayah')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-                      <?php echo $pekerjaan->nama_pekerjaan ?>
+                    <option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_ayah')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
+                      <?php echo esc($pekerjaan->nama_pekerjaan) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -388,8 +388,8 @@
                 <select name="id_jenjang_ayah" class="form-control  form-select">
                   <option value="">Pilih Jenjang Pendidikan</option>
                   <?php foreach($jenjang as $jenjang) { ?>
-                    <option value="<?php echo $jenjang->id_jenjang ?>" <?php if(set_value('id_jenjang_ayah')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-                      <?php echo $jenjang->nama_jenjang ?>
+                    <option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if(set_value('id_jenjang_ayah')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
+                      <?php echo esc($jenjang->nama_jenjang) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -437,8 +437,8 @@
                 <select name="id_agama_ibu" class="form-control  form-select">
                   <option value="">Pilih Agama</option>
                   <?php foreach($agama as $agama) { ?>
-                    <option value="<?php echo $agama->id_agama ?>" <?php if(set_value('id_agama_ibu')==$agama->id_agama) { echo 'selected'; } ?>>
-                      <?php echo $agama->nama_agama ?>
+                    <option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_ibu')==$agama->id_agama) { echo 'selected'; } ?>>
+                      <?php echo esc($agama->nama_agama) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -452,8 +452,8 @@
                 <select name="id_pekerjaan_ibu" class="form-control  form-select">
                   <option value="">Pilih Pekerjaan</option>
                   <?php foreach($pekerjaan as $pekerjaan) { ?>
-                    <option value="<?php echo $pekerjaan->id_pekerjaan ?>" <?php if(set_value('id_pekerjaan_ibu')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-                      <?php echo $pekerjaan->nama_pekerjaan ?>
+                    <option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_ibu')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
+                      <?php echo esc($pekerjaan->nama_pekerjaan) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -467,8 +467,8 @@
                 <select name="id_jenjang_ibu" class="form-control  form-select">
                   <option value="">Pilih Jenjang Pendidikan</option>
                   <?php foreach($jenjang as $jenjang) { ?>
-                    <option value="<?php echo $jenjang->id_jenjang ?>" <?php if(set_value('id_jenjang_ibu')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-                      <?php echo $jenjang->nama_jenjang ?>
+                    <option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if(set_value('id_jenjang_ibu')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
+                      <?php echo esc($jenjang->nama_jenjang) ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -548,8 +548,8 @@
                   <select name="id_agama_wali" class="form-control form-select">
                     <option value="">Pilih Agama</option>
                     <?php foreach($agama as $agama) { ?>
-                      <option value="<?php echo $agama->id_agama ?>" <?php if(set_value('id_agama_wali')==$agama->id_agama) { echo 'selected'; } ?>>
-                        <?php echo $agama->nama_agama ?>
+                      <option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_wali')==$agama->id_agama) { echo 'selected'; } ?>>
+                        <?php echo esc($agama->nama_agama) ?>
                       </option>
                     <?php } ?>
                   </select>
@@ -563,8 +563,8 @@
                   <select name="id_pekerjaan_wali" class="form-control form-select">
                     <option value="">Pilih Pekerjaan</option>
                     <?php foreach($pekerjaan as $pekerjaan) { ?>
-                      <option value="<?php echo $pekerjaan->id_pekerjaan ?>" <?php if(set_value('id_pekerjaan_wali')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-                        <?php echo $pekerjaan->nama_pekerjaan ?>
+                      <option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_wali')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
+                        <?php echo esc($pekerjaan->nama_pekerjaan) ?>
                       </option>
                     <?php } ?>
                   </select>
@@ -578,8 +578,8 @@
                   <select name="id_jenjang_wali" class="form-control form-select">
                     <option value="">Pilih Jenjang Pendidikan</option>
                     <?php foreach($jenjang as $jenjang) { ?>
-                      <option value="<?php echo $jenjang->id_jenjang ?>"  <?php if(set_value('id_jenjang_wali')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-                        <?php echo $jenjang->nama_jenjang ?>
+                      <option value="<?php echo esc($jenjang->id_jenjang) ?>"  <?php if(set_value('id_jenjang_wali')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
+                        <?php echo esc($jenjang->nama_jenjang) ?>
                       </option>
                     <?php } ?>
                   </select>

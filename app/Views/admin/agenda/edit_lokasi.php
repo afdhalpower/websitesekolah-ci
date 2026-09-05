@@ -2,9 +2,9 @@
 <?php 
 echo csrf_field(); 
 ?>
-<input type="hidden" name="id_lokasi_agenda" value="<?php echo $lokasi_agenda['id_lokasi_agenda'] ?>">
+<input type="hidden" name="id_lokasi_agenda" value="<?php echo esc($lokasi_agenda['id_lokasi_agenda']) ?>">
 
-<div class="modal fade" id="edit-<?php echo $lokasi_agenda['id_lokasi_agenda'] ?>">
+<div class="modal fade" id="edit-<?php echo esc($lokasi_agenda['id_lokasi_agenda']) ?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,7 +27,7 @@ echo csrf_field();
                         <select name="id_desa" class="form-control" required="">
                             <option value="">Pilih lokasi agenda</option>
                             <?php foreach($desa as $desa){ ?>
-                                <option value="<?php echo $desa['id_desa']; ?>" <?php if($desa['id_desa'] == $lokasi_agenda['id_desa']) { echo "Selected";} ?>><?php echo $desa['nama_desa']; ?></option>
+                                <option value="<?php echo esc($desa['id_desa']); ?>" <?php if($desa['id_desa'] == $lokasi_agenda['id_desa']) { echo "Selected";} ?>><?php echo esc($desa['nama_desa']); ?></option>
                             <?php } ?>
                         </select>
                     </div>

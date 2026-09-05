@@ -7,7 +7,7 @@
         <div class="card">
           <div class="card-body p-5">
 
-            <h2 class="mb-3 text-start">Membuat akun pendaftaran di <?php echo $this->website->namaweb() ?></h2>
+            <h2 class="mb-3 text-start">Membuat akun pendaftaran di <?php echo esc($this->website->namaweb()) ?></h2>
               <p class="lead mb-6 text-start">Masukkan data Anda dengan benar dan lengkap.</p>
 
               <?php 

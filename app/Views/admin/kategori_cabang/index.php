@@ -17,20 +17,20 @@
 			$cabang 	= $m_kategori_cabang->cabang($kategori_cabang->id_kategori_cabang);
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td class="text-center">
 				<?php if($kategori_cabang->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$kategori_cabang->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $kategori_cabang->nama_kategori_cabang ?>
+			<td><?php echo esc($kategori_cabang->nama_kategori_cabang) ?>
 				<small>
-					<br>Slug: <?php echo $kategori_cabang->slug_kategori_cabang ?>
+					<br>Slug: <?php echo esc($kategori_cabang->slug_kategori_cabang) ?>
 				</small>
 			</td>
-			<td><?php echo $kategori_cabang->keterangan ?></td>
-			<td class="text-center"><?php if($cabang) { echo $cabang->total; }else{ echo 0; } ?> Cabang</td>
-			<td class="text-center"><?php echo $kategori_cabang->urutan ?></td>
+			<td><?php echo esc($kategori_cabang->keterangan) ?></td>
+			<td class="text-center"><?php if($cabang) { echo esc($cabang->total); }else{ echo 0; } ?> Cabang</td>
+			<td class="text-center"><?php echo esc($kategori_cabang->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kategori_cabang/edit/'.$kategori_cabang->id_kategori_cabang) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kategori_cabang/delete/'.$kategori_cabang->id_kategori_cabang) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

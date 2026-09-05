@@ -7,7 +7,7 @@
       <div class="card shadow-lg">
         <div class="row gx-0 text-center">
           <?php if($this->website->login()!='') { ?>
-            <div class="col-lg-6 image-wrapper bg-image bg-cover rounded-top rounded-lg-start d-none d-md-block" data-image-src="<?php echo $this->website->login() ?>">
+            <div class="col-lg-6 image-wrapper bg-image bg-cover rounded-top rounded-lg-start d-none d-md-block" data-image-src="<?php echo esc($this->website->login()) ?>">
           <?php }else{ ?>
             <div class="col-lg-6 image-wrapper bg-image bg-cover rounded-top rounded-lg-start d-none d-md-block" data-image-src="<?php echo base_url() ?>assets/template/assets/img/photos/tm3.jpg">
           <?php } ?>

@@ -15,18 +15,18 @@
 		$no=1; foreach($kelas as $kelas) { 
 			$kelasnya = $m_kelas->jenjang($kelas->id_jenjang);
 		?>
-		<tr class="bg-light" id="jenjang<?php echo $kelas->id_jenjang ?>">
-			<td colspan="5"><strong><?php echo $kelas->nama_jenjang ?> (<?php echo $kelas->keterangan_jenjang ?>)</strong></td>
+		<tr class="bg-light" id="jenjang<?php echo esc($kelas->id_jenjang) ?>">
+			<td colspan="5"><strong><?php echo esc($kelas->nama_jenjang) ?> (<?php echo esc($kelas->keterangan_jenjang) ?>)</strong></td>
 			<td></td>
 		</tr>
 
 		<?php if($kelasnya) { $i=1; foreach($kelasnya as $kelasnya) { ?>
 		<tr>
-			<td class="text-center"><?php echo $i ?></td>
-			<td><?php echo $kelasnya->nama_kelas ?></td>
-			<td><?php echo $kelasnya->keterangan ?></td>
-			<td><?php echo $kelasnya->status_kelas ?></td>
-			<td><?php echo $kelasnya->urutan ?></td>
+			<td class="text-center"><?php echo esc($i) ?></td>
+			<td><?php echo esc($kelasnya->nama_kelas) ?></td>
+			<td><?php echo esc($kelasnya->keterangan) ?></td>
+			<td><?php echo esc($kelasnya->status_kelas) ?></td>
+			<td><?php echo esc($kelasnya->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kelas/edit/'.$kelasnya->id_kelas) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kelas/delete/'.$kelasnya->id_kelas) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

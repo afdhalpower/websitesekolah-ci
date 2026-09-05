@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/download'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -71,38 +71,38 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-          <input type="checkbox" name="id_download[]" value="<?php echo $download->id_download ?>" id="check_<?php echo $no ?>">
-          <label for="check_<?php echo $no ?>"></label>
+          <input type="checkbox" name="id_download[]" value="<?php echo esc($download->id_download) ?>" id="check_<?php echo esc($no) ?>">
+          <label for="check_<?php echo esc($no) ?>"></label>
         </div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			
 			<td><a href="<?php echo base_url('admin/download/edit/'.$download->id_download) ?>">
-					<?php echo $download->judul_download ?>
+					<?php echo esc($download->judul_download) ?>
 				</a>
 				<small>
 					<br><i class="fa fa-download"></i> <?php echo base_url('download/unduh/'.$download->id_download) ?>
 					<br><i class="fa fa-link"></i> Link file:<br><textarea class="form-control form-control-sm" title="Copy link gambar/file ini"><?php echo base_url('assets/upload/file/'.$download->gambar) ?></textarea>
-					<i class="fa fa-calendar-check"></i> <?php echo $this->website->tanggal_bulan_menit($download->tanggal) ?>
-					<br><i class="fa fa-calendar-plus"></i> <?php echo $this->website->tanggal_bulan_menit($download->tanggal_post) ?>
-					<br><i class="fa fa-eye"></i> <?php echo $download->hits ?>
+					<i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_bulan_menit($download->tanggal)) ?>
+					<br><i class="fa fa-calendar-plus"></i> <?php echo esc($this->website->tanggal_bulan_menit($download->tanggal_post)) ?>
+					<br><i class="fa fa-eye"></i> <?php echo esc($download->hits) ?>
 				</small>
 			</td>
 			<td><small>
 				<i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/download/kategori_download/'.$download->id_kategori_download) ?>">
-					<?php echo $download->nama_kategori_download ?>
+					<?php echo esc($download->nama_kategori_download) ?>
 				</a>
 				<br><i class="fa fa-home"></i> <a href="<?php echo base_url('admin/download/jenis_download/'.$download->jenis_download) ?>">
-					<?php echo $download->jenis_download ?></a>
-				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/download/author/'.$download->id_user) ?>"><?php echo $download->nama ?></a>
+					<?php echo esc($download->jenis_download) ?></a>
+				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/download/author/'.$download->id_user) ?>"><?php echo esc($download->nama) ?></a>
 				<br><i class="fa fa-file-code"></i> <?php echo strtoupper($download->file_ext) ?>
-				<br><i class="fas fa-file"></i> <?php echo $download->file_size ?> MB
+				<br><i class="fas fa-file"></i> <?php echo esc($download->file_size) ?> MB
 			</small>
 			</td>
 			<td>
 				<?php if($download->status_download=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $download->status_download ?>
+						<i class="fa fa-eye"></i> <?php echo esc($download->status_download) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

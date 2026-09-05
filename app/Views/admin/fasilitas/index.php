@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/fasilitas'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_fasilitas" class="form-control">
 		<?php foreach($kategori_fasilitas as $kategori_fasilitas) { ?>
-		<option value="<?php echo $kategori_fasilitas->id_kategori_fasilitas ?>">
-			<?php echo $kategori_fasilitas->nama_kategori_fasilitas ?>
+		<option value="<?php echo esc($kategori_fasilitas->id_kategori_fasilitas) ?>">
+			<?php echo esc($kategori_fasilitas->nama_kategori_fasilitas) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -70,29 +70,29 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_fasilitas[]" value="<?php echo $fasilitas->id_fasilitas ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_fasilitas[]" value="<?php echo esc($fasilitas->id_fasilitas) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($fasilitas->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$fasilitas->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $fasilitas->judul_fasilitas ?>
+			<td><?php echo esc($fasilitas->judul_fasilitas) ?>
 				<small>
-					<br><i class="fa fa-graduation-cap"></i> <?php echo $fasilitas->kode_nomor_fasilitas ?>
-					<br><i class="fa fa-calendar"></i> <?php echo $fasilitas->tahun_fasilitas ?> (<?php echo $this->website->tanggal_bulan($fasilitas->tanggal_fasilitas) ?>)
+					<br><i class="fa fa-graduation-cap"></i> <?php echo esc($fasilitas->kode_nomor_fasilitas) ?>
+					<br><i class="fa fa-calendar"></i> <?php echo esc($fasilitas->tahun_fasilitas) ?> (<?php echo esc($this->website->tanggal_bulan($fasilitas->tanggal_fasilitas)) ?>)
 				
 				</small>
 			</td>
-			<td><small><i class="fa fa-tags"></i> <?php echo $fasilitas->nama_kategori_fasilitas ?>
-				<br><i class="fa fa-check-circle"></i> <?php echo $fasilitas->kondisi_fasilitas ?></small></td>
+			<td><small><i class="fa fa-tags"></i> <?php echo esc($fasilitas->nama_kategori_fasilitas) ?>
+				<br><i class="fa fa-check-circle"></i> <?php echo esc($fasilitas->kondisi_fasilitas) ?></small></td>
 			<td>
 				<?php if($fasilitas->status_fasilitas=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $fasilitas->status_fasilitas ?>
+						<i class="fa fa-eye"></i> <?php echo esc($fasilitas->status_fasilitas) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
@@ -100,7 +100,7 @@
 					</span>
 				<?php } ?>
 			</td>
-			<td><?php echo $fasilitas->nama ?></td>
+			<td><?php echo esc($fasilitas->nama) ?></td>
 			<td>
 				
 				<a href="<?php echo base_url('admin/fasilitas/edit/'.$fasilitas->id_fasilitas) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>

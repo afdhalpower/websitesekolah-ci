@@ -49,8 +49,8 @@
 					<select name="id_rombel" class="form-control select2" required>
 						<option value="">Pilih Kelas dan Tahun Ajaran</option>
 						<?php foreach($rombel as $rombel) { ?>
-							<option value="<?php echo $rombel->id_rombel ?>">
-								<?php echo $rombel->nama_kelas ?> (<?php echo $rombel->nama_jenjang ?>) - <?php echo $rombel->nama_tahun ?>
+							<option value="<?php echo esc($rombel->id_rombel) ?>">
+								<?php echo esc($rombel->nama_kelas) ?> (<?php echo esc($rombel->nama_jenjang) ?>) - <?php echo esc($rombel->nama_tahun) ?>
 							</option>
 						<?php } ?>
 					</select>

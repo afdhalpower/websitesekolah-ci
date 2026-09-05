@@ -13,14 +13,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Judul Galeri</label>
 	<div class="col-md-9">
-		<input type="text" name="judul_galeri" class="form-control" value="<?php echo $galeri->judul_galeri ?>" required>
+		<input type="text" name="judul_galeri" class="form-control" value="<?php echo esc($galeri->judul_galeri) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload Gambar Galeri</label>
 	<div class="col-md-8">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $galeri->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($galeri->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$galeri->gambar) ?>" class="img img-thumbnail">
@@ -32,8 +32,8 @@ echo csrf_field();
 	<div class="col-md-3">
 		<select name="id_kategori_galeri" class="form-control">
 			<?php foreach($kategori_galeri as $kategori_galeri) { ?>
-			<option value="<?php echo $kategori_galeri->id_kategori_galeri ?>" <?php if($galeri->id_kategori_galeri==$kategori_galeri->id_kategori_galeri) { echo 'selected'; } ?>>
-				<?php echo $kategori_galeri->nama_kategori_galeri ?>
+			<option value="<?php echo esc($kategori_galeri->id_kategori_galeri) ?>" <?php if($galeri->id_kategori_galeri==$kategori_galeri->id_kategori_galeri) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_galeri->nama_kategori_galeri) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -61,21 +61,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Isi Galeri</label>
 	<div class="col-md-9">
-		<textarea name="isi" class="form-control konten"><?php echo $galeri->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($galeri->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Text untuk tombol link</label>
 	<div class="col-md-9">
-		<input type="text" name="text_website" class="form-control" value="<?php echo $galeri->text_website ?>">
+		<input type="text" name="text_website" class="form-control" value="<?php echo esc($galeri->text_website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Link/URL untuk Banner</label>
 	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo $galeri->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($galeri->website) ?>">
 	</div>
 </div>
 

@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/berita'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -67,10 +67,10 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-          <input type="checkbox" name="id_berita[]" value="<?php echo $berita->id_berita ?>" id="check_<?php echo $no ?>">
-          <label for="check_<?php echo $no ?>"></label>
+          <input type="checkbox" name="id_berita[]" value="<?php echo esc($berita->id_berita) ?>" id="check_<?php echo esc($no) ?>">
+          <label for="check_<?php echo esc($no) ?>"></label>
         </div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($berita->gambar=="") { echo '-'; }else{ ?>
@@ -78,23 +78,23 @@
 				<?php } ?>
 			</td>
 			<td><a href="<?php echo base_url('admin/berita/edit/'.$berita->id_berita) ?>">
-					<?php echo $berita->judul_berita ?>
+					<?php echo esc($berita->judul_berita) ?>
 				</a>
 				<small>
-					<br><i class="fa fa-calendar-check"></i> <?php echo $this->website->tanggal_bulan_menit($berita->tanggal_publish) ?>
-					<br><i class="fa fa-calendar-plus"></i> <?php echo $this->website->tanggal_bulan_menit($berita->tanggal_post) ?>
-					<br><i class="fa fa-eye"></i> <?php echo $berita->hits ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo $berita->urutan ?> | <i class="<?php echo $berita->icon ?>"></i> <?php echo $berita->icon ?>
+					<br><i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_bulan_menit($berita->tanggal_publish)) ?>
+					<br><i class="fa fa-calendar-plus"></i> <?php echo esc($this->website->tanggal_bulan_menit($berita->tanggal_post)) ?>
+					<br><i class="fa fa-eye"></i> <?php echo esc($berita->hits) ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo esc($berita->urutan) ?> | <i class="<?php echo esc($berita->icon) ?>"></i> <?php echo esc($berita->icon) ?>
 				</small>
 			</td>
 			<td><small>
 				<i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/berita/kategori/'.$berita->id_kategori) ?>">
-					<?php echo $berita->nama_kategori ?>
+					<?php echo esc($berita->nama_kategori) ?>
 				</a>
 				<br><i class="fa fa-home"></i> <a href="<?php echo base_url('admin/berita/jenis_berita/'.$berita->jenis_berita) ?>">
-					<?php echo $berita->jenis_berita ?>
+					<?php echo esc($berita->jenis_berita) ?>
 				</a>
 				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/berita/author/'.$berita->id_user) ?>">
-						<?php echo $berita->nama ?>
+						<?php echo esc($berita->nama) ?>
 					</a>
 			</small>
 			</td>
@@ -102,7 +102,7 @@
 				<a href="<?php echo base_url('admin/berita/status_berita/'.$berita->status_berita) ?>">
 				<?php if($berita->status_berita=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $berita->status_berita ?>
+						<i class="fa fa-eye"></i> <?php echo esc($berita->status_berita) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

@@ -70,6 +70,16 @@ class Client extends BaseController
 				// Image upload
 				$avatar  	= $this->request->getFile('gambar');
 				$nama_clientbaru 	= $avatar->getRandomName();
+	            // Validate file extension and size
+	            $allowedExt = ['jpg','jpeg','png','gif','webp'];
+	            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+	                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+	                return redirect()->back();
+	            }
+	            if ($avatar->getSizeByUnit('mb') > 5) {
+	                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+	                return redirect()->back();
+	            }
 	            $avatar->move(WRITEPATH . '../assets/upload/image/',$nama_clientbaru);
 	            // Create thumb
 	            $image = \Config\Services::image()
@@ -208,6 +218,16 @@ class Client extends BaseController
 				// Image upload
 				$avatar  	= $this->request->getFile('gambar');
 				$nama_clientbaru 	= $avatar->getRandomName();
+	            // Validate file extension and size
+	            $allowedExt = ['jpg','jpeg','png','gif','webp'];
+	            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+	                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+	                return redirect()->back();
+	            }
+	            if ($avatar->getSizeByUnit('mb') > 5) {
+	                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+	                return redirect()->back();
+	            }
 	            $avatar->move(WRITEPATH . '../assets/upload/image/',$nama_clientbaru);
 	            // Create thumb
 	            $image = \Config\Services::image()

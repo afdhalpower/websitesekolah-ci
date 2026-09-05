@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/galeri'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_galeri" class="form-control">
 		<?php foreach($kategori_galeri as $kategori_galeri) { ?>
-		<option value="<?php echo $kategori_galeri->id_kategori_galeri ?>">
-			<?php echo $kategori_galeri->nama_kategori_galeri ?>
+		<option value="<?php echo esc($kategori_galeri->id_kategori_galeri) ?>">
+			<?php echo esc($kategori_galeri->nama_kategori_galeri) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -69,27 +69,27 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_galeri[]" value="<?php echo $galeri->id_galeri ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_galeri[]" value="<?php echo esc($galeri->id_galeri) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($galeri->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$galeri->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $galeri->judul_galeri ?>
+			<td><?php echo esc($galeri->judul_galeri) ?>
 				<small>
-					<br><i class="fa fa-link"></i> <?php echo $galeri->website ?>
-					<br><i class="fa fa-tasks"></i> <?php echo $galeri->status_text ?>
-					<br><i class="fa fa-newspaper"></i> <?php echo $galeri->text_website ?>
+					<br><i class="fa fa-link"></i> <?php echo esc($galeri->website) ?>
+					<br><i class="fa fa-tasks"></i> <?php echo esc($galeri->status_text) ?>
+					<br><i class="fa fa-newspaper"></i> <?php echo esc($galeri->text_website) ?>
 					<textarea title="Copy link gambar/file ini" class="form-control"><?php echo base_url('assets/upload/image/'.$galeri->gambar) ?></textarea>
 				</small>
 			</td>
-			<td><small><i class="fa fa-tags"></i> <?php echo $galeri->nama_kategori_galeri ?>
-				<br><i class="fa fa-home"></i> <?php echo $galeri->jenis_galeri ?></small></td>
-			<td><?php echo $galeri->nama ?></td>
+			<td><small><i class="fa fa-tags"></i> <?php echo esc($galeri->nama_kategori_galeri) ?>
+				<br><i class="fa fa-home"></i> <?php echo esc($galeri->jenis_galeri) ?></small></td>
+			<td><?php echo esc($galeri->nama) ?></td>
 			<td>
 				
 				<a href="<?php echo base_url('admin/galeri/edit/'.$galeri->id_galeri) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>

@@ -36,8 +36,8 @@ echo csrf_field();
 						<select name="id_menu" class="form-control select2" onchange="showUser(this.value)" required>
 							<option value="">Pilih Parent Menu</option>
 							<?php foreach($menu2 as $menu2) { ?>
-							<option value="<?php echo $menu2->id_menu ?>">
-								<?php echo $menu2->nama_menu ?>
+							<option value="<?php echo esc($menu2->id_menu) ?>">
+								<?php echo esc($menu2->nama_menu) ?>
 							</option>
 						<?php } ?>
 						</select>

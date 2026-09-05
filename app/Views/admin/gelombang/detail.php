@@ -3,25 +3,25 @@
 		<i class="fa fa-arrow-left"></i> Kembali
 	</a>
 	<a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-warning btn-xs mb-1">
-      	<i class="fa fa-users"></i> Semua Jenjang (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua','Semua')->total); ?>)
+      	<i class="fa fa-users"></i> Semua Jenjang (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua','Semua')->total)); ?>)
       </a>
       <?php if($id_jenjang_pendidikan != 'Semua') { ?>
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Semua/'.$id_jenjang_pendidikan) ?>" class="btn btn-info btn-xs mb-1">
-            <i class="fa fa-user-check"></i> <?php echo $judul_jenjang_pendidikan ?> (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total); ?>)
+            <i class="fa fa-user-check"></i> <?php echo esc($judul_jenjang_pendidikan) ?> (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total)); ?>)
       </a>
     <?php } ?>
 
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Menunggu/'.$id_jenjang_pendidikan) ?>" class="btn btn-dark btn-xs mb-1">
-      	<i class="fa fa-tasks"></i> Menunggu (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total); ?>)
+      	<i class="fa fa-tasks"></i> Menunggu (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total)); ?>)
       </a>
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Diterima/'.$id_jenjang_pendidikan) ?>" class="btn btn-success btn-xs mb-1">
-      	<i class="fa fa-check-circle"></i> Diterima (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total); ?>)
+      	<i class="fa fa-check-circle"></i> Diterima (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total)); ?>)
       </a>
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Tidak-Diterima/'.$id_jenjang_pendidikan) ?>" class="btn btn-warning btn-xs mb-1">
-      	<i class="fa fa-times-circle"></i> Tidak Diterima (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total); ?>)
+      	<i class="fa fa-times-circle"></i> Tidak Diterima (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total)); ?>)
       </a>
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Diperiksa/'.$id_jenjang_pendidikan) ?>" class="btn btn-secondary btn-xs mb-1">
-      	<i class="fa fa-edit"></i> Diperiksa (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total); ?>)
+      	<i class="fa fa-edit"></i> Diperiksa (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total)); ?>)
       </a>
 	<a href="<?php echo base_url('admin/gelombang/export/'.$gelombang->id_gelombang.'/'.$status_pendaftaran.'/'.$id_jenjang_pendidikan) ?>" class="btn btn-success btn-xs mb-1" target="_blank"><i class="fa fa-file-excel"></i> Ekspor Siswa</a>
 	<a href="<?php echo base_url('admin/gelombang/unduh_data/'.$gelombang->id_gelombang.'/'.$status_pendaftaran.'/'.$id_jenjang_pendidikan) ?>" class="btn btn-danger btn-xs mb-1" target="_blank"><i class="fa fa-file-pdf"></i> Cetak</a>
@@ -35,32 +35,32 @@
 			<thead>
 				<tr>
 					<th width="30%">Nama Periode</th>
-					<th><?php echo $gelombang->judul ?></th>
+					<th><?php echo esc($gelombang->judul) ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>Tanggal pelaksanaan</td>
 					<td>
-						<span class="text-secondary">Pembukaan:</span> <?php echo $this->website->hari($gelombang->tanggal_buka) ?>
-						<br><span class="text-secondary">Penutupan:</span> <?php echo $this->website->hari($gelombang->tanggal_tutup) ?>
-						<br><span class="text-secondary">Pengumuman:</span> <?php echo $this->website->hari($gelombang->tanggal_pengumuman) ?>
+						<span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
+						<br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
+						<br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
 					</td>
 				</tr>
 				<tr>
 					<td>Periode</td>
-					<td><?php echo $gelombang->tahun ?></td>
+					<td><?php echo esc($gelombang->tahun) ?></td>
 				</tr>
 				<tr>
 					<td>Tahun Ajaran</td>
-					<td><?php echo $gelombang->tahun_ajaran ?></td>
+					<td><?php echo esc($gelombang->tahun_ajaran) ?></td>
 				</tr>
 				<tr>
 					<td>Status</td>
 					<td>
 						<?php if($gelombang->status_gelombang=='Buka') { ?>
 							<span class="badge bg-info">
-								<i class="fa fa-eye"></i> <?php echo $gelombang->status_gelombang ?>
+								<i class="fa fa-eye"></i> <?php echo esc($gelombang->status_gelombang) ?>
 							</span>
 						<?php }else{ ?>
 							<span class="badge bg-secondary">
@@ -71,11 +71,11 @@
 				</tr>
 				<tr>
 					<td>Jenjang Pendidikan</td>
-					<td><?php echo $judul_jenjang_pendidikan ?></td>
+					<td><?php echo esc($judul_jenjang_pendidikan) ?></td>
 				</tr>
 				<tr>
 					<td>Status Pendaftaran</td>
-					<td><?php echo $status_pendaftaran ?></td>
+					<td><?php echo esc($status_pendaftaran) ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -84,7 +84,7 @@
 		<table class="tabelku table-sm mb-3">
 			<thead>
 				<tr>
-					<th width="70%" colspan="2"><?php echo $judul_jenjang_pendidikan ?></th>
+					<th width="70%" colspan="2"><?php echo esc($judul_jenjang_pendidikan) ?></th>
 					<th>Jumlah</th>
 				</tr>
 			</thead>
@@ -94,35 +94,35 @@
 			<td class="text-center" width="5%"><i class="fa fa-user-check"></i></td>
 			<td>Jumlah Pendaftar</td>
 			<td>
-				<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total); ?>
+				<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total)); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="text-center"><i class="fa fa-tasks"></i></td>
 			<td>Jumlah Menunggu</td>
 			<td>
-				<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total); ?>
+				<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total)); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="text-center"><i class="fa fa-check-circle"></i></td>
 			<td>Jumlah Diterima</td>
 			<td>
-				<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total); ?>
+				<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total)); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="text-center"><i class="fa fa-times-circle"></i></td>
 			<td>Jumlah Tidak Diterima</td>
 			<td>
-				<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total); ?>
+				<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total)); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="text-center"><i class="fa fa-edit"></i></td>
 			<td>Jumlah Diperiksa</td>
 			<td>
-				<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total); ?>
+				<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total)); ?>
 			</td>
 		</tr>
 	</tbody>
@@ -141,19 +141,19 @@
 			<tbody>
 				<?php foreach($akumulasi as $akumulasi) { ?>
 					<tr>
-						<td><?php echo $akumulasi->judul_jenjang_pendidikan ?></td>
+						<td><?php echo esc($akumulasi->judul_jenjang_pendidikan) ?></td>
 						<td>
 							<?php if($akumulasi->status_pendaftaran=='Menunggu') { ?>
-                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo $akumulasi->status_pendaftaran ?></span>
+                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo esc($akumulasi->status_pendaftaran) ?></span>
                   <?php }elseif($akumulasi->status_pendaftaran=='Diterima') { ?>
-                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo $akumulasi->status_pendaftaran ?></span>
+                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo esc($akumulasi->status_pendaftaran) ?></span>
                   <?php }elseif($akumulasi->status_pendaftaran=='Tidak-Diterima') { ?>
-                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo $akumulasi->status_pendaftaran ?></span>
+                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo esc($akumulasi->status_pendaftaran) ?></span>
                   <?php }else{ ?>
-                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo $akumulasi->status_pendaftaran ?></span>
+                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo esc($akumulasi->status_pendaftaran) ?></span>
                   <?php } ?>
 						</td>
-						<td><?php echo $this->website->angka($akumulasi->jumlah_siswa) ?></td>
+						<td><?php echo esc($this->website->angka($akumulasi->jumlah_siswa)) ?></td>
 						<td>
 							<a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/'.$akumulasi->status_pendaftaran.'/'.$akumulasi->id_jenjang_pendidikan) ?>" class="btn btn-secondary btn-xs mb-1">
 				      	<i class="fa fa-user-check"></i> Lihat
@@ -199,7 +199,7 @@
         <button type="submit" class="btn btn-info" name="submit" value="update"><i class="fa fa-save"></i> Update Status PPDB</button>
       </span>
       <a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-warning">
-      	<i class="fa fa-users"></i> Lihat Semua Jenjang (<?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua','Semua')->total); ?>)
+      	<i class="fa fa-users"></i> Lihat Semua Jenjang (<?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua','Semua')->total)); ?>)
       </a>
     </div>
   </div>
@@ -245,19 +245,19 @@
 		<tr>
 			<td class="text-center">
             <div class="icheck-primary">
-              <input type="checkbox" name="id_siswa[]" value="<?php echo $siswa->id_siswa ?>" id="check<?php echo $i ?>">
-              <label for="check<?php echo $i ?>"></label>
+              <input type="checkbox" name="id_siswa[]" value="<?php echo esc($siswa->id_siswa) ?>" id="check<?php echo esc($i) ?>">
+              <label for="check<?php echo esc($i) ?>"></label>
             </div>
           </td>
-			<td><strong><?php echo $siswa->nama_siswa ?></strong>
+			<td><strong><?php echo esc($siswa->nama_siswa) ?></strong>
 				<small>
-					<br><span class="text-secondary">Program:</span> <strong><?php echo $siswa->judul_jenjang_pendidikan ?></strong>
-					<br><span class="text-secondary">Kode:</span> <strong><?php echo $siswa->kode_siswa ?></strong>
-					<br><span class="text-secondary">NIS/NISN:</span> <?php echo $siswa->nis ?>/<?php echo $siswa->nisn ?>
-		          	<br><span class="text-secondary">Panggilan:</span> <?php echo $siswa->nama_panggilan ?>
-					<br><span class="text-secondary">TTL:</span> <?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?>
+					<br><span class="text-secondary">Program:</span> <strong><?php echo esc($siswa->judul_jenjang_pendidikan) ?></strong>
+					<br><span class="text-secondary">Kode:</span> <strong><?php echo esc($siswa->kode_siswa) ?></strong>
+					<br><span class="text-secondary">NIS/NISN:</span> <?php echo esc($siswa->nis) ?>/<?php echo esc($siswa->nisn) ?>
+		          	<br><span class="text-secondary">Panggilan:</span> <?php echo esc($siswa->nama_panggilan) ?>
+					<br><span class="text-secondary">TTL:</span> <?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?>
 					<br><span class="text-secondary">Kelamin:</span> <?php if($siswa->jenis_kelamin=='L') { echo 'Laki-laki'; }else{ echo 'Perempuan'; } ?>
-					<br><span class="text-secondary">Wali:</span><?php echo $siswa->nama_wali ?>
+					<br><span class="text-secondary">Wali:</span><?php echo esc($siswa->nama_wali) ?>
 		          	<br><span class="text-secondary">Usia:</span> 
 			          <?php 
 			          // jeda
@@ -270,30 +270,30 @@
 			          $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 			          $days   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 			          ?>
-			          <?php echo $years; ?> Tahun <?php echo $months; ?> Bulan <?php echo $days; ?> Hari
+			          <?php echo esc($years); ?> Tahun <?php echo esc($months); ?> Bulan <?php echo esc($days); ?> Hari
 		          
 				</small>
 			</td>
-      		<td><?php echo $siswa->alamat ?>
+      		<td><?php echo esc($siswa->alamat) ?>
       			<small>
-      				<br><span class="text-secondary">Telepon:</span> <?php echo $siswa->telepon ?>
-      				<br><span class="text-secondary">Email:</span> <?php echo $siswa->email ?>
+      				<br><span class="text-secondary">Telepon:</span> <?php echo esc($siswa->telepon) ?>
+      				<br><span class="text-secondary">Email:</span> <?php echo esc($siswa->email) ?>
       			</small>
       		</td>
-      		<td class="text-center"><?php echo $wajib->total ?></td>
-      		<td class="text-center <?php if($dokumen_wajib >= $wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo $dokumen_wajib; ?></td>
-      		<td class="text-center"><?php echo $tidak_wajib->total ?></td>
-      		<td class="text-center <?php if($dokumen_tidak_wajib >= $tidak_wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo $dokumen_tidak_wajib; ?></td>
+      		<td class="text-center"><?php echo esc($wajib->total) ?></td>
+      		<td class="text-center <?php if($dokumen_wajib >= $wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo esc($dokumen_wajib); ?></td>
+      		<td class="text-center"><?php echo esc($tidak_wajib->total) ?></td>
+      		<td class="text-center <?php if($dokumen_tidak_wajib >= $tidak_wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo esc($dokumen_tidak_wajib); ?></td>
       		
 		    <td>
 		        <?php if($siswa->status_pendaftaran=='Menunggu') { ?>
-                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Diterima') { ?>
-                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Tidak-Diterima') { ?>
-                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }else{ ?>
-                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php } ?>
 		    </td>
 			<td>

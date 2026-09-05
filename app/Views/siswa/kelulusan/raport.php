@@ -2,7 +2,7 @@
 
 <?php if($siswa['raport']=="") {}else{ ?>
 <div class="alert alert-success text-center">
-	<h4>Hai <em><?php echo $siswa['nama_lengkap'] ?></em>.</h4>
+	<h4>Hai <em><?php echo esc($siswa['nama_lengkap']) ?></em>.</h4>
 	<hr>
 	<h3>Raport Anda:<br> <span class="badge badge-warning"><i class="fa fa-check"></i> TERSEDIA</span></h3>
 	<hr>
@@ -13,27 +13,27 @@
 	<tbody>
 		<tr>
 			<td class="bg-light" width="25%">Nama lengkap</td>
-			<td><?php echo $siswa['nama_lengkap'] ?></td>
+			<td><?php echo esc($siswa['nama_lengkap']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama panggilan</td>
-			<td><?php echo $siswa['nama_panggilan'] ?></td>
+			<td><?php echo esc($siswa['nama_panggilan']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">NIS/NISN</td>
-			<td><?php echo $siswa['nis'] ?> / <?php echo $siswa['nisn'] ?></td>
+			<td><?php echo esc($siswa['nis']) ?> / <?php echo esc($siswa['nisn']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jurusan/Kelas/ABS</td>
-			<td><?php echo $siswa['jurusan'] ?> / <?php echo $siswa['kelas'] ?> / <?php echo $siswa['abs'] ?></td>
+			<td><?php echo esc($siswa['jurusan']) ?> / <?php echo esc($siswa['kelas']) ?> / <?php echo esc($siswa['abs']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nomor Peserta</td>
-			<td><?php echo $siswa['no_peserta'] ?></td>
+			<td><?php echo esc($siswa['no_peserta']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Tempat lahir</td>
-			<td><?php echo $siswa['tempat_lahir'] ?></td>
+			<td><?php echo esc($siswa['tempat_lahir']) ?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Tanggal lahir</td>

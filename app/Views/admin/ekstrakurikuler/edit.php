@@ -13,21 +13,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-2">Judul Ekstrakurikuler</label>
 	<div class="col-md-10">
-		<input type="text" name="judul_ekstrakurikuler" class="form-control" value="<?php echo $ekstrakurikuler->judul_ekstrakurikuler ?>" required>
+		<input type="text" name="judul_ekstrakurikuler" class="form-control" value="<?php echo esc($ekstrakurikuler->judul_ekstrakurikuler) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2">Nama Penanggung Jawab</label>
 	<div class="col-md-6">
-		<input type="text" name="nama_penanggung_jawab" class="form-control" value="<?php echo $ekstrakurikuler->nama_penanggung_jawab ?>" required>
+		<input type="text" name="nama_penanggung_jawab" class="form-control" value="<?php echo esc($ekstrakurikuler->nama_penanggung_jawab) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2">Upload Gambar Ekstrakurikuler</label>
 	<div class="col-md-5">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $ekstrakurikuler->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($ekstrakurikuler->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$ekstrakurikuler->gambar) ?>" class="img img-thumbnail">
@@ -39,8 +39,8 @@ echo csrf_field();
 	<div class="col-md-2">
 		<select name="id_kategori_ekstrakurikuler" class="form-control select2">
 			<?php foreach($kategori_ekstrakurikuler as $kategori_ekstrakurikuler) { ?>
-			<option value="<?php echo $kategori_ekstrakurikuler->id_kategori_ekstrakurikuler ?>" <?php if($ekstrakurikuler->id_kategori_ekstrakurikuler==$kategori_ekstrakurikuler->id_kategori_ekstrakurikuler) { echo 'selected'; } ?>>
-				<?php echo $kategori_ekstrakurikuler->nama_kategori_ekstrakurikuler ?>
+			<option value="<?php echo esc($kategori_ekstrakurikuler->id_kategori_ekstrakurikuler) ?>" <?php if($ekstrakurikuler->id_kategori_ekstrakurikuler==$kategori_ekstrakurikuler->id_kategori_ekstrakurikuler) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_ekstrakurikuler->nama_kategori_ekstrakurikuler) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -74,21 +74,21 @@ echo csrf_field();
 		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 			<i class="fa fa-download"></i> Lihat File
 		</button>
-		<textarea name="isi" class="form-control konten"><?php echo $ekstrakurikuler->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($ekstrakurikuler->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2">Text untuk tombol link</label>
 	<div class="col-md-10">
-		<input type="text" name="text_website" class="form-control" value="<?php echo $ekstrakurikuler->text_website ?>">
+		<input type="text" name="text_website" class="form-control" value="<?php echo esc($ekstrakurikuler->text_website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2">Link/URL untuk Banner</label>
 	<div class="col-md-10">
-		<input type="text" name="website" class="form-control" value="<?php echo $ekstrakurikuler->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($ekstrakurikuler->website) ?>">
 	</div>
 </div>
 

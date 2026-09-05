@@ -13,7 +13,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Nama Client</label>
 	<div class="col-md-9">
-		<input type="text" name="nama_client" class="form-control" value="<?php echo $client->nama_client ?>" required>
+		<input type="text" name="nama_client" class="form-control" value="<?php echo esc($client->nama_client) ?>" required>
 	</div>
 </div>
 
@@ -28,11 +28,11 @@ echo csrf_field();
 		<small class="text-secondary">Jenis kelamin</small>
 	</div>
 	<div class="col-md-3">
-		<input type="text" name="tempat_lahir" class="form-control" value="<?php echo $client->tempat_lahir ?>">
+		<input type="text" name="tempat_lahir" class="form-control" value="<?php echo esc($client->tempat_lahir) ?>">
 		<small class="text-secondary">Tempat lahir</small>
 	</div>
 	<div class="col-md-3">
-		<input type="text" name="tanggal_lahir" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($client->tanggal_lahir) ?>">
+		<input type="text" name="tanggal_lahir" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($client->tanggal_lahir)) ?>">
 		<small class="text-secondary">Format: dd-mm-yyyy</small>
 	</div>
 </div>
@@ -40,11 +40,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Telepon dan Website</label>
 	<div class="col-md-3">
-		<input type="text" name="telepon" class="form-control" value="<?php echo $client->telepon ?>">
+		<input type="text" name="telepon" class="form-control" value="<?php echo esc($client->telepon) ?>">
 		<small class="text-secondary">Telepon</small>
 	</div>
 	<div class="col-md-6">
-		<input type="text" name="website" class="form-control" value="<?php echo $client->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($client->website) ?>">
 		<small class="text-secondary">Alamat website</small>
 	</div>
 </div>
@@ -52,18 +52,18 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Alamat</label>
 	<div class="col-md-9">
-		<textarea name="alamat" class="form-control"><?php echo $client->alamat ?></textarea>
+		<textarea name="alamat" class="form-control"><?php echo esc($client->alamat) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Email (Username) &amp; Password</label>
 	<div class="col-md-5">
-		<input type="email" name="email" class="form-control" value="<?php echo $client->email ?>">
+		<input type="email" name="email" class="form-control" value="<?php echo esc($client->email) ?>">
 		<small class="text-secondary">Email</small>
 	</div>
 	<div class="col-md-4">
-		<input type="text" name="password" class="form-control" value="<?php echo $client->password_hint ?>">
+		<input type="text" name="password" class="form-control" value="<?php echo esc($client->password_hint) ?>">
 		<small class="text-secondary">Password minimal 6 karakter</small>
 	</div>
 </div>
@@ -71,11 +71,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Perusahaan/Organisasi &amp; Pimpinan</label>
 	<div class="col-md-5">
-		<input type="text" name="nama_perusahaan" class="form-control" value="<?php echo $client->nama_perusahaan ?>">
+		<input type="text" name="nama_perusahaan" class="form-control" value="<?php echo esc($client->nama_perusahaan) ?>">
 		<small class="text-secondary">Nama perusahaan/organisasi</small>
 	</div>
 	<div class="col-md-4">
-		<input type="text" name="pimpinan" class="form-control" value="<?php echo $client->pimpinan ?>">
+		<input type="text" name="pimpinan" class="form-control" value="<?php echo esc($client->pimpinan) ?>">
 		<small class="text-secondary">Nama pimpinan</small>
 	</div>
 </div>
@@ -85,8 +85,8 @@ echo csrf_field();
 	<div class="col-md-3">
 		<select name="id_kategori_client" class="form-control">
 			<?php foreach($kategori_client as $kategori_client) { ?>
-			<option value="<?php echo $kategori_client->id_kategori_client ?>" <?php if($client->id_kategori_client==$kategori_client->id_kategori_client) { echo 'selected'; } ?>>
-				<?php echo $kategori_client->nama_kategori_client ?>
+			<option value="<?php echo esc($kategori_client->id_kategori_client) ?>" <?php if($client->id_kategori_client==$kategori_client->id_kategori_client) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_client->nama_kategori_client) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -112,14 +112,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Isi Testimoni Client</label>
 	<div class="col-md-9">
-		<textarea name="isi_testimoni" class="form-control konten"><?php echo $client->isi_testimoni ?></textarea>
+		<textarea name="isi_testimoni" class="form-control konten"><?php echo esc($client->isi_testimoni) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload Gambar Client</label>
 	<div class="col-md-8">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $client->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($client->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<?php if($client->gambar=="") { }else{ ?>

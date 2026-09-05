@@ -13,7 +13,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Kelompok Usia</label>
 	<div class="col-6">
-		<input type="text" name="nama_usia" class="form-control" placeholder="Nama usia" value="<?php echo $usia->nama_usia ?>" required>
+		<input type="text" name="nama_usia" class="form-control" placeholder="Nama usia" value="<?php echo esc($usia->nama_usia) ?>" required>
 	</div>
 
 	<div class="col-2">
@@ -27,24 +27,24 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Rentang Usia</label>
 	<div class="col-4">
-		<input type="number" name="minimal" class="form-control" placeholder="Minimal" value="<?php echo $usia->minimal ?>" required>
+		<input type="number" name="minimal" class="form-control" placeholder="Minimal" value="<?php echo esc($usia->minimal) ?>" required>
 	</div>
 	<div class="col-4">
-		<input type="number" name="maksimal" class="form-control" placeholder="Maksimal" value="<?php echo $usia->maksimal ?>" required>
+		<input type="number" name="maksimal" class="form-control" placeholder="Maksimal" value="<?php echo esc($usia->maksimal) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Keterangan Lengkap</label>
 	<div class="col-9">
-		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo $usia->keterangan ?></textarea>
+		<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo esc($usia->keterangan) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $usia->urutan ?>" required>
+		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($usia->urutan) ?>" required>
 	</div>
 </div>
 

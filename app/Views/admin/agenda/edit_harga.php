@@ -1,5 +1,5 @@
 
-    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit-<?php echo $harga_produk['id_harga_produk'] ?>">
+    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit-<?php echo esc($harga_produk['id_harga_produk']) ?>">
         <i class="fa fa-edit"></i> Edit
     </button>
     <a href="<?php echo base_url('admin/produk/delete_harga/'.$harga_produk['id_harga_produk'].'/'.$produk['id_produk']) ?>" class="btn btn-danger btn-xs delete-link" onclick="confirmation(event)"><i class="fa fa-trash"></i> Hapus</a></td>
@@ -8,9 +8,9 @@
 <?php 
 echo csrf_field(); 
 ?>
-<input type="hidden" name="id_harga_produk" value="<?php echo $harga_produk['id_harga_produk'] ?>">
+<input type="hidden" name="id_harga_produk" value="<?php echo esc($harga_produk['id_harga_produk']) ?>">
 
-<div class="modal fade" id="edit-<?php echo $harga_produk['id_harga_produk'] ?>">
+<div class="modal fade" id="edit-<?php echo esc($harga_produk['id_harga_produk']) ?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -30,16 +30,16 @@ echo csrf_field();
                     
                     
                     <div class="col-sm-3">
-                        <input type="number" name="biaya_deposit" class="form-control" required value="<?php echo $harga_produk['biaya_deposit'] ?>">
+                        <input type="number" name="biaya_deposit" class="form-control" required value="<?php echo esc($harga_produk['biaya_deposit']) ?>">
                         <small class="text-gray">Biaya <em>deposit</em></small>
                     </div>
                     <div class="col-3">
-                        <input type="number" name="harga_produk" class="form-control" placeholder="harga" value="<?php echo $harga_produk['harga_produk'] ?>">
+                        <input type="number" name="harga_produk" class="form-control" placeholder="harga" value="<?php echo esc($harga_produk['harga_produk']) ?>">
                         <small class="text-gray">Biaya Pendaftaran  <em>normal</em></small>
                     </div>
 
                     <div class="col-3">
-                        <input type="number" name="harga_diskon" class="form-control" placeholder="harga diskon" value="<?php echo $harga_produk['harga_diskon'] ?>">
+                        <input type="number" name="harga_diskon" class="form-control" placeholder="harga diskon" value="<?php echo esc($harga_produk['harga_diskon']) ?>">
                         <small class="text-gray">Biaya Pendaftaran  <em>diskon</em></small>
                     </div>
                 </div>
@@ -48,14 +48,14 @@ echo csrf_field();
                     <label class="col-3">Nama Varian/Type</label>
                     
                     <div class="col-9">
-                        <input type="text" name="nama_harga_produk" class="form-control" placeholder="Nama harga" value="<?php echo $harga_produk['nama_harga_produk'] ?>">
+                        <input type="text" name="nama_harga_produk" class="form-control" placeholder="Nama harga" value="<?php echo esc($harga_produk['nama_harga_produk']) ?>">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-3">Keterangan</label>
                     <div class="col-9">
-                        <textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo $harga_produk['keterangan'] ?></textarea>
+                        <textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo esc($harga_produk['keterangan']) ?></textarea>
                     </div>
                 </div>
 

@@ -9,8 +9,8 @@
 <div class="box mb-5">
 	<ul class="list-unstyled" id="page_list">
 		<?php foreach($menu as $menu) { ?>
-			<li id="<?php echo $menu->id_menu ?>"><i class="fa fa-bars"></i> <?php echo $menu->nama_menu ?> - <?php echo $menu->urutan ?>
-				| <small><?php echo $menu->keterangan ?></small>
+			<li id="<?php echo esc($menu->id_menu) ?>"><i class="fa fa-bars"></i> <?php echo esc($menu->nama_menu) ?> - <?php echo esc($menu->urutan) ?>
+				| <small><?php echo esc($menu->keterangan) ?></small>
 			</li>
 		<?php } ?>
 	</ul>

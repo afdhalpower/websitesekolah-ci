@@ -9,7 +9,7 @@
 				echo form_open(base_url('admin/menu')); 
 				echo csrf_field(); 
 				?>
-				<input type="hidden" name="id_konfigurasi" value="<?php echo $konfigurasi->id_konfigurasi ?>">
+				<input type="hidden" name="id_konfigurasi" value="<?php echo esc($konfigurasi->id_konfigurasi) ?>">
 				<div class="callout callout-info p-2">
 					Anda dapat mengaktifkan dan menonaktifkan menu bawaan melalui pengaturan di bawah ini.
 				</div>
@@ -210,19 +210,19 @@ include('tambah-sub.php');
 			$sub_menu = $m_sub_menu->menu($menu->id_menu);
 		?>
 		<tr>
-			<td class="text-center align-top"><?php echo $no ?></td>
-			<td class="align-top"><strong><?php echo $menu->nama_menu ?></strong>
+			<td class="text-center align-top"><?php echo esc($no) ?></td>
+			<td class="align-top"><strong><?php echo esc($menu->nama_menu) ?></strong>
 				<small>
-					<br><i class="fa fa-link"></i> <?php if($menu->link=="#") { echo $menu->link; }else{ echo $menu->link; } ?>
-					<br><i class="fa fa-newspaper"></i><?php echo $menu->keterangan ?>
-					<br><i class="<?php echo $menu->icon ?>"></i> <?php echo $menu->icon ?>
+					<br><i class="fa fa-link"></i> <?php if($menu->link=="#") { echo esc($menu->link); }else{ echo esc($menu->link); } ?>
+					<br><i class="fa fa-newspaper"></i><?php echo esc($menu->keterangan) ?>
+					<br><i class="<?php echo esc($menu->icon) ?>"></i> <?php echo esc($menu->icon) ?>
 					
 				</small>
 			</td>
 			<td>
 				<?php if($menu->status_menu=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $menu->status_menu ?>
+						<i class="fa fa-eye"></i> <?php echo esc($menu->status_menu) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
@@ -230,7 +230,7 @@ include('tambah-sub.php');
 					</span>
 				<?php } ?>
 			</td>
-			<td class="align-top text-center"><?php echo $menu->urutan ?></td>
+			<td class="align-top text-center"><?php echo esc($menu->urutan) ?></td>
 			<td class="text-center">
 				<?php if($sub_menu) { ?>
 					
@@ -245,7 +245,7 @@ include('tambah-sub.php');
 			</td>
 			<td class="align-top">
 				<?php if($sub_menu) { ?>
-					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#DetailMenu<?php echo $menu->id_menu ?>">
+					<button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#DetailMenu<?php echo esc($menu->id_menu) ?>">
 						<i class="fa fa-eye"></i> Sub Menu
 					</button>
 					<!-- <a href="<?php echo base_url('admin/menu/urutkan_sub/'.$menu->id_menu) ?>" class="btn btn-primary btn-xs" title="Urutkan"><i class="fa fa-bars"></i></a> -->

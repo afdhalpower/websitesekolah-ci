@@ -16,28 +16,28 @@
 		$no=1; foreach($video as $video) { 
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td class="text-center">
 				<?php if($video->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$video->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $video->judul ?>
+			<td><?php echo esc($video->judul) ?>
 				<small>
-					<br><strong>Kode:</strong> <?php echo $video->video ?>
-					<br><strong>Posisi:</strong> <?php echo $video->posisi_video ?>
-					<br><strong>Slug:</strong> <?php echo $video->slug_video ?>
+					<br><strong>Kode:</strong> <?php echo esc($video->video) ?>
+					<br><strong>Posisi:</strong> <?php echo esc($video->posisi_video) ?>
+					<br><strong>Slug:</strong> <?php echo esc($video->slug_video) ?>
 				</small>
 			</td>
 			<td>
 				<div class="embed-responsive embed-responsive-16by9">
-				  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $video->video ?>?rel=0" allowfullscreen></iframe>
+				  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo esc($video->video) ?>?rel=0" allowfullscreen></iframe>
 				</div>
 			</td>
 			<td>
 				<?php if($video->status_video=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $video->status_video ?>
+						<i class="fa fa-eye"></i> <?php echo esc($video->status_video) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
@@ -45,7 +45,7 @@
 					</span>
 				<?php } ?>
 			</td>
-			<td class="text-center"><?php echo $video->urutan ?></td>
+			<td class="text-center"><?php echo esc($video->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/video/edit/'.$video->id_video) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/video/delete/'.$video->id_video) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

@@ -6,7 +6,7 @@ $uri = service('uri');
 
   <div class="col-md-7">
     <div class="input-group">                  
-      <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci pencarian siswa...." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+      <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci pencarian siswa...." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
       <span class="input-group-btn ">
         <button type="submit" class="btn btn-secondary btn-flat"><i class="fa fa-search"></i></button>
 
@@ -87,15 +87,15 @@ $uri = service('uri');
 		<tr>
 			<td class="text-center">
             <div class="icheck-primary">
-              <input type="checkbox" name="id_siswa[]" value="<?php echo $siswa->id_siswa ?>" id="check<?php echo $i ?>">
-              <label for="check<?php echo $i ?>"></label>
+              <input type="checkbox" name="id_siswa[]" value="<?php echo esc($siswa->id_siswa) ?>" id="check<?php echo esc($i) ?>">
+              <label for="check<?php echo esc($i) ?>"></label>
             </div>
           </td>
-			<td class="text-center"><span class="badge bg-info mr-1"><?php echo $siswa->nis ?></span><span class="badge bg-success"><?php echo $siswa->nisn ?></span></td>
-			<td><?php echo $siswa->nama_siswa ?>
+			<td class="text-center"><span class="badge bg-info mr-1"><?php echo esc($siswa->nis) ?></span><span class="badge bg-success"><?php echo esc($siswa->nisn) ?></span></td>
+			<td><?php echo esc($siswa->nama_siswa) ?>
 				<small>
-          <br><i class="fa fa-bullhorn"></i> <?php echo $siswa->nama_panggilan ?>
-					<br><i class="fa fa-calendar"></i> <?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?>
+          <br><i class="fa fa-bullhorn"></i> <?php echo esc($siswa->nama_panggilan) ?>
+					<br><i class="fa fa-calendar"></i> <?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?>
           <br><i class="fa fa-birthday-cake"></i> 
           <?php 
           // jeda
@@ -108,23 +108,23 @@ $uri = service('uri');
           $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
           $days   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
           ?>
-          <?php echo $years; ?> Tahun <?php echo $months; ?> Bulan <?php echo $days; ?> Hari
+          <?php echo esc($years); ?> Tahun <?php echo esc($months); ?> Bulan <?php echo esc($days); ?> Hari
           
 				</small>
 			</td>
-      <td><?php echo $siswa->alamat ?></td>
-      <td class="text-center"><?php echo $this->website->tanggal_id($siswa->tanggal_masuk) ?></td>
-			<td class="text-center"><?php echo $siswa->jenis_kelamin ?></td>
-			<td class="text-center"><?php echo $siswa->nama_wali ?></td>
+      <td><?php echo esc($siswa->alamat) ?></td>
+      <td class="text-center"><?php echo esc($this->website->tanggal_id($siswa->tanggal_masuk)) ?></td>
+			<td class="text-center"><?php echo esc($siswa->jenis_kelamin) ?></td>
+			<td class="text-center"><?php echo esc($siswa->nama_wali) ?></td>
       <td class="text-center">
         <?php if($siswa->status_siswa=='Aktif') { ?>
-          <span class="badge bg-success"><i class="fa fa-check-circle"></i> <?php echo $siswa->status_siswa ?></span>
+          <span class="badge bg-success"><i class="fa fa-check-circle"></i> <?php echo esc($siswa->status_siswa) ?></span>
         <?php }elseif($siswa->status_siswa=='Lulus') { ?>
-          <span class="badge bg-info"><i class="fa fa-certificate"></i> <?php echo $siswa->status_siswa ?></span>
+          <span class="badge bg-info"><i class="fa fa-certificate"></i> <?php echo esc($siswa->status_siswa) ?></span>
         <?php }elseif($siswa->status_siswa=='Meninggal') { ?>
-          <span class="badge bg-dark"><i class="fa fa-times-circle"></i> <?php echo $siswa->status_siswa ?></span>
+          <span class="badge bg-dark"><i class="fa fa-times-circle"></i> <?php echo esc($siswa->status_siswa) ?></span>
         <?php }elseif($siswa->status_siswa=='Pindah') { ?>
-          <span class="badge bg-warning"><i class="fa fa-plane"></i> <?php echo $siswa->status_siswa ?></span>
+          <span class="badge bg-warning"><i class="fa fa-plane"></i> <?php echo esc($siswa->status_siswa) ?></span>
         <?php } ?>
       </td>
 			<td>
@@ -142,7 +142,7 @@ $uri = service('uri');
 <?php echo form_close(); ?>
 
 <div class="clearfix"><hr></div>
-<div class="pull-right"><?php if(isset($pagin)) { echo $pagin; } ?></div>
+<div class="pull-right"><?php if(isset($pagin)) { echo esc($pagin); } ?></div>
 </div>
 
 

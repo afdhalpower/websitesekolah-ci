@@ -50,7 +50,7 @@
 	<div class="col-3">
 		<select name="id_kategori_staff" class="form-control">
 			<?php foreach($kategori_staff as $kategori_staff) { ?>
-				<option value="<?php echo $kategori_staff->id_kategori_staff ?>"><?php echo $kategori_staff->nama_kategori_staff ?></option>
+				<option value="<?php echo esc($kategori_staff->id_kategori_staff) ?>"><?php echo esc($kategori_staff->nama_kategori_staff) ?></option>
 			<?php } ?>
 		</select>
 		<small class="text-secondary">Jenis Staff</small>

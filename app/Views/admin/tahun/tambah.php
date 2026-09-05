@@ -26,7 +26,7 @@ $tahun_selesai = date('Y')+1;
 					</div>
 					<div class="col-1 text-center">/</div>
 					<div class="col-2">
-						<input type="number" name="tahun_selesai" class="form-control" placeholder="Tahun Selesai" value="<?php if(isset($_POST['tahun_selesai'])) { echo set_value('tahun_selesai'); }else{ echo $tahun_selesai; } ?>" required>
+						<input type="number" name="tahun_selesai" class="form-control" placeholder="Tahun Selesai" value="<?php if(isset($_POST['tahun_selesai'])) { echo set_value('tahun_selesai'); }else{ echo esc($tahun_selesai); } ?>" required>
 					</div>
 				</div>
 

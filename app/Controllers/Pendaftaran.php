@@ -206,6 +206,16 @@ class Pendaftaran extends BaseController
 				// Image upload
 				$avatar  					= $this->request->getFile('gambar');
 				$nama_siswabaru 	= $avatar->getRandomName();
+	            // Validate file extension and size
+	            $allowedExt = ['jpg','jpeg','png','gif','webp'];
+	            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+	                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+	                return redirect()->back();
+	            }
+	            if ($avatar->getSizeByUnit('mb') > 5) {
+	                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+	                return redirect()->back();
+	            }
 	            $avatar->move(WRITEPATH . '../assets/upload/image/',$nama_siswabaru);
 	            // Create thumb
 	            $image = \Config\Services::image()
@@ -400,6 +410,16 @@ class Pendaftaran extends BaseController
 			$namabaru 	= $avatar->getRandomName();
 			$file_ext 	= $avatar->guessExtension();
 			$file_size 	= $avatar->getSizeByUnit('mb');
+            // Validate file extension and size
+            $allowedExt = ['jpg','jpeg','png','gif','pdf','doc','docx','xls','xlsx','ppt','pptx','zip','rar'];
+            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+                return redirect()->back();
+            }
+            if ($avatar->getSizeByUnit('mb') > 5) {
+                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+                return redirect()->back();
+            }
             $avatar->move(WRITEPATH . '../assets/upload/pendaftaran/',$namabaru);
         	// masuk database
 		    $data = array(

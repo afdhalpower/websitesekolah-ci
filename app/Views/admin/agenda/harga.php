@@ -92,16 +92,16 @@ echo csrf_field();
 <?php $i=1; foreach($harga_produk as $harga_produk) { ?>
 
 <tr class="odd gradeX">
-    <td><?php echo $i ?></td>
+    <td><?php echo esc($i) ?></td>
     <td>
     <?php echo angka($harga_produk['harga_produk'])  ?>
     </td>
     <td>
     <?php echo angka($harga_produk['harga_diskon'])  ?>
     </td>
-    <td><?php echo $harga_produk['nama_harga_produk'] ?></td>
-    <td><?php echo $harga_produk['keterangan'] ?></td>
-    <td><?php echo $harga_produk['status_harga_produk'] ?></td>
+    <td><?php echo esc($harga_produk['nama_harga_produk']) ?></td>
+    <td><?php echo esc($harga_produk['keterangan']) ?></td>
+    <td><?php echo esc($harga_produk['status_harga_produk']) ?></td>
     <td> 
         <?php include('edit_harga.php') ?>
         

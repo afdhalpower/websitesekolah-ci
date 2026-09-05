@@ -18,11 +18,11 @@
       </tr>
       <tr>
         <td class="font-bold">Panggilan</td>
-        <td><?php echo $siswa->nama_panggilan ?></td>
+        <td><?php echo esc($siswa->nama_panggilan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">NIS / NISN</td>
-        <td><?php echo $siswa->nis ?> / <?php echo $siswa->nisn ?></td>
+        <td><?php echo esc($siswa->nis) ?> / <?php echo esc($siswa->nisn) ?></td>
       </tr>
       <tr>
         <td class="font-bold">L/P</td>
@@ -30,31 +30,31 @@
       </tr>
       <tr>
         <td class="font-bold">TTL</td>
-        <td><?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?></td>
+        <td><?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Kode</td>
-        <td><?php echo $siswa->kode_siswa ?></td>
+        <td><?php echo esc($siswa->kode_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Periode</td>
-        <td><?php echo $siswa->judul ?></td>
+        <td><?php echo esc($siswa->judul) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Tahun Ajaran</td>
-        <td><?php echo $siswa->tahun_ajaran ?></td>
+        <td><?php echo esc($siswa->tahun_ajaran) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Program/Jenjang</td>
-        <td><?php echo $siswa->judul_jenjang_pendidikan ?></td>
+        <td><?php echo esc($siswa->judul_jenjang_pendidikan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Status Anak</td>
-        <td><?php echo $siswa->nama_hubungan ?></td>
+        <td><?php echo esc($siswa->nama_hubungan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Anak ke</td>
-        <td><?php echo $siswa->anak_ke ?> dari <?php echo $siswa->jumlah_saudara ?> Saudara</td>
+        <td><?php echo esc($siswa->anak_ke) ?> dari <?php echo esc($siswa->jumlah_saudara) ?> Saudara</td>
       </tr>
       <tr>
         <td class="font-bold">Alamat</td>
@@ -63,11 +63,11 @@
       
       <tr>
         <td class="font-bold">Telepon</td>
-        <td><?php echo $siswa->telepon ?></td>
+        <td><?php echo esc($siswa->telepon) ?></td>
       </tr>
        <tr>
         <td class="font-bold">Email</td>
-        <td><?php echo $siswa->email ?></td>
+        <td><?php echo esc($siswa->email) ?></td>
       </tr>
     </tbody>
   </table>
@@ -129,22 +129,22 @@
             }
             $data_total+=$data_id;
           ?>
-          <tr data-id="<?php echo $data_id ?>">
-            <td class="text-center"><?php echo $no ?></td>
+          <tr data-id="<?php echo esc($data_id) ?>">
+            <td class="text-center"><?php echo esc($no) ?></td>
             
-            <td><?php echo $jenis_dokumen->nama_jenis_dokumen ?>
+            <td><?php echo esc($jenis_dokumen->nama_jenis_dokumen) ?>
               <small>
-                <br><?php echo $jenis_dokumen->keterangan ?>
+                <br><?php echo esc($jenis_dokumen->keterangan) ?>
               </small>
             </td>
             <td>
               <?php if($jenis_dokumen->status_jenis_dokumen=='Wajib') { ?>
                 <span class="badge bg-info">
-                  <i class="fa fa-check-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                  <i class="fa fa-check-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                 </span>
               <?php }else{ ?>
                 <span class="badge bg-secondary">
-                  <i class="fa fa-times-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                  <i class="fa fa-times-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                 </span>
               <?php } ?>
             </td>
@@ -174,7 +174,7 @@
                 echo csrf_field(); 
                 ?>
 
-                <input type="hidden" name="id_jenis_dokumen" value="<?php echo $jenis_dokumen->id_jenis_dokumen ?>">
+                <input type="hidden" name="id_jenis_dokumen" value="<?php echo esc($jenis_dokumen->id_jenis_dokumen) ?>">
 
                 <div class="row">
                   <div class="col-md-8">

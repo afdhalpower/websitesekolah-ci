@@ -12,10 +12,10 @@
 	<tbody>
 		<?php $no=1; foreach($hubungan as $hubungan) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $hubungan->nama_hubungan ?></td>
-			<td><?php echo $hubungan->keterangan ?></td>
-			<td><?php echo $hubungan->urutan ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($hubungan->nama_hubungan) ?></td>
+			<td><?php echo esc($hubungan->keterangan) ?></td>
+			<td><?php echo esc($hubungan->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/hubungan/edit/'.$hubungan->id_hubungan) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/hubungan/delete/'.$hubungan->id_hubungan) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

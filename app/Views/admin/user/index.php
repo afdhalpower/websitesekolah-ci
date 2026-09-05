@@ -13,16 +13,16 @@
 	<tbody>
 		<?php $no=1; foreach($user as $user) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $user->nama ?></td>
-			<td><?php echo $user->nama_staff ?>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($user->nama) ?></td>
+			<td><?php echo esc($user->nama_staff) ?>
 				<small class="text-gray">
-					<br><i class="fa fa-chair"></i> <?php echo $user->jabatan ?>
-					<br><i class="fa fa-envelope"></i> <?php echo $user->email ?>
+					<br><i class="fa fa-chair"></i> <?php echo esc($user->jabatan) ?>
+					<br><i class="fa fa-envelope"></i> <?php echo esc($user->email) ?>
 				</small>
 			</td>
-			<td><?php echo $user->username ?></td>
-			<td><?php echo $user->akses_level ?></td>
+			<td><?php echo esc($user->username) ?></td>
+			<td><?php echo esc($user->akses_level) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/user/edit/'.$user->id_user) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/user/delete/'.$user->id_user) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

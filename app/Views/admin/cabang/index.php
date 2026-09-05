@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/cabang'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -67,10 +67,10 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-          <input type="checkbox" name="id_cabang[]" value="<?php echo $cabang->id_cabang ?>" id="check_<?php echo $no ?>">
-          <label for="check_<?php echo $no ?>"></label>
+          <input type="checkbox" name="id_cabang[]" value="<?php echo esc($cabang->id_cabang) ?>" id="check_<?php echo esc($no) ?>">
+          <label for="check_<?php echo esc($no) ?>"></label>
         </div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($cabang->gambar=="") { echo '-'; }else{ ?>
@@ -78,23 +78,23 @@
 				<?php } ?>
 			</td>
 			<td><a href="<?php echo base_url('admin/cabang/edit/'.$cabang->id_cabang) ?>">
-					<?php echo $cabang->nama_cabang ?> (<?php echo $cabang->singkatan ?>)
+					<?php echo esc($cabang->nama_cabang) ?> (<?php echo esc($cabang->singkatan) ?>)
 				</a>
 				<small>
-					<br><i class="fa fa-user"></i> Pelatih: <?php echo $cabang->nama_pelatih ?>
-					<br><i class="fa fa-phone"></i> HP/WA: <?php echo $cabang->telepon ?>
-					<br><i class="fa fa-map"></i> Google Map: <a href="<?php echo $cabang->google_map ?>" target="_blank"><?php echo $cabang->google_map ?></a>
-					<br><i class="fa fa-eye"></i> <?php echo $cabang->hits ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo $cabang->urutan ?> | <i class="fa fa-home"></i> <i class="<?php echo $cabang->icon ?>"></i> <?php echo $cabang->icon ?>
+					<br><i class="fa fa-user"></i> Pelatih: <?php echo esc($cabang->nama_pelatih) ?>
+					<br><i class="fa fa-phone"></i> HP/WA: <?php echo esc($cabang->telepon) ?>
+					<br><i class="fa fa-map"></i> Google Map: <a href="<?php echo esc($cabang->google_map) ?>" target="_blank"><?php echo esc($cabang->google_map) ?></a>
+					<br><i class="fa fa-eye"></i> <?php echo esc($cabang->hits) ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo esc($cabang->urutan) ?> | <i class="fa fa-home"></i> <i class="<?php echo esc($cabang->icon) ?>"></i> <?php echo esc($cabang->icon) ?>
 				</small>
 			</td>
 			<td><small>
 				<i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/cabang/kategori_cabang/'.$cabang->id_kategori_cabang) ?>">
-					<?php echo $cabang->nama_kategori_cabang ?>
+					<?php echo esc($cabang->nama_kategori_cabang) ?>
 				</a>
 				<br><i class="fa fa-home"></i> <a href="<?php echo base_url('admin/cabang/jenis_cabang/'.$cabang->jenis_cabang) ?>"></a>
-					<?php echo $cabang->jenis_cabang ?>
+					<?php echo esc($cabang->jenis_cabang) ?>
 				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/cabang/author/'.$cabang->id_user) ?>">
-						<?php echo $cabang->nama ?>
+						<?php echo esc($cabang->nama) ?>
 					</a>
 			</small>
 			</td>
@@ -103,7 +103,7 @@
 				<a href="<?php echo base_url('admin/cabang/status_cabang/'.$cabang->status_cabang) ?>">
 				<?php if($cabang->status_cabang=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $cabang->status_cabang ?>
+						<i class="fa fa-eye"></i> <?php echo esc($cabang->status_cabang) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

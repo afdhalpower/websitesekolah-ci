@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/akun_pendaftar'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -73,29 +73,29 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_akun[]" value="<?php echo $akun->id_akun ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_akun[]" value="<?php echo esc($akun->id_akun) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
-			<td><?php echo $akun->nama ?></td>
-			<td><?php echo $akun->email ?></td>
-			<td><?php echo $akun->jenis_akun ?></td>
-			<td><?php echo $akun->nis ?></td>
-			<td><?php echo $akun->nisn ?></td>
+			<td><?php echo esc($akun->nama) ?></td>
+			<td><?php echo esc($akun->email) ?></td>
+			<td><?php echo esc($akun->jenis_akun) ?></td>
+			<td><?php echo esc($akun->nis) ?></td>
+			<td><?php echo esc($akun->nisn) ?></td>
 			<td class="text-left">
 				
 				<?php if($akun->status_akun=='Aktif') { ?>
 					<span class="badge bg-success">
-						<i class="fa fa-check-circle"></i> <?php echo $akun->status_akun ?>
+						<i class="fa fa-check-circle"></i> <?php echo esc($akun->status_akun) ?>
 					</span>
 				<?php }elseif($akun->status_akun=='Menunggu') { ?>
 						<span class="badge bg-warning">
-							<i class="fa fa-clock"></i> <?php echo $akun->status_akun ?>
+							<i class="fa fa-clock"></i> <?php echo esc($akun->status_akun) ?>
 						</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
-						<i class="fa fa-times-circle"></i> <?php echo $akun->status_akun ?>
+						<i class="fa fa-times-circle"></i> <?php echo esc($akun->status_akun) ?>
 					</span>
 				<?php } ?>
 				

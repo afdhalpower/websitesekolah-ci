@@ -56,22 +56,22 @@
                 }
                 $data_total+=$data_id;
               ?>
-              <tr data-id="<?php echo $data_id ?>">
-                <td class="text-center"><?php echo $no ?></td>
+              <tr data-id="<?php echo esc($data_id) ?>">
+                <td class="text-center"><?php echo esc($no) ?></td>
                 
-                <td><?php echo $jenis_dokumen->nama_jenis_dokumen ?>
+                <td><?php echo esc($jenis_dokumen->nama_jenis_dokumen) ?>
                   <small>
-                    <br><?php echo $jenis_dokumen->keterangan ?>
+                    <br><?php echo esc($jenis_dokumen->keterangan) ?>
                   </small>
                 </td>
                 <td class="text-center">
                   <?php if($jenis_dokumen->status_jenis_dokumen=='Wajib') { ?>
                     <span class="badge bg-info">
-                      <i class="fa fa-check-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                      <i class="fa fa-check-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                     </span>
                   <?php }else{ ?>
                     <span class="badge bg-secondary">
-                      <i class="fa fa-times-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                      <i class="fa fa-times-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                     </span>
                   <?php } ?>
                 </td>
@@ -101,7 +101,7 @@
                     echo csrf_field(); 
                     ?>
 
-                    <input type="hidden" name="id_jenis_dokumen" value="<?php echo $jenis_dokumen->id_jenis_dokumen ?>">
+                    <input type="hidden" name="id_jenis_dokumen" value="<?php echo esc($jenis_dokumen->id_jenis_dokumen) ?>">
 
                     <div class="row">
                       <div class="col-md-8">

@@ -6,7 +6,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Nama &amp; Kode Agenda Wisata</label>
 	<div class="col-sm-9">
-		<input type="text" name="nama_agenda" class="form-control form-control-lg text-capitalize" placeholder="Nama Agenda" required value="<?php echo $agenda['nama_agenda'] ?>">
+		<input type="text" name="nama_agenda" class="form-control form-control-lg text-capitalize" placeholder="Nama Agenda" required value="<?php echo esc($agenda['nama_agenda']) ?>">
 		<small class="text-gray">Setiap awal kata gunakan huruf capital. Misal: <strong>Agenda Web Design</strong></small>
 	</div>	
 </div>
@@ -32,11 +32,11 @@ echo csrf_field();
 		<small class="text-gray">Status Buka Pendaftaran </small>
 	</div>
 	<div class="col-sm-2">
-		<input type="text" name="tanggal_buka" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($agenda['tanggal_buka']) ?>">
+		<input type="text" name="tanggal_buka" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_buka'])) ?>">
 		<small class="text-gray">Tanggal Buka</small>
 	</div>
 	<div class="col-sm-2">
-		<input type="text" name="tanggal_tutup" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($agenda['tanggal_tutup']) ?>">
+		<input type="text" name="tanggal_tutup" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_tutup'])) ?>">
 		<small class="text-gray">Tanggal Tutup</small>
 	</div>
 </div>
@@ -47,7 +47,7 @@ echo csrf_field();
 	<div class="col-sm-2">
 		<select name="id_kategori_agenda" class="form-control">
 			<?php foreach($kategori_agenda as $kategori_agenda) { ?>
-				<option value="<?php echo $kategori_agenda['id_kategori_agenda'] ?>" <?php if($kategori_agenda['id_kategori_agenda'] == $agenda['id_kategori_agenda']) { echo "selected"; } ?>><?php echo $kategori_agenda['nama_kategori_agenda'] ?></option>
+				<option value="<?php echo esc($kategori_agenda['id_kategori_agenda']) ?>" <?php if($kategori_agenda['id_kategori_agenda'] == $agenda['id_kategori_agenda']) { echo "selected"; } ?>><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></option>
 			<?php } ?>
 
 		</select>
@@ -63,7 +63,7 @@ echo csrf_field();
 		<small class="text-gray">Status Publikasi</small>
 	</div>
 	<div class="col-sm-2">
-		<input type="text" name="kode_agenda" class="form-control" placeholder="Kode Agenda" required value="<?php echo $agenda['kode_agenda'] ?>">
+		<input type="text" name="kode_agenda" class="form-control" placeholder="Kode Agenda" required value="<?php echo esc($agenda['kode_agenda']) ?>">
 		<small class="text-gray">Gunakan huruf capital. Misal: <strong>WDEV</strong></small>
 	</div>
 </div>
@@ -74,19 +74,19 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Tanggal Periode Diskon</label>
 	<div class="col-sm-2">
-		<input type="text" name="tanggal_mulai" class="form-control tanggal" required value="<?php echo $this->website->tanggal_id($agenda['tanggal_mulai']) ?>">
+		<input type="text" name="tanggal_mulai" class="form-control tanggal" required value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_mulai'])) ?>">
 		<small class="text-gray">Tanggal mulai</small>
 	</div>
 	<div class="col-sm-1">
-		<input type="text" name="jam_mulai" class="form-control jam" required value="<?php echo $agenda['jam_mulai'] ?>">
+		<input type="text" name="jam_mulai" class="form-control jam" required value="<?php echo esc($agenda['jam_mulai']) ?>">
 		<small class="text-gray">Jam mulai</small>
 	</div>
 	<div class="col-sm-2">
-		<input type="text" name="tanggal_selesai" class="form-control tanggal" required value="<?php echo $this->website->tanggal_id($agenda['tanggal_selesai']) ?>">
+		<input type="text" name="tanggal_selesai" class="form-control tanggal" required value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_selesai'])) ?>">
 		<small class="text-gray">Tanggal selesai</small>
 	</div>
 	<div class="col-sm-1">
-		<input type="text" name="jam_selesai" class="form-control jam" required value="<?php echo $agenda['jam_selesai'] ?>">
+		<input type="text" name="jam_selesai" class="form-control jam" required value="<?php echo esc($agenda['jam_selesai']) ?>">
 		<small class="text-gray">Jam selesai</small>
 	</div>
 </div>
@@ -94,11 +94,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Biaya Pendaftaran </label>
 	<div class="col-sm-3">
-		<input type="number" name="harga" class="form-control" required value="<?php echo $agenda['harga'] ?>">
+		<input type="number" name="harga" class="form-control" required value="<?php echo esc($agenda['harga']) ?>">
 		<small class="text-gray">Biaya Pendaftaran  normal</small>
 	</div>
 	<div class="col-sm-3">
-		<input type="number" name="harga_diskon" class="form-control" required value="<?php echo $agenda['harga_diskon'] ?>">
+		<input type="number" name="harga_diskon" class="form-control" required value="<?php echo esc($agenda['harga_diskon']) ?>">
 		<small class="text-gray">Biaya Pendaftaran  <em>Diskon</em></small>
 	</div>
 </div>
@@ -110,28 +110,28 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Nama Tempat</label>
 	<div class="col-sm-9">
-		<input type="text" name="nama_tempat" class="form-control" required value="<?php echo $agenda['nama_tempat'] ?>">
+		<input type="text" name="nama_tempat" class="form-control" required value="<?php echo esc($agenda['nama_tempat']) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Link Google Map</label>
 	<div class="col-sm-9">
-		<input type="text" name="link_google_map" class="form-control" required value="<?php echo $agenda['link_google_map'] ?>">
+		<input type="text" name="link_google_map" class="form-control" required value="<?php echo esc($agenda['link_google_map']) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Alamat lengkap</label>
 	<div class="col-sm-9">
-		<textarea name="alamat" class="form-control nilai" ><?php echo $agenda['alamat'] ?></textarea>
+		<textarea name="alamat" class="form-control nilai" ><?php echo esc($agenda['alamat']) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Iframe Google Map</label>
 	<div class="col-sm-8">
-		<textarea name="google_map" class="form-control"><?php echo $agenda['google_map'] ?></textarea>
+		<textarea name="google_map" class="form-control"><?php echo esc($agenda['google_map']) ?></textarea>
 	</div>
 </div>
 
@@ -141,7 +141,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Deskripsi Ringkas</label>
 	<div class="col-sm-8">
-		<textarea name="deskripsi" class="form-control" placeholder="Deskripsi Agenda"><?php echo $agenda['deskripsi'] ?></textarea>
+		<textarea name="deskripsi" class="form-control" placeholder="Deskripsi Agenda"><?php echo esc($agenda['deskripsi']) ?></textarea>
 		<small class="text-gray">Penjelasan secara ringkas agenda</small>
 	</div>
 </div>
@@ -159,14 +159,14 @@ echo csrf_field();
 		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 			<i class="fa fa-download"></i> Lihat File
 		</button>
-			<textarea name="isi" id="isi"  class="form-control konten" placeholder="Deskripsi Agenda"><?php echo $agenda['isi'] ?></textarea>
+			<textarea name="isi" id="isi"  class="form-control konten" placeholder="Deskripsi Agenda"><?php echo esc($agenda['isi']) ?></textarea>
 		</div>
 	</div>
 
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Keywords (untuk pencarian Google)</label>
 	<div class="col-sm-8">
-		<textarea name="keywords" class="form-control"><?php echo $agenda['keywords'] ?></textarea>
+		<textarea name="keywords" class="form-control"><?php echo esc($agenda['keywords']) ?></textarea>
 		<small class="text-gray">Gunakan koma sebagai pemisah, misalnya: <strong>web design, desain grafis, agenda web, agenda android</strong></small>
 	</div>
 </div>
@@ -174,7 +174,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Urutan</label>
 	<div class="col-sm-8">
-		<input type="text" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $agenda['urutan'] ?>">
+		<input type="text" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($agenda['urutan']) ?>">
 	</div>
 </div>
 

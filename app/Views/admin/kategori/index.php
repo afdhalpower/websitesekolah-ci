@@ -12,10 +12,10 @@
 	<tbody>
 		<?php $no=1; foreach($kategori as $kategori) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $kategori->nama_kategori ?></td>
-			<td><?php echo $kategori->slug_kategori ?></td>
-			<td><?php echo $kategori->urutan ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($kategori->nama_kategori) ?></td>
+			<td><?php echo esc($kategori->slug_kategori) ?></td>
+			<td><?php echo esc($kategori->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kategori/edit/'.$kategori->id_kategori) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kategori/delete/'.$kategori->id_kategori) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

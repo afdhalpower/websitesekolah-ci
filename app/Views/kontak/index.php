@@ -1,9 +1,9 @@
  <!-- /header -->
-    <section class="wrapper image-wrapper bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+    <section class="wrapper image-wrapper bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
       <div class="container pt-17 pb-20 pt-md-19 pb-md-21 text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h1 class="display-1 mb-3 text-warning"><?php echo $title ?></h1>
+            <h1 class="display-1 mb-3 text-warning"><?php echo esc($title) ?></h1>
           </div>
           <!-- /column -->
         </div>
@@ -28,7 +28,7 @@
                         }
                     </style>
 
-                    <?php echo $konfigurasi->google_map ?>
+                    <?php echo esc($konfigurasi->google_map) ?>
                    
                   </div>
                   <!-- /.map -->
@@ -43,7 +43,7 @@
                       <div class="align-self-start justify-content-start">
                         <h5 class="mb-1">Alamat</h5>
                         <address>
-                            <?php echo $this->website->alamat() ?>
+                            <?php echo esc($this->website->alamat()) ?>
                         </address>
                       </div>
                     </div>
@@ -54,7 +54,7 @@
                       </div>
                       <div>
                         <h5 class="mb-1">Telepon</h5>
-                        <p><?php echo $konfigurasi->telepon ?> <br /><?php echo $konfigurasi->hp ?></p>
+                        <p><?php echo esc($konfigurasi->telepon) ?> <br /><?php echo esc($konfigurasi->hp) ?></p>
                       </div>
                     </div>
                     <!--/div -->
@@ -64,7 +64,7 @@
                       </div>
                       <div>
                         <h5 class="mb-1">E-mail</h5>
-                        <p class="mb-0"><a href="mailto:<?php echo $konfigurasi->email ?>" class="link-body"><?php echo $konfigurasi->email ?></a></p>
+                        <p class="mb-0"><a href="mailto:<?php echo esc($konfigurasi->email) ?>" class="link-body"><?php echo esc($konfigurasi->email) ?></a></p>
                       </div>
                     </div>
                     <!--/div -->

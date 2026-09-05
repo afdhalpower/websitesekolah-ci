@@ -18,7 +18,7 @@ $('.waktu').timepicker({
 // Error upload 
 if(isset($error)) {
 	echo '<div class="alert alert-warning">';
-	echo $error;
+	echo esc($error);
 	echo '</div>';
 }
 
@@ -45,8 +45,8 @@ echo form_open_multipart(base_url('admin/produk/edit_harga/'.$harga_produk->id_h
 	<div class="col-sm-9">
       <select name="id_lokasi" class="form-control select2">
       	<?php foreach($lokasi as $lokasi) { ?>
-      	<option value="<?php echo $lokasi->id_lokasi ?>" <?php if($harga_produk->id_lokasi==$lokasi->id_lokasi) { echo "selected"; } ?>>
-      		<?php echo $lokasi->nama_lokasi ?>
+      	<option value="<?php echo esc($lokasi->id_lokasi) ?>" <?php if($harga_produk->id_lokasi==$lokasi->id_lokasi) { echo "selected"; } ?>>
+      		<?php echo esc($lokasi->nama_lokasi) ?>
       	</option>
       	<?php } ?>
       </select>
@@ -60,7 +60,7 @@ echo form_open_multipart(base_url('admin/produk/edit_harga/'.$harga_produk->id_h
       <small class="text-gray">Tanggal mulai</small>
 	</div>
 	<div class="col-sm-4">
-      <input type="text" name="jam_mulai" id="jam_mulai" class="form-control waktu" placeholder="00:00:00" value="<?php echo $harga_produk->jam_mulai ?>">
+      <input type="text" name="jam_mulai" id="jam_mulai" class="form-control waktu" placeholder="00:00:00" value="<?php echo esc($harga_produk->jam_mulai) ?>">
       <small class="text-gray">Jam mulai</small>
 	</div>
 </div>
@@ -72,7 +72,7 @@ echo form_open_multipart(base_url('admin/produk/edit_harga/'.$harga_produk->id_h
       <small class="text-gray">Tanggal selesai</small>
 	</div>
 	<div class="col-sm-4">
-      <input type="text" name="jam_selesai" id="jam_selesai" class="form-control waktu" placeholder="00:00:00" value="<?php echo $harga_produk->jam_selesai ?>">
+      <input type="text" name="jam_selesai" id="jam_selesai" class="form-control waktu" placeholder="00:00:00" value="<?php echo esc($harga_produk->jam_selesai) ?>">
       <small class="text-gray">Jam selesai</small>
 	</div>
 </div>
@@ -80,7 +80,7 @@ echo form_open_multipart(base_url('admin/produk/edit_harga/'.$harga_produk->id_h
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Keterangan Tanggal<span class="text-danger">*</span></label>
 	<div class="col-sm-9">
-      <input type="text" name="keterangan_tanggal" class="form-control" placeholder="Keterangan tanggal" value="<?php echo $harga_produk->keterangan_tanggal ?>" required>
+      <input type="text" name="keterangan_tanggal" class="form-control" placeholder="Keterangan tanggal" value="<?php echo esc($harga_produk->keterangan_tanggal) ?>" required>
       <small class="text-gray">Misal: 22,23,26,27 Mei 2019</small>
 	</div>
 </div>
@@ -88,7 +88,7 @@ echo form_open_multipart(base_url('admin/produk/edit_harga/'.$harga_produk->id_h
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Keterangan <span class="text-danger">*</span></label>
 	<div class="col-sm-9">
-      <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="isi"><?php echo $harga_produk->keterangan ?></textarea>
+      <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="isi"><?php echo esc($harga_produk->keterangan) ?></textarea>
 	</div>
 </div>
 

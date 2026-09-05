@@ -65,8 +65,8 @@ echo csrf_field();
 	<div class="col-md-4">
 		<select name="id_kategori_fasilitas" class="form-control select2">
 			<?php foreach($kategori_fasilitas as $kategori_fasilitas) { ?>
-			<option value="<?php echo $kategori_fasilitas->id_kategori_fasilitas ?>">
-				<?php echo $kategori_fasilitas->nama_kategori_fasilitas ?>
+			<option value="<?php echo esc($kategori_fasilitas->id_kategori_fasilitas) ?>">
+				<?php echo esc($kategori_fasilitas->nama_kategori_fasilitas) ?>
 			</option>
 			<?php } ?>
 		</select>

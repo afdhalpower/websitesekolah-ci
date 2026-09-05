@@ -29,7 +29,7 @@ echo form_open_multipart(base_url('admin/agenda/jadwal/'.$agenda['id_agenda']),a
 <div class="form-group row">
 	<label class="col-sm-3 control-label text-right">Nama Tempat <span class="text-danger">*</span></label>
 	<div class="col-sm-9">
-      <input type="text" name="nama_tempat" class="form-control" placeholder="Nama jadwal" value="<?php if(isset($_POST['nama_tempat'])) { echo set_value('nama_tempat'); }else{ echo $agenda['nama_tempat']; } ?>" required>
+      <input type="text" name="nama_tempat" class="form-control" placeholder="Nama jadwal" value="<?php if(isset($_POST['nama_tempat'])) { echo set_value('nama_tempat'); }else{ echo esc($agenda['nama_tempat']); } ?>" required>
 	</div>
 </div>
 

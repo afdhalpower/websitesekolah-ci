@@ -37,7 +37,7 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
   $( ".tanggal" ).datepicker({
@@ -45,7 +45,7 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
   $( ".tanggalan" ).datepicker({
@@ -53,11 +53,11 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
 </script>
-<a href="https://api.whatsapp.com/send?phone=<?php echo $site_setting->hp ?>" class="whatsapp-link" target="_blank">
+<a href="https://api.whatsapp.com/send?phone=<?php echo esc($site_setting->hp) ?>" class="whatsapp-link" target="_blank">
         <i class="fab fa-whatsapp fa-3x"></i>
     </a>
 
@@ -69,14 +69,14 @@ Footer Area
       <div class="row gy-6 gy-lg-0">
         <div class="col-md-4 col-lg-4">
           <div class="widget">
-            <img class="mb-4 img-fluid" src="<?php echo $this->website->logo() ?>" srcset="<?php echo $this->website->logo() ?> 2x" alt="<?php echo $this->website->namaweb() ?>" />
-            <p class="mb-4">© <?php echo date('Y') ?> <?php echo $this->website->namaweb() ?>. <br class="d-none d-lg-block" />All rights reserved.</p>
+            <img class="mb-4 img-fluid" src="<?php echo esc($this->website->logo()) ?>" srcset="<?php echo esc($this->website->logo()) ?> 2x" alt="<?php echo esc($this->website->namaweb()) ?>" />
+            <p class="mb-4">© <?php echo date('Y') ?> <?php echo esc($this->website->namaweb()) ?>. <br class="d-none d-lg-block" />All rights reserved.</p>
             <nav class="nav social ">
-              <a href="<?php echo $site_setting->twitter ?>"><i class="uil uil-twitter"></i></a>
-              <a href="<?php echo $site_setting->twitter ?>"><i class="uil uil-facebook-f"></i></a>
+              <a href="<?php echo esc($site_setting->twitter) ?>"><i class="uil uil-twitter"></i></a>
+              <a href="<?php echo esc($site_setting->twitter) ?>"><i class="uil uil-facebook-f"></i></a>
               <a href="#"><i class="uil uil-tiktok"></i></a>
-              <a href="<?php echo $site_setting->twitter ?>"><i class="uil uil-instagram"></i></a>
-              <a href="<?php echo $site_setting->twitter ?>"><i class="uil uil-youtube"></i></a>
+              <a href="<?php echo esc($site_setting->twitter) ?>"><i class="uil uil-instagram"></i></a>
+              <a href="<?php echo esc($site_setting->twitter) ?>"><i class="uil uil-youtube"></i></a>
             </nav>
             <!-- /.social -->
           </div>
@@ -86,8 +86,8 @@ Footer Area
         <div class="col-md-4 col-lg-4">
           <div class="widget">
             <h4 class="widget-title  mb-3 text-white">Hubungi Kami</h4>
-            <address class="pe-xl-15 pe-xxl-17"><?php echo $site_setting->alamat ?></address>
-            <a href="mailto:<?php echo $site_setting->email ?>" class="link-body"><?php echo $site_setting->email ?></a><br /> <?php echo $site_setting->telepon ?>
+            <address class="pe-xl-15 pe-xxl-17"><?php echo esc($site_setting->alamat) ?></address>
+            <a href="mailto:<?php echo esc($site_setting->email) ?>" class="link-body"><?php echo esc($site_setting->email) ?></a><br /> <?php echo esc($site_setting->telepon) ?>
           </div>
           <!-- /.widget -->
         </div>

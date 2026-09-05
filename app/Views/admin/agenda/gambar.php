@@ -86,7 +86,7 @@ echo csrf_field();
     <img src="<?php echo base_url('assets/upload/image/thumbs/'.$agenda['gambar']) ?>" width="60" class="img img-responsive">
     <?php }else{ echo 'Tidak ada'; } ?>
     </td>
-    <td><?php echo $agenda['nama_agenda'] ?></td>
+    <td><?php echo esc($agenda['nama_agenda']) ?></td>
     <td><?php echo 'Gambar utama' ?></td>
     <td>1</td>
     <td></td>
@@ -95,15 +95,15 @@ echo csrf_field();
 <?php $i=2; foreach($gambar_agenda as $gambar_agenda) { ?>
 
 <tr class="odd gradeX">
-    <td><?php echo $i ?></td>
+    <td><?php echo esc($i) ?></td>
     <td>
     <?php if($gambar_agenda['gambar'] != "") { ?>
     <img src="<?php echo base_url('assets/upload/image/thumbs/'.$gambar_agenda['gambar']) ?>" width="60" class="img img-responsive">
     <?php }else{ echo 'Tidak ada'; } ?>
     </td>
-    <td><?php echo $gambar_agenda['nama_gambar_agenda'] ?></td>
-    <td><?php echo $gambar_agenda['keterangan'] ?></td>
-    <td><?php echo $gambar_agenda['urutan'] ?></td>
+    <td><?php echo esc($gambar_agenda['nama_gambar_agenda']) ?></td>
+    <td><?php echo esc($gambar_agenda['keterangan']) ?></td>
+    <td><?php echo esc($gambar_agenda['urutan']) ?></td>
     <td> 
         <?php include('edit_gambar.php') ?>
         

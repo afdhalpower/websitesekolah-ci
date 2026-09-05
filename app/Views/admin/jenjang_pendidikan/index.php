@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/jenjang_pendidikan'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -58,10 +58,10 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-          <input type="checkbox" name="id_jenjang_pendidikan[]" value="<?php echo $jenjang_pendidikan->id_jenjang_pendidikan ?>" id="check_<?php echo $no ?>">
-          <label for="check_<?php echo $no ?>"></label>
+          <input type="checkbox" name="id_jenjang_pendidikan[]" value="<?php echo esc($jenjang_pendidikan->id_jenjang_pendidikan) ?>" id="check_<?php echo esc($no) ?>">
+          <label for="check_<?php echo esc($no) ?>"></label>
         </div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($jenjang_pendidikan->gambar=="") { echo '-'; }else{ ?>
@@ -69,23 +69,23 @@
 				<?php } ?>
 			</td>
 			<td><a href="<?php echo base_url('admin/jenjang_pendidikan/edit/'.$jenjang_pendidikan->id_jenjang_pendidikan) ?>">
-					<?php echo $jenjang_pendidikan->judul_jenjang_pendidikan ?>
+					<?php echo esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?>
 				</a>
 				<small>
-					<br><i class="fa fa-calendar-check"></i> <?php echo $this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_publish) ?>
-					<br><i class="fa fa-calendar-plus"></i> <?php echo $this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_post) ?>
-					<br><i class="fa fa-eye"></i> <?php echo $jenjang_pendidikan->hits ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo $jenjang_pendidikan->urutan ?> | <i class="<?php echo $jenjang_pendidikan->icon ?>"></i> <?php echo $jenjang_pendidikan->icon ?>
+					<br><i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_publish)) ?>
+					<br><i class="fa fa-calendar-plus"></i> <?php echo esc($this->website->tanggal_bulan_menit($jenjang_pendidikan->tanggal_post)) ?>
+					<br><i class="fa fa-eye"></i> <?php echo esc($jenjang_pendidikan->hits) ?> | <i class="fa fa-sort-numeric-up"></i> <?php echo esc($jenjang_pendidikan->urutan) ?> | <i class="<?php echo esc($jenjang_pendidikan->icon) ?>"></i> <?php echo esc($jenjang_pendidikan->icon) ?>
 				</small>
 			</td>
 			<td><small>
 				<i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/jenjang_pendidikan/jenjang/'.$jenjang_pendidikan->id_jenjang) ?>">
-					<?php echo $jenjang_pendidikan->nama_jenjang ?>
+					<?php echo esc($jenjang_pendidikan->nama_jenjang) ?>
 				</a>
 				<br><i class="fa fa-home"></i> <a href="<?php echo base_url('admin/jenjang_pendidikan/jenis_jenjang_pendidikan/'.$jenjang_pendidikan->jenis_jenjang_pendidikan) ?>">
-					<?php echo $jenjang_pendidikan->jenis_jenjang_pendidikan ?>
+					<?php echo esc($jenjang_pendidikan->jenis_jenjang_pendidikan) ?>
 				</a>
 				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/jenjang_pendidikan/author/'.$jenjang_pendidikan->id_user) ?>">
-						<?php echo $jenjang_pendidikan->nama ?>
+						<?php echo esc($jenjang_pendidikan->nama) ?>
 					</a>
 			</small>
 			</td>
@@ -93,7 +93,7 @@
 				<a href="<?php echo base_url('admin/jenjang_pendidikan/status_jenjang_pendidikan/'.$jenjang_pendidikan->status_jenjang_pendidikan) ?>">
 				<?php if($jenjang_pendidikan->status_jenjang_pendidikan=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $jenjang_pendidikan->status_jenjang_pendidikan ?>
+						<i class="fa fa-eye"></i> <?php echo esc($jenjang_pendidikan->status_jenjang_pendidikan) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

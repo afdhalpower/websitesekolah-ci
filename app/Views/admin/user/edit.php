@@ -13,7 +13,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Pengguna</label>
 	<div class="col-9">
-		<input type="text" name="nama" class="form-control" placeholder="Nama user" value="<?php echo $user->nama ?>" required>
+		<input type="text" name="nama" class="form-control" placeholder="Nama user" value="<?php echo esc($user->nama) ?>" required>
 	</div>
 </div>
 
@@ -23,8 +23,8 @@ echo csrf_field();
 		<select name="id_staff" class="form-control select2">
 			<option value="">Pilih Staff/Pegawai</option>
 			<?php foreach($staff as $staff) { ?>
-				<option value="<?php echo $staff->id_staff ?>" <?php if($staff->id_staff== $user->id_staff) { echo 'selected'; } ?>>
-					<?php echo $staff->nama ?> - <?php echo $staff->jabatan ?>
+				<option value="<?php echo esc($staff->id_staff) ?>" <?php if($staff->id_staff== $user->id_staff) { echo 'selected'; } ?>>
+					<?php echo esc($staff->nama) ?> - <?php echo esc($staff->jabatan) ?>
 				</option>
 			<?php } ?>
 		</select>
@@ -35,14 +35,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Email</label>
 	<div class="col-9">
-		<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $user->email ?>" required>
+		<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo esc($user->email) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Username</label>
 	<div class="col-9">
-		<input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $user->username ?>" readonly>
+		<input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo esc($user->username) ?>" readonly>
 	</div>
 </div>
 

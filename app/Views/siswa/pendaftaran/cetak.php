@@ -6,7 +6,7 @@ $this->website          = new Website();
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo $title ?></title>
+<title><?php echo esc($title) ?></title>
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="print">
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="screen">
 </head>
@@ -18,11 +18,11 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td style="width: 1.8cm;">
-          <img src="<?php echo $this->website->icon() ?>" style="width: 1.5cm; height: auto;">
+          <img src="<?php echo esc($this->website->icon()) ?>" style="width: 1.5cm; height: auto;">
         </td>
         <td>
           <h1>INFORMASI PENDAFTARAN PESERTA DIDIK BARU
-            <br><?php echo $konfigurasi->namaweb ?>
+            <br><?php echo esc($konfigurasi->namaweb) ?>
           </h1>
         </td>
       </tr>
@@ -42,11 +42,11 @@ $this->website          = new Website();
       </tr>
       <tr>
         <td class="font-bold">Nama panggilan</td>
-        <td><?php echo $siswa->nama_panggilan ?></td>
+        <td><?php echo esc($siswa->nama_panggilan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">NIS / NISN</td>
-        <td><?php echo $siswa->nis ?> / <?php echo $siswa->nisn ?></td>
+        <td><?php echo esc($siswa->nis) ?> / <?php echo esc($siswa->nisn) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Jenis Kelamin</td>
@@ -54,31 +54,31 @@ $this->website          = new Website();
       </tr>
       <tr>
         <td class="font-bold">Tempat, tanggal lahir</td>
-        <td><?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?></td>
+        <td><?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Kode Pendaftaran</td>
-        <td><?php echo $siswa->kode_siswa ?></td>
+        <td><?php echo esc($siswa->kode_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Periode Pendaftaran</td>
-        <td><?php echo $siswa->judul ?></td>
+        <td><?php echo esc($siswa->judul) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Tahun Ajaran</td>
-        <td><?php echo $siswa->tahun_ajaran ?></td>
+        <td><?php echo esc($siswa->tahun_ajaran) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Program/Jenjang</td>
-        <td><?php echo $siswa->judul_jenjang_pendidikan ?></td>
+        <td><?php echo esc($siswa->judul_jenjang_pendidikan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Status Anak</td>
-        <td><?php echo $siswa->nama_hubungan ?></td>
+        <td><?php echo esc($siswa->nama_hubungan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Anak ke</td>
-        <td><?php echo $siswa->anak_ke ?> dari <?php echo $siswa->jumlah_saudara ?> Saudara</td>
+        <td><?php echo esc($siswa->anak_ke) ?> dari <?php echo esc($siswa->jumlah_saudara) ?> Saudara</td>
       </tr>
       <tr>
         <td class="font-bold">Alamat</td>
@@ -87,11 +87,11 @@ $this->website          = new Website();
       
       <tr>
         <td class="font-bold">Telepon</td>
-        <td><?php echo $siswa->telepon ?></td>
+        <td><?php echo esc($siswa->telepon) ?></td>
       </tr>
        <tr>
         <td class="font-bold">Email</td>
-        <td><?php echo $siswa->email ?></td>
+        <td><?php echo esc($siswa->email) ?></td>
       </tr>
     </tbody>
   </table>
@@ -105,15 +105,15 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td class="font-bold" width="35%">Jenis Masuk Siswa</td>
-        <td><?php echo $siswa->jenis_siswa ?></td>
+        <td><?php echo esc($siswa->jenis_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Nama Sekolah Asal</td>
-        <td><?php echo $siswa->asal_sekolah ?></td>
+        <td><?php echo esc($siswa->asal_sekolah) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Tanggal Pindah (Sesuai Surat Pindah)</td>
-        <td><?php echo $this->website->tanggal_id($siswa->tanggal_pindah) ?></td>
+        <td><?php echo esc($this->website->tanggal_id($siswa->tanggal_pindah)) ?></td>
       </tr>
     </tbody>
   </table>
@@ -127,27 +127,27 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td class="font-bold" width="35%">Golongan Darah</td>
-        <td><?php echo $siswa->goldar_siswa ?></td>
+        <td><?php echo esc($siswa->goldar_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Tinggi / Berat</td>
-        <td><?php echo $siswa->tinggi ?> cm / <?php echo $siswa->berat ?> kg</td>
+        <td><?php echo esc($siswa->tinggi) ?> cm / <?php echo esc($siswa->berat) ?> kg</td>
       </tr>
       <tr>
         <td class="font-bold">Penyakit yang pernah/sedang diderita Siswa</td>
-        <td><?php echo $siswa->penyakit_siswa ?></td>
+        <td><?php echo esc($siswa->penyakit_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Hobi Siswa</td>
-        <td><?php echo $siswa->hobi_siswa ?></td>
+        <td><?php echo esc($siswa->hobi_siswa) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Apakah Siswa Berkebutuhan Khusus?</td>
-        <td><?php echo $siswa->berkebutuhan_khusus ?></td>
+        <td><?php echo esc($siswa->berkebutuhan_khusus) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Deskripsi Ringkas Tentang Siswa</td>
-        <td><?php echo $siswa->isi ?></td>
+        <td><?php echo esc($siswa->isi) ?></td>
       </tr>
     </tbody>
   </table>
@@ -161,27 +161,27 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td class="font-bold" width="35%">Nama Ayah</td>
-        <td><?php echo $siswa->nama_ayah ?></td>
+        <td><?php echo esc($siswa->nama_ayah) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Agama Ayah</td>
-        <td><?php echo $siswa->agama_ayah ?></td>
+        <td><?php echo esc($siswa->agama_ayah) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pekerjaan Ayah</td>
-        <td><?php echo $siswa->nama_pekerjaan ?></td>
+        <td><?php echo esc($siswa->nama_pekerjaan) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pendidikan Ayah</td>
-        <td><?php echo $siswa->jenjang_ayah ?></td>
+        <td><?php echo esc($siswa->jenjang_ayah) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Alamat Ayah</td>
-        <td><?php echo $siswa->alamat_ayah ?></td>
+        <td><?php echo esc($siswa->alamat_ayah) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Telepon/HP Ayah</td>
-        <td><?php echo $siswa->telepon_ayah ?></td>
+        <td><?php echo esc($siswa->telepon_ayah) ?></td>
       </tr>
     </tbody>
   </table>
@@ -195,27 +195,27 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td class="font-bold" width="35%">Nama Ibu</td>
-        <td><?php echo $siswa->nama_ibu ?></td>
+        <td><?php echo esc($siswa->nama_ibu) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Agama Ibu</td>
-        <td><?php echo $siswa->agama_ibu ?></td>
+        <td><?php echo esc($siswa->agama_ibu) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pekerjaan Ibu</td>
-        <td><?php echo $siswa->pekerjaan_ibu ?></td>
+        <td><?php echo esc($siswa->pekerjaan_ibu) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pendidikan Ibu</td>
-        <td><?php echo $siswa->jenjang_ibu ?></td>
+        <td><?php echo esc($siswa->jenjang_ibu) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Alamat Ibu</td>
-        <td><?php echo $siswa->alamat_ibu ?></td>
+        <td><?php echo esc($siswa->alamat_ibu) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Telepon/HP Ibu</td>
-        <td><?php echo $siswa->telepon_ibu ?></td>
+        <td><?php echo esc($siswa->telepon_ibu) ?></td>
       </tr>
     </tbody>
   </table>
@@ -229,27 +229,27 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td class="font-bold" width="35%">Nama Wali</td>
-        <td><?php echo $siswa->nama_wali ?></td>
+        <td><?php echo esc($siswa->nama_wali) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Agama Wali</td>
-        <td><?php echo $siswa->agama_wali ?></td>
+        <td><?php echo esc($siswa->agama_wali) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pekerjaan Wali</td>
-        <td><?php echo $siswa->pekerjaan_wali ?></td>
+        <td><?php echo esc($siswa->pekerjaan_wali) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Pendidikan Wali</td>
-        <td><?php echo $siswa->jenjang_wali ?></td>
+        <td><?php echo esc($siswa->jenjang_wali) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Alamat Wali</td>
-        <td><?php echo $siswa->alamat_wali ?></td>
+        <td><?php echo esc($siswa->alamat_wali) ?></td>
       </tr>
       <tr>
         <td class="font-bold">Telepon/HP Wali</td>
-        <td><?php echo $siswa->telepon_wali ?></td>
+        <td><?php echo esc($siswa->telepon_wali) ?></td>
       </tr>
     </tbody>
   </table>

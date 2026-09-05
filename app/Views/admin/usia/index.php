@@ -14,18 +14,18 @@
 	<tbody>
 		<?php $no=1; foreach($usia as $usia) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $usia->nama_usia ?></td>
-			<td class="text-center"><?php echo $usia->minimal ?> - <?php echo $usia->maksimal ?> Tahun</td>
-			<td><?php echo $usia->keterangan ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($usia->nama_usia) ?></td>
+			<td class="text-center"><?php echo esc($usia->minimal) ?> - <?php echo esc($usia->maksimal) ?> Tahun</td>
+			<td><?php echo esc($usia->keterangan) ?></td>
 			<td class="text-center">
 				<?php if($usia->status_aktif=='Ya') { ?>
-					<span class="badge bg-secondary"><i class="fa fa-eye"></i> <?php echo $usia->status_aktif ?></span>
+					<span class="badge bg-secondary"><i class="fa fa-eye"></i> <?php echo esc($usia->status_aktif) ?></span>
 				<?php }else{ ?>
-					<span class="badge bg-light"><i class="fa fa-eye-slash"></i> <?php echo $usia->status_aktif ?></span>
+					<span class="badge bg-light"><i class="fa fa-eye-slash"></i> <?php echo esc($usia->status_aktif) ?></span>
 				<?php } ?>	
 			</td>
-			<td class="text-center"><?php echo $usia->urutan ?></td>
+			<td class="text-center"><?php echo esc($usia->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/usia/edit/'.$usia->id_usia) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/usia/delete/'.$usia->id_usia) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

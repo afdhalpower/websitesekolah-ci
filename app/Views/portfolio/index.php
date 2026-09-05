@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-12 pt-md-14 pb-md-14 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -26,16 +26,16 @@
               <div class="card">
                 <figure class="card-img-top">
                   <a href="<?php echo base_url('portfolio/read/'.$portfolio->id_portfolio) ?>">
-                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$portfolio->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$portfolio->gambar) ?> 2x" alt="<?php echo $portfolio->judul_portfolio ?>" />
+                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$portfolio->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$portfolio->gambar) ?> 2x" alt="<?php echo esc($portfolio->judul_portfolio) ?>" />
                   </a>
                 </figure>
                 <div class="card-body px-6 py-5">
                   <h4 class="mb-1">
                     <a href="<?php echo base_url('portfolio/read/'.$portfolio->id_portfolio) ?>">
-                      <?php echo $portfolio->judul_portfolio ?>
+                      <?php echo esc($portfolio->judul_portfolio) ?>
                     </a>
                   </h4>
-                  <p class="mb-0"><?php echo $portfolio->nama_kategori_portfolio ?></p>
+                  <p class="mb-0"><?php echo esc($portfolio->nama_kategori_portfolio) ?></p>
                 </div>
                 <!--/.card-body -->
               </div>

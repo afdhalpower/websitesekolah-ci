@@ -40,9 +40,9 @@ $id_sekolah 	= $sekolah->id_sekolah;
 		<tbody>
 			<?php $no=1; foreach($staff_rombel as $staff_rombel) { ?>
 			<tr>
-				<td class="text-center"><?php echo $no ?></td>
+				43|				<td class="text-center"><?php echo esc($no)?></td>
 				<td><?php echo $staff_rombel->nama ?></td>
-				<td><?php echo $staff_rombel->status_guru_rombel ?> Kelas</td>
+				45|				<td><?php echo esc($staff_rombel->status_guru_rombel)?> Kelas</td>
 			</tr>
 			<?php $no++; } ?>
 		</tbody>
@@ -62,10 +62,10 @@ $id_sekolah 	= $sekolah->id_sekolah;
 		<tbody>  
 			<?php $no=1; foreach($siswa_rombel as $siswa_rombel) { ?>
 			<tr>
-				<td><?php echo $no ?></td>
+				65|				<td><?php echo esc($no)?></td>
 				<td><?php echo $siswa_rombel->nama_siswa ?></td>
-				<td><?php echo $siswa_rombel->jenis_kelamin ?></td>
-				<td><?php echo $siswa_rombel->tempat_lahir.', '.$this->website->tanggal_id($siswa_rombel->tanggal_lahir); ?></td>
+				67|				<td><?php echo esc($siswa_rombel->jenis_kelamin)?></td>
+				68|				<td><?php echo esc($siswa_rombel->tempat_lahir.', '.$this->website->tanggal_id($siswa_rombel->tanggal_lahir)); ?></td>
 			</tr>    
 			<?php $no++; } ?>                    
 		</tbody>

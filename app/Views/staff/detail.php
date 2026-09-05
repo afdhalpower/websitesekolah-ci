@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -23,7 +23,7 @@
                   <figure class="card-img-top overlay overlay-1 hover-scale">
                     
                       <?php if($staff->gambar !='') { ?>
-                            <img src="<?php echo base_url('assets/upload/staff/'.$staff->gambar) ?>" alt="<?php echo $title ?>" class="img-thumbnail">
+                            <img src="<?php echo base_url('assets/upload/staff/'.$staff->gambar) ?>" alt="<?php echo esc($title) ?>" class="img-thumbnail">
                         <?php } ?>
                     
                     
@@ -34,19 +34,19 @@
                     <div class="post-content">
                       <div class="about-box">
                         <div class="about-info">
-                            <h2 class="title"><?php echo $staff->nama ?></h2>
-                            <span class="desig"><?php echo $staff->jabatan ?></span>
+                            <h2 class="title"><?php echo esc($staff->nama) ?></h2>
+                            <span class="desig"><?php echo esc($staff->jabatan) ?></span>
                         </div>
                         
                     </div>
                     <div class="about-quality">
                         <div class="quality-box">
                             <span class="quality-text">Jabatan:</span>
-                            <span class="quality-text text-primary"><?php echo $staff->jabatan ?></span>
+                            <span class="quality-text text-primary"><?php echo esc($staff->jabatan) ?></span>
                         </div>
                         <div class="quality-box">
                             <span class="quality-text">Email:</span>
-                            <span class="quality-text text-primary"><?php echo $staff->email ?></span>
+                            <span class="quality-text text-primary"><?php echo esc($staff->email) ?></span>
                         </div>
                         
                     </div>

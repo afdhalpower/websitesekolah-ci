@@ -3,14 +3,14 @@
 <div class="form-group row">
 	<label class="col-3">Nama &amp; Status</label>
 	<div class="col-9">
-		<input type="text" name="nama_link_website" class="form-control" placeholder="Nama kategori link_website" value="<?php echo $link_website->nama_link_website ?>" required>
+		<input type="text" name="nama_link_website" class="form-control" placeholder="Nama kategori link_website" value="<?php echo esc($link_website->nama_link_website) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Link Website</label>
 	<div class="col-9">
-		<input type="url" name="link_website" class="form-control" placeholder="Alamat website" value="<?php echo $link_website->link_website ?>" required>
+		<input type="url" name="link_website" class="form-control" placeholder="Alamat website" value="<?php echo esc($link_website->link_website) ?>" required>
 		<small class="text-secondary">Format: <strong><?php echo base_url() ?></strong></small>
 	</div>
 </div>
@@ -37,7 +37,7 @@
 	<label class="col-3">Gambar/ Logo</label>
 	
 	<div class="col-8">
-		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo $link_website->gambar ?>">
+		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo esc($link_website->gambar) ?>">
 	</div>
 	<div class="col-1">
 		<?php if($link_website->gambar=="") { echo '-'; }else{ ?>
@@ -49,14 +49,14 @@
 <div class="form-group row">
 	<label class="col-3">Keterangan</label>
 	<div class="col-9">
-		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo $link_website->keterangan ?></textarea>
+		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo esc($link_website->keterangan) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo $link_website->urutan ?>">
+		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo esc($link_website->urutan) ?>">
 	</div>
 </div>
 

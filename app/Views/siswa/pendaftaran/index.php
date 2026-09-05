@@ -29,16 +29,16 @@
 			$dokumen_tidak_wajib 	= $m_dokumen->total_check($siswa->id_siswa,$tidak_wajib->status_jenis_dokumen);
 		?>
 		<tr>
-			<td class="text-center"><?php echo $i ?></td>
-			<td><strong><?php echo $siswa->nama_siswa ?></strong>
+			<td class="text-center"><?php echo esc($i) ?></td>
+			<td><strong><?php echo esc($siswa->nama_siswa) ?></strong>
 				<small>
-					<br><span class="text-secondary">Program:</span> <strong><?php echo $siswa->judul_jenjang_pendidikan ?></strong>
-					<br><span class="text-secondary">Kode:</span> <strong><?php echo $siswa->kode_siswa ?></strong>
-					<br><span class="text-secondary">NIS/NISN:</span> <?php echo $siswa->nis ?>/<?php echo $siswa->nisn ?>
-		          	<br><span class="text-secondary">Panggilan:</span> <?php echo $siswa->nama_panggilan ?>
-					<br><span class="text-secondary">TTL:</span> <?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?>
+					<br><span class="text-secondary">Program:</span> <strong><?php echo esc($siswa->judul_jenjang_pendidikan) ?></strong>
+					<br><span class="text-secondary">Kode:</span> <strong><?php echo esc($siswa->kode_siswa) ?></strong>
+					<br><span class="text-secondary">NIS/NISN:</span> <?php echo esc($siswa->nis) ?>/<?php echo esc($siswa->nisn) ?>
+		          	<br><span class="text-secondary">Panggilan:</span> <?php echo esc($siswa->nama_panggilan) ?>
+					<br><span class="text-secondary">TTL:</span> <?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?>
 					<br><span class="text-secondary">Kelamin:</span> <?php if($siswa->jenis_kelamin=='L') { echo 'Laki-laki'; }else{ echo 'Perempuan'; } ?>
-					<br><span class="text-secondary">Wali:</span><?php echo $siswa->nama_wali ?>
+					<br><span class="text-secondary">Wali:</span><?php echo esc($siswa->nama_wali) ?>
 		          	<br><span class="text-secondary">Usia:</span> 
 			          <?php 
 			          // jeda
@@ -51,30 +51,30 @@
 			          $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 			          $days   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 			          ?>
-			          <?php echo $years; ?> Tahun <?php echo $months; ?> Bulan <?php echo $days; ?> Hari
+			          <?php echo esc($years); ?> Tahun <?php echo esc($months); ?> Bulan <?php echo esc($days); ?> Hari
 		          
 				</small>
 			</td>
-      		<td><?php echo $siswa->alamat ?>
+      		<td><?php echo esc($siswa->alamat) ?>
       			<small>
-      				<br><span class="text-secondary">Telepon:</span> <?php echo $siswa->telepon ?>
-      				<br><span class="text-secondary">Email:</span> <?php echo $siswa->email ?>
+      				<br><span class="text-secondary">Telepon:</span> <?php echo esc($siswa->telepon) ?>
+      				<br><span class="text-secondary">Email:</span> <?php echo esc($siswa->email) ?>
       			</small>
       		</td>
-      		<td class="text-center"><?php echo $wajib->total ?></td>
-      		<td class="text-center <?php if($dokumen_wajib >= $wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo $dokumen_wajib; ?></td>
-      		<td class="text-center"><?php echo $tidak_wajib->total ?></td>
-      		<td class="text-center <?php if($dokumen_tidak_wajib >= $tidak_wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo $dokumen_tidak_wajib; ?></td>
+      		<td class="text-center"><?php echo esc($wajib->total) ?></td>
+      		<td class="text-center <?php if($dokumen_wajib >= $wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo esc($dokumen_wajib); ?></td>
+      		<td class="text-center"><?php echo esc($tidak_wajib->total) ?></td>
+      		<td class="text-center <?php if($dokumen_tidak_wajib >= $tidak_wajib->total) { echo 'text-success'; }else{ echo 'text-danger'; } ?>"><?php  echo esc($dokumen_tidak_wajib); ?></td>
       		
 		    <td>
 		        <?php if($siswa->status_pendaftaran=='Menunggu') { ?>
-                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Diterima') { ?>
-                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Tidak-Diterima') { ?>
-                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }else{ ?>
-                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php } ?>
 		    </td>
 			<td>

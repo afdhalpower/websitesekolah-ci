@@ -10,8 +10,8 @@
 <div class="box mb-5">
 	<ul class="list-unstyled" id="page_list">
 		<?php foreach($sub_menu as $sub_menu) { ?>
-			<li id="<?php echo $sub_menu->id_sub_menu ?>">
-				<i class="fa fa-bars"></i> <?php echo $sub_menu->nama_sub_menu ?></li>
+			<li id="<?php echo esc($sub_menu->id_sub_menu) ?>">
+				<i class="fa fa-bars"></i> <?php echo esc($sub_menu->nama_sub_menu) ?></li>
 		<?php } ?>
 	</ul>
 	<input type="hidden" name="page_order_list" id="page_order_list" />

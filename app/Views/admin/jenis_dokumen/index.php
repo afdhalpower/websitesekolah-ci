@@ -16,27 +16,27 @@
 		$no=1; foreach($jenis_dokumen as $jenis_dokumen) { 
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td class="text-center">
 				<?php if($jenis_dokumen->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$jenis_dokumen->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $jenis_dokumen->nama_jenis_dokumen ?>
+			<td><?php echo esc($jenis_dokumen->nama_jenis_dokumen) ?>
 				<small>
-					<br>Slug: <?php echo $jenis_dokumen->slug_jenis_dokumen ?>
+					<br>Slug: <?php echo esc($jenis_dokumen->slug_jenis_dokumen) ?>
 				</small>
 			</td>
-			<td><?php echo $jenis_dokumen->keterangan ?></td>
-			<td class="text-center"><?php echo $jenis_dokumen->urutan ?></td>
+			<td><?php echo esc($jenis_dokumen->keterangan) ?></td>
+			<td class="text-center"><?php echo esc($jenis_dokumen->urutan) ?></td>
 			<td class="text-center">
 				<?php if($jenis_dokumen->status_jenis_dokumen=='Wajib') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-check-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+						<i class="fa fa-check-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
-						<i class="fa fa-times-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+						<i class="fa fa-times-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
 					</span>
 				<?php } ?>
 			</td>

@@ -10,23 +10,23 @@
 	<tbody>
 		<?php $no=1; foreach($download as $download) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			
-			<td><?php echo $download->judul_download ?></td>
-			<td><?php echo $download->isi ?></td>
+			<td><?php echo esc($download->judul_download) ?></td>
+			<td><?php echo esc($download->isi) ?></td>
 			<td>
 					
-					<button type="button" class="btn btn-info btn-sm mt-1" data-toggle="modal" data-target="#modal-<?php echo $download->id_download ?>">
+					<button type="button" class="btn btn-info btn-sm mt-1" data-toggle="modal" data-target="#modal-<?php echo esc($download->id_download) ?>">
 	                  <i class="fa fa-eye"></i> Lihat
 	                </button>
 
 					<a href="<?php echo base_url('admin/download/unduh/'.$download->id_download) ?>" class="btn btn-success btn-sm mt-1" target="_blank"><i class="fa fa-download"></i> Unduh</a>
 
-					<div class="modal fade" id="modal-<?php echo $download->id_download ?>">
+					<div class="modal fade" id="modal-<?php echo esc($download->id_download) ?>">
 						<div class="modal-dialog modal-xl">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h4 class="modal-title"><?php echo $download->judul_download ?></h4>
+									<h4 class="modal-title"><?php echo esc($download->judul_download) ?></h4>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>

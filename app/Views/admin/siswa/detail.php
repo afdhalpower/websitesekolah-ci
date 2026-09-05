@@ -28,11 +28,11 @@
 					<img src="<?php echo base_url('assets/upload/image/'.$siswa->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 				<hr>
-				<?php echo $siswa->nama_siswa ?>
+				<?php echo esc($siswa->nama_siswa) ?>
 				<hr>
-				<?php echo $siswa->nis ?>/<?php echo $siswa->nisn ?>
+				<?php echo esc($siswa->nis) ?>/<?php echo esc($siswa->nisn) ?>
 				<hr>
-				<?php echo $siswa->status_siswa ?>
+				<?php echo esc($siswa->status_siswa) ?>
 			</div>
 		</div>
 	</div>
@@ -46,19 +46,19 @@
 					<tbody>
 						<tr>
 							<td class="bg-light" width="25%">Nama lengkap</td>
-							<td><?php echo $siswa->nama_siswa ?></td>
+							<td><?php echo esc($siswa->nama_siswa) ?></td>
 						</tr>
 						<tr>
 							<td class="bg-light">Nama panggilan</td>
-							<td><?php echo $siswa->nama_panggilan ?></td>
+							<td><?php echo esc($siswa->nama_panggilan) ?></td>
 						</tr>
 						<tr>
 							<td class="bg-light">Jenis Kelamin</td>
-							<td><?php echo $siswa->jenis_kelamin ?></td>
+							<td><?php echo esc($siswa->jenis_kelamin) ?></td>
 						</tr>
 						<tr>
 							<td class="bg-light">Tempat, tanggal lahir</td>
-							<td><?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?></td>
+							<td><?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?></td>
 						</tr>
 					</tbody>
 				</table>

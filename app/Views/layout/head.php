@@ -4,9 +4,9 @@
 <!-- Site made with Mobirise Website Builder v5.6.8, https://mobirise.com -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title><?php echo $title ?></title>
-<link rel="shortcut icon" href="<?php echo $this->website->icon() ?>">
-<meta name="generator" content="<?php echo $this->website->namaweb() ?>">
+<title><?php echo esc($title) ?></title>
+<link rel="shortcut icon" href="<?php echo esc($this->website->icon()) ?>">
+<meta name="generator" content="<?php echo esc($this->website->namaweb()) ?>">
 <meta name="twitter:card" content="<?php echo strip_tags($description) ?>"/>
 <meta name="twitter:image:src" content="">
 <meta property="og:image" content="">
@@ -55,7 +55,7 @@
 <!-- SweetAlert2 -->
 <script src="<?php echo base_url() ?>assets/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-<?php echo $this->website->metatext() ?>
+<?php echo esc($this->website->metatext()) ?>
 <style type="text/css" media="screen">
 	body {
 	  font-family: "Dosis", sans-serif !important;

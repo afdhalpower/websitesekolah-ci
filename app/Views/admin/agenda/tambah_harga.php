@@ -26,7 +26,7 @@ $('.waktu').timepicker({
 // Error upload 
 if(isset($error)) {
 	echo '<div class="alert alert-warning">';
-	echo $error;
+	echo esc($error);
 	echo '</div>';
 }
 

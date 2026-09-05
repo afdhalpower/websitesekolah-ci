@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/client'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_client" class="form-control">
 		<?php foreach($kategori_client as $kategori_client) { ?>
-		<option value="<?php echo $kategori_client->id_kategori_client ?>">
-			<?php echo $kategori_client->nama_kategori_client ?>
+		<option value="<?php echo esc($kategori_client->id_kategori_client) ?>">
+			<?php echo esc($kategori_client->nama_kategori_client) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -71,29 +71,29 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_client[]" value="<?php echo $client->id_client ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_client[]" value="<?php echo esc($client->id_client) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($client->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$client->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $client->nama_client ?>
+			<td><?php echo esc($client->nama_client) ?>
 				<small>
-					<br><i class="fa fa-envelope"></i> <?php echo $client->email ?>
-					<br><i class="fa fa-phone"></i> <?php echo $client->telepon ?>
+					<br><i class="fa fa-envelope"></i> <?php echo esc($client->email) ?>
+					<br><i class="fa fa-phone"></i> <?php echo esc($client->telepon) ?>
 				</small>
 			</td>
-			<td><small><i class="fa fa-tags"></i> <?php echo $client->nama_kategori_client ?>
-				<br><i class="fa fa-home"></i> <?php echo $client->jenis_client ?></small></td>
+			<td><small><i class="fa fa-tags"></i> <?php echo esc($client->nama_kategori_client) ?>
+				<br><i class="fa fa-home"></i> <?php echo esc($client->jenis_client) ?></small></td>
 			<td class="text-center">
 				
 				<?php if($client->status_client=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $client->status_client ?>
+						<i class="fa fa-eye"></i> <?php echo esc($client->status_client) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

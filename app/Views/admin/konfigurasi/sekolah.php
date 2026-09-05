@@ -19,102 +19,102 @@ echo csrf_field();
 	  </tr>
 		<tr>
 			<td class="bg-light" width="25%">Nama lengkap sekolah</td>
-			<td><input type="text" name="nama_sekolah" class="form-control" value="<?php echo $sekolah->nama_sekolah ?>"></td>
+			<td><input type="text" name="nama_sekolah" class="form-control" value="<?php echo esc($sekolah->nama_sekolah) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light" width="25%">Nama lengkap sekolah cover</td>
-			<td><input type="text" name="nama_sekolah_cover" class="form-control" value="<?php echo $sekolah->nama_sekolah_cover ?>"></td>
+			<td><input type="text" name="nama_sekolah_cover" class="form-control" value="<?php echo esc($sekolah->nama_sekolah_cover) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama Singkat</td>
-			<td><input type="text" name="nama_singkat" class="form-control" value="<?php echo $sekolah->nama_singkat ?>"></td>
+			<td><input type="text" name="nama_singkat" class="form-control" value="<?php echo esc($sekolah->nama_singkat) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">NPSN/NSS/NISN</td>
-			<td><input type="text" name="nis" class="form-control" value="<?php echo $sekolah->nis ?>"></td>
+			<td><input type="text" name="nis" class="form-control" value="<?php echo esc($sekolah->nis) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Status Sekolah</td>
-			<td><input type="text" name="status_sekolah" class="form-control" value="<?php echo $sekolah->status_sekolah ?>"></td>
+			<td><input type="text" name="status_sekolah" class="form-control" value="<?php echo esc($sekolah->status_sekolah) ?>"></td>
 		</tr>
 		<tr>
 		  <td colspan="2" class="bg-secondary text-center"><h3>KONTAK DAN ALAMAT SEKOLAH</h3></td>
 	  </tr>
 		<tr>
 			<td class="bg-light">Alamat</td>
-			<td><textarea name="alamat" class="form-control"><?php echo $sekolah->alamat ?></textarea></td>
+			<td><textarea name="alamat" class="form-control"><?php echo esc($sekolah->alamat) ?></textarea></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Kelurahan</td>
-			<td><input type="text" name="kelurahan" class="form-control" value="<?php echo $sekolah->kelurahan ?>"></td>
+			<td><input type="text" name="kelurahan" class="form-control" value="<?php echo esc($sekolah->kelurahan) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Kecamatan</td>
-			<td><input type="text" name="kecamatan" class="form-control" value="<?php echo $sekolah->kecamatan ?>"></td>
+			<td><input type="text" name="kecamatan" class="form-control" value="<?php echo esc($sekolah->kecamatan) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Kabupaten</td>
-			<td><input type="text" name="kabupaten" class="form-control" value="<?php echo $sekolah->kabupaten ?>"></td>
+			<td><input type="text" name="kabupaten" class="form-control" value="<?php echo esc($sekolah->kabupaten) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Provinsi</td>
-			<td><input type="text" name="provinsi" class="form-control" value="<?php echo $sekolah->provinsi ?>"></td>
+			<td><input type="text" name="provinsi" class="form-control" value="<?php echo esc($sekolah->provinsi) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Kode Pos</td>
-			<td><input type="text" name="kode_pos" class="form-control" value="<?php echo $sekolah->kode_pos ?>"></td>
+			<td><input type="text" name="kode_pos" class="form-control" value="<?php echo esc($sekolah->kode_pos) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Telepon</td>
-			<td><input type="text" name="telepon" class="form-control" value="<?php echo $sekolah->telepon ?>"></td>
+			<td><input type="text" name="telepon" class="form-control" value="<?php echo esc($sekolah->telepon) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Email</td>
-			<td><input type="email" name="email" class="form-control" value="<?php echo $sekolah->email ?>"></td>
+			<td><input type="email" name="email" class="form-control" value="<?php echo esc($sekolah->email) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Website</td>
-			<td><input type="text" name="website" class="form-control" value="<?php echo $sekolah->website ?>"></td>
+			<td><input type="text" name="website" class="form-control" value="<?php echo esc($sekolah->website) ?>"></td>
 		</tr>
 		<tr>
 		  <td colspan="2" class="bg-secondary text-center"><h3>INFORMASI, AKREDITASI DAN YAYASAN</h3></td>
 	  </tr>
 		<tr>
 			<td class="bg-light">Nama Yayasan</td>
-			<td><input type="text" name="nama_yayasan" class="form-control" value="<?php echo $sekolah->nama_yayasan ?>"></td>
+			<td><input type="text" name="nama_yayasan" class="form-control" value="<?php echo esc($sekolah->nama_yayasan) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama Yayasan Cover Rapor</td>
-			<td><input type="text" name="nama_cover" class="form-control" value="<?php echo $sekolah->nama_cover ?>"></td>
+			<td><input type="text" name="nama_cover" class="form-control" value="<?php echo esc($sekolah->nama_cover) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama Kota Cover Rapor</td>
-			<td><input type="text" name="kota_cover" class="form-control" value="<?php echo $sekolah->kota_cover ?>"></td>
+			<td><input type="text" name="kota_cover" class="form-control" value="<?php echo esc($sekolah->kota_cover) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama Yayasan Tampil di Footer Rapor</td>
-			<td><input type="text" name="nama_footer" class="form-control" value="<?php echo $sekolah->nama_footer ?>"></td>
+			<td><input type="text" name="nama_footer" class="form-control" value="<?php echo esc($sekolah->nama_footer) ?>"></td>
 		</tr>
 
 		<tr>
 			<td class="bg-light">Tanggal berdiri Yayasan/Sekolah</td>
-			<td><input type="text" name="tanggal_berdiri" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($sekolah->tanggal_berdiri) ?>"></td>
+			<td><input type="text" name="tanggal_berdiri" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_berdiri)) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nama Kepala Sekolah</td>
-			<td><input type="text" name="nama_kepsek" class="form-control" value="<?php echo $sekolah->nama_kepsek ?>"></td>
+			<td><input type="text" name="nama_kepsek" class="form-control" value="<?php echo esc($sekolah->nama_kepsek) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jumlah Rombel</td>
-			<td><input type="text" name="jumlah_rombel" class="form-control" value="<?php echo $sekolah->jumlah_rombel ?>"></td>
+			<td><input type="text" name="jumlah_rombel" class="form-control" value="<?php echo esc($sekolah->jumlah_rombel) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jumlah Siswa</td>
-			<td><input type="text" name="jumlah_murid" class="form-control" value="<?php echo $sekolah->jumlah_murid ?>"></td>
+			<td><input type="text" name="jumlah_murid" class="form-control" value="<?php echo esc($sekolah->jumlah_murid) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jumlah Pegawai</td>
-			<td><input type="text" name="jumlah_pegawai" class="form-control" value="<?php echo $sekolah->jumlah_pegawai ?>"></td>
+			<td><input type="text" name="jumlah_pegawai" class="form-control" value="<?php echo esc($sekolah->jumlah_pegawai) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jumlah Akreditasi</td>
@@ -129,47 +129,47 @@ echo csrf_field();
 		</tr>
 		<tr>
 			<td class="bg-light">Tahun Akreditasi</td>
-			<td><input type="text" name="tahun_akreditasi" class="form-control" value="<?php echo $sekolah->tahun_akreditasi ?>"></td>
+			<td><input type="text" name="tahun_akreditasi" class="form-control" value="<?php echo esc($sekolah->tahun_akreditasi) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Tanggal Akreditasi</td>
-			<td><input type="text" name="tanggal_berlaku" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($sekolah->tanggal_berlaku) ?>"></td>
+			<td><input type="text" name="tanggal_berlaku" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_berlaku)) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Tanggal Kadaluarsa Akreditasi</td>
-			<td><input type="number" name="tanggal_kadaluarsa" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($sekolah->tanggal_kadaluarsa) ?>"></td>
+			<td><input type="number" name="tanggal_kadaluarsa" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_kadaluarsa)) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nomor Izin Sekolah</td>
-			<td><input type="text" name="nomor_izin" class="form-control" value="<?php echo $sekolah->nomor_izin ?>"></td>
+			<td><input type="text" name="nomor_izin" class="form-control" value="<?php echo esc($sekolah->nomor_izin) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Keterangan lain</td>
-			<td><textarea name="keterangan" class="form-control"><?php echo $sekolah->keterangan ?></textarea></td>
+			<td><textarea name="keterangan" class="form-control"><?php echo esc($sekolah->keterangan) ?></textarea></td>
 		</tr>
 		<tr>
 		  <td colspan="2" class="bg-secondary text-center"><h3>INFORMASI TANAH DAN BANGUNAN</h3></td>
 	  </tr>
 		<tr>
 			<td class="bg-light">Luas Tanah</td>
-			<td><input type="text" name="luas_tanah" class="form-control" value="<?php echo $sekolah->luas_tanah ?>">
+			<td><input type="text" name="luas_tanah" class="form-control" value="<?php echo esc($sekolah->luas_tanah) ?>">
 				<small class="text-secondary">Dalam meter persegi</small></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Luas Bangunan</td>
-			<td><input type="text" name="luas_bangunan" class="form-control" value="<?php echo $sekolah->luas_bangunan ?>"><small class="text-secondary">Dalam meter persegi</small></td>
+			<td><input type="text" name="luas_bangunan" class="form-control" value="<?php echo esc($sekolah->luas_bangunan) ?>"><small class="text-secondary">Dalam meter persegi</small></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Status Kepemilikan</td>
-			<td><input type="text" name="status_tanah" class="form-control" value="<?php echo $sekolah->status_tanah ?>"></td>
+			<td><input type="text" name="status_tanah" class="form-control" value="<?php echo esc($sekolah->status_tanah) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nomor IMB</td>
-			<td><input type="text" name="imb" class="form-control" value="<?php echo $sekolah->imb ?>"></td>
+			<td><input type="text" name="imb" class="form-control" value="<?php echo esc($sekolah->imb) ?>"></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Nomor Sertifikat Tanah</td>
-			<td><input type="text" name="nomor_sertifikat" class="form-control" value="<?php echo $sekolah->nomor_sertifikat ?>"></td>
+			<td><input type="text" name="nomor_sertifikat" class="form-control" value="<?php echo esc($sekolah->nomor_sertifikat) ?>"></td>
 		</tr>
 		
 		<tr>

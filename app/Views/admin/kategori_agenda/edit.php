@@ -6,7 +6,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama &amp; Status Kategori Agenda</label>
 	<div class="col-6">
-		<input type="text" name="nama_kategori_agenda" class="form-control" placeholder="Nama kategori agenda" value="<?php echo $kategori_agenda['nama_kategori_agenda'] ?>" required>
+		<input type="text" name="nama_kategori_agenda" class="form-control" placeholder="Nama kategori agenda" value="<?php echo esc($kategori_agenda['nama_kategori_agenda']) ?>" required>
 	</div>
 	<div class="col-3">
 		<select name="status_kategori_agenda" class="form-control">
@@ -21,21 +21,21 @@ echo csrf_field();
 	<label class="col-3">Gambar/ Logo</label>
 	
 	<div class="col-9">
-		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo $kategori_agenda['gambar'] ?>">
+		<input type="file" name="gambar" class="form-control" placeholder="Gambar/ Logo" value="<?php echo esc($kategori_agenda['gambar']) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Keterangan</label>
 	<div class="col-9">
-		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo $kategori_agenda['keterangan'] ?></textarea>
+		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo esc($kategori_agenda['keterangan']) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil kategori agenda" value="<?php echo $kategori_agenda['urutan'] ?>">
+		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil kategori agenda" value="<?php echo esc($kategori_agenda['urutan']) ?>">
 	</div>
 </div>
 

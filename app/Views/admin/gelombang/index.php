@@ -33,35 +33,35 @@
 			$siswa3 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Tidak-Diterima','Semua');
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td>
 				<?php if($gelombang->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$gelombang->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><strong><?php echo $gelombang->judul ?></strong>
+			<td><strong><?php echo esc($gelombang->judul) ?></strong>
 				<small>
-					<br><span class="text-secondary">Pembukaan:</span> <?php echo $this->website->hari($gelombang->tanggal_buka) ?>
-					<br><span class="text-secondary">Penutupan:</span> <?php echo $this->website->hari($gelombang->tanggal_tutup) ?>
-					<br><span class="text-secondary">Pengumuman:</span> <?php echo $this->website->hari($gelombang->tanggal_pengumuman) ?>
+					<br><span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
+					<br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
+					<br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
 				</small>
 			</td>
 			<td>
 				<?php if($gelombang->status_gelombang=='Buka') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $gelombang->status_gelombang ?>
+						<i class="fa fa-eye"></i> <?php echo esc($gelombang->status_gelombang) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
-						<i class="fa fa-eye-slash"></i> <?php echo $gelombang->status_gelombang ?>
+						<i class="fa fa-eye-slash"></i> <?php echo esc($gelombang->status_gelombang) ?>
 					</span>
 				<?php } ?>
 			</td>
-			<td class="text-center"><?php if($siswa1) { echo $siswa1->total; }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa4) { echo $siswa4->total; }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa5) { echo $siswa5->total; }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa2) { echo $siswa2->total; }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa3) { echo $siswa3->total; }else{ echo 0; } ?></td>
+			<td class="text-center"><?php if($siswa1) { echo esc($siswa1->total); }else{ echo 0; } ?></td>
+			<td class="text-center"><?php if($siswa4) { echo esc($siswa4->total); }else{ echo 0; } ?></td>
+			<td class="text-center"><?php if($siswa5) { echo esc($siswa5->total); }else{ echo 0; } ?></td>
+			<td class="text-center"><?php if($siswa2) { echo esc($siswa2->total); }else{ echo 0; } ?></td>
+			<td class="text-center"><?php if($siswa3) { echo esc($siswa3->total); }else{ echo 0; } ?></td>
 			
 			<td>
 				<a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-info btn-xs mb-1"><i class="fa fa-user-check"></i> Data Pendaftar</a>

@@ -40,6 +40,16 @@ class Akun extends BaseController
 					// Image upload
 					$avatar  	= $this->request->getFile('gambar');
 					$nama_baru 	= $avatar->getRandomName();
+		            // Validate file extension and size
+		            $allowedExt = ['jpg','jpeg','png','gif','webp'];
+		            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+		                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+		                return redirect()->back();
+		            }
+		            if ($avatar->getSizeByUnit('mb') > 5) {
+		                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+		                return redirect()->back();
+		            }
 		            $avatar->move(WRITEPATH . '../assets/upload/image/',$nama_baru);
 		            // Create thumb
 		            $image = \Config\Services::image()
@@ -67,7 +77,7 @@ class Akun extends BaseController
 			// update password
 			if(isset($_POST['pwd'])) {
 				
-				if(strlen($this->request->getPost('password')) < 6 && strlen($this->request->getPost('password')) > 32) {
+				if(strlen($this->request->getPost('password')) < 6 || strlen($this->request->getPost('password')) > 32) {
 					$this->session->setFlashdata('warning','Password minimal 6 dan maksimal 32 karakter');
 					return redirect()->to(base_url('admin/akun#pwd'));
 				}elseif($this->request->getPost('password')!= $this->request->getPost('konfirmasi_password')) {
@@ -89,6 +99,16 @@ class Akun extends BaseController
 					// Image upload
 					$avatar  	= $this->request->getFile('gambar');
 					$nama_baru 	= $avatar->getRandomName();
+		            // Validate file extension and size
+		            $allowedExt = ['jpg','jpeg','png','gif','webp'];
+		            if (!$avatar->isValid() || !$avatar->isAllowedType($allowedExt)) {
+		                $this->session->setFlashdata('warning', 'Tipe file tidak diizinkan.');
+		                return redirect()->back();
+		            }
+		            if ($avatar->getSizeByUnit('mb') > 5) {
+		                $this->session->setFlashdata('warning', 'Ukuran file maksimal 5MB.');
+		                return redirect()->back();
+		            }
 		            $avatar->move(WRITEPATH . '../assets/upload/image/',$nama_baru);
 		            // Create thumb
 		            $image = \Config\Services::image()

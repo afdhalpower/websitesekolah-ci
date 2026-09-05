@@ -2,7 +2,7 @@
 	<tbody>
 		<tr>
 			<td class="bg-light" width="20%">Tahun Ajaran</td>
-			<td><?php echo $tahun_ajaran->nama_tahun ?></td>
+			5|			<td><?php echo esc($tahun_ajaran->nama_tahun)?></td>
 		</tr>
 		<tr>
 			<td class="bg-light">Jumlah Kelas</td>
@@ -73,8 +73,8 @@ echo csrf_field();
 		$no=1; foreach($kelas as $kelas) { 
 			$kelasnya = $m_kelas->jenjang($kelas->id_jenjang);
 		?>
-		<tr class="bg-light" id="jenjang<?php echo $kelas->id_jenjang ?>">
-			<td colspan="6"><strong><?php echo $kelas->nama_jenjang ?> (<?php echo $kelas->keterangan_jenjang ?>)</strong></td>
+		76|		<tr class="bg-light" id="jenjang<?php echo esc($kelas->id_jenjang)?>">
+			77|			<td colspan="6"><strong><?php echo esc($kelas->nama_jenjang)?> (<?php echo $kelas->keterangan_jenjang ?>)</strong></td>
 			<td></td>
 		</tr>
 
@@ -95,13 +95,13 @@ echo csrf_field();
 					</span>
 				<?php }else{ ?>
 					<div class="icheck-primary">
-		              <input type="checkbox" name="id_kelas[]" value="<?php echo $kelasnya->id_kelas ?>" id="check<?php echo $i ?>_<?php echo $no ?>">
-		              <label for="check<?php echo $i ?>_<?php echo $no ?>"></label>
+		              98|		              <input type="checkbox" name="id_kelas[]" value="<?php echo esc($kelasnya->id_kelas)?>" id="check<?php echo $i ?>_<?php echo $no ?>">
+		              99|		              <label for="check<?php echo esc($i)?>_<?php echo $no ?>"></label>
 		            </div>
 				<?php } ?>
 				
 			</td>
-			<td><?php echo $kelasnya->nama_kelas ?></td>
+			104|			<td><?php echo esc($kelasnya->nama_kelas)?></td>
 			<td>
 				<?php 
 				if($check) { 

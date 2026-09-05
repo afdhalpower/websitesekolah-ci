@@ -17,20 +17,20 @@
 			$prestasi 	= $m_kategori_prestasi->prestasi($kategori_prestasi->id_kategori_prestasi);
 		?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td class="text-center">
 				<?php if($kategori_prestasi->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$kategori_prestasi->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $kategori_prestasi->nama_kategori_prestasi ?>
+			<td><?php echo esc($kategori_prestasi->nama_kategori_prestasi) ?>
 				<small>
-					<br>Slug: <?php echo $kategori_prestasi->slug_kategori_prestasi ?>
+					<br>Slug: <?php echo esc($kategori_prestasi->slug_kategori_prestasi) ?>
 				</small>
 			</td>
-			<td><?php echo $kategori_prestasi->keterangan ?></td>
-			<td class="text-center"><?php if($prestasi) { echo $prestasi->total; }else{ echo 0; } ?> Prestasi</td>
-			<td class="text-center"><?php echo $kategori_prestasi->urutan ?></td>
+			<td><?php echo esc($kategori_prestasi->keterangan) ?></td>
+			<td class="text-center"><?php if($prestasi) { echo esc($prestasi->total); }else{ echo 0; } ?> Prestasi</td>
+			<td class="text-center"><?php echo esc($kategori_prestasi->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/kategori_prestasi/edit/'.$kategori_prestasi->id_kategori_prestasi) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/kategori_prestasi/delete/'.$kategori_prestasi->id_kategori_prestasi) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

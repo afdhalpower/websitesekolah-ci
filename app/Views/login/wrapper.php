@@ -5,9 +5,9 @@ $this->website  = new Website();
 <!doctype html>
 	<html lang="en">
 	<head>
-		<title><?php echo $title ?></title>
+		<title><?php echo esc($title) ?></title>
 		<meta charset="utf-8">
-		<link rel="icon" href="<?php echo $this->website->icon() ?>">
+		<link rel="icon" href="<?php echo esc($this->website->icon()) ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
 		<!-- Font Awesome -->
@@ -26,17 +26,17 @@ $this->website  = new Website();
 							<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 								<div class="text w-100">
 									<p>
-										<img src="<?php echo $this->website->icon() ?>" alt="<?php echo $site->namaweb ?>" class="img img-thumbnail rounded-circle" style="max-height: 100px; width: auto;">
+										<img src="<?php echo esc($this->website->icon()) ?>" alt="<?php echo esc($site->namaweb) ?>" class="img img-thumbnail rounded-circle" style="max-height: 100px; width: auto;">
 									</p>
-									<h2><?php echo $site->namaweb ?></h2>
-									<p><?php echo $site->tagline ?></p>
+									<h2><?php echo esc($site->namaweb) ?></h2>
+									<p><?php echo esc($site->tagline) ?></p>
 									
 								</div>
 							</div>
 							<div class="login-wrap p-4 p-lg-5">
 								<div class="d-flex">
 									<div class="w-100">
-										<h3 class="mb-4"><?php echo $title ?></h3>
+										<h3 class="mb-4"><?php echo esc($title) ?></h3>
 										<hr>
 									</div>
 									

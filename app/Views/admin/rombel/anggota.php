@@ -15,15 +15,15 @@
 					<tbody>
 						<tr>
 							<td class="bg-light" width="20%">Tahun Ajaran</td>
-							<td><?php echo $rombel->nama_tahun ?></td>
+							<td><?php echo esc($rombel->nama_tahun) ?></td>
 						</tr>
 						<tr>
 							<td class="bg-light" >Kelas</td>
-							<td><?php echo $rombel->nama_kelas ?></td>
+							<td><?php echo esc($rombel->nama_kelas) ?></td>
 						</tr>
 						<tr>
 							<td class="bg-light" >Jenjang</td>
-							<td><?php echo $rombel->nama_jenjang ?></td>
+							<td><?php echo esc($rombel->nama_jenjang) ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -38,18 +38,18 @@
 			</div>
 			<div class="card-body">
 				<?php echo form_open(base_url('admin/rombel/anggota/'.$rombel->id_rombel),' class="mb-2 alert alert-light"') ?>
-					<input type="hidden" name="id_rombel" id="id_rombel" value="<?php echo $rombel->id_rombel ?>">
-					<input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $rombel->id_kelas ?>">
-					<input type="hidden" name="id_tahun" id="id_tahun" value="<?php echo $rombel->id_tahun ?>">
+					<input type="hidden" name="id_rombel" id="id_rombel" value="<?php echo esc($rombel->id_rombel) ?>">
+					<input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo esc($rombel->id_kelas) ?>">
+					<input type="hidden" name="id_tahun" id="id_tahun" value="<?php echo esc($rombel->id_tahun) ?>">
 					<input type="hidden" name="status_siswa_rombel" id="status_siswa_rombel" value="Aktif">
-					<input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->get('id_user') ?>">
+					<input type="hidden" name="id_user" id="id_user" value="<?php echo esc($this->session->get('id_user')) ?>">
 
 					<div class="input-group">                  
 						<select name="id_staff" class="form-control select2 col-md-6" id="id_guru" required>
 							<option value="">Pilih Staff/Pegawai</option>
 							<?php foreach($staff as $staff) { ?>
-								<option value="<?php echo $staff->id_staff ?>">
-									<?php echo $staff->nama ?> - <?php echo $staff->jabatan ?>
+								<option value="<?php echo esc($staff->id_staff) ?>">
+									<?php echo esc($staff->nama) ?> - <?php echo esc($staff->jabatan) ?>
 								</option>
 							<?php } ?>
 						</select>
@@ -75,9 +75,9 @@
 					<tbody>
 						<?php $no=1; foreach($staff_rombel as $staff_rombel) { ?>
 						<tr>
-							<td class="text-center"><?php echo $no ?></td>
-							<td><?php echo $staff_rombel->nama ?>
-							<small><br>Status: <strong><?php echo $staff_rombel->status_guru_rombel ?> Kelas</strong></small>
+							<td class="text-center"><?php echo esc($no) ?></td>
+							<td><?php echo esc($staff_rombel->nama) ?>
+							<small><br>Status: <strong><?php echo esc($staff_rombel->status_guru_rombel) ?> Kelas</strong></small>
 							</td>
 							<td>
 								<a href="<?php echo base_url('admin/rombel/delete_staff/'.$staff_rombel->id_staff_rombel.'/'.$rombel->id_rombel) ?>" class="btn btn-light btn-sm delete-link">
@@ -101,18 +101,18 @@
 			<div class="card-body">
 				<form id="simpan" method="post" class="mb-2 alert alert-light">
 
-					<input type="hidden" name="id_rombel" id="id_rombel" value="<?php echo $rombel->id_rombel ?>">
-					<input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $rombel->id_kelas ?>">
-					<input type="hidden" name="id_tahun" id="id_tahun" value="<?php echo $rombel->id_tahun ?>">
+					<input type="hidden" name="id_rombel" id="id_rombel" value="<?php echo esc($rombel->id_rombel) ?>">
+					<input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo esc($rombel->id_kelas) ?>">
+					<input type="hidden" name="id_tahun" id="id_tahun" value="<?php echo esc($rombel->id_tahun) ?>">
 					<input type="hidden" name="status_siswa_rombel" id="status_siswa_rombel" value="Aktif">
-					<input type="hidden" name="id_user" id="id_user" value="<?php echo $this->session->get('id_user') ?>">
+					<input type="hidden" name="id_user" id="id_user" value="<?php echo esc($this->session->get('id_user')) ?>">
 
 					<div class="input-group">                  
 						<select name="id_siswa" class="form-control select2 col-md-6" id="id_siswa" required>
 							<option value="">Pilih Siswa</option>
 							<?php foreach($siswa as $siswa) { ?>
-								<option value="<?php echo $siswa->id_siswa ?>">
-									<?php echo $siswa->nama_siswa ?> (NIS/NISN: <?php echo $siswa->nis ?>/<?php echo $siswa->nisn ?>)
+								<option value="<?php echo esc($siswa->id_siswa) ?>">
+									<?php echo esc($siswa->nama_siswa) ?> (NIS/NISN: <?php echo esc($siswa->nis) ?>/<?php echo esc($siswa->nisn) ?>)
 								</option>
 							<?php } ?>
 						</select>

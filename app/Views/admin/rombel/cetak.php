@@ -10,7 +10,7 @@ $id_sekolah 	= $sekolah->id_sekolah;
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo $title ?></title>
+13|<title><?php echo esc($title)?></title>
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="print">
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="screen">
 </head>
@@ -27,7 +27,7 @@ $id_sekolah 	= $sekolah->id_sekolah;
 				</td>
 				<td>
 					<h1>INFORMASI KELAS
-						<br><?php echo $sekolah->nama_sekolah ?>
+						30|						<br><?php echo esc($sekolah->nama_sekolah)?>
 					</h1>
 				</td>
 			</tr>
@@ -64,9 +64,9 @@ $id_sekolah 	= $sekolah->id_sekolah;
 		<tbody>
 			<?php $no=1; foreach($staff_rombel as $staff_rombel) { ?>
 			<tr>
-				<td class="text-center"><?php echo $no ?></td>
+				67|				<td class="text-center"><?php echo esc($no)?></td>
 				<td><?php echo $staff_rombel->nama ?></td>
-				<td><?php echo $staff_rombel->status_guru_rombel ?> Kelas</td>
+				69|				<td><?php echo esc($staff_rombel->status_guru_rombel)?> Kelas</td>
 			</tr>
 			<?php $no++; } ?>
 		</tbody>
@@ -86,10 +86,10 @@ $id_sekolah 	= $sekolah->id_sekolah;
 		<tbody>  
 			<?php $no=1; foreach($siswa_rombel as $siswa_rombel) { ?>
 			<tr>
-				<td><?php echo $no ?></td>
+				89|				<td><?php echo esc($no)?></td>
 				<td><?php echo $siswa_rombel->nama_siswa ?></td>
-				<td><?php echo $siswa_rombel->jenis_kelamin ?></td>
-				<td><?php echo $siswa_rombel->tempat_lahir.', '.$this->website->tanggal_id($siswa_rombel->tanggal_lahir); ?></td>
+				91|				<td><?php echo esc($siswa_rombel->jenis_kelamin)?></td>
+				92|				<td><?php echo esc($siswa_rombel->tempat_lahir.', '.$this->website->tanggal_id($siswa_rombel->tanggal_lahir)); ?></td>
 			</tr>    
 			<?php $no++; } ?>                    
 		</tbody>
@@ -102,12 +102,12 @@ $id_sekolah 	= $sekolah->id_sekolah;
 		<tr>
 			<td width="60%"></td>
 			<td>
-				<?php echo $sekolah->kabupaten ?>, <?php echo $this->website->tanggal_bulan(date('Y-m-d')) ?>
+				105|				<?php echo esc($sekolah->kabupaten)?>, <?php echo $this->website->tanggal_bulan(date('Y-m-d')) ?>
 				<br>
 				<br>
 				<br>
 				<br>
-				<br><strong><u><?php echo $sekolah->nama_kepsek ?></u></strong>
+				110|				<br><strong><u><?php echo esc($sekolah->nama_kepsek)?></u></strong>
 				<br>Kepala Sekolah
 			</td>
 		</tr>

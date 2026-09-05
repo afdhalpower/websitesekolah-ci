@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-12 pt-md-14 pb-md-14 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-10 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -32,27 +32,27 @@
                 <thead>
                   <tr>
                     <th width="25%">Nama Ekstrakurikuler</th>
-                    <th><?php echo $ekstrakurikuler->judul_ekstrakurikuler ?></th>
+                    <th><?php echo esc($ekstrakurikuler->judul_ekstrakurikuler) ?></th>
                   </tr>
                 </thead>
                 <tbody>
                   
                   <tr>
                     <td class="bg-light">Penanggung Jawab</td>
-                    <td><?php echo $ekstrakurikuler->nama_penanggung_jawab ?></td>
+                    <td><?php echo esc($ekstrakurikuler->nama_penanggung_jawab) ?></td>
                   </tr>
                   <tr>
                     <td class="bg-light">Kategori</td>
-                    <td><?php echo $ekstrakurikuler->nama_kategori_ekstrakurikuler ?></td>
+                    <td><?php echo esc($ekstrakurikuler->nama_kategori_ekstrakurikuler) ?></td>
                   </tr>
                   
                   
                 </tbody>
               </table>
-              <?php echo $ekstrakurikuler->isi ?>
+              <?php echo esc($ekstrakurikuler->isi) ?>
             </div>
             <div class="card-footer">
-              Tanggal: <?php echo $this->website->tanggal_bulan_menit($ekstrakurikuler->tanggal) ?>
+              Tanggal: <?php echo esc($this->website->tanggal_bulan_menit($ekstrakurikuler->tanggal)) ?>
             </div>
           </div>
           
@@ -72,16 +72,16 @@
               <div class="card">
                 <figure class="card-img-top">
                   <a href="<?php echo base_url('ekstrakurikuler/read/'.$ekstrakurikuler->slug_ekstrakurikuler) ?>">
-                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$ekstrakurikuler->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$ekstrakurikuler->gambar) ?> 2x" alt="<?php echo $ekstrakurikuler->judul_ekstrakurikuler ?>" />
+                    <img class="img-fluid" src="<?php echo base_url('assets/upload/image/'.$ekstrakurikuler->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/'.$ekstrakurikuler->gambar) ?> 2x" alt="<?php echo esc($ekstrakurikuler->judul_ekstrakurikuler) ?>" />
                   </a>
                 </figure>
                 <div class="card-body px-6 py-5">
                   <h5 class="mb-1">
                     <a href="<?php echo base_url('ekstrakurikuler/read/'.$ekstrakurikuler->slug_ekstrakurikuler) ?>">
-                      <?php echo $ekstrakurikuler->judul_ekstrakurikuler ?>
+                      <?php echo esc($ekstrakurikuler->judul_ekstrakurikuler) ?>
                     </a>
                   </h5>
-                  <p class="mb-0"><?php echo $ekstrakurikuler->nama_kategori_ekstrakurikuler ?> | <?php echo $ekstrakurikuler->nama_penanggung_jawab ?></p>
+                  <p class="mb-0"><?php echo esc($ekstrakurikuler->nama_kategori_ekstrakurikuler) ?> | <?php echo esc($ekstrakurikuler->nama_penanggung_jawab) ?></p>
                 </div>
                 <!--/.card-body -->
               </div>

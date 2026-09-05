@@ -24,8 +24,8 @@ echo csrf_field();
 						<select name="id_jenjang" class="form-control select2" required>
 							<option value="">Pilih Jenjang</option>
 							<?php foreach($jenjang as $jenjang) { ?>
-								<option value="<?php echo $jenjang->id_jenjang ?>">
-									<?php echo $jenjang->nama_jenjang ?> - <?php echo $jenjang->keterangan ?>
+								<option value="<?php echo esc($jenjang->id_jenjang) ?>">
+									<?php echo esc($jenjang->nama_jenjang) ?> - <?php echo esc($jenjang->keterangan) ?>
 								</option>
 							<?php } ?>
 						</select>

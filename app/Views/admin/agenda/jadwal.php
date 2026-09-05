@@ -23,11 +23,11 @@ echo form_open(base_url('admin/agenda/proses_jadwal'));
 	<tbody>
 		<?php $no=1; foreach($jadwal as $jadwal) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
 			<td><?php echo date('d-m-Y',strtotime($jadwal->tanggal_mulai)) ?></td>
-			<td><?php echo $jadwal->nama_tempat ?></td>
-			<td><?php echo $jadwal->keterangan ?></td>
-			<td><?php echo $jadwal->pembicara ?></td>
+			<td><?php echo esc($jadwal->nama_tempat) ?></td>
+			<td><?php echo esc($jadwal->keterangan) ?></td>
+			<td><?php echo esc($jadwal->pembicara) ?></td>
 			<td>
 				<div class="btn-group">
 	           

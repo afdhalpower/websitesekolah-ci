@@ -3,7 +3,7 @@ Breadcumb
 ============================== -->
 <div class="breadcumb-wrapper background-heroj">
     <div class="container z-index-common">
-        <h1 class="breadcumb-title"><?php echo $title ?></h1> 
+        <h1 class="breadcumb-title"><?php echo esc($title) ?></h1> 
     </div>
 </div>
     <!--==============================
@@ -32,15 +32,15 @@ Event Area
                                         $no=1; foreach($tingkatan as $tingkatan) { 
                                         ?>
                                         <tr>
-                                            <td class="text-center"><?php echo $no ?></td>
+                                            <td class="text-center"><?php echo esc($no) ?></td>
                                             <td class="text-center">
                                                 <?php if($tingkatan->gambar=="") { echo '-'; }else{ ?>
                                                     <img src="<?php echo base_url('assets/upload/image/'.$tingkatan->gambar) ?>" class="img img-thumbnail">
                                                 <?php } ?>
                                             </td>
-                                            <td><?php echo $tingkatan->nama_tingkatan ?></td>
-                                            <td><?php echo $tingkatan->jenis_tingkatan ?></td>
-                                            <td><?php echo $tingkatan->keterangan ?></td>
+                                            <td><?php echo esc($tingkatan->nama_tingkatan) ?></td>
+                                            <td><?php echo esc($tingkatan->jenis_tingkatan) ?></td>
+                                            <td><?php echo esc($tingkatan->keterangan) ?></td>
                                             
                                         </tr>
                                         <?php $no++; } ?>

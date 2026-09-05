@@ -13,7 +13,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Jenjang Pendidikan</label>
 	<div class="col-7">
-		<input type="text" name="nama_jenjang" class="form-control" placeholder="Nama jenjang" value="<?php echo $jenjang->nama_jenjang ?>" required>
+		<input type="text" name="nama_jenjang" class="form-control" placeholder="Nama jenjang" value="<?php echo esc($jenjang->nama_jenjang) ?>" required>
 	</div>
 
 	<div class="col-2">
@@ -27,14 +27,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Keterangan Lengkap</label>
 	<div class="col-9">
-		<input type="text" name="keterangan" class="form-control" placeholder="Keterangan Lengkap" value="<?php echo $jenjang->keterangan ?>" required>
+		<input type="text" name="keterangan" class="form-control" placeholder="Keterangan Lengkap" value="<?php echo esc($jenjang->keterangan) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $jenjang->urutan ?>" required>
+		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($jenjang->urutan) ?>" required>
 	</div>
 </div>
 

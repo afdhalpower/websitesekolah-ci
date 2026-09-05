@@ -38,7 +38,7 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
   $( ".tanggal" ).datepicker({
@@ -46,7 +46,7 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
   $( ".tanggalan" ).datepicker({
@@ -54,7 +54,7 @@ $awal = $sek-100;
     changeYear: true,
     changeMonth: true,
     dateFormat: "dd-mm-yy",
-    yearRange: "<?php echo $awal ?>:<?php $tahundepan = date('Y')+2; echo $tahundepan; ?>"
+    yearRange: "<?php echo esc($awal) ?>:<?php $tahundepan = date('Y')+2; echo esc($tahundepan); ?>"
   });
 
 </script>
@@ -223,7 +223,7 @@ $(document).on("click", ".disable-link", function(e){
 
   
 </script>
-<a href="https://api.whatsapp.com/send?phone=<?php echo $site_setting->hp ?>" class="whatsapp-link" target="_blank">
+<a href="https://api.whatsapp.com/send?phone=<?php echo esc($site_setting->hp) ?>" class="whatsapp-link" target="_blank">
         <i class="fab fa-whatsapp fa-3x"></i>
     </a>
 </body>

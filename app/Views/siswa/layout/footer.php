@@ -7,7 +7,7 @@ $site         = $konfigurasi->listing();
 <!-- SWEETALERT -->
 <?php if($session->getFlashdata('sukses')) { ?>
 <script>
-  swal("Berhasil", "<?php echo $session->getFlashdata('sukses'); ?>","success")
+  swal("Berhasil", "<?php echo esc($session->getFlashdata('sukses')); ?>","success")
 </script>
 <?php } ?>
 
@@ -19,7 +19,7 @@ $site         = $konfigurasi->listing();
 
 <?php if($session->getFlashdata('warning')) { ?>
 <script>
-  swal("Oops...", "<?php echo $session->getFlashdata('warning'); ?>","warning")
+  swal("Oops...", "<?php echo esc($session->getFlashdata('warning')); ?>","warning")
 </script>
 <?php } ?>
 

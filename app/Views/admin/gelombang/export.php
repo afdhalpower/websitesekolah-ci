@@ -2,32 +2,32 @@
 			<thead>
 				<tr>
 					<th width="30%">Nama Periode</th>
-					<th><?php echo $gelombang->judul ?></th>
+					<th><?php echo esc($gelombang->judul) ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>Tanggal pelaksanaan</td>
 					<td>
-						<span class="text-secondary">Pembukaan:</span> <?php echo $this->website->hari($gelombang->tanggal_buka) ?>
-						<br><span class="text-secondary">Penutupan:</span> <?php echo $this->website->hari($gelombang->tanggal_tutup) ?>
-						<br><span class="text-secondary">Pengumuman:</span> <?php echo $this->website->hari($gelombang->tanggal_pengumuman) ?>
+						<span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
+						<br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
+						<br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
 					</td>
 				</tr>
 				<tr>
 					<td>Periode</td>
-					<td><?php echo $gelombang->tahun ?></td>
+					<td><?php echo esc($gelombang->tahun) ?></td>
 				</tr>
 				<tr>
 					<td>Tahun Ajaran</td>
-					<td><?php echo $gelombang->tahun_ajaran ?></td>
+					<td><?php echo esc($gelombang->tahun_ajaran) ?></td>
 				</tr>
 				<tr>
 					<td>Status</td>
 					<td>
 						<?php if($gelombang->status_gelombang=='Buka') { ?>
 							<span class="badge bg-info">
-								<i class="fa fa-eye"></i> <?php echo $gelombang->status_gelombang ?>
+								<i class="fa fa-eye"></i> <?php echo esc($gelombang->status_gelombang) ?>
 							</span>
 						<?php }else{ ?>
 							<span class="badge bg-secondary">
@@ -38,11 +38,11 @@
 				</tr>
 				<tr>
 		          <td>Jenjang Pendidikan</td>
-		          <td><?php echo $judul_jenjang_pendidikan ?></td>
+		          <td><?php echo esc($judul_jenjang_pendidikan) ?></td>
 		        </tr>
 		        <tr>
 		          <td>Status Pendaftaran</td>
-		          <td><?php echo $status_pendaftaran ?></td>
+		          <td><?php echo esc($status_pendaftaran) ?></td>
 		        </tr>
 			</tbody>
 		</table>
@@ -84,33 +84,33 @@
 				<tbody>
 					<?php $no=1; foreach($siswa as $siswa) { ?>
 					<tr>
-						<td><?php echo $no ?></td>
-						<td><?php echo $siswa->nama_siswa ?></td>
-						<td><?php echo $siswa->nama_panggilan ?></td>
-						<td><?php echo $siswa->jenis_kelamin ?></td>
-						<td><?php echo $siswa->tempat_lahir ?></td>
-						<td><?php echo $siswa->tanggal_lahir ?></td>
-						<td><?php echo $siswa->nis ?></td>
-						<td><?php echo $siswa->nisn ?></td>
-						<td><?php echo $siswa->alamat ?></td>
-						<td><?php echo $siswa->telepon ?></td>
-						<td><?php echo $siswa->status_wn ?></td>
-						<td><?php echo $siswa->nama_hubungan ?></td>
-						<td><?php echo $siswa->anak_ke ?></td>
-						<td><?php echo $siswa->jumlah_saudara ?></td>
-						<td><?php echo $siswa->nama_agama ?></td>
-						<td><?php echo $siswa->berkebutuhan_khusus ?></td>
-						<td><?php echo $siswa->nama_ayah ?></td>
-						<td><?php echo $siswa->nama_ibu ?></td>
-						<td><?php echo $siswa->nama_wali ?></td>
-						<td><?php echo $siswa->alamat_wali ?></td>
-						<td><?php echo $siswa->telepon_wali ?></td>
-						<td><?php echo $siswa->status_pendaftaran ?></td>
-						<td><?php echo $siswa->goldar_siswa ?></td>
-						<td><?php echo $siswa->tinggi ?></td>
-						<td><?php echo $siswa->berat ?></td>
-						<td><?php echo $siswa->asal_sekolah ?></td>
-						<td><?php echo $siswa->jenis_siswa ?></td>
+						<td><?php echo esc($no) ?></td>
+						<td><?php echo esc($siswa->nama_siswa) ?></td>
+						<td><?php echo esc($siswa->nama_panggilan) ?></td>
+						<td><?php echo esc($siswa->jenis_kelamin) ?></td>
+						<td><?php echo esc($siswa->tempat_lahir) ?></td>
+						<td><?php echo esc($siswa->tanggal_lahir) ?></td>
+						<td><?php echo esc($siswa->nis) ?></td>
+						<td><?php echo esc($siswa->nisn) ?></td>
+						<td><?php echo esc($siswa->alamat) ?></td>
+						<td><?php echo esc($siswa->telepon) ?></td>
+						<td><?php echo esc($siswa->status_wn) ?></td>
+						<td><?php echo esc($siswa->nama_hubungan) ?></td>
+						<td><?php echo esc($siswa->anak_ke) ?></td>
+						<td><?php echo esc($siswa->jumlah_saudara) ?></td>
+						<td><?php echo esc($siswa->nama_agama) ?></td>
+						<td><?php echo esc($siswa->berkebutuhan_khusus) ?></td>
+						<td><?php echo esc($siswa->nama_ayah) ?></td>
+						<td><?php echo esc($siswa->nama_ibu) ?></td>
+						<td><?php echo esc($siswa->nama_wali) ?></td>
+						<td><?php echo esc($siswa->alamat_wali) ?></td>
+						<td><?php echo esc($siswa->telepon_wali) ?></td>
+						<td><?php echo esc($siswa->status_pendaftaran) ?></td>
+						<td><?php echo esc($siswa->goldar_siswa) ?></td>
+						<td><?php echo esc($siswa->tinggi) ?></td>
+						<td><?php echo esc($siswa->berat) ?></td>
+						<td><?php echo esc($siswa->asal_sekolah) ?></td>
+						<td><?php echo esc($siswa->jenis_siswa) ?></td>
 					</tr>
 					<?php $no++; } ?>
 				</tbody>

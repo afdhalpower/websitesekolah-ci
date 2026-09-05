@@ -1,8 +1,8 @@
-<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo $this->website->banner() ?>">
+<section class="wrapper bg-soft-primary  bg-image" data-image-src="<?php echo esc($this->website->banner()) ?>">
   <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
     <div class="row">
       <div class="col-md-10 col-lg-10 col-xl-5 mx-auto">
-        <h1 class="display-1 mb-1 text-warning"><?php echo $title ?></h1>
+        <h1 class="display-1 mb-1 text-warning"><?php echo esc($title) ?></h1>
     </div>
     <!-- /column -->
 </div>
@@ -23,7 +23,7 @@
                   <figure class="card-img-top overlay overlay-1 hover-scale">
                     <a class="link-dark" href="<?php echo base_url('jenjang_pendidikan/read/'.$jenjang_pendidikan->id_jenjang_pendidikan) ?>">
                       <?php if($jenjang_pendidikan->gambar !='') { ?>
-                            <img src="<?php echo base_url('assets/upload/image/'.$jenjang_pendidikan->gambar) ?>" alt="<?php echo $title ?>" class="img-thumbnail">
+                            <img src="<?php echo base_url('assets/upload/image/'.$jenjang_pendidikan->gambar) ?>" alt="<?php echo esc($title) ?>" class="img-thumbnail">
                         <?php } ?>
                     </a>
                     <figcaption>
@@ -36,13 +36,13 @@
                       <!-- /.post-category -->
                       <h2 class="post-title mt-1 mb-0">
                         <a class="link-dark" href="<?php echo base_url('jenjang_pendidikan/read/'.$jenjang_pendidikan->slug_jenjang_pendidikan) ?>">
-                            <?php echo $jenjang_pendidikan->judul_jenjang_pendidikan ?>
+                            <?php echo esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?>
                         </a>
                     </h2>
                     </div>
                     <!-- /.post-header -->
                     <div class="post-content">
-                      <p><?php echo $jenjang_pendidikan->ringkasan ?></p>
+                      <p><?php echo esc($jenjang_pendidikan->ringkasan) ?></p>
                     </div>
                     <!-- /.post-content -->
                   </div>
@@ -50,7 +50,7 @@
                   <div class="card-footer">
                     <ul class="post-meta d-flex mb-0">
                       
-                      <li class="post-comments"><a href="#"><i class="fa fa-eye"></i><span> Dibaca <?php echo $jenjang_pendidikan->hits ?> kali</span></a></li>
+                      <li class="post-comments"><a href="#"><i class="fa fa-eye"></i><span> Dibaca <?php echo esc($jenjang_pendidikan->hits) ?> kali</span></a></li>
                     </ul>
                     <!-- /.post-meta -->
                   </div>

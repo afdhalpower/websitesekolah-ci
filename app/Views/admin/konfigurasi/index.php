@@ -8,39 +8,39 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Website</label>
 	<div class="col-9">
-		<input type="text" name="namaweb" class="form-control" value="<?php echo $konfigurasi->namaweb ?>" required>
+		<input type="text" name="namaweb" class="form-control" value="<?php echo esc($konfigurasi->namaweb) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Singkatan Website</label>
 	<div class="col-9">
-		<input type="text" name="singkatan" class="form-control" value="<?php echo $konfigurasi->singkatan ?>">
+		<input type="text" name="singkatan" class="form-control" value="<?php echo esc($konfigurasi->singkatan) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Tagline Website</label>
 	<div class="col-9">
-		<input type="text" name="tagline" class="form-control" value="<?php echo $konfigurasi->tagline ?>">
+		<input type="text" name="tagline" class="form-control" value="<?php echo esc($konfigurasi->tagline) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Alamat Website</label>
 	<div class="col-6">
-		<input type="text" name="website" class="form-control" value="<?php echo $konfigurasi->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($konfigurasi->website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Setting Pagination</label>
 	<div class="col-3">
-		<input type="number" name="paginasi" class="form-control" value="<?php echo $konfigurasi->paginasi ?>">
+		<input type="number" name="paginasi" class="form-control" value="<?php echo esc($konfigurasi->paginasi) ?>">
 		<small class="text-gray">Paginasi back end</small>
 	</div>
 	<div class="col-3">
-		<input type="number" name="paginasi_depan" class="form-control" value="<?php echo $konfigurasi->paginasi_depan ?>">
+		<input type="number" name="paginasi_depan" class="form-control" value="<?php echo esc($konfigurasi->paginasi_depan) ?>">
 		<small class="text-gray">Paginasi front end</small>
 	</div>
 </div>
@@ -53,14 +53,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Tentang Website</label>
 	<div class="col-9">
-		<textarea name="tentang" class="form-control konten" rows="5"><?php echo $konfigurasi->tentang ?></textarea>
+		<textarea name="tentang" class="form-control konten" rows="5"><?php echo esc($konfigurasi->tentang) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Deskripsi Ringkas</label>
 	<div class="col-9">
-		<textarea name="deskripsi" class="form-control"><?php echo $konfigurasi->deskripsi ?></textarea>
+		<textarea name="deskripsi" class="form-control"><?php echo esc($konfigurasi->deskripsi) ?></textarea>
 	</div>
 </div>
 
@@ -71,42 +71,42 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Official Email</label>
 	<div class="col-6">
-		<input type="text" name="email" class="form-control" value="<?php echo $konfigurasi->email ?>">
+		<input type="text" name="email" class="form-control" value="<?php echo esc($konfigurasi->email) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Secondary Email</label>
 	<div class="col-6">
-		<input type="text" name="email_cadangan" class="form-control" value="<?php echo $konfigurasi->email_cadangan ?>">
+		<input type="text" name="email_cadangan" class="form-control" value="<?php echo esc($konfigurasi->email_cadangan) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Telepon</label>
 	<div class="col-6">
-		<input type="text" name="telepon" class="form-control" value="<?php echo $konfigurasi->telepon ?>">
+		<input type="text" name="telepon" class="form-control" value="<?php echo esc($konfigurasi->telepon) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">HP</label>
 	<div class="col-6">
-		<input type="text" name="hp" class="form-control" value="<?php echo $konfigurasi->hp ?>">
+		<input type="text" name="hp" class="form-control" value="<?php echo esc($konfigurasi->hp) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Alamat</label>
 	<div class="col-9">
-		<textarea name="alamat" class="form-control summernote"><?php echo $konfigurasi->alamat ?></textarea>
+		<textarea name="alamat" class="form-control summernote"><?php echo esc($konfigurasi->alamat) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Google Map</label>
 	<div class="col-9">
-		<textarea name="google_map" class="form-control"><?php echo $konfigurasi->google_map ?></textarea>
+		<textarea name="google_map" class="form-control"><?php echo esc($konfigurasi->google_map) ?></textarea>
 	</div>
 </div>
 
@@ -117,7 +117,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nomor Whatsapp <i class="fab fa-whatsapp text-success"></i></label>
 	<div class="col-6">
-		<input type="text" name="whatsapp" class="form-control" value="<?php echo $konfigurasi->whatsapp ?>">
+		<input type="text" name="whatsapp" class="form-control" value="<?php echo esc($konfigurasi->whatsapp) ?>">
 		<small class="text-warning">Format nomor: 628122727427</small>
 	</div>
 </div>
@@ -125,7 +125,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Pesan Whatsapp</label>
 	<div class="col-9">
-		<textarea name="pesan_whatsapp" class="form-control"><?php echo $konfigurasi->pesan_whatsapp ?></textarea>
+		<textarea name="pesan_whatsapp" class="form-control"><?php echo esc($konfigurasi->pesan_whatsapp) ?></textarea>
 	</div>
 </div>
 
@@ -136,11 +136,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Facebook <i class="fab fa-facebook"></i></label>
 	<div class="col-3">
-		<input type="text" name="nama_facebook" class="form-control" value="<?php echo $konfigurasi->nama_facebook ?>">
+		<input type="text" name="nama_facebook" class="form-control" value="<?php echo esc($konfigurasi->nama_facebook) ?>">
 		<small class="text-secondary">Nama akun</small>
 	</div>
 	<div class="col-6">
-		<input type="text" name="facebook" class="form-control" value="<?php echo $konfigurasi->facebook ?>">
+		<input type="text" name="facebook" class="form-control" value="<?php echo esc($konfigurasi->facebook) ?>">
 		<small class="text-secondary">Alamat link akun</small>
 	</div>
 </div>
@@ -148,11 +148,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Twitter <i class="fab fa-twitter"></i></label>
 	<div class="col-3">
-		<input type="text" name="nama_twitter" class="form-control" value="<?php echo $konfigurasi->nama_twitter ?>">
+		<input type="text" name="nama_twitter" class="form-control" value="<?php echo esc($konfigurasi->nama_twitter) ?>">
 		<small class="text-secondary">Nama akun</small>
 	</div>
 	<div class="col-6">
-		<input type="text" name="twitter" class="form-control" value="<?php echo $konfigurasi->twitter ?>">
+		<input type="text" name="twitter" class="form-control" value="<?php echo esc($konfigurasi->twitter) ?>">
 		<small class="text-secondary">Alamat link akun</small>
 	</div>
 </div>
@@ -160,11 +160,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Instagram <i class="fab fa-instagram"></i></label>
 	<div class="col-3">
-		<input type="text" name="nama_instagram" class="form-control" value="<?php echo $konfigurasi->nama_instagram ?>">
+		<input type="text" name="nama_instagram" class="form-control" value="<?php echo esc($konfigurasi->nama_instagram) ?>">
 		<small class="text-secondary">Nama akun</small>
 	</div>
 	<div class="col-6">
-		<input type="text" name="instagram" class="form-control" value="<?php echo $konfigurasi->instagram ?>">
+		<input type="text" name="instagram" class="form-control" value="<?php echo esc($konfigurasi->instagram) ?>">
 		<small class="text-secondary">Alamat link akun</small>
 	</div>
 </div>
@@ -172,11 +172,11 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Youtube <i class="fab fa-youtube"></i></label>
 	<div class="col-3">
-		<input type="text" name="nama_youtube" class="form-control" value="<?php echo $konfigurasi->nama_youtube ?>">
+		<input type="text" name="nama_youtube" class="form-control" value="<?php echo esc($konfigurasi->nama_youtube) ?>">
 		<small class="text-secondary">Nama akun</small>
 	</div>
 	<div class="col-6">
-		<input type="text" name="youtube" class="form-control" value="<?php echo $konfigurasi->youtube ?>">
+		<input type="text" name="youtube" class="form-control" value="<?php echo esc($konfigurasi->youtube) ?>">
 		<small class="text-secondary">Alamat link akun</small>
 	</div>
 </div>
@@ -198,15 +198,15 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Periode Pendaftaran Online</label>
 	<div class="col-2">
-		<input type="text" name="mulai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->mulai_pendaftaran) ?>">
+		<input type="text" name="mulai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->mulai_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal mulai</small>
 	</div>
 	<div class="col-2">
-		<input type="text" name="selesai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->selesai_pendaftaran) ?>">
+		<input type="text" name="selesai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->selesai_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal selesai</small>
 	</div>
 	<div class="col-2">
-		<input type="text" name="pengumuman_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($konfigurasi->pengumuman_pendaftaran) ?>">
+		<input type="text" name="pengumuman_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->pengumuman_pendaftaran)) ?>">
 		<small class="text-secondary">Tanggal pengumuman</small>
 	</div>
 </div>
@@ -214,7 +214,7 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Informasi pendaftaran</label>
 	<div class="col-9">
-		<textarea name="keterangan_pendaftaran" class="form-control konten" rows="5"><?php echo $konfigurasi->keterangan_pendaftaran ?></textarea>
+		<textarea name="keterangan_pendaftaran" class="form-control konten" rows="5"><?php echo esc($konfigurasi->keterangan_pendaftaran) ?></textarea>
 	</div>
 </div>
 

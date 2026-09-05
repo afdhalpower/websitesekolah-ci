@@ -13,18 +13,18 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Judul Prestasi</label>
 	<div class="col-md-9">
-		<input type="text" name="judul_prestasi" class="form-control" value="<?php echo $prestasi->judul_prestasi ?>" required>
+		<input type="text" name="judul_prestasi" class="form-control" value="<?php echo esc($prestasi->judul_prestasi) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Penyelenggara dan Hadiah</label>
 	<div class="col-md-5">
-		<input type="text" name="penyelenggara" class="form-control" value="<?php echo $prestasi->penyelenggara ?>">
+		<input type="text" name="penyelenggara" class="form-control" value="<?php echo esc($prestasi->penyelenggara) ?>">
 		<small class="text-secondary">Penyelenggara kegitan. Misal: Kementerian Pendidikan dan Kebudayaan</small>
 	</div>
 	<div class="col-md-4">
-		<input type="text" name="hadiah_prestasi" class="form-control" value="<?php echo $prestasi->hadiah_prestasi ?>">
+		<input type="text" name="hadiah_prestasi" class="form-control" value="<?php echo esc($prestasi->hadiah_prestasi) ?>">
 		<small class="text-secondary">Hadiah dan Penghargaan. Misal: Piala dan Uang Tunai</small>
 	</div>
 </div>
@@ -44,11 +44,11 @@ echo csrf_field();
 		<small class="text-secondary">Jenjang Prestasi</small>
 	</div>
 	<div class="col-md-2">
-		<input type="number" name="tahun_prestasi" class="form-control" value="<?php echo $prestasi->tahun_prestasi ?>">
+		<input type="number" name="tahun_prestasi" class="form-control" value="<?php echo esc($prestasi->tahun_prestasi) ?>">
 		<small class="text-secondary">Tahun Prestasi</small>
 	</div>
 	<div class="col-md-2">
-		<input type="text" name="tanggal_prestasi" class="form-control tanggal" value="<?php echo $this->website->tanggal_id($prestasi->tanggal_prestasi) ?>">
+		<input type="text" name="tanggal_prestasi" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($prestasi->tanggal_prestasi)) ?>">
 		<small class="text-secondary">Tanggal Prestasi</small>
 	</div>
 </div>
@@ -58,8 +58,8 @@ echo csrf_field();
 	<div class="col-md-4">
 		<select name="id_kategori_prestasi" class="form-control select2">
 			<?php foreach($kategori_prestasi as $kategori_prestasi) { ?>
-			<option value="<?php echo $kategori_prestasi->id_kategori_prestasi ?>" <?php if($prestasi->id_kategori_prestasi==$kategori_prestasi->id_kategori_prestasi) { echo 'selected'; } ?>>
-				<?php echo $kategori_prestasi->nama_kategori_prestasi ?>
+			<option value="<?php echo esc($kategori_prestasi->id_kategori_prestasi) ?>" <?php if($prestasi->id_kategori_prestasi==$kategori_prestasi->id_kategori_prestasi) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_prestasi->nama_kategori_prestasi) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -85,14 +85,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Nama Penerima Prestasi/Penghargaan</label>
 	<div class="col-md-6">
-		<input type="text" name="nama_penerima" class="form-control" value="<?php echo $prestasi->nama_penerima ?>" required>
+		<input type="text" name="nama_penerima" class="form-control" value="<?php echo esc($prestasi->nama_penerima) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload Gambar Prestasi</label>
 	<div class="col-md-5">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $prestasi->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($prestasi->gambar) ?>">
 	</div>
 	<div class="col-md-1">
 		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$prestasi->gambar) ?>" class="img img-thumbnail">
@@ -111,21 +111,21 @@ echo csrf_field();
 		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
 			<i class="fa fa-download"></i> Lihat File
 		</button>
-		<textarea name="isi" class="form-control konten"><?php echo $prestasi->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($prestasi->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Text untuk tombol link</label>
 	<div class="col-md-9">
-		<input type="text" name="text_website" class="form-control" value="<?php echo $prestasi->text_website ?>">
+		<input type="text" name="text_website" class="form-control" value="<?php echo esc($prestasi->text_website) ?>">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Link/URL untuk Banner</label>
 	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo $prestasi->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($prestasi->website) ?>">
 	</div>
 </div>
 

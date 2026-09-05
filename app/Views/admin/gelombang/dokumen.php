@@ -21,7 +21,7 @@
           <thead>
             <tr>
               <th width="25%">Kode Pendaftaran</th>
-              <th><?php echo $siswa->kode_siswa ?></th>
+              <th><?php echo esc($siswa->kode_siswa) ?></th>
             </tr>
           </thead>
           <tbody>
@@ -29,13 +29,13 @@
               <td>Status Pendaftaran</td>
               <td>
                 <?php if($siswa->status_pendaftaran=='Menunggu') { ?>
-                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Diterima') { ?>
-                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Tidak-Diterima') { ?>
-                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }else{ ?>
-                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php } ?>
               </td>
             </tr>
@@ -88,22 +88,22 @@
             }
             $data_total+=$data_id;
           ?>
-          <tr data-id="<?php echo $data_id ?>">
-            <td class="text-center"><?php echo $no ?></td>
+          <tr data-id="<?php echo esc($data_id) ?>">
+            <td class="text-center"><?php echo esc($no) ?></td>
             
-            <td><?php echo $jenis_dokumen->nama_jenis_dokumen ?>
+            <td><?php echo esc($jenis_dokumen->nama_jenis_dokumen) ?>
               <small>
-                <br><?php echo $jenis_dokumen->keterangan ?>
+                <br><?php echo esc($jenis_dokumen->keterangan) ?>
               </small>
             </td>
             <td>
               <?php if($jenis_dokumen->status_jenis_dokumen=='Wajib') { ?>
                 <span class="badge bg-info">
-                  <i class="fa fa-check-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                  <i class="fa fa-check-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                 </span>
               <?php }else{ ?>
                 <span class="badge bg-secondary">
-                  <i class="fa fa-times-circle"></i> <?php echo $jenis_dokumen->status_jenis_dokumen ?>
+                  <i class="fa fa-times-circle"></i> <?php echo esc($jenis_dokumen->status_jenis_dokumen) ?>
                 </span>
               <?php } ?>
             </td>
@@ -121,7 +121,7 @@
             </td>                
             <td>
               <?php if($check_dokumen) { ?>
-                <button type="button" class="btn btn-secondary btn-xs mb-1" data-toggle="modal" data-target="#modal-<?php echo $jenis_dokumen->id_jenis_dokumen ?>">
+                <button type="button" class="btn btn-secondary btn-xs mb-1" data-toggle="modal" data-target="#modal-<?php echo esc($jenis_dokumen->id_jenis_dokumen) ?>">
                   <i class="fa fa-eye"></i> Lihat
                 </button>
                 <a class="btn btn-secondary btn-xs mb-1" href="<?php echo base_url('admin/gelombang/unduh/'.$check_dokumen->kode_dokumen.'/'.$siswa->slug_siswa) ?>" target="_blank">
@@ -138,7 +138,7 @@
                 echo csrf_field(); 
                 ?>
 
-                <input type="hidden" name="id_jenis_dokumen" value="<?php echo $jenis_dokumen->id_jenis_dokumen ?>">
+                <input type="hidden" name="id_jenis_dokumen" value="<?php echo esc($jenis_dokumen->id_jenis_dokumen) ?>">
 
                 <div class="row">
                   <div class="col-md-8">

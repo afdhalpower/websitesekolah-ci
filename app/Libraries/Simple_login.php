@@ -13,10 +13,35 @@ class Simple_login
 		$this->session  = \Config\Services::session();
 		$uri            = service('uri');
 		$m_user 		= new User_model();
+
+		// Brute force protection: max 5 attempts per 5 minutes per username
+		$rateLimitDir = WRITEPATH . 'rate_limit/';
+		if (!is_dir($rateLimitDir)) {
+			mkdir($rateLimitDir, 0755, true);
+		}
+		$rateFile = $rateLimitDir . 'login_' . md5($username) . '.json';
+		$attempts = [];
+		if (file_exists($rateFile)) {
+			$attempts = json_decode(file_get_contents($rateFile), true) ?? [];
+			// Clean up expired attempts (older than 5 minutes)
+			$attempts = array_filter($attempts, function($ts) {
+				return (time() - $ts) < 300;
+			});
+			$attempts = array_values($attempts);
+		}
+
+		if (count($attempts) >= 5) {
+			$this->session->setFlashdata('warning','Terlalu banyak percobaan login. Silakan coba lagi dalam 5 menit.');
+			return redirect()->to(base_url('login'));
+		}
+
 		$user 			= $m_user->login($username,$password);
 		if($user) 
 		{
-			// Jika username password benar
+			// Jika username password benar - clear rate limit on success
+			if (file_exists($rateFile)) {
+				unlink($rateFile);
+			}
 			$this->session->set('username',$username);
 			$this->session->set('id_user',$user->id_user);
 			$this->session->set('id_staff',$user->id_staff);
@@ -32,6 +57,9 @@ class Simple_login
 			
             exit;
 		}else{
+			// Track failed attempt for brute force protection
+			$attempts[] = time();
+			file_put_contents($rateFile, json_encode($attempts));
 			// jika username password salah
 			$this->session->setFlashdata('warning','Username atau password salah');
 			return redirect()->to(base_url('login'));
@@ -144,6 +172,13 @@ class Simple_login
 			$this->session->set('pengalihan',$pengalihan);
 			$this->session->setFlashdata('warning','Anda belum login');
 			header("Location: ".base_url('login')).'?redirect='.$pengalihan;
+	        exit;
+		}
+		// Role-based access: only Admin level allowed
+		if($this->session->get('akses_level') !== 'Admin')
+		{
+			$this->session->setFlashdata('warning','Anda tidak memiliki akses ke halaman ini');
+			header("Location: ".base_url('login'));
 	        exit;
 		}
 	}

@@ -1,7 +1,7 @@
-<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?php echo $i ?>">
+<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?php echo esc($i) ?>">
     <i class="fa fa-trash"></i>
 </button>
-<div class="modal fade" id="myModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal<?php echo esc($i) ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">

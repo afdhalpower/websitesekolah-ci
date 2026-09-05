@@ -6,7 +6,7 @@
               <?php foreach($client as $client) { ?>
               <div class="col-4 col-md-2">
                 <figure class="px-1 px-md-0 px-lg-1 px-xl-2 px-xxl-3">
-                  <img src="<?php echo base_url('assets/upload/image/'.$client->gambar) ?>" alt="<?php echo $client->nama_client ?>" /></figure>
+                  <img src="<?php echo base_url('assets/upload/image/'.$client->gambar) ?>" alt="<?php echo esc($client->nama_client) ?>" /></figure>
               </div>
               <!--/column -->
               <?php } ?>

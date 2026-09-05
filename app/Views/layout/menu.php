@@ -23,7 +23,7 @@ Header Area
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="<?php echo base_url() ?>">
-                                    <img src="<?php echo $this->website->logo() ?>" alt="<?php echo $this->website->namaweb() ?>" style="max-width: 250px; max-height: 80px; width: auto; height: auto;"></a>
+                                    <img src="<?php echo esc($this->website->logo()) ?>" alt="<?php echo esc($this->website->namaweb()) ?>" style="max-width: 250px; max-height: 80px; width: auto; height: auto;"></a>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -40,7 +40,7 @@ Header Area
                                                     <a href="#">Portfolio</a>
                                                     <ul class="sub-menu">
                                                         <?php foreach($nav_portfolio as $nav_portfolio) { ?>
-                                                            <li><a href="<?php echo base_url('portfolio/detail/'.$nav_portfolio->slug_kategori_portfolio) ?>"><?php echo $nav_portfolio->nama_kategori_portfolio ?></a></li>
+                                                            <li><a href="<?php echo base_url('portfolio/detail/'.$nav_portfolio->slug_kategori_portfolio) ?>"><?php echo esc($nav_portfolio->nama_kategori_portfolio) ?></a></li>
                                                         <?php } ?>
                                                         <li><a href="<?php echo base_url('portfolio') ?>">Semua Portfolio</a></li>
                                                     </ul>
@@ -51,7 +51,7 @@ Header Area
                                                     <a href="#">Layanan</a>
                                                     <ul class="sub-menu">
                                                         <?php foreach($nav_layanan2 as $nav_layanan2) { ?>
-                                                            <li><a href="<?php echo base_url('layanan/detail/'.$nav_layanan2->slug_berita) ?>"><?php echo $nav_layanan2->judul_berita ?></a></li>
+                                                            <li><a href="<?php echo base_url('layanan/detail/'.$nav_layanan2->slug_berita) ?>"><?php echo esc($nav_layanan2->judul_berita) ?></a></li>
                                                         <?php } ?>
                                                         <li><a href="<?php echo base_url('layanan') ?>">Semua Layanan</a></li>
                                                     </ul>
@@ -63,15 +63,15 @@ Header Area
                                                         <li><a href="<?php echo base_url('profil') ?>">Profil Kami</a>
                                                             <ul>
                                                                 <?php foreach($nav_profil as $nav_profil) { ?>
-                                                                    <li><a href="<?php echo base_url('profil/'.$nav_profil->slug_berita) ?>"><?php echo $nav_profil->judul_berita ?></a></li>
+                                                                    <li><a href="<?php echo base_url('profil/'.$nav_profil->slug_berita) ?>"><?php echo esc($nav_profil->judul_berita) ?></a></li>
                                                                 <?php } ?>
-                                                                <li><a href="<?php echo base_url('staff') ?>">Team <?php echo $this->website->namaweb() ?></a></li>
+                                                                <li><a href="<?php echo base_url('staff') ?>">Team <?php echo esc($this->website->namaweb()) ?></a></li>
                                                             </ul>
                                                         </li>
                                                         <li><a href="<?php echo base_url('layanan') ?>">Produk &amp; Layanan</a>
                                                             <ul>
                                                                 <?php foreach($nav_layanan as $nav_layanan) { ?>
-                                                                    <li><a href="<?php echo base_url('layanan/detail/'.$nav_layanan->slug_berita) ?>"><?php echo $nav_layanan->judul_berita ?></a></li>
+                                                                    <li><a href="<?php echo base_url('layanan/detail/'.$nav_layanan->slug_berita) ?>"><?php echo esc($nav_layanan->judul_berita) ?></a></li>
                                                                 <?php } ?>
                                                                 <li><a href="<?php echo base_url('layanan') ?>">Semua Layanan</a></li>
                                                             </ul>
@@ -91,7 +91,7 @@ Header Area
                                                     <a href="#">Berita</a>
                                                     <ul class="sub-menu">
                                                         <?php foreach($nav_berita as $nav_berita) { ?>
-                                                            <li><a href="<?php echo base_url('berita/kategori/'.$nav_berita->slug_kategori) ?>"><?php echo $nav_berita->nama_kategori ?></a></li>
+                                                            <li><a href="<?php echo base_url('berita/kategori/'.$nav_berita->slug_kategori) ?>"><?php echo esc($nav_berita->nama_kategori) ?></a></li>
                                                         <?php } ?>
                                                         <li><a href="<?php echo base_url('berita') ?>">Indeks Berita</a></li>
                                                     </ul>
@@ -121,7 +121,7 @@ Header Area
                                                     <i class="fa fa-sign-out-alt"></i>
                                                 </a>
                                             <?php }}else{ ?>
-                                                <a href="https://wa.me/<?php echo $this->website->whatsapp() ?>?text=<?php echo $this->website->pesan_whatsapp() ?>" class="btn btn-success btn-xs mb-1" target="_blank"><i class="fab fa-whatsapp"></i> Chat WA</a>
+                                                <a href="https://wa.me/<?php echo esc($this->website->whatsapp()) ?>?text=<?php echo esc($this->website->pesan_whatsapp()) ?>" class="btn btn-success btn-xs mb-1" target="_blank"><i class="fab fa-whatsapp"></i> Chat WA</a>
                                                 <?php if($this->website->fitur_pendaftaran()=='On') { ?>
                                                 <a href="<?php echo base_url('signin') ?>" class="btn btn-primary btn-sm"><i class="fa fa-lock"></i> Masuk</a>
                                                 <a href="<?php echo base_url('register') ?>" class="btn btn-danger btn-sm"><i class="fa fa-edit"></i> Daftar</a>

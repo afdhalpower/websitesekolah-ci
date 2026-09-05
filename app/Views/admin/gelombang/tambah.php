@@ -9,8 +9,8 @@
 	<div class="form-group row">
 		<label class="col-3">Nama Periode PPDB</label>
 		<div class="col-9">
-			<input type="text" name="judul" class="form-control" placeholder="Nama Periode PPDB" value="<?php if(isset($_POST['judul'])) {  echo set_value('judul'); }else{ echo $nama_gelombang; } ?>" required>
-			<small class="text-secondary">Nama Periode PPDB. <span class="text-danger">Anda dapat menggantinya sesuai kebutuhan.</span> Misal: <strong><?php echo $nama_gelombang ?></strong></small>
+			<input type="text" name="judul" class="form-control" placeholder="Nama Periode PPDB" value="<?php if(isset($_POST['judul'])) {  echo set_value('judul'); }else{ echo esc($nama_gelombang); } ?>" required>
+			<small class="text-secondary">Nama Periode PPDB. <span class="text-danger">Anda dapat menggantinya sesuai kebutuhan.</span> Misal: <strong><?php echo esc($nama_gelombang) ?></strong></small>
 		</div>
 
 	</div>
@@ -25,7 +25,7 @@
 		</div>
 
 		<div class="col-3">
-			<input type="text" name="tahun_ajaran" value="<?php if(isset($_POST['tahun_ajaran'])) { echo set_value('tahun_ajaran'); }else{ echo $tahun_ajaran; } ?>" placeholder="Tahun ajaran" class="form-control" required>
+			<input type="text" name="tahun_ajaran" value="<?php if(isset($_POST['tahun_ajaran'])) { echo set_value('tahun_ajaran'); }else{ echo esc($tahun_ajaran); } ?>" placeholder="Tahun ajaran" class="form-control" required>
 			<small class="text-secondary">Tahun Ajaran: <?php echo date('Y') ?>/<?php echo date('Y')+1; ?></small>
 		</div>
 

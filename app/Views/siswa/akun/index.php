@@ -10,33 +10,33 @@
 					<thead>
 						<tr>
 							<th>Nama</th>
-							<th><?php echo $akun->nama ?></th>
+							<th><?php echo esc($akun->nama) ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>Email</td>
-							<td><?php echo $akun->email ?></td>
+							<td><?php echo esc($akun->email) ?></td>
 						</tr>
 						<tr>
 							<td>Username</td>
-							<td><?php echo $akun->username ?></td>
+							<td><?php echo esc($akun->username) ?></td>
 						</tr>
 						<tr>
 							<td>Status</td>
-							<td><?php echo $akun->status_akun ?></td>
+							<td><?php echo esc($akun->status_akun) ?></td>
 						</tr>
 						<tr>
 							<td>Jenis</td>
-							<td><?php echo $akun->jenis_akun ?></td>
+							<td><?php echo esc($akun->jenis_akun) ?></td>
 						</tr>
 						<tr>
 							<td>Telepon</td>
-							<td><?php echo $akun->telepon ?></td>
+							<td><?php echo esc($akun->telepon) ?></td>
 						</tr>
 						<tr>
 							<td>Alamat</td>
-							<td><?php echo $akun->alamat ?></td>
+							<td><?php echo esc($akun->alamat) ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -53,12 +53,12 @@
 			<div class="card-body">
 				<?php echo form_open(base_url('siswa/akun')) ?>
                 <div class="form-group mb-4">
-                  <input type="text" class="form-control" name="nama" value="<?php echo $akun->nama ?>"  placeholder="Name" id="loginName">
+                  <input type="text" class="form-control" name="nama" value="<?php echo esc($akun->nama) ?>"  placeholder="Name" id="loginName">
                   <label for="loginName" class="text-primary">Nama</label>
                 </div>
 
                 <div class="form-group mb-4">
-                  <input type="email" class="form-control" name="email" value="<?php echo $akun->email ?>"  placeholder="Email" id="loginEmail">
+                  <input type="email" class="form-control" name="email" value="<?php echo esc($akun->email) ?>"  placeholder="Email" id="loginEmail">
                   <label for="loginEmail" class="text-primary">Email (Username)</label>
                 </div>
 
@@ -77,12 +77,12 @@
 
                 
                 <div class="form-group mb-4">
-                  <input type="text" class="form-control" name="telepon"  value="<?php echo $akun->telepon ?>" placeholder="Telepon/HP" id="Telepon">
+                  <input type="text" class="form-control" name="telepon"  value="<?php echo esc($akun->telepon) ?>" placeholder="Telepon/HP" id="Telepon">
                   <label for="loginEmail" class="text-primary">Telepon/HP</label>
                 </div>
 
                 <div class="form-group mb-4">
-                  <textarea name="alamat" class="form-control" placeholder="Alamat" required="required"><?php echo $akun->alamat ?></textarea>
+                  <textarea name="alamat" class="form-control" placeholder="Alamat" required="required"><?php echo esc($akun->alamat) ?></textarea>
                   <label for="loginEmail" class="text-primary">Alamat lengkap</label>
                 </div>
 

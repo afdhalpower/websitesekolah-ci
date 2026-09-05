@@ -11,9 +11,9 @@
 	<tbody>
 		<?php $no=1; foreach($pekerjaan as $pekerjaan) { ?>
 		<tr>
-			<td class="text-center"><?php echo $no ?></td>
-			<td><?php echo $pekerjaan->nama_pekerjaan ?></td>
-			<td><?php echo $pekerjaan->urutan ?></td>
+			<td class="text-center"><?php echo esc($no) ?></td>
+			<td><?php echo esc($pekerjaan->nama_pekerjaan) ?></td>
+			<td><?php echo esc($pekerjaan->urutan) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/pekerjaan/edit/'.$pekerjaan->id_pekerjaan) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
 				<a href="<?php echo base_url('admin/pekerjaan/delete/'.$pekerjaan->id_pekerjaan) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>

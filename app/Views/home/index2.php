@@ -10,17 +10,17 @@ if($popup) {
             <div class="row">
               <div class="col-md-12 text-center">
                 <figure class="mb-6">
-                    <a href="<?php echo $popup->website ?>" target="_blank">
-                        <img src="<?php echo base_url('assets/upload/image/thumbs/'.$popup->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/thumbs/'.$popup->gambar) ?> 2x" alt="<?php echo $popup->judul_galeri ?>" class="img-thumbnail rounded" />
+                    <a href="<?php echo esc($popup->website) ?>" target="_blank">
+                        <img src="<?php echo base_url('assets/upload/image/thumbs/'.$popup->gambar) ?>" srcset="<?php echo base_url('assets/upload/image/thumbs/'.$popup->gambar) ?> 2x" alt="<?php echo esc($popup->judul_galeri) ?>" class="img-thumbnail rounded" />
                     </a>
                 </figure>
               </div>
               <!-- /column -->
             </div>
             <!-- /.row -->
-            <h3><a href="<?php echo $popup->website ?>" target="_blank"><?php echo $popup->judul_galeri ?></a></h3>
+            <h3><a href="<?php echo esc($popup->website) ?>" target="_blank"><?php echo esc($popup->judul_galeri) ?></a></h3>
             <div class="mb-6">
-                <?php echo $popup->isi ?>
+                <?php echo esc($popup->isi) ?>
             </div>
             <div class="newsletter-wrapper">
               <div class="row">
@@ -30,7 +30,7 @@ if($popup) {
                     <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times"></i> &nbsp; Close
                     </button>
-                    <a href="<?php echo $popup->website ?>" class="btn btn-primary" target="_blank">
+                    <a href="<?php echo esc($popup->website) ?>" class="btn btn-primary" target="_blank">
                         Lihat detail &nbsp;<i class="fa fa-chevron-right"></i>
                     </a>
                   </div>
@@ -58,7 +58,7 @@ Hero Area
         <div class="row">
             <div class="col-lg-8 mt-3">
                 <div class="hero-style1 pt-4">
-                    <h1 class="hero-title text-warning"><?php echo $slider->judul_galeri ?></h1>
+                    <h1 class="hero-title text-warning"><?php echo esc($slider->judul_galeri) ?></h1>
                     <p class="hero-text text-white"><?php echo strip_tags($slider->isi) ?></p>
 
                     <div class="d-flex justify-content-center justify-content-lg-start mb-5" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
@@ -67,8 +67,8 @@ Hero Area
                             Hubungi Kami <i class="fa fa-arrow-right"></i>
                         </a>
 
-                        <a href="<?php echo $slider->website ?>" target="_blank" class="btn btn-warning rounded-pill btn-lg"> 
-                            <?php echo $slider->text_website ?> <i class="fa fa-arrow-right"></i>
+                        <a href="<?php echo esc($slider->website) ?>" target="_blank" class="btn btn-warning rounded-pill btn-lg"> 
+                            <?php echo esc($slider->text_website) ?> <i class="fa fa-arrow-right"></i>
                         </a>
                     </span>
                      
@@ -100,21 +100,21 @@ About Area
                 <div class="col-xl-6">
                     <div class="img-box5 mt-0 pt-0">
                         <div class="img1 mt-0 pt-0">
-                            <img src="<?php echo $this->website->banner() ?>" alt="<?php echo $this->website->namaweb() ?>" class="img img-thumbnail">
+                            <img src="<?php echo esc($this->website->banner()) ?>" alt="<?php echo esc($this->website->namaweb()) ?>" class="img img-thumbnail">
                         </div>
                         <div class="shape">
-                            <img src="<?php echo base_url() ?>assets/javawebmedia/assets/img/normal/about_shape_1.png" alt="<?php echo $this->website->namaweb() ?>">
+                            <img src="<?php echo base_url() ?>assets/javawebmedia/assets/img/normal/about_shape_1.png" alt="<?php echo esc($this->website->namaweb()) ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="title-area mb-35">
-                        <span class="sub-title"><?php echo $this->website->tagline() ?></span>
-                        <h2 class="sec-title fw-semibold">Tentang <?php echo $this->website->namaweb() ?></h2>
+                        <span class="sub-title"><?php echo esc($this->website->tagline()) ?></span>
+                        <h2 class="sec-title fw-semibold">Tentang <?php echo esc($this->website->namaweb()) ?></h2>
                     </div>
-                    <h5 class="mt-n2 mb-25"><?php echo $site->ringkasan ?></h5>
+                    <h5 class="mt-n2 mb-25"><?php echo esc($site->ringkasan) ?></h5>
                     <div class="checklist style2 mb-35">
-                        <?php echo $site->tentang ?>
+                        <?php echo esc($site->tentang) ?>
                     </div>
                     <div class="btn-group">
                         <a href="<?php echo$site->link_website ?>" class="as-btn"><?php echo$site->link_text ?><i class="fas fa-arrow-right ms-2"></i></a>
@@ -135,7 +135,7 @@ Keunggulan
         <div class="row">
             <div class="col-md-8 offset-md-2 mb-1">
                 <h3 class="text-center text-white mb-1">Kenapa bekerjasama dengan kami?</h3>
-                <h5 class="text-warning text-center mb-5">Temukan Alasan untuk Bekerjasama dengan <?php echo $this->website->namaweb() ?></h5>
+                <h5 class="text-warning text-center mb-5">Temukan Alasan untuk Bekerjasama dengan <?php echo esc($this->website->namaweb()) ?></h5>
             </div>
         </div>
         
@@ -151,10 +151,10 @@ Keunggulan
                     <div class="category-list_content">
                         <h3 class="category-list_title">
                             <a href="<?php echo base_url('berita/read/'.$keunggulan->slug_berita) ?>">
-                                <strong><?php echo $keunggulan->judul_berita ?></strong>
+                                <strong><?php echo esc($keunggulan->judul_berita) ?></strong>
                             </a>
                         </h3>
-                        <span class="category-list_text"><?php echo $keunggulan->ringkasan ?></span>
+                        <span class="category-list_text"><?php echo esc($keunggulan->ringkasan) ?></span>
                     </div>
                     <a href="<?php echo base_url('berita/read/'.$keunggulan->slug_berita) ?>" class="icon-btn"><i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -186,15 +186,15 @@ berita
                         <div class="course-content">
                             <h3 class="course-title">
                                 <a href="<?php echo base_url('berita/read/'.$berita->slug_berita) ?>">
-                                    <?php echo $berita->judul_berita ?>
+                                    <?php echo esc($berita->judul_berita) ?>
                                 </a></h3>
                             <div class="course-author">
 
-                                <p><?php echo $berita->ringkasan ?></p>
+                                <p><?php echo esc($berita->ringkasan) ?></p>
                             </div>
                             <div class="course-meta">
-                                <span><i class="fal fa-tags"></i> <?php echo $berita->nama_kategori ?></span>
-                                <span><i class="fal fa-eye"></i>  <?php echo $berita->hits ?></span>
+                                <span><i class="fal fa-tags"></i> <?php echo esc($berita->nama_kategori) ?></span>
+                                <span><i class="fal fa-eye"></i>  <?php echo esc($berita->hits) ?></span>
                             </div>
                         </div>
                     </div>
@@ -229,15 +229,15 @@ staff
                 <?php foreach($staff as $staff) { ?>
                 <div class="col-lg-6 mb-5">
                     <div class="testi-grid">
-                        <p class="testi-grid_text"><?php echo $staff->keahlian ?></p>
+                        <p class="testi-grid_text"><?php echo esc($staff->keahlian) ?></p>
                         <div class="testi-grid_bottom">
                             <div class="testi-grid_author">
                                 <div class="testi-grid_avater">
-                                    <img src="<?php echo base_url('assets/upload/staff/thumbs/'.$staff->gambar) ?>" alt="<?php echo $staff->nama ?>">
+                                    <img src="<?php echo base_url('assets/upload/staff/thumbs/'.$staff->gambar) ?>" alt="<?php echo esc($staff->nama) ?>">
                                 </div>
                                 <div>
-                                    <h3 class="testi-grid_name"><?php echo $staff->nama ?></h3>
-                                    <span class="testi-grid_desig text-warning"><?php echo $staff->jabatan ?></span>
+                                    <h3 class="testi-grid_name"><?php echo esc($staff->nama) ?></h3>
+                                    <span class="testi-grid_desig text-warning"><?php echo esc($staff->jabatan) ?></span>
                                 </div>
                             </div>
                             <div class="testi-grid_review">

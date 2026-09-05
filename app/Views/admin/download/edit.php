@@ -6,14 +6,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Judul Download</label>
 	<div class="col-md-9">
-		<input type="text" name="judul_download" class="form-control" value="<?php echo $download->judul_download ?>" required>
+		<input type="text" name="judul_download" class="form-control" value="<?php echo esc($download->judul_download) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Upload File</label>
 	<div class="col-md-9">
-		<input type="file" name="gambar" class="form-control" value="<?php echo $download->gambar ?>">
+		<input type="file" name="gambar" class="form-control" value="<?php echo esc($download->gambar) ?>">
 	</div>
 </div>
 
@@ -22,8 +22,8 @@ echo csrf_field();
 	<div class="col-md-5">
 		<select name="id_kategori_download" class="form-control">
 			<?php foreach($kategori_download as $kategori_download) { ?>
-			<option value="<?php echo $kategori_download->id_kategori_download ?>" <?php if($download->id_kategori_download==$kategori_download->id_kategori_download) { echo 'selected'; } ?>>
-				<?php echo $kategori_download->nama_kategori_download ?>
+			<option value="<?php echo esc($kategori_download->id_kategori_download) ?>" <?php if($download->id_kategori_download==$kategori_download->id_kategori_download) { echo 'selected'; } ?>>
+				<?php echo esc($kategori_download->nama_kategori_download) ?>
 			</option>
 			<?php } ?>
 		</select>
@@ -48,14 +48,14 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-md-3">Isi Download</label>
 	<div class="col-md-9">
-		<textarea name="isi" class="form-control konten"><?php echo $download->isi ?></textarea>
+		<textarea name="isi" class="form-control konten"><?php echo esc($download->isi) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-3">Link/URL</label>
 	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo $download->website ?>">
+		<input type="text" name="website" class="form-control" value="<?php echo esc($download->website) ?>">
 	</div>
 </div>
 

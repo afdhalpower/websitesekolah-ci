@@ -20,7 +20,14 @@ class Signin extends BaseController
 	{
 		$session 		= \Config\Services::session();
 		if(isset($_GET['redirect'])) {
-			$this->session->set('pengalihan',$_GET['redirect']);
+			$redirect = $_GET['redirect'];
+			// Only allow relative paths to prevent open redirect attacks
+			if(strpos($redirect, '://') === false && strpos($redirect, '//') === false && $redirect[0] !== '/') {
+				$redirect = '/' . $redirect;
+			}
+			if(strpos($redirect, '://') === false && strpos($redirect, '//') === false) {
+				$this->session->set('pengalihan', $redirect);
+			}
 		}
 		$m_konfigurasi 	= new Konfigurasi_model();
 		$m_siswa 		= new Client_model();

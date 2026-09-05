@@ -31,7 +31,7 @@ echo csrf_field();
                         <select name="id_desa" class="form-control" required="">
                             <option value="">Pilih lokasi agenda</option>
                             <?php foreach($desa as $desa){ ?>
-                                <option value="<?php echo $desa['id_desa']; ?>"><?php echo $desa['nama_desa']; ?></option>
+                                <option value="<?php echo esc($desa['id_desa']); ?>"><?php echo esc($desa['nama_desa']); ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -63,13 +63,13 @@ echo csrf_field();
 <?php $i=1; foreach($lokasi_agenda as $lokasi_agenda) { ?>
 
 <tr class="odd gradeX">
-    <td><?php echo $i ?></td>
+    <td><?php echo esc($i) ?></td>
     <td>
-    <?php echo $agenda['nama_agenda']  ?>
+    <?php echo esc($agenda['nama_agenda'])  ?>
     </td>
-    <td><?php echo $lokasi_agenda['nama_desa'] ?></td>
+    <td><?php echo esc($lokasi_agenda['nama_desa']) ?></td>
     <td> 
-        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit-<?php echo $lokasi_agenda['id_lokasi_agenda'] ?>">
+        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit-<?php echo esc($lokasi_agenda['id_lokasi_agenda']) ?>">
         <i class="fa fa-edit"></i> Edit
     </button>
     <a href="<?php echo base_url('admin/agenda/delete_lokasi/'.$lokasi_agenda['id_lokasi_agenda'].'/'.$agenda['id_agenda']) ?>" class="btn btn-danger btn-xs delete-link" onclick="confirmation(event)"><i class="fa fa-trash"></i> Hapus</a>

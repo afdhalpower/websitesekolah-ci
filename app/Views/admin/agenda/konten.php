@@ -1,10 +1,10 @@
 
-<div id="Detail<?php echo $produk->id_produk ?>" class="modal fade">
+<div id="Detail<?php echo esc($produk->id_produk) ?>" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><?php echo $produk->nama_produk ?></h4>
+                <h4 class="modal-title"><?php echo esc($produk->nama_produk) ?></h4>
             </div>
             <div class="modal-body">
 
@@ -15,19 +15,19 @@
     <tbody>
         <tr>
             <td width="30%">Nama Produk</td>
-            <td>: <?php echo $produk->nama_produk ?></td>
+            <td>: <?php echo esc($produk->nama_produk) ?></td>
         </tr>
         <tr>
           <td width="30%">Jumlah produk</td>
-          <td>: <?php echo $produk->jumlah_produk ?> pcs</td>
+          <td>: <?php echo esc($produk->jumlah_produk) ?> pcs</td>
       </tr>
         <tr>
           <td width="30%">Berat produk</td>
-          <td>: <?php echo $produk->berat ?> kg</td>
+          <td>: <?php echo esc($produk->berat) ?> kg</td>
       </tr>
         <tr>
           <td width="30%">Urutan (PXLXT cm)</td>
-          <td>: <?php echo $produk->panjang ?> x <?php echo $produk->lebar ?> x <?php echo $produk->tinggi ?> cm</td>
+          <td>: <?php echo esc($produk->panjang) ?> x <?php echo esc($produk->lebar) ?> x <?php echo esc($produk->tinggi) ?> cm</td>
       </tr>
         <tr>
           <td width="30%">Biaya Pendaftaran  beli</td>
@@ -43,11 +43,11 @@
       </tr>
         <tr>
           <td width="30%">Kategori</td>
-          <td>: <?php echo $produk->nama_kategori_produk ?></td>
+          <td>: <?php echo esc($produk->nama_kategori_produk) ?></td>
       </tr>
         <tr>
           <td width="30%">Brand</td>
-          <td>: <?php echo $produk->nama_brand ?></td>
+          <td>: <?php echo esc($produk->nama_brand) ?></td>
       </tr>
         
         <tr>
@@ -56,20 +56,20 @@
       </tr>
       <tr>
           <td width="30%">Tanggal input</td>
-          <td>: <?php echo $produk->tanggal_post ?></td>
+          <td>: <?php echo esc($produk->tanggal_post) ?></td>
       </tr>
         <tr>
           <td width="30%">Terakhir update</td>
-          <td>: <?php echo $produk->tanggal ?></td>
+          <td>: <?php echo esc($produk->tanggal) ?></td>
       </tr>
         <tr>
           <td width="30%">Diupdate oleh</td>
-          <td>: <?php echo $produk->nama ?></td>
+          <td>: <?php echo esc($produk->nama) ?></td>
       </tr>
       <tr>
           <td colspan="2">
           <p><strong>Deskripsi:</strong></p><hr>
-          <?php echo $produk->isi ?></td>
+          <?php echo esc($produk->isi) ?></td>
       </tr>
     </tbody>
 </table>

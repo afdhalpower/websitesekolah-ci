@@ -7,7 +7,7 @@ $uri = service('uri');
   <div class="col-md-5">
     <br>
     <div class="input-group">                  
-      <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci pencarian agenda...." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+      <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci pencarian agenda...." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
       <span class="input-group-btn ">
         <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
         <a href="<?php echo base_url('admin/agenda/tambah') ?>" class="btn btn-success btn-flat">
@@ -16,7 +16,7 @@ $uri = service('uri');
     </div>
   </div>
   <div class="col-md-7 text-left">
-    <?php if(isset($pagin)) { echo $pagin; } ?>
+    <?php if(isset($pagin)) { echo esc($pagin); } ?>
   </div>
 </div>
 <?php echo form_close(); ?>
@@ -32,7 +32,7 @@ echo form_open(base_url('admin/agenda/proses'));
         </button> 
       <select name="id_kategori_agenda" class="form-control">
         <?php foreach($kategori_agenda as $kategori_agenda) { ?>
-          <option value="<?php echo $kategori_agenda['id_kategori_agenda'] ?>"><?php echo $kategori_agenda['nama_kategori_agenda'] ?></option>
+          <option value="<?php echo esc($kategori_agenda['id_kategori_agenda']) ?>"><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></option>
         <?php } ?>
       </select>
       <span class="input-group-btn" >
@@ -92,8 +92,8 @@ echo form_open(base_url('admin/agenda/proses'));
             <tr class="odd gradeX">
               <td class="text-center">
                 <div class="icheck-primary">
-                  <input type="checkbox" name="id_agenda[]" value="<?php echo $agenda['id_agenda'] ?>" id="check<?php echo $i ?>">
-                  <label for="check<?php echo $i ?>"></label>
+                  <input type="checkbox" name="id_agenda[]" value="<?php echo esc($agenda['id_agenda']) ?>" id="check<?php echo esc($i) ?>">
+                  <label for="check<?php echo esc($i) ?>"></label>
                 </div>
               </td>
               <td>
@@ -103,30 +103,30 @@ echo form_open(base_url('admin/agenda/proses'));
               </td>
               
               <td><a href="<?php echo base_url('agenda/detail/'.$agenda['slug_agenda']) ?>" class="text-capitalize" target="_blank">
-                <?php echo $agenda['nama_agenda'] ?> <sup><i class="fa fa-search"></i></sup></a>
+                <?php echo esc($agenda['nama_agenda']) ?> <sup><i class="fa fa-search"></i></sup></a>
                 <small>
-                  <br><i class="fa fa-code"></i> <?php echo $agenda['kode_agenda'] ?>
-                  <br><i class="fa fa-check-circle"></i> <?php echo $agenda['urutan'] ?>
+                  <br><i class="fa fa-code"></i> <?php echo esc($agenda['kode_agenda']) ?>
+                  <br><i class="fa fa-check-circle"></i> <?php echo esc($agenda['urutan']) ?>
                   <br><i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/agenda/kategori/'.$agenda['id_kategori_agenda']) ?>" class="text-capitalize">
-                <?php echo $agenda['nama_kategori_agenda'] ?></a></small></td>
-                <td><?php echo $agenda['nama_tempat'] ?>
+                <?php echo esc($agenda['nama_kategori_agenda']) ?></a></small></td>
+                <td><?php echo esc($agenda['nama_tempat']) ?>
                 <small>
-                  <br><i class="fa fa-map"></i> <?php echo $agenda['link_google_map'] ?>
+                  <br><i class="fa fa-map"></i> <?php echo esc($agenda['link_google_map']) ?>
                   <br><i class="fa fa-home"></i> <?php echo strip_tags($agenda['alamat']) ?>
                 </small>
                 </td>
                 <td>Rp <?php echo number_format($agenda['harga'],'0',',','.') ?>
                   <small>
                     <br><i class="fa fa-shopping-cart"></i> Rp <?php echo number_format($agenda['harga_diskon'],'0',',','.') ?>
-                    <br><i class="fa fa-calendar-check"></i> <?php echo $this->website->tanggal_id($agenda['tanggal_buka']) ?> sd <?php echo $this->website->tanggal_id($agenda['tanggal_tutup']) ?>
-                    <br><i class="fa fa-calendar-times"></i> <?php echo $this->website->tanggal_id($agenda['tanggal_mulai']) ?> sd <?php echo $this->website->tanggal_id($agenda['tanggal_selesai']) ?>
+                    <br><i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_id($agenda['tanggal_buka'])) ?> sd <?php echo esc($this->website->tanggal_id($agenda['tanggal_tutup'])) ?>
+                    <br><i class="fa fa-calendar-times"></i> <?php echo esc($this->website->tanggal_id($agenda['tanggal_mulai'])) ?> sd <?php echo esc($this->website->tanggal_id($agenda['tanggal_selesai'])) ?>
                   </small>
                 </td>
                 <td class="text-center">
                   <a href="<?php echo base_url('admin/agenda/status_agenda/'.$agenda['status_agenda']) ?>">
                     <?php if($agenda['status_agenda']=='Publish') { ?>
                       <span class="badge bg-dark mb-1">
-                        <i class="fa fa-eye"></i> <?php echo $agenda['status_agenda'] ?>
+                        <i class="fa fa-eye"></i> <?php echo esc($agenda['status_agenda']) ?>
                       </span>
                     <?php }else{ ?>
                       <span class="badge bg-secondary mb-1">
@@ -136,7 +136,7 @@ echo form_open(base_url('admin/agenda/proses'));
                     </a>
                     <?php if($agenda['status_pendaftaran']=='Buka') { ?>
                       <span class="badge bg-info mb-1">
-                        <i class="fa fa-check-circle"></i> <?php echo $agenda['status_pendaftaran'] ?>
+                        <i class="fa fa-check-circle"></i> <?php echo esc($agenda['status_pendaftaran']) ?>
                       </span>
                     <?php }else{ ?>
                       <span class="badge bg-warning mb-1">
@@ -174,4 +174,4 @@ echo form_open(base_url('admin/agenda/proses'));
               <?php echo form_close(); ?>
 
               <div class="clearfix"><hr></div>
-              <div class="pull-right"><?php if(isset($pagin)) { echo $pagin; } ?></div>
+              <div class="pull-right"><?php if(isset($pagin)) { echo esc($pagin); } ?></div>

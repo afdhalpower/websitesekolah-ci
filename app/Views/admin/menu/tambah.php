@@ -51,7 +51,7 @@ echo csrf_field();
 				<div class="form-group row">
 					<label class="col-3">Nomor urut</label>
 					<div class="col-9">
-						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut" value="<?php if(isset($_POST['urutan'])) { echo set_value('urutan'); }else{ echo $urutan; } ?>">
+						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut" value="<?php if(isset($_POST['urutan'])) { echo set_value('urutan'); }else{ echo esc($urutan); } ?>">
 					</div>
 				</div>
 

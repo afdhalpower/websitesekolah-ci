@@ -3,7 +3,7 @@
 echo form_open(base_url('admin/menu')); 
 echo csrf_field(); 
 ?>
-<input type="hidden" name="id_konfigurasi" value="<?php echo $konfigurasi->id_konfigurasi ?>">
+<input type="hidden" name="id_konfigurasi" value="<?php echo esc($konfigurasi->id_konfigurasi) ?>">
 <div class="modal-basic modal fade show" id="modal-posisi" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content modal-bg-white ">

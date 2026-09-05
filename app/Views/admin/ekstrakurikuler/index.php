@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/ekstrakurikuler'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_ekstrakurikuler" class="form-control">
 		<?php foreach($kategori_ekstrakurikuler as $kategori_ekstrakurikuler) { ?>
-		<option value="<?php echo $kategori_ekstrakurikuler->id_kategori_ekstrakurikuler ?>">
-			<?php echo $kategori_ekstrakurikuler->nama_kategori_ekstrakurikuler ?>
+		<option value="<?php echo esc($kategori_ekstrakurikuler->id_kategori_ekstrakurikuler) ?>">
+			<?php echo esc($kategori_ekstrakurikuler->nama_kategori_ekstrakurikuler) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -70,26 +70,26 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_ekstrakurikuler[]" value="<?php echo $ekstrakurikuler->id_ekstrakurikuler ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_ekstrakurikuler[]" value="<?php echo esc($ekstrakurikuler->id_ekstrakurikuler) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td>
 				<?php if($ekstrakurikuler->gambar=="") { echo '-'; }else{ ?>
 					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$ekstrakurikuler->gambar) ?>" class="img img-thumbnail">
 				<?php } ?>
 			</td>
-			<td><?php echo $ekstrakurikuler->judul_ekstrakurikuler ?>
+			<td><?php echo esc($ekstrakurikuler->judul_ekstrakurikuler) ?>
 				<small>
-					<br><i class="fa fa-graduation-cap"></i> <?php echo $ekstrakurikuler->nama_penanggung_jawab ?>				
+					<br><i class="fa fa-graduation-cap"></i> <?php echo esc($ekstrakurikuler->nama_penanggung_jawab) ?>				
 				</small>
 			</td>
-			<td><?php echo $ekstrakurikuler->nama_kategori_ekstrakurikuler ?></td>
+			<td><?php echo esc($ekstrakurikuler->nama_kategori_ekstrakurikuler) ?></td>
 			<td>
 				<?php if($ekstrakurikuler->status_ekstrakurikuler=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $ekstrakurikuler->status_ekstrakurikuler ?>
+						<i class="fa fa-eye"></i> <?php echo esc($ekstrakurikuler->status_ekstrakurikuler) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">
@@ -97,7 +97,7 @@
 					</span>
 				<?php } ?>
 			</td>
-			<td><?php echo $ekstrakurikuler->nama ?></td>
+			<td><?php echo esc($ekstrakurikuler->nama) ?></td>
 			<td>
 				
 				<a href="<?php echo base_url('admin/ekstrakurikuler/edit/'.$ekstrakurikuler->id_ekstrakurikuler) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>

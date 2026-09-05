@@ -6,7 +6,7 @@ $this->website          = new Website();
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo $title ?></title>
+<title><?php echo esc($title) ?></title>
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="print">
 <link href="<?php echo base_url('assets/css/css-print.css') ?>" rel="stylesheet" media="screen">
 </head>
@@ -18,11 +18,11 @@ $this->website          = new Website();
     <tbody>
       <tr>
         <td style="width: 1.8cm;">
-          <img src="<?php echo $this->website->icon() ?>" style="width: 1.5cm; height: auto;">
+          <img src="<?php echo esc($this->website->icon()) ?>" style="width: 1.5cm; height: auto;">
         </td>
         <td>
           <h1>INFORMASI PENERIMAAN PESERTA DIDIK BARU
-            <br><?php echo $this->website->namaweb() ?>
+            <br><?php echo esc($this->website->namaweb()) ?>
           </h1>
         </td>
       </tr>
@@ -36,32 +36,32 @@ $this->website          = new Website();
       <thead>
         <tr>
           <th width="30%">Nama Periode</th>
-          <th><?php echo $gelombang->judul ?></th>
+          <th><?php echo esc($gelombang->judul) ?></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Tanggal pelaksanaan</td>
           <td>
-            <span class="text-secondary">Pembukaan:</span> <?php echo $this->website->hari($gelombang->tanggal_buka) ?>
-            <br><span class="text-secondary">Penutupan:</span> <?php echo $this->website->hari($gelombang->tanggal_tutup) ?>
-            <br><span class="text-secondary">Pengumuman:</span> <?php echo $this->website->hari($gelombang->tanggal_pengumuman) ?>
+            <span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
+            <br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
+            <br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
           </td>
         </tr>
         <tr>
           <td>Periode</td>
-          <td><?php echo $gelombang->tahun ?></td>
+          <td><?php echo esc($gelombang->tahun) ?></td>
         </tr>
         <tr>
           <td>Tahun Ajaran</td>
-          <td><?php echo $gelombang->tahun_ajaran ?></td>
+          <td><?php echo esc($gelombang->tahun_ajaran) ?></td>
         </tr>
         <tr>
           <td>Status</td>
           <td>
             <?php if($gelombang->status_gelombang=='Buka') { ?>
               <span class="badge bg-info">
-                <i class="fa fa-eye"></i> <?php echo $gelombang->status_gelombang ?>
+                <i class="fa fa-eye"></i> <?php echo esc($gelombang->status_gelombang) ?>
               </span>
             <?php }else{ ?>
               <span class="badge bg-secondary">
@@ -72,11 +72,11 @@ $this->website          = new Website();
         </tr>
         <tr>
           <td>Jenjang Pendidikan</td>
-          <td><?php echo $judul_jenjang_pendidikan ?></td>
+          <td><?php echo esc($judul_jenjang_pendidikan) ?></td>
         </tr>
         <tr>
               <td>Status Pendaftaran</td>
-              <td><?php echo $status_pendaftaran ?></td>
+              <td><?php echo esc($status_pendaftaran) ?></td>
             </tr>
       </tbody>
     </table>
@@ -84,7 +84,7 @@ $this->website          = new Website();
     <table class="printer">
       <thead>
         <tr>
-          <th width="30%"><?php echo $judul_jenjang_pendidikan ?></th>
+          <th width="30%"><?php echo esc($judul_jenjang_pendidikan) ?></th>
           <th>Jumlah</th>
         </tr>
       </thead>
@@ -93,31 +93,31 @@ $this->website          = new Website();
     <tr>
       <td>Jumlah Pendaftar</td>
       <td>
-        <?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total); ?>
+        <?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Semua',$id_jenjang_pendidikan)->total)); ?>
       </td>
     </tr>
     <tr>
       <td>Jumlah Menunggu</td>
       <td>
-        <?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total); ?>
+        <?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Menunggu',$id_jenjang_pendidikan)->total)); ?>
       </td>
     </tr>
     <tr>
       <td>Jumlah Diterima</td>
       <td>
-        <?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total); ?>
+        <?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diterima',$id_jenjang_pendidikan)->total)); ?>
       </td>
     </tr>
     <tr>
       <td>Jumlah Tidak Diterima</td>
       <td>
-        <?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total); ?>
+        <?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Tidak-Diterima',$id_jenjang_pendidikan)->total)); ?>
       </td>
     </tr>
     <tr>
       <td>Jumlah Diperiksa</td>
       <td>
-        <?php echo $this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total); ?>
+        <?php echo esc($this->website->angka($m_siswa->total_gelombang_status_siswa($id_gelombang,'Diperiksa',$id_jenjang_pendidikan)->total)); ?>
       </td>
     </tr>
 
@@ -144,20 +144,20 @@ $this->website          = new Website();
       $dokumen_tidak_wajib  = $m_dokumen->total_check($siswa->id_siswa,$tidak_wajib->status_jenis_dokumen);
     ?>
     <tr>
-      <td class="text-center"><?php echo $i ?></td>
-      <td><?php echo $siswa->nama_siswa ?></td>
-      <td><?php echo $siswa->jenis_kelamin ?></td>
-      <td><?php echo $siswa->tempat_lahir ?>, <?php echo $this->website->tanggal_id($siswa->tanggal_lahir) ?></td>
-      <td><?php echo $siswa->judul_jenjang_pendidikan ?></td>
+      <td class="text-center"><?php echo esc($i) ?></td>
+      <td><?php echo esc($siswa->nama_siswa) ?></td>
+      <td><?php echo esc($siswa->jenis_kelamin) ?></td>
+      <td><?php echo esc($siswa->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($siswa->tanggal_lahir)) ?></td>
+      <td><?php echo esc($siswa->judul_jenjang_pendidikan) ?></td>
         <td>
             <?php if($siswa->status_pendaftaran=='Menunggu') { ?>
-                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-warning"><i class="fa fa-clock"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Diterima') { ?>
-                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-success"><i class="fa fa-check-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }elseif($siswa->status_pendaftaran=='Tidak-Diterima') { ?>
-                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-danger"><i class="fa fa-times-circle"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php }else{ ?>
-                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo $siswa->status_pendaftaran ?></span>
+                    <span class="badge badge-info"><i class="fa fa-tasks"></i>&nbsp;<?php echo esc($siswa->status_pendaftaran) ?></span>
                   <?php } ?>
         </td>
       

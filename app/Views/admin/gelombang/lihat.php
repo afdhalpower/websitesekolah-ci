@@ -1,8 +1,8 @@
-<div class="modal fade" id="modal-<?php echo $jenis_dokumen->id_jenis_dokumen ?>">
+<div class="modal fade" id="modal-<?php echo esc($jenis_dokumen->id_jenis_dokumen) ?>">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title"><?php echo $jenis_dokumen->nama_jenis_dokumen ?></h4>
+				<h4 class="modal-title"><?php echo esc($jenis_dokumen->nama_jenis_dokumen) ?></h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

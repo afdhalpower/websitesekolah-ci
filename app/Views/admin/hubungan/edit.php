@@ -13,21 +13,21 @@ echo csrf_field();
 <div class="form-group row">
 	<label class="col-3">Nama Hubungan Keluarga</label>
 	<div class="col-9">
-		<input type="text" name="nama_hubungan" class="form-control" placeholder="Nama hubungan" value="<?php echo $hubungan->nama_hubungan ?>" required>
+		<input type="text" name="nama_hubungan" class="form-control" placeholder="Nama hubungan" value="<?php echo esc($hubungan->nama_hubungan) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Keterangan Lengkap</label>
 	<div class="col-9">
-		<input type="text" name="keterangan" class="form-control" placeholder="Keterangan Lengkap" value="<?php echo $hubungan->keterangan ?>" required>
+		<input type="text" name="keterangan" class="form-control" placeholder="Keterangan Lengkap" value="<?php echo esc($hubungan->keterangan) ?>" required>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $hubungan->urutan ?>" required>
+		<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($hubungan->urutan) ?>" required>
 	</div>
 </div>
 

@@ -3,7 +3,7 @@
 <div class="form-group row">
 	<label class="col-3">Judul &amp; Status</label>
 	<div class="col-6">
-		<input type="text" name="judul" class="form-control" placeholder="Judul Judul" value="<?php echo $video->judul ?>" required>
+		<input type="text" name="judul" class="form-control" placeholder="Judul Judul" value="<?php echo esc($video->judul) ?>" required>
 		<small class="text-secondary">Judul Video</small>
 	</div>
 	
@@ -13,7 +13,7 @@
 	<label class="col-3">Kode Video Youtube</label>
 	<div class="col-9">
 		
-			<input type="text" name="video" class="form-control" placeholder="Kode video youtube" value="<?php echo $video->video ?>" required>
+			<input type="text" name="video" class="form-control" placeholder="Kode video youtube" value="<?php echo esc($video->video) ?>" required>
 			
 		<small class="text-secondary">Misal: https://youtu.be/cxLeZXObWDA?si=r_WiHBY4V91cb7Ql. Klik <strong>Share</strong> pada video Youtube. Lalu copy link yang disediakan.</small>
 	</div>
@@ -23,7 +23,7 @@
 	<label class="col-3">Gambar Thumbnail  dan Status</label>
 	
 	<div class="col-3">
-		<input type="file" name="gambar" class="form-control" placeholder="Gambar Thumbnail" value="<?php echo $video->gambar ?>">
+		<input type="file" name="gambar" class="form-control" placeholder="Gambar Thumbnail" value="<?php echo esc($video->gambar) ?>">
 		<small class="text-secondary">Gambar Thumbnail Video. Format: JPG, JPEG, PNG, GIF</small>
 	</div>
 	<div class="col-2">
@@ -50,14 +50,14 @@
 <div class="form-group row">
 	<label class="col-3">Keterangan</label>
 	<div class="col-9">
-		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo $video->keterangan ?></textarea>
+		<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo esc($video->keterangan) ?></textarea>
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-3">Urutan</label>
 	<div class="col-9">
-		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo $video->urutan ?>">
+		<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo esc($video->urutan) ?>">
 	</div>
 </div>
 

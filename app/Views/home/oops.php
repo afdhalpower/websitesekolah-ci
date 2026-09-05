@@ -5,7 +5,7 @@ Breadcumb
     <div class="container z-index-common">
         <div class="row">
             <div class=" col-xxl-8 col-lg-8 offset-2">
-                <h1 class="breadcumb-title"><?php echo $title ?></h1> 
+                <h1 class="breadcumb-title"><?php echo esc($title) ?></h1> 
             </div>
             
         </div>

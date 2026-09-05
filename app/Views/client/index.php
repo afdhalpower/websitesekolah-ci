@@ -5,10 +5,10 @@
     <div class="container">
 
       <div class="d-flex justify-content-between align-items-center">
-        <h2><?php echo $title ?></h2>
+        <h2><?php echo esc($title) ?></h2>
         <ol>
           <li><a href="<?php echo base_url() ?>">Home</a></li>
-          <li><?php echo $title ?></li>
+          <li><?php echo esc($title) ?></li>
         </ol>
       </div>
 
@@ -20,7 +20,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2><?php echo $title ?></h2>
+          <h2><?php echo esc($title) ?></h2>
          
         </div>
 
@@ -33,8 +33,8 @@
                 <img src="<?php echo base_url('assets/upload/image/'.$client['gambar']) ?>" class="img-fluid" alt="">
               </div>
               <div class="member-info">
-                <h4><?php echo $client['nama'] ?></h4>
-                <span><?php echo $client['jenis_client'] ?></span>
+                <h4><?php echo esc($client['nama']) ?></h4>
+                <span><?php echo esc($client['jenis_client']) ?></span>
               </div>
             </div>
           </div>

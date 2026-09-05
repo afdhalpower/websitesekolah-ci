@@ -31,8 +31,8 @@ echo csrf_field();
 						<select name="id_staff" class="form-control select2">
 							<option value="">Pilih Staff/Pegawai</option>
 							<?php foreach($staff as $staff) { ?>
-								<option value="<?php echo $staff->id_staff ?>" <?php if(isset($_GET['id_staff']) && $_GET['id_staff']== $staff->id_staff) { echo 'selected'; } ?>>
-									<?php echo $staff->nama ?> - <?php echo $staff->jabatan ?>
+								<option value="<?php echo esc($staff->id_staff) ?>" <?php if(isset($_GET['id_staff']) && $_GET['id_staff']== $staff->id_staff) { echo 'selected'; } ?>>
+									<?php echo esc($staff->nama) ?> - <?php echo esc($staff->jabatan) ?>
 								</option>
 							<?php } ?>
 						</select>

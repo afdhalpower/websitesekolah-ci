@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<?php echo form_open(base_url('admin/staff'), ' method="get"') ?>
 		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo $_GET['keywords']; } ?>" required>
+          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
           <span class="input-group-append">
             <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
             	<i class="fa fa-search"></i> Cari
@@ -35,8 +35,8 @@
 	</button>
 	<select name="id_kategori_staff" class="form-control">
 		<?php foreach($kategori_staff as $kategori_staff) { ?>
-		<option value="<?php echo $kategori_staff->id_kategori_staff ?>">
-			<?php echo $kategori_staff->nama_kategori_staff ?>
+		<option value="<?php echo esc($kategori_staff->id_kategori_staff) ?>">
+			<?php echo esc($kategori_staff->nama_kategori_staff) ?>
 		</option>
 		<?php } ?>
 	</select>
@@ -71,33 +71,33 @@
 		<tr>
 			<td class="text-center">
 				<div class="icheck-primary">
-					<input type="checkbox" name="id_staff[]" value="<?php echo $staff->id_staff ?>" id="check_<?php echo $no ?>">
-					<label for="check_<?php echo $no ?>"></label>
+					<input type="checkbox" name="id_staff[]" value="<?php echo esc($staff->id_staff) ?>" id="check_<?php echo esc($no) ?>">
+					<label for="check_<?php echo esc($no) ?>"></label>
 				</div>
-				<?php echo $no ?>
+				<?php echo esc($no) ?>
 			</td>
 			<td><?php if($staff->gambar=="") { echo '-'; }else{ ?>
 				<img src="<?php echo base_url('assets/upload/staff/thumbs/'.$staff->gambar) ?>" class="img img-thumbnail">
 			<?php } ?>
 			</td>
-			<td><?php echo $staff->nama ?>
+			<td><?php echo esc($staff->nama) ?>
 				<small>
-					<br><i class="fa fa-sitemap"></i> <?php echo $staff->nama_kategori_staff ?>
-					<br><i class="fa fa-sort-numeric-up"></i> No: <?php echo $staff->urutan ?>
+					<br><i class="fa fa-sitemap"></i> <?php echo esc($staff->nama_kategori_staff) ?>
+					<br><i class="fa fa-sort-numeric-up"></i> No: <?php echo esc($staff->urutan) ?>
 				</small>
 			</td>
 			<td>
 				<small>
-					<i class="fas fa-couch"></i> <?php echo $staff->jabatan ?>
-					<br><i class="fa fa-calendar-check"></i> <?php echo $staff->tempat_lahir ?>, <?php echo $this->website->tanggal_id($staff->tanggal_lahir) ?>
-					<br><i class="fa fa-tasks"></i> <?php echo $staff->keahlian ?>
+					<i class="fas fa-couch"></i> <?php echo esc($staff->jabatan) ?>
+					<br><i class="fa fa-calendar-check"></i> <?php echo esc($staff->tempat_lahir) ?>, <?php echo esc($this->website->tanggal_id($staff->tanggal_lahir)) ?>
+					<br><i class="fa fa-tasks"></i> <?php echo esc($staff->keahlian) ?>
 				</small>
 			</td>
 			<td><small>
-				<i class="fa fa-phone"></i> <?php echo $staff->telepon ?>
-				<br><i class="fa fa-envelope"></i> <?php echo $staff->email ?>
-				<br><i class="fa fa-globe"></i> <?php echo $staff->website ?>
-				<br><i class="fa fa-map"></i> <?php echo $staff->alamat ?>
+				<i class="fa fa-phone"></i> <?php echo esc($staff->telepon) ?>
+				<br><i class="fa fa-envelope"></i> <?php echo esc($staff->email) ?>
+				<br><i class="fa fa-globe"></i> <?php echo esc($staff->website) ?>
+				<br><i class="fa fa-map"></i> <?php echo esc($staff->alamat) ?>
 				</small>
 			</td>
 			<td class="text-center"><?php if($staff->jenis_kelamin=='P') { ?>
@@ -113,7 +113,7 @@
 			<td>
 				<?php if($staff->status_staff=='Publish') { ?>
 					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo $staff->status_staff ?>
+						<i class="fa fa-eye"></i> <?php echo esc($staff->status_staff) ?>
 					</span>
 				<?php }else{ ?>
 					<span class="badge bg-secondary">

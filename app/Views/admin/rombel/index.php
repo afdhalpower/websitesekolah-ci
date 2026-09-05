@@ -15,7 +15,7 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
       <select name="id_tahun" class="form-control select2" required>
       	<option value="">Pilih Tahun Ajaran</option>
       	<?php foreach($tahun as $tahun) { ?>
-      		<option value="<?php echo $tahun->id_tahun ?>" <?php if(isset($_GET['id_tahun']) && $_GET['id_tahun']==$tahun->id_tahun) { echo 'selected'; } ?>><?php echo $tahun->tahun_mulai ?>/<?php echo $tahun->tahun_selesai ?> - <?php echo $tahun->nama_tahun ?></option>
+      		18|      		<option value="<?php echo esc($tahun->id_tahun)?>" <?php if(isset($_GET['id_tahun']) && $_GET['id_tahun']==$tahun->id_tahun) { echo 'selected'; } ?>><?php echo $tahun->tahun_mulai ?>/<?php echo $tahun->tahun_selesai ?> - <?php echo $tahun->nama_tahun ?></option>
       	<?php } ?>
       </select>
       <span class="input-group-btn ">
@@ -38,7 +38,7 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
 
 <?php if($jenjang) { ?>
 	<div class="callout callout-info">
-		<strong>Perhatian </strong> Berikut ini adalah data kelas <strong class="text-danger"><em>Rombongan Belajar <?php echo $rombel->nama_tahun ?></em></strong>
+		41|		<strong>Perhatian </strong> Berikut ini adalah data kelas <strong class="text-danger"><em>Rombongan Belajar <?php echo esc($rombel->nama_tahun)?></em></strong>
 	</div>
 
 	<table class="table table-sm border-bottom" id="example3">
@@ -59,8 +59,8 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
 		$no=1; foreach($kelas as $kelas) { 
 			$kelasnya = $m_kelas->jenjang($kelas->id_jenjang);
 		?>
-		<tr class="bg-light" id="jenjang<?php echo $kelas->id_jenjang ?>">
-			<td colspan="6"><strong><?php echo $kelas->nama_jenjang ?> (<?php echo $kelas->keterangan_jenjang ?>)</strong></td>
+		62|		<tr class="bg-light" id="jenjang<?php echo esc($kelas->id_jenjang)?>">
+			63|			<td colspan="6"><strong><?php echo esc($kelas->nama_jenjang)?> (<?php echo $kelas->keterangan_jenjang ?>)</strong></td>
 			<td></td>
 		</tr>
 
@@ -74,8 +74,8 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
 				$siswa 	= $m_siswa_rombel->total_rombel($tahun_ajaran->id_tahun,$kelasnya->id_kelas);
 		?>
 		<tr>
-			<td class="text-center"><?php echo $i ?>.</td>
-			<td><?php echo $kelasnya->nama_kelas ?></td>
+			77|			<td class="text-center"><?php echo esc($i)?>.</td>
+			78|			<td><?php echo esc($kelasnya->nama_kelas)?></td>
 			<td>
 				<?php 
 				if($check) { 
@@ -88,13 +88,13 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
 				} }
 				?>
 			</td>
-			<td class="text-center"><?php if($siswa) { echo $siswa->total; }else{  } ?></td>
+			91|			<td class="text-center"><?php if($siswa) { echo esc($siswa->total); }else{  } ?></td>
 			<td>
-				<?php foreach($wali as $wali) { echo $wali->nama.'<br>'; } ?>
+				93|				<?php foreach($wali as $wali) { echo esc($wali->nama.'<br>'); } ?>
 
 			</td>
 			<td>
-				<?php foreach($guru as $guru) { echo $guru->nama.'<br>'; } ?>
+				97|				<?php foreach($guru as $guru) { echo esc($guru->nama.'<br>'); } ?>
 			</td>
 			
 			<td>
@@ -119,7 +119,7 @@ echo form_open(base_url('admin/rombel/kelola'), ' method="get"');
 <div class="callout callout-info text-left">
 	<strong>Perhatian!</strong> 
 	<?php if($akhir) { ?>
-		Belum ada rombel yang dibuat untuk <?php echo $tahun_ajaran->nama_tahun ?>.
+		122|		Belum ada rombel yang dibuat untuk <?php echo esc($tahun_ajaran->nama_tahun)?>.
 	<?php }else{ ?>
 		Belum ada rombel yang dibuat.
 	<?php } ?>
