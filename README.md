@@ -1,119 +1,279 @@
-# Website Profil dan Manajemen Sekolah menguunakan CodeIgniter 4 Framework
-Aplikasi website profil dan manajemen sekolah dari [Java Web Media](https://javawebmedia.com/) dengan berbagai fitur yang semoga bermanfaat. 
+# 🏫 Websitesekolah — Website Profil & Manajemen Sekolah
 
-Demo unofficial sementara https://haqi.sch.id/
+Sistem informasi profil dan manajemen sekolah berbasis web, dibangun dengan CodeIgniter 4 Framework. Dikembangkan oleh [Java Web Media](https://javawebmedia.com/) sebagai template website sekolah yang dapat dikustomisasi.
 
-Spesifikasi Teknis Source Code
-Website ini dikembangkan dengan beberapa spesifikasi:
-1. Dikembangan dengan Codeigniter 4. Pastikan teman-teman membaca Server Requirements dari CI4 ini yah.
-2. Template Admin menggunakan AdminLTE 3.2.0. Bisa diakses di https://adminlte.io/
-3. Template front end menggunakan Sandbox - Modern & Multipurpose Bootstrap 5 Template 3.4.0 dari https://sandbox.elemisthemes.com/.
-4. Notifikasi menggunakan Sweetalert
-5. Datatables dan plugin export
+> **Demo:** https://haqi.sch.id/
 
-# Fitur-fitur Website meliputi:
+---
 
-## HALAMAN FRONT END:
+## 📋 Spesifikasi
 
-1. Halaman Beranda/Homepage
-2. Banner
-3. Halaman berita (update,pengumuman,indeks)
-4.  Halaman profile (Profil staf team, Layanan & produk, Prestasi & penghargaan, Ekstrakurikuler, Fasilitas sarana dan prasarana)
-5. Halaman Karya
-6. Halaman galeri gambar
-7. Halaman galeri video
-8. Halaman file download
-9. Halaman Tautan
-10. Halaman kontak
-11. Floating whatsapp button
-12. Login Siswa & Calon Siswa
-13. Pendaftaran
+| Komponen | Versi |
+|----------|-------|
+| CodeIgniter | 4.6.0 |
+| PHP | ≥ 8.2 (tested on 8.3.6) |
+| MySQL | 8.x |
+| Template Admin | AdminLTE 3.2.0 |
+| Template Frontend | Sandbox Bootstrap 5 Template 3.4.0 |
+| Database | 51 tabel |
 
-## HALAMAN BACK END:
-1. Login dan logout
-2. Halaman update profile dan ganti password
-3. Halaman Dashboard
-4. Halaman kelola pendaftar
-5. Halaman kelola berita dan kategorinya
-6. Halaman kelola Galeri dan Banner dan kategorinya
-7. Halaman kelola staff and team dan kategorinya
-8. Halaman kelola Peestasi dan penghargaan dan kategorinya
-9. Halaman kelola Event dan Agenda dan kategorinya
-10. Halaman kelola upload/download file dan kategorinya
-11. Halaman kelola video youtube
-12. Halaman kelola Karya dan kategorinya
-13. Halaman kelola Fasilitas dan kategorinya
-14. Halaman kelola Ekstrakurikuler dan kategorinya
-15. Halaman kelola Manajemen Siswa (Rombongan Belajar, Tahun Ajaran, Kelas)
-16. Halaman kelola Mitra dan kategorinya
-17. Halaman kelola Master Data (Link website, Jenjang Pendidikan, Agama, Hubungan Keluarga, Jenis pekerjaan)
-18. Halaman kelola menu front end
-19. Halaman kelola pengguna sistem
-20. Halaman kelola konfigurasi (website, logo dan icon, about us, banner, email, informasi detail sekolah)
-21. Pendaftaran Siswa Baru (PSB)
-22. Dan fitur lainnya
+### PHP Extensions yang Diperlukan
 
-## Mengakses Halaman Website dan Login ke Admin
-1. Buka browser Anda
-2. Ketik alamat http://websitekamu.com
-3. Untuk Login ke halaman Back End, silakan buka http://websitekamu.com/login
-4. Username admin: andoyo
-6. Password admin: andoyo
-5. Untuk Login siswa dan pendaftar, silahkan buka http://websitekamu.com/signin
+- `intl`, `mbstring`, `mysqli`, `pdo_mysql`
+- `gd` (untuk thumbnail otomatis)
+- `json` (default aktif)
 
-Catatan : Beberapa fitur masih dalam tahap pengembangan, dan mungkin belum bekerja dengan baik
+---
 
-# CodeIgniter 4 Framework
+## ✨ Fitur
 
-## What is CodeIgniter?
+### Frontend (Publik)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+| # | Fitur |
+|---|-------|
+| 1 | Halaman Beranda / Homepage |
+| 2 | Banner & Slider |
+| 3 | Berita (Pengumuman, Updates, Indeks) |
+| 4 | Profil Sekolah (Staff, Sejarah, Layanan) |
+| 5 | Karya & Portfolio |
+| 6 | Galeri Gambar & Video |
+| 7 | Download File |
+| 8 | Tautan / Link Terkait |
+| 9 | Halaman Kontak |
+| 10 | Floating WhatsApp Button |
+| 11 | Login & Pendaftaran Siswa/Calon Siswa |
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+### Backend (Admin Panel)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+| # | Fitur |
+|---|-------|
+| 1 | Dashboard & Statistik |
+| 2 | Kelola Profil & Ganti Password |
+| 3 | Kelola Berita & Kategori |
+| 4 | Kelola Galeri, Banner & Kategori |
+| 5 | Kelola Staff & Team |
+| 6 | Kelola Prestasi & Penghargaan |
+| 7 | Kelola Event & Agenda |
+| 8 | Kelola Upload/Download File |
+| 9 | Kelola Video YouTube |
+| 10 | Kelola Karya & Portfolio |
+| 11 | Kelola Fasilitas & Ekstrakurikuler |
+| 12 | Manajemen Siswa (Rombel, Tahun Ajaran, Kelas) |
+| 13 | Kelola Mitra / Client |
+| 14 | Master Data (Jenjang, Agama, Pekerjaan, dll) |
+| 15 | Kelola Menu Navigasi |
+| 16 | Kelola Pengguna Sistem |
+| 17 | Konfigurasi Website (Logo, Email, SEO, Sekolah) |
+| 18 | Pendaftaran Siswa Baru (PSB) |
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+---
 
-## Important Change with index.php
+## 🚀 Instalasi
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 1. Clone Repository
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+```bash
+git clone https://github.com/afdhalpower/websitesekolah-ci.git
+cd websitesekolah-ci
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### 2. Import Database
 
-## Repository Management
+```bash
+mysql -u root -p -e "CREATE DATABASE javawebmedia_sekolah CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p javawebmedia_sekolah < db/javawebmedia_sekolah.sql
+```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### 3. Konfigurasi `.env`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+```env
+CI_ENVIRONMENT = production
+app.baseURL = 'http://localhost:8080/'
 
-## Contributing
+database.default.hostname = localhost
+database.default.database = javawebmedia_sekolah
+database.default.username = root
+database.default.password = yourpassword
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
 
-We welcome contributions from the community.
+### 4. Jalankan Server
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+```bash
+# Menggunakan PHP built-in server + router untuk local dev
+php -S 0.0.0.0:8080 dev-router.php
+```
 
-## Server Requirements
+> **Catatan:** Router `dev-router.php` diperlukan karena struktur proyek ini menempatkan folder `assets/` (upload files) di level project root, bukan di dalam `public/`. Router ini melayani file statis dari root sekaligus routing ke CI4 front controller.
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+### 5. Akses Website
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+| URL | Keterangan |
+|-----|-----------|
+| `http://localhost:8080/` | Halaman depan |
+| `http://localhost:8080/login` | Login Admin |
+| `http://localhost:8080/signin` | Login Siswa/Pendaftar |
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+---
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## 🔐 Kredensial Default
+
+> ⚠️ **Ganti segera** sebelum deploy ke produksi!
+
+### Admin
+
+| Username | Password | Level |
+|----------|----------|-------|
+| `andoyo` | `andoyo` | Admin |
+| `auliana` | `auliana` | Admin |
+
+### Guru
+
+| Username | Password | Level |
+|----------|----------|-------|
+| `eflita` | `eflita` | Guru |
+| `siti` | `siti` | Guru |
+| `fitriaryati` | `fitriaryati` | Guru |
+| `okky` | `okky` | Guru |
+
+### Lainnya
+
+| Username | Password | Level |
+|----------|----------|-------|
+| `rima` | `rima` | User |
+
+> **Catatan:** Password default = username. Semua password lama di-hash dengan SHA1; login pertama kali akan otomatis di-upgrade ke bcrypt.
+
+---
+
+## 🛡️ Keamanan
+
+Proyek ini telah mengalami hardening keamanan menyeluruh (branch `fix/security-hardening`). Berikut ringkasan penguatan yang diterapkan:
+
+| Temuan | Severity | Status |
+|--------|----------|--------|
+| Unrestricted file upload → RCE | 🔴 Critical | ✅ Fixed |
+| Stored XSS via unescaped output | 🔴 Critical | ✅ Fixed |
+| CSRF protection dimatikan | 🟠 High | ✅ Fixed |
+| Tidak ada Role-Based Access Control | 🟠 High | ✅ Fixed |
+| Reflected XSS di search admin | 🟠 High | ✅ Fixed |
+| Tidak ada brute force protection | 🟡 Medium | ✅ Fixed |
+| Password hash SHA1 tanpa salt | 🟡 Medium | ✅ Fixed |
+| Security headers tidak ada | 🟡 Medium | ✅ Fixed |
+| Password validation bug (&&→‖) | 🔵 Low | ✅ Fixed |
+| Debug mode aktif | 🔵 Low | ✅ Fixed |
+| Open redirect via $_GET | 🔵 Low | ✅ Fixed |
+
+**Detail penemuan dan exploit PoC:** lihat [`PENTEST-REPORT.md`](PENTEST-REPORT.md)
+
+### Yang Telah Diperkuat
+
+- **Upload Validation** — Semua 72 upload handler memvalidasi ekstensi file (whitelist gambar/dokumen) + ukuran maksimal 5MB
+- **CSRF Protection** — Filter CSRF dan Honeypot aktif di semua route
+- **RBAC** — Hanya user level `Admin` yang bisa mengakses panel admin
+- **Brute Force Protection** — Maksimal 5 percobaan login per 5 menit per username
+- **Password Hashing** — bcrypt dengan auto-upgrade dari SHA1 legacy
+- **Output Escaping** — 157+ view files menggunakan `esc()` untuk mencegah XSS
+- **Security Headers** — `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `X-XSS-Protection`
+
+---
+
+## 📁 Struktur Projek
+
+```
+websitesekolah-ci/
+├── app/
+│   ├── Config/          # Konfigurasi (Database, Routes, Filters, Session)
+│   ├── Controllers/     # Controller aplikasi
+│   │   ├── Admin/       # Panel administrator
+│   │   ├── Siswa/       # Panel siswa
+│   │   └── Client/      # Panel client
+│   ├── Libraries/       # Custom libraries (Simple_login, Website)
+│   ├── Models/          # Model database
+│   ├── Views/           # Template view
+│   │   ├── admin/       # Views admin panel
+│   │   ├── home/        # Views halaman depan
+│   │   ├── layout/      # Layout template
+│   │   └── siswa/       # Views panel siswa
+│   └── Helpers/         # Custom helpers
+├── assets/              # Aset statis + upload files
+│   ├── admin/           # Plugin admin (FontAwesome, DataTables, SweetAlert)
+│   ├── template/        # Template frontend (CSS, JS, fonts)
+│   ├── upload/          # File upload (gambar, dokumen, pendaftaran, staff)
+│   ├── css/             # Custom CSS
+│   └── jquery-ui/       # jQuery UI
+├── db/
+│   └── javawebmedia_sekolah.sql  # Database dump
+├── public/              # Public directory (CI4 front controller)
+├── system/              # CodeIgniter 4 framework
+├── vendor/              # Composer dependencies
+├── writable/            # Cache, logs, session, uploads
+├── dev-router.php       # Local dev router (serves assets from root)
+├── PENTEST-REPORT.md    # Security assessment report
+├── .env                 # Environment configuration
+└── spark                # CI4 CLI tool
+```
+
+---
+
+## 🛠️ Development
+
+### Server Requirements
+
+- PHP ≥ 8.2 dengan ekstensi: intl, mbstring, mysqli, pdo_mysql, gd
+- MySQL ≥ 5.7 atau MariaDB ≥ 10.4
+- Composer
+
+### Local Development
+
+```bash
+# Install dependencies
+composer install
+
+# Setup database
+mysql -u root -p -e "CREATE DATABASE javawebmedia_sekolah CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p javawebmedia_sekolah < db/javawebmedia_sekolah.sql
+
+# Copy dan edit .env
+cp env .env
+# Edit .env sesuai konfigurasi database Anda
+
+# Jalankan server
+php -S 0.0.0.0:8080 dev-router.php
+```
+
+### Struktur Authentication
+
+| Endpoint | Akses | Keterangan |
+|----------|-------|-----------|
+| `/login` | Admin | Panel administrator |
+| `/signin` | Siswa | Login siswa & calon siswa |
+| `/admin/*` | Admin | Hanya level Admin (RBAC) |
+| `/siswa/*` | Siswa | Panel siswa |
+| `/client/*` | Client | Panel client |
+
+---
+
+## ⚠️ Catatan Penting
+
+1. **Login Admin** menggunakan `/login` (bukan `/signin` — itu untuk siswa)
+2. **File upload** berada di `assets/upload/` (level project root, bukan `public/`)
+3. **Router** `dev-router.php` hanya untuk development. Di produksi, gunakan Apache/Nginx dengan document root yang benar
+4. **Password admin** harus diganti setelah instalasi
+5. **CI_ENVIRONMENT** harus `production` di server production
+
+---
+
+## 📄 License
+
+Lihat [LICENSE](LICENSE) untuk informasi lisensi.
+
+---
+
+## 🙏 Credits
+
+- [Java Web Media](https://javawebmedia.com/) — Developer asli
+- [CodeIgniter 4](https://codeigniter.com) — Framework
+- [AdminLTE 3](https://adminlte.io/) — Admin template
+- [Sandbox Template](https://sandbox.elemisthemes.com/) — Frontend template
