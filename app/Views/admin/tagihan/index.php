@@ -1,10 +1,4 @@
 <?php include('generate_modal.php'); ?>
-<?php if ($this->session->flashdata('sukses')) { ?>
-    <div class="alert alert-success"><?php echo $this->session->flashdata('sukses') ?></div>
-<?php } ?>
-<?php if ($this->session->flashdata('warning')) { ?>
-    <div class="alert alert-warning"><?php echo $this->session->flashdata('warning') ?></div>
-<?php } ?>
 
 <!-- Filter -->
 <div class="card card-outline card-info">

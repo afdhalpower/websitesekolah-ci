@@ -1,7 +1,4 @@
 <?php include('tambah.php'); ?>
-<?php if ($this->session->flashdata('warning')) { ?>
-    <div class="alert alert-warning"><?php echo $this->session->flashdata('warning') ?></div>
-<?php } ?>
 <table class="table table-bordered table-sm" id="example3">
     <thead>
         <tr class="bg-secondary text-center">

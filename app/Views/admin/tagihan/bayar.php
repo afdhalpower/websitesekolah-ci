@@ -1,7 +1,3 @@
-<?php if ($this->session->flashdata('warning')) { ?>
-    <div class="alert alert-warning"><?php echo $this->session->flashdata('warning') ?></div>
-<?php } ?>
-
 <div class="card card-outline card-info">
     <div class="card-header">
         <h3 class="card-title"><i class="fa fa-money"></i> Detail Tagihan</h3>
