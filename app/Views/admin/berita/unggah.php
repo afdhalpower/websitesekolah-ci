@@ -1,184 +1,122 @@
-<?php 
+<?php
 use App\Libraries\Website;
 $this->website = new Website();
-
-$uri = service('uri');
- ?>
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php echo esc($title) ?></title>
-  <link rel="icon" href="<?php echo esc($this->website->icon()) ?>">
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/fontawesome-free/css/all.min.css">
-  <!-- pace-progress -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/pace-progress/themes/black/pace-theme-flat-top.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/daterangepicker/daterangepicker.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/daterangepicker/daterangepicker.css">
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-  <!-- BS Stepper -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/bs-stepper/css/bs-stepper.min.css">
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/dropzone/min/dropzone.min.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/dropzone/min/dropzone.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/admin.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/daterangepicker/daterangepicker.css">
-  <!-- jQuery -->
-  <script src="<?php echo base_url() ?>assets/admin/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="<?php echo base_url() ?>assets/jquery-ui/jquery-ui.min.js"></script>
-  <link href="<?php echo base_url() ?>assets/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/jszip/jszip.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  <!-- dropzonejs -->
-  <script src="<?php echo base_url() ?>assets/admin/plugins/dropzone/min/dropzone.min.js"></script>
-  <!-- SweetAlert2 -->
-  <script src="<?php echo base_url() ?>assets/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?php echo base_url('assets/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
-  <style type="text/css" media="screen">
-    .ui-autocomplete { 
-      z-index:2147483647; 
-    }
-    .ui-timepicker-container{ 
-         z-index:1151 !important; 
-    }
+  <title><?= esc($title ?? 'Upload Media') ?></title>
+  <link rel="icon" href="<?= esc($this->website->icon()) ?>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/plugins/dropzone/min/dropzone.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/admin-sidebar-modern.css">
+  <script src="<?= base_url() ?>assets/admin/plugins/jquery/jquery.min.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f5f6fa; margin: 0; padding: 2rem; }
   </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Upload Media</h2>
-        
-        <form action="<?php echo base_url('admin/media/unggah') ?>" class="dropzone" id="mediaDropzone"></form>
-        
-        <h3 class="mt-5">Daftar Media</h3>
-        <table id="mediaTable" class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Preview</th>
-                    <th>URL</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+  <div style="max-width:900px;margin:0 auto;">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <h1 style="font-size:1.5rem;font-weight:700;color:var(--dark,#1e293b);">
+        <i class="fas fa-cloud-upload-alt" style="color:var(--green,#22c55e);"></i> Upload Media
+      </h1>
+      <a href="<?= base_url('admin/berita') ?>" class="btn btn-secondary-action">
+        <i class="fas fa-arrow-left"></i> Kembali
+      </a>
     </div>
 
-    <script>
-        Dropzone.options.mediaDropzone = {
-            paramName: "file",
-            maxFilesize: 24,
-            acceptedFiles: ".jpg,.jpeg,.png,.gif,.zip,.rar,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mp4,.avi,.mkv",
-            success: function () {
-                $('#mediaTable').DataTable().ajax.reload();
+    <!-- Upload Zone -->
+    <div class="card-modern" style="margin-bottom:1.5rem;">
+      <div class="card-modern-body" style="padding:1.5rem;">
+        <form action="<?= base_url('admin/media/unggah') ?>" class="upload-zone" id="mediaDropzone">
+          <div class="upload-zone-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <div class="upload-zone-text">Seret & lepas file di sini atau klik untuk mengunggah</div>
+          <div class="upload-zone-hint">File: .jpg, .jpeg, .png, .gif, .zip, .rar, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .pdf, .mp4, .avi, .mkv</div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Media Table -->
+    <div class="card-modern">
+      <div class="card-modern-header">
+        <h5 class="card-modern-title"><i class="fas fa-folder-open"></i> Daftar Media</h5>
+      </div>
+      <div class="card-modern-body" style="padding:0;">
+        <table class="table-modern" id="mediaTable" style="width:100%;">
+          <thead>
+            <tr>
+              <th width="15%">Preview</th>
+              <th width="65%">URL</th>
+              <th width="20%">Aksi</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="<?= base_url() ?>assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/dropzone/min/dropzone.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/dist/js/adminlte.min.js"></script>
+
+  <script>
+  Dropzone.options.mediaDropzone = {
+    paramName: "file",
+    maxFilesize: 24,
+    acceptedFiles: ".jpg,.jpeg,.png,.gif,.zip,.rar,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mp4,.avi,.mkv",
+    success: function () {
+      $('#mediaTable').DataTable().ajax.reload();
+    }
+  };
+
+  $(document).ready(function () {
+    var table = $('#mediaTable').DataTable({
+      ajax: "<?= base_url('admin/media/show') ?>",
+      columns: [
+        {
+          data: "gambar",
+          render: function (data, type, row) {
+            if (['jpg','jpeg','png','gif'].includes(row.file_ext)) {
+              return '<img src="<?= base_url('assets/upload/file/') ?>' + data + '" class="berita-thumb">';
+            } else {
+              return '<span style="font-size:var(--font-xs);">' + row.file_ext.toUpperCase() + ' (' + row.file_size + ' MB)</span>';
             }
-        };
+          }
+        },
+        {
+          data: "gambar",
+          render: function (data) {
+            return '<input type="text" class="form-control form-control-sm" value="<?= base_url('assets/upload/file/') ?>' + data + '" readonly style="font-size:var(--font-xs);">';
+          }
+        },
+        {
+          data: "gambar",
+          render: function (data) {
+            return '<button class="btn btn-primary-action btn-sm btn-copy" data-url="<?= base_url('assets/upload/file/') ?>' + data + '"><i class="fas fa-copy"></i> Salin</button>';
+          }
+        }
+      ]
+    });
 
-        $(document).ready(function () {
-            var table = $('#mediaTable').DataTable({
-                ajax: "<?php echo base_url('admin/media/show') ?>",
-                columns: [
-                    {
-                        data: "gambar",
-                        render: function (data, type, row) {
-                            if (['jpg', 'jpeg', 'png', 'gif'].includes(row.file_ext)) {
-                                return `<img src="<?= base_url('assets/upload/file/') ?>${data}" width="50">`;
-                            } else {
-                                return `<span>${row.file_ext.toUpperCase()} (${row.file_size} MB)</span>`;
-                            }
-                        }
-                    },
-                    {
-                        data: "gambar",
-                        render: function (data) {
-                            return `<input type="text" class="form-control" value="<?= base_url('assets/upload/file/') ?>${data}" readonly>`;
-                        }
-                    },
-                    {
-                        data: "gambar",
-                        render: function (data) {
-                            return `<button class="btn btn-primary btn-copy" data-url="<?= base_url('assets/upload/file/') ?>${data}">Copy URL</button>`;
-                        }
-                    }
-                ]
-            });
-
-            $(document).on('click', '.btn-copy', function () {
-                var url = $(this).data('url');
-                navigator.clipboard.writeText(url).then(() => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: 'URL berhasil disalin!',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                });
-            });
-
-        });
-    </script>
+    $(document).on('click', '.btn-copy', function () {
+      var url = $(this).data('url');
+      navigator.clipboard.writeText(url).then(() => {
+        Swal.fire({ icon: 'success', title: 'Tersalin!', text: 'URL berhasil disalin!', timer: 2000, showConfirmButton: false });
+      });
+    });
+  });
+  </script>
 </body>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- pace-progress -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/pace-progress/pace.min.js"></script>
-<!-- Select2 -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/moment/moment.min.js"></script>
-<script src="<?php echo base_url() ?>assets/admin/plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-<!-- BS-Stepper -->
-<script src="<?php echo base_url() ?>assets/admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
-
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>assets/admin/dist/js/adminlte.min.js"></script>
 </html>

@@ -17,6 +17,15 @@ class Berita extends BaseController
 		$m_kategori 	= new Kategori_model();
 		$kategori 		= $m_kategori->listing();
 		$pager 			= service('pager'); 
+
+		// stats
+		$builder = $m_berita->builder();
+		$stats = [
+			'total'   => $m_berita->total(),
+			'publish' => (clone $builder)->where('status_berita', 'Publish')->countAllResults(),
+			'draft'   => (clone $builder)->where('status_berita', 'Draft')->countAllResults(),
+		];
+
 		// berita
 		if(isset($_GET['keywords'])) 
 		{
@@ -42,11 +51,12 @@ class Berita extends BaseController
 		// end berita
 		
 		$data = [	'title'			=> $title,
-					'berita'		=> $berita,
-					'pagination'	=> $pager_links,
-					'kategori'		=> $kategori,
-					'content'		=> 'admin/berita/index'
-				];
+						'berita'		=> $berita,
+						'pagination'	=> $pager_links,
+						'kategori'		=> $kategori,
+						'stats'			=> $stats,
+						'content'		=> 'admin/berita/index'
+					];
 		echo view('admin/layout/wrapper',$data);
 	}
 

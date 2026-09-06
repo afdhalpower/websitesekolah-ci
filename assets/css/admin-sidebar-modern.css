@@ -947,3 +947,234 @@
 .verified-banner-text strong {
   color: var(--dark);
 }
+
+/* ============================================
+   [HAQI Berita] — Upload, Gallery, Media Cards
+   ============================================ */
+.upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--card);
+}
+.upload-zone:hover,
+.upload-zone.dragover {
+  border-color: var(--green);
+  background: rgba(34, 197, 94, 0.04);
+}
+.upload-zone-icon {
+  font-size: 2.5rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.upload-zone-text {
+  font-size: var(--font-sm);
+  color: var(--text);
+  font-weight: 500;
+}
+.upload-zone-hint {
+  font-size: var(--font-xs);
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: 0.5rem;
+  color: #fff;
+  font-size: var(--font-xs);
+}
+.gallery-item-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: none;
+}
+.gallery-item:hover .gallery-item-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+.media-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.media-card:hover {
+  border-color: var(--green);
+}
+.media-card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--green);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.media-card-info {
+  flex: 1;
+  min-width: 0;
+}
+.media-card-name {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.media-card-meta {
+  font-size: var(--font-xs);
+  color: var(--muted);
+}
+.media-card-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.download-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.download-item:hover {
+  border-color: var(--green);
+}
+.download-item-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--blue);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.download-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.download-item-name {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--text);
+}
+.download-item-meta {
+  font-size: var(--font-xs);
+  color: var(--muted);
+}
+.download-item-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+/* Berita thumbnail in table */
+.berita-thumb {
+  width: 60px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+/* Berita meta row */
+.berita-meta {
+  font-size: var(--font-xs);
+  color: var(--muted);
+  line-height: 1.6;
+}
+.berita-meta i {
+  width: 14px;
+  text-align: center;
+  margin-right: 0.25rem;
+}
+/* Berita bulk action bar */
+.bulk-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+}
+.bulk-action-bar .form-select {
+  max-width: 180px;
+}
+/* Berita kategori list (sidebar in index) */
+.kategori-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.kategori-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.kategori-list li:last-child {
+  border-bottom: none;
+}
+.kategori-list a {
+  font-size: var(--font-sm);
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kategori-list a:hover {
+  color: var(--green);
+}
+.kategori-list .badge-count {
+  background: var(--bg);
+  color: var(--muted);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  font-weight: 500;
+}
