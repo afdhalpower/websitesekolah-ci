@@ -151,7 +151,7 @@ class Siswa_model extends Model
         $builder->select('jp.judul_jenjang_pendidikan, jp.id_jenjang_pendidikan, s.status_pendaftaran, COUNT(s.id_siswa) AS jumlah_siswa');
         $builder->join('jenjang_pendidikan jp', 's.id_jenjang_pendidikan = jp.id_jenjang_pendidikan');
         $builder->where('s.id_gelombang',$id_gelombang);
-        $builder->groupBy('jp.judul_jenjang_pendidikan, s.status_pendaftaran');
+        $builder->groupBy('jp.id_jenjang_pendidikan, jp.judul_jenjang_pendidikan, s.status_pendaftaran');
         $builder->orderBy('jp.judul_jenjang_pendidikan, s.status_pendaftaran');
         $query = $builder->get();
         return $query->getResult();
