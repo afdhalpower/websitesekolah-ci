@@ -1,199 +1,190 @@
-<form action="<?php echo base_url('admin/agenda/edit/'.$agenda['id_agenda']) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Nama &amp; Kode Agenda Wisata</label>
-	<div class="col-sm-9">
-		<input type="text" name="nama_agenda" class="form-control form-control-lg text-capitalize" placeholder="Nama Agenda" required value="<?php echo esc($agenda['nama_agenda']) ?>">
-		<small class="text-gray">Setiap awal kata gunakan huruf capital. Misal: <strong>Agenda Web Design</strong></small>
-	</div>	
+<!-- Back Button -->
+<div class="mb-3">
+  <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary-action">
+    <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+  </a>
 </div>
 
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Upload Foto/ Gambar</label>
-	<div class="col-sm-6">
-		<input type="file" name="gambar" class="form-control" placeholder="Upload gambar" id="file">
-		<div id="imagePreview"></div>
-		<small class="text-gray">Gambar format: jpg, jpeg, png, gif, svg</small>
-	</div>
-	
+<!-- Form Card -->
+<div class="card-modern">
+  <div class="card-modern-header">
+    <h5 class="card-modern-title"><i class="fas fa-edit"></i> Edit: <?= esc($agenda['nama_agenda']) ?></h5>
+  </div>
+  <div class="card-modern-body">
+    <?= form_open_multipart(base_url('admin/agenda/edit/'.$agenda['id_agenda'])) ?>
+
+    <!-- Section 1: Info Dasar -->
+    <h6 style="font-size:0.85rem;font-weight:600;color:var(--green);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.03em;">
+      <i class="fas fa-info-circle"></i> Informasi Dasar
+    </h6>
+
+    <div class="form-grid">
+      <div class="form-section">
+        <label class="form-label">Nama Agenda / Even <span class="text-danger">*</span></label>
+        <input type="text" name="nama_agenda" class="form-control" value="<?= esc($agenda['nama_agenda']) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Kode Agenda <span class="text-danger">*</span></label>
+        <input type="text" name="kode_agenda" class="form-control text-uppercase" value="<?= esc($agenda['kode_agenda']) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Kategori <span class="text-danger">*</span></label>
+        <select name="id_kategori_agenda" class="form-select" required>
+          <?php foreach($kategori_agenda as $ka): ?>
+          <option value="<?= esc($ka['id_kategori_agenda']) ?>" <?= ($ka['id_kategori_agenda'] == $agenda['id_kategori_agenda']) ? 'selected' : '' ?>>
+            <?= esc($ka['nama_kategori_agenda']) ?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Status Publikasi</label>
+        <select name="status_agenda" class="form-select">
+          <option value="Publish" <?= ($agenda['status_agenda'] == 'Publish') ? 'selected' : '' ?>>Published</option>
+          <option value="Draft" <?= ($agenda['status_agenda'] == 'Draft') ? 'selected' : '' ?>>Draft</option>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Status Pendaftaran</label>
+        <select name="status_pendaftaran" class="form-select">
+          <option value="Buka" <?= ($agenda['status_pendaftaran'] == 'Buka') ? 'selected' : '' ?>>Buka</option>
+          <option value="Tutup" <?= ($agenda['status_pendaftaran'] == 'Tutup') ? 'selected' : '' ?>>Tutup</option>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Urutan</label>
+        <input type="number" name="urutan" class="form-control" value="<?= esc($agenda['urutan']) ?>" min="0">
+      </div>
+    </div>
+
+    <!-- Gambar -->
+    <div class="form-section mt-3">
+      <label class="form-label">Gambar</label>
+      <?php if(!empty($agenda['gambar'])): ?>
+      <div class="mb-2">
+        <img src="<?= base_url('assets/upload/image/thumbs/'.$agenda['gambar']) ?>" class="berita-thumb" alt="" style="width:80px;height:80px;">
+      </div>
+      <?php endif; ?>
+      <input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif,.svg">
+      <small style="font-size:var(--font-xs);color:var(--muted);">Kosongkan jika tidak ingin mengganti gambar</small>
+    </div>
+
+    <!-- Section 2: Biaya & Tanggal -->
+    <hr style="margin:1.5rem 0;border-color:var(--border);">
+    <h6 style="font-size:0.85rem;font-weight:600;color:var(--green);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.03em;">
+      <i class="fas fa-money-bill-wave"></i> Biaya & Periode
+    </h6>
+
+    <div class="form-grid">
+      <div class="form-section">
+        <label class="form-label">Biaya Normal <span class="text-danger">*</span></label>
+        <input type="number" name="harga" class="form-control" value="<?= esc($agenda['harga']) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Biaya Diskon <span class="text-danger">*</span></label>
+        <input type="number" name="harga_diskon" class="form-control" value="<?= esc($agenda['harga_diskon']) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Tanggal Buka Pendaftaran</label>
+        <input type="text" name="tanggal_buka" class="form-control tanggal" value="<?= date('d-m-Y', strtotime($agenda['tanggal_buka'])) ?>">
+      </div>
+      <div class="form-section">
+        <label class="form-label">Tanggal Tutup Pendaftaran</label>
+        <input type="text" name="tanggal_tutup" class="form-control tanggal" value="<?= date('d-m-Y', strtotime($agenda['tanggal_tutup'])) ?>">
+      </div>
+    </div>
+
+    <div class="form-grid mt-3">
+      <div class="form-section">
+        <label class="form-label">Tanggal Mulai Diskon</label>
+        <div class="d-flex gap-2">
+          <input type="text" name="tanggal_mulai" class="form-control tanggal" value="<?= date('d-m-Y', strtotime($agenda['tanggal_mulai'])) ?>">
+          <input type="text" name="jam_mulai" class="form-control jam" value="<?= date('H:i:s', strtotime($agenda['tanggal_mulai'])) ?>" style="max-width:100px;">
+        </div>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Tanggal Selesai Diskon</label>
+        <div class="d-flex gap-2">
+          <input type="text" name="tanggal_selesai" class="form-control tanggal" value="<?= date('d-m-Y', strtotime($agenda['tanggal_selesai'])) ?>">
+          <input type="text" name="jam_selesai" class="form-control jam" value="<?= date('H:i:s', strtotime($agenda['tanggal_selesai'])) ?>" style="max-width:100px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Venue -->
+    <hr style="margin:1.5rem 0;border-color:var(--border);">
+    <h6 style="font-size:0.85rem;font-weight:600;color:var(--green);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.03em;">
+      <i class="fas fa-map-marker-alt"></i> Venue / Tempat Pelaksanaan
+    </h6>
+
+    <div class="form-grid">
+      <div class="form-section">
+        <label class="form-label">Nama Tempat <span class="text-danger">*</span></label>
+        <input type="text" name="nama_tempat" class="form-control" value="<?= esc($agenda['nama_tempat']) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Link Google Map <span class="text-danger">*</span></label>
+        <input type="text" name="link_google_map" class="form-control" value="<?= esc($agenda['link_google_map']) ?>" required>
+      </div>
+    </div>
+
+    <div class="form-section mt-3">
+      <label class="form-label">Alamat Lengkap</label>
+      <textarea name="alamat" class="form-control" rows="2"><?= esc($agenda['alamat']) ?></textarea>
+    </div>
+
+    <div class="form-section mt-3">
+      <label class="form-label">Iframe Google Map</label>
+      <textarea name="google_map" class="form-control" rows="3"><?= esc($agenda['google_map']) ?></textarea>
+    </div>
+
+    <!-- Section 4: Deskripsi -->
+    <hr style="margin:1.5rem 0;border-color:var(--border);">
+    <h6 style="font-size:0.85rem;font-weight:600;color:var(--green);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.03em;">
+      <i class="fas fa-align-left"></i> Deskripsi & Konten
+    </h6>
+
+    <div class="form-section">
+      <label class="form-label">Deskripsi Ringkas</label>
+      <textarea name="deskripsi" class="form-control" rows="3"><?= esc($agenda['deskripsi']) ?></textarea>
+    </div>
+
+    <div class="form-section mt-3">
+      <label class="form-label">Deskripsi Lengkap</label>
+      <div class="d-flex gap-2 mb-2">
+        <button type="button" class="btn btn-secondary-action btn-sm" data-toggle="modal" data-target="#modal-media">
+          <i class="fas fa-plus-circle"></i> Upload Media
+        </button>
+        <button type="button" class="btn btn-secondary-action btn-sm" data-toggle="modal" data-target="#modal-galeri">
+          <i class="fas fa-image"></i> Galeri
+        </button>
+        <button type="button" class="btn btn-secondary-action btn-sm" data-toggle="modal" data-target="#modal-download">
+          <i class="fas fa-download"></i> File Download
+        </button>
+      </div>
+      <textarea name="isi" class="form-control konten" rows="10"><?= esc($agenda['isi']) ?></textarea>
+    </div>
+
+    <div class="form-section mt-3">
+      <label class="form-label">Keywords SEO</label>
+      <textarea name="keywords" class="form-control" rows="2"><?= esc($agenda['keywords']) ?></textarea>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions mt-4">
+      <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary-action">
+        <i class="fas fa-arrow-left"></i> Batal
+      </a>
+      <button type="submit" class="btn btn-success-action">
+        <i class="fas fa-save"></i> Simpan Perubahan
+      </button>
+    </div>
+
+    <?= form_close() ?>
+  </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Status, Tanggal Pendaftaran  Dibuka &amp; Ditutup</label>
-	<div class="col-sm-2">
-		<select name="status_pendaftaran" class="form-control">
-			<option value="Buka">Buka</option>
-			<option value="Tutup" 
-			<?php if($agenda['status_pendaftaran']=="Tutup") { echo "selected"; } ?>>Tutup</option>
-		</select>
-		<small class="text-gray">Status Buka Pendaftaran </small>
-	</div>
-	<div class="col-sm-2">
-		<input type="text" name="tanggal_buka" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_buka'])) ?>">
-		<small class="text-gray">Tanggal Buka</small>
-	</div>
-	<div class="col-sm-2">
-		<input type="text" name="tanggal_tutup" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_tutup'])) ?>">
-		<small class="text-gray">Tanggal Tutup</small>
-	</div>
-</div>
-
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Kategori, Status &amp; Kode</label>
-	<div class="col-sm-2">
-		<select name="id_kategori_agenda" class="form-control">
-			<?php foreach($kategori_agenda as $kategori_agenda) { ?>
-				<option value="<?php echo esc($kategori_agenda['id_kategori_agenda']) ?>" <?php if($kategori_agenda['id_kategori_agenda'] == $agenda['id_kategori_agenda']) { echo "selected"; } ?>><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></option>
-			<?php } ?>
-
-		</select>
-		<small class="text-gray">Kategori Agenda</small>
-	</div>
-	<div class="col-sm-2">
-		<select name="status_agenda" class="form-control">
-			<option value="Publish">Published</option>
-			<option value="Draft" 
-			<?php if($agenda['status_agenda']=="Draft") { echo "selected"; } ?>
-			>Draft</option>
-		</select>
-		<small class="text-gray">Status Publikasi</small>
-	</div>
-	<div class="col-sm-2">
-		<input type="text" name="kode_agenda" class="form-control" placeholder="Kode Agenda" required value="<?php echo esc($agenda['kode_agenda']) ?>">
-		<small class="text-gray">Gunakan huruf capital. Misal: <strong>WDEV</strong></small>
-	</div>
-</div>
-
-
-
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Tanggal Periode Diskon</label>
-	<div class="col-sm-2">
-		<input type="text" name="tanggal_mulai" class="form-control tanggal" required value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_mulai'])) ?>">
-		<small class="text-gray">Tanggal mulai</small>
-	</div>
-	<div class="col-sm-1">
-		<input type="text" name="jam_mulai" class="form-control jam" required value="<?php echo esc($agenda['jam_mulai']) ?>">
-		<small class="text-gray">Jam mulai</small>
-	</div>
-	<div class="col-sm-2">
-		<input type="text" name="tanggal_selesai" class="form-control tanggal" required value="<?php echo esc($this->website->tanggal_id($agenda['tanggal_selesai'])) ?>">
-		<small class="text-gray">Tanggal selesai</small>
-	</div>
-	<div class="col-sm-1">
-		<input type="text" name="jam_selesai" class="form-control jam" required value="<?php echo esc($agenda['jam_selesai']) ?>">
-		<small class="text-gray">Jam selesai</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Biaya Pendaftaran </label>
-	<div class="col-sm-3">
-		<input type="number" name="harga" class="form-control" required value="<?php echo esc($agenda['harga']) ?>">
-		<small class="text-gray">Biaya Pendaftaran  normal</small>
-	</div>
-	<div class="col-sm-3">
-		<input type="number" name="harga_diskon" class="form-control" required value="<?php echo esc($agenda['harga_diskon']) ?>">
-		<small class="text-gray">Biaya Pendaftaran  <em>Diskon</em></small>
-	</div>
-</div>
-
-<hr>
-<h4 class="text-center mb-1">Venue/Tempat Pelaksanaan</h4>
-<br>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Nama Tempat</label>
-	<div class="col-sm-9">
-		<input type="text" name="nama_tempat" class="form-control" required value="<?php echo esc($agenda['nama_tempat']) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Link Google Map</label>
-	<div class="col-sm-9">
-		<input type="text" name="link_google_map" class="form-control" required value="<?php echo esc($agenda['link_google_map']) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Alamat lengkap</label>
-	<div class="col-sm-9">
-		<textarea name="alamat" class="form-control nilai" ><?php echo esc($agenda['alamat']) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Iframe Google Map</label>
-	<div class="col-sm-8">
-		<textarea name="google_map" class="form-control"><?php echo esc($agenda['google_map']) ?></textarea>
-	</div>
-</div>
-
-<hr>
-
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Deskripsi Ringkas</label>
-	<div class="col-sm-8">
-		<textarea name="deskripsi" class="form-control" placeholder="Deskripsi Agenda"><?php echo esc($agenda['deskripsi']) ?></textarea>
-		<small class="text-gray">Penjelasan secara ringkas agenda</small>
-	</div>
-</div>
-
-
-	<div class="form-group row">
-		<label class="col-sm-3 control-label text-right">Deskripsi Lengkap</label>
-		<div class="col-sm-9">
-			<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-media">
-			<i class="fa fa-plus-circle"></i> Upload &amp; Kelola Media/File
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-galeri">
-			<i class="fa fa-image"></i> Lihat Galeri
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
-			<i class="fa fa-download"></i> Lihat File
-		</button>
-			<textarea name="isi" id="isi"  class="form-control konten" placeholder="Deskripsi Agenda"><?php echo esc($agenda['isi']) ?></textarea>
-		</div>
-	</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Keywords (untuk pencarian Google)</label>
-	<div class="col-sm-8">
-		<textarea name="keywords" class="form-control"><?php echo esc($agenda['keywords']) ?></textarea>
-		<small class="text-gray">Gunakan koma sebagai pemisah, misalnya: <strong>web design, desain grafis, agenda web, agenda android</strong></small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-sm-3 control-label text-right">Urutan</label>
-	<div class="col-sm-8">
-		<input type="text" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo esc($agenda['urutan']) ?>">
-	</div>
-</div>
-
-	
-
-	<div class="form-group row">
-		<label class="col-sm-3 control-label text-right"></label>
-		<div class="col-sm-8">
-			<div class="form-group btn-group pull-right">
-				<button type="submit" name="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Simpan Data</button>
-				<input type="reset" name="reset" class="btn btn-info btn-lg" value="Reset">
-			</div>
-
-		</div>
-	</div>
-	<?php
-// Form close
-	echo form_close();
-	echo view('admin/berita/media');
-echo view('admin/berita/download');
-echo view('admin/berita/galeri');
-	?>
+<!-- Include Modals -->
+<?php echo view('admin/berita/media'); ?>
+<?php echo view('admin/berita/galeri'); ?>
+<?php echo view('admin/berita/download'); ?>

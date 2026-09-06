@@ -21,9 +21,18 @@ class Agenda extends BaseController
 		$total 				= $m_agenda->total();
 		$kategori_agenda 	= $m_kategori_agenda->listing();
 
-		$data = [	'title'				=> 'Agenda/Even ('.$total.')',
+		// stats
+		$builder = $m_agenda->builder();
+		$stats = [
+			'total'   => $total,
+			'publish' => (clone $builder)->where('status_agenda', 'Publish')->countAllResults(),
+			'draft'   => (clone $builder)->where('status_agenda', 'Draft')->countAllResults(),
+		];
+
+		$data = [	'title'				=> 'Agenda/Even',
 					'agenda'			=> $agenda,
 					'kategori_agenda'	=> $kategori_agenda,
+					'stats'				=> $stats,
 					'content'			=> 'admin/agenda/index'
 				];
 		echo view('admin/layout/wrapper',$data);

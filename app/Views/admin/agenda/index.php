@@ -1,177 +1,222 @@
-<?php 
-$uri = service('uri');
-?>
-<form action="<?php echo base_url('admin/agenda/cari') ?>" method="get" accept-charset="utf-8" enctype="multipart/form-data">
-<div class="row">
+<!-- Page Header -->
+<div class="page-header-modern mb-4">
+  <div>
+    <h1 class="page-title"><i class="fas fa-calendar-alt"></i> Agenda & Even</h1>
+    <p class="page-subtitle">Kelola agenda, even, dan kegiatan sekolah</p>
+  </div>
+  <a href="<?= base_url('admin/agenda/tambah') ?>" class="btn btn-primary-action">
+    <i class="fas fa-plus"></i> Tambah Agenda
+  </a>
+</div>
 
-  <div class="col-md-5">
-    <br>
-    <div class="input-group">                  
-      <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci pencarian agenda...." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
-      <span class="input-group-btn ">
-        <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
-        <a href="<?php echo base_url('admin/agenda/tambah') ?>" class="btn btn-success btn-flat">
-        <i class="fa fa-plus"></i> Tambah</a>
-      </span>
+<!-- Stat Cards -->
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="stat-card stat-card-blue">
+      <div class="stat-card-icon"><i class="fas fa-calendar-alt"></i></div>
+      <div class="stat-card-value"><?= esc($stats['total'] ?? 0) ?></div>
+      <div class="stat-card-label">Total Agenda</div>
     </div>
   </div>
-  <div class="col-md-7 text-left">
-    <?php if(isset($pagin)) { echo esc($pagin); } ?>
+  <div class="col-md-4">
+    <div class="stat-card stat-card-green">
+      <div class="stat-card-icon"><i class="fas fa-eye"></i></div>
+      <div class="stat-card-value"><?= esc($stats['publish'] ?? 0) ?></div>
+      <div class="stat-card-label">Published</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="stat-card stat-card-amber">
+      <div class="stat-card-icon"><i class="fas fa-eye-slash"></i></div>
+      <div class="stat-card-value"><?= esc($stats['draft'] ?? 0) ?></div>
+      <div class="stat-card-label">Draft</div>
+    </div>
   </div>
 </div>
-<?php echo form_close(); ?>
-<div class="clearfix"><hr></div>
-<?php
-echo form_open(base_url('admin/agenda/proses'));
-?>
-<div class="row">
-  <div class="col-md-4">
-    <div class="input-group input-group-sm">
-      <button class="btn btn-secondary btn-xs mb-1 delete-link" type="submit" name="hapus" onClick="check();" >
-          <i class="fa fa-trash"></i>
-        </button> 
-      <select name="id_kategori_agenda" class="form-control">
-        <?php foreach($kategori_agenda as $kategori_agenda) { ?>
-          <option value="<?php echo esc($kategori_agenda['id_kategori_agenda']) ?>"><?php echo esc($kategori_agenda['nama_kategori_agenda']) ?></option>
-        <?php } ?>
-      </select>
-      <span class="input-group-btn" >
-        <button type="submit" class="btn btn-dark btn-flat btn-sm" name="update">Update</button>
-      </span>
-    </div>
+
+<!-- Search Bar -->
+<div class="card-modern mb-3">
+  <div class="card-modern-body" style="padding: 1rem 1.25rem;">
+    <form action="<?= base_url('admin/agenda/cari') ?>" method="get" class="filter-bar">
+      <div class="input-group" style="max-width: 400px;">
+        <input type="text" name="keywords" class="form-control" placeholder="Cari agenda..."
+               value="<?= isset($_GET['keywords']) ? esc($_GET['keywords']) : '' ?>">
+        <span class="input-group-append">
+          <button type="submit" class="btn btn-primary-action">
+            <i class="fas fa-search"></i> Cari
+          </button>
+        </span>
+      </div>
+      <?php if(isset($_GET['keywords'])): ?>
+        <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary-action">
+          <i class="fas fa-times"></i> Reset
+        </a>
+      <?php endif; ?>
+    </form>
   </div>
+</div>
 
-  <div class="col-md-8">
-      
+<!-- Bulk Action Form -->
+<?= form_open(base_url('admin/agenda/proses')) ?>
 
-        <button class="btn btn-secondary btn-sm" type="submit" name="draft" onClick="check();" >
-          <i class="fa fa-eye-slash"></i> Jangan Publikasikan
-        </button>
+<!-- Bulk Action Bar -->
+<div class="bulk-action-bar mb-3">
+  <div class="d-flex align-items-center gap-2">
+    <button type="button" class="btn btn-secondary-action btn-sm" onclick="toggleAll(this)">
+      <i class="far fa-square"></i> Semua
+    </button>
+    <span class="text-muted" style="font-size: var(--font-xs);" id="selected-count">0 dipilih</span>
+  </div>
+  <div class="d-flex align-items-center gap-2">
+    <button type="submit" name="hapus" class="btn btn-danger-action btn-sm" onClick="check();">
+      <i class="fas fa-trash"></i> Hapus
+    </button>
+    <button type="submit" name="draft" class="btn btn-secondary-action btn-sm" onClick="check();">
+      <i class="fas fa-eye-slash"></i> Draft
+    </button>
+    <button type="submit" name="publish" class="btn btn-success-action btn-sm" onClick="check();">
+      <i class="fas fa-eye"></i> Publish
+    </button>
+    <select name="id_kategori_agenda" class="form-select form-select-sm" style="max-width: 180px; font-size: var(--font-xs);">
+      <?php foreach($kategori_agenda as $ka): ?>
+      <option value="<?= esc($ka['id_kategori_agenda']) ?>"><?= esc($ka['nama_kategori_agenda']) ?></option>
+      <?php endforeach; ?>
+    </select>
+    <button type="submit" name="update" class="btn btn-info-action btn-sm">
+      <i class="fas fa-sync"></i> Update
+    </button>
+  </div>
+</div>
 
-        <button class="btn btn-secondary btn-xs mb-1 delete-link" type="submit" name="publish" onClick="check();" >
-          <i class="fa fa-eye"></i> Publish
-        </button>
-
-        
-        <?php 
-        $url_navigasi = $uri->getSegment(2); 
-        if($uri->getSegment(3) != "") { 
-          ?>
-          <a href="<?php echo base_url('admin/'.$url_navigasi) ?>" class="btn btn-dark">
-            <small ><i class="fa fa-arrow-circle-left"></i> Kembali</small></a>
-          <?php } ?>
-        </div>
-    </div>
-    <div class="clearfix"><hr></div>
-    <div class="table-responsive mailbox-messages">
-      <table id="example11" class="display table table-bordered table-sm" cellspacing="0" width="100%">
+<!-- Table -->
+<div class="card-modern">
+  <div class="card-modern-body" style="padding: 0;">
+    <div class="table-responsive">
+      <table class="table-modern" id="example3">
         <thead>
-          <tr class="bg-light text-center align-middle">
-            <th width="5%">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                </button>
-              </div>
+          <tr>
+            <th width="3%" class="text-center">
+              <input type="checkbox" id="check-all" onclick="toggleAll(this)">
             </th>
-            <th width="5%" class="align-middle">GAMBAR</th>
-            <th width="20%" class="align-middle">NAMA</th>
-            <th width="20%" class="align-middle">VENUE</th>
-            <th width="20%" class="align-middle">PENDAFTARAN</th>
-            <th width="10%" class="align-middle">STATUS</th> 
-            <th width="15%" class="align-middle">Action</th>
+            <th width="6%">Gambar</th>
+            <th>Nama Agenda</th>
+            <th width="15%">Venue</th>
+            <th width="15%">Pendaftaran</th>
+            <th width="10%">Status</th>
+            <th width="12%">Aksi</th>
           </tr>
         </thead>
         <tbody>
-
-          <?php 
-            $i=1; foreach($agenda as $agenda) { 
-            $id_agenda  = $agenda['id_agenda'];
-            ?>
-
-            <tr class="odd gradeX">
-              <td class="text-center">
-                <div class="icheck-primary">
-                  <input type="checkbox" name="id_agenda[]" value="<?php echo esc($agenda['id_agenda']) ?>" id="check<?php echo esc($i) ?>">
-                  <label for="check<?php echo esc($i) ?>"></label>
+          <?php $i=1; foreach($agenda as $a): ?>
+          <tr>
+            <td class="text-center">
+              <input type="checkbox" name="id_agenda[]" value="<?= esc($a['id_agenda']) ?>"
+                     class="row-check" onchange="updateCount()">
+            </td>
+            <td>
+              <?php if($a['gambar'] != ''): ?>
+                <img src="<?= base_url('assets/upload/image/thumbs/'.$a['gambar']) ?>" class="berita-thumb" alt="">
+              <?php else: ?>
+                <div style="width:60px;height:45px;background:var(--bg);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.7rem;">
+                  <i class="fas fa-calendar"></i>
                 </div>
-              </td>
-              <td>
-                <?php if($agenda['gambar']=="") { echo '-'; }else{ ?>
-                  <img src="<?php echo base_url('assets/upload/image/thumbs/'.$agenda['gambar']) ?>" class="img img-thumbnail">
-                <?php } ?>
-              </td>
-              
-              <td><a href="<?php echo base_url('agenda/detail/'.$agenda['slug_agenda']) ?>" class="text-capitalize" target="_blank">
-                <?php echo esc($agenda['nama_agenda']) ?> <sup><i class="fa fa-search"></i></sup></a>
-                <small>
-                  <br><i class="fa fa-code"></i> <?php echo esc($agenda['kode_agenda']) ?>
-                  <br><i class="fa fa-check-circle"></i> <?php echo esc($agenda['urutan']) ?>
-                  <br><i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/agenda/kategori/'.$agenda['id_kategori_agenda']) ?>" class="text-capitalize">
-                <?php echo esc($agenda['nama_kategori_agenda']) ?></a></small></td>
-                <td><?php echo esc($agenda['nama_tempat']) ?>
-                <small>
-                  <br><i class="fa fa-map"></i> <?php echo esc($agenda['link_google_map']) ?>
-                  <br><i class="fa fa-home"></i> <?php echo strip_tags($agenda['alamat']) ?>
-                </small>
-                </td>
-                <td>Rp <?php echo number_format($agenda['harga'],'0',',','.') ?>
-                  <small>
-                    <br><i class="fa fa-shopping-cart"></i> Rp <?php echo number_format($agenda['harga_diskon'],'0',',','.') ?>
-                    <br><i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_id($agenda['tanggal_buka'])) ?> sd <?php echo esc($this->website->tanggal_id($agenda['tanggal_tutup'])) ?>
-                    <br><i class="fa fa-calendar-times"></i> <?php echo esc($this->website->tanggal_id($agenda['tanggal_mulai'])) ?> sd <?php echo esc($this->website->tanggal_id($agenda['tanggal_selesai'])) ?>
-                  </small>
-                </td>
-                <td class="text-center">
-                  <a href="<?php echo base_url('admin/agenda/status_agenda/'.$agenda['status_agenda']) ?>">
-                    <?php if($agenda['status_agenda']=='Publish') { ?>
-                      <span class="badge bg-dark mb-1">
-                        <i class="fa fa-eye"></i> <?php echo esc($agenda['status_agenda']) ?>
-                      </span>
-                    <?php }else{ ?>
-                      <span class="badge bg-secondary mb-1">
-                        <i class="fa fa-eye-slash"></i> Not Published
-                      </span>
-                    <?php } ?>
-                    </a>
-                    <?php if($agenda['status_pendaftaran']=='Buka') { ?>
-                      <span class="badge bg-info mb-1">
-                        <i class="fa fa-check-circle"></i> <?php echo esc($agenda['status_pendaftaran']) ?>
-                      </span>
-                    <?php }else{ ?>
-                      <span class="badge bg-warning mb-1">
-                        <i class="fa fa-times-circle"></i> Tutup
-                      </span>
-                    <?php } ?>
-                  </td>
-                  <td class="text-center">
-                    <div class="btn-group mb-2">
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url('admin/agenda/gambar/'.$agenda['id_agenda']) ?>"><i class="fa fa-image"></i> Gambar</a>
-
-                        <a class="btn btn-info btn-xs" href="<?php echo base_url('agenda/detail/'.$agenda['slug_agenda']) ?>" target="_blank"><i class="fa fa-eye"></i></a>
-
-
-                        <a href="<?php echo base_url('admin/agenda/edit/'.$agenda['id_agenda']) ?>" 
-                          class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-
-                          <a href="<?php echo base_url('admin/agenda/delete/'.$agenda['id_agenda']) ?>" class="btn btn-danger btn-xs delete-link" onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
-                        </div>
-
-                      <div class="btn-group mb-2">
-                        <a class="btn btn-primary btn-xs" href="<?php echo base_url('admin/agenda/jadwal/'.$agenda['id_agenda']) ?>"><i class="fa fa-calendar-check"></i> Jadwal Agenda</a>
-                      </div>
-
-                      
-                      </td>
-                    </tr>
-
-                    <?php $i++; } ?>
-
-                  </tbody>
-                </table>
+              <?php endif; ?>
+            </td>
+            <td>
+              <a href="<?= base_url('agenda/detail/'.$a['slug_agenda']) ?>" target="_blank" style="font-weight:500;color:var(--text);text-decoration:none;">
+                <?= esc($a['nama_agenda']) ?> <i class="fas fa-external-link-alt" style="font-size:0.6rem;color:var(--muted);"></i>
+              </a>
+              <div class="berita-meta mt-1">
+                <i class="fas fa-code"></i> <?= esc($a['kode_agenda']) ?>
+                <i class="fas fa-sort-numeric-up" style="margin-left:0.5rem;"></i> <?= esc($a['urutan']) ?>
+                <br>
+                <a href="<?= base_url('admin/agenda/kategori/'.$a['id_kategori_agenda']) ?>" class="status-badge status-info" style="text-decoration:none;">
+                  <?= esc($a['nama_kategori_agenda']) ?>
+                </a>
               </div>
+            </td>
+            <td>
+              <span style="font-size:var(--font-xs);font-weight:500;"><?= esc($a['nama_tempat']) ?></span>
+              <div class="berita-meta mt-1">
+                <i class="fas fa-map"></i> <?= esc($a['link_google_map']) ?>
+                <br>
+                <span style="color:var(--muted);"><?= strip_tags($a['alamat']) ?></span>
+              </div>
+            </td>
+            <td>
+              <span style="font-weight:600;color:var(--green);">Rp <?= number_format($a['harga'],0,',','.') ?></span>
+              <div class="berita-meta mt-1">
+                <i class="fas fa-shopping-cart" style="color:var(--amber);"></i> Rp <?= number_format($a['harga_diskon'],0,',','.') ?>
+                <br>
+                <i class="fas fa-calendar-check"></i> <?= esc($this->website->tanggal_id($a['tanggal_buka'])) ?> - <?= esc($this->website->tanggal_id($a['tanggal_tutup'])) ?>
+                <br>
+                <i class="fas fa-calendar-times"></i> <?= esc($this->website->tanggal_id($a['tanggal_mulai'])) ?> - <?= esc($this->website->tanggal_id($a['tanggal_selesai'])) ?>
+              </div>
+            </td>
+            <td class="text-center">
+              <?php if($a['status_agenda'] == 'Publish'): ?>
+                <a href="<?= base_url('admin/agenda/status_agenda/Publish') ?>" class="status-badge status-success" style="text-decoration:none;">
+                  <i class="fas fa-eye"></i> Publish
+                </a>
+              <?php else: ?>
+                <a href="<?= base_url('admin/agenda/status_agenda/Draft') ?>" class="status-badge status-warning" style="text-decoration:none;">
+                  <i class="fas fa-eye-slash"></i> Draft
+                </a>
+              <?php endif; ?>
+              <br>
+              <?php if($a['status_pendaftaran'] == 'Buka'): ?>
+                <span class="status-badge status-info" style="margin-top:0.25rem;">
+                  <i class="fas fa-check-circle"></i> Buka
+                </span>
+              <?php else: ?>
+                <span class="status-badge status-danger" style="margin-top:0.25rem;">
+                  <i class="fas fa-times-circle"></i> Tutup
+                </span>
+              <?php endif; ?>
+            </td>
+            <td>
+              <div class="d-flex gap-1 flex-wrap">
+                <a href="<?= base_url('admin/agenda/gambar/'.$a['id_agenda']) ?>" class="btn btn-success-action btn-sm" title="Gambar">
+                  <i class="fas fa-image"></i>
+                </a>
+                <a href="<?= base_url('admin/agenda/jadwal/'.$a['id_agenda']) ?>" class="btn btn-info-action btn-sm" title="Jadwal">
+                  <i class="fas fa-calendar-check"></i>
+                </a>
+                <a href="<?= base_url('admin/agenda/edit/'.$a['id_agenda']) ?>" class="btn btn-primary-action btn-sm" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <a href="<?= base_url('admin/agenda/delete/'.$a['id_agenda']) ?>" class="btn btn-danger-action btn-sm delete-link" title="Hapus">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <?php $i++; endforeach; ?>
+        </tbody>
+      </table>
+    </div>
 
-              <?php echo form_close(); ?>
+    <!-- Pagination -->
+    <?php if(isset($pagin) && $pagin): ?>
+    <div class="pagination-row">
+      <?= esc($pagin) ?>
+    </div>
+    <?php endif; ?>
+  </div>
+</div>
 
-              <div class="clearfix"><hr></div>
-              <div class="pull-right"><?php if(isset($pagin)) { echo esc($pagin); } ?></div>
+<?= form_close() ?>
+
+<script>
+function toggleAll(el) {
+  const checks = document.querySelectorAll('.row-check');
+  const checked = el.type === 'checkbox' ? el.checked : !document.getElementById('check-all').checked;
+  checks.forEach(c => c.checked = checked);
+  document.getElementById('check-all').checked = checked;
+  updateCount();
+}
+function updateCount() {
+  const count = document.querySelectorAll('.row-check:checked').length;
+  document.getElementById('selected-count').textContent = count + ' dipilih';
+}
+</script>
