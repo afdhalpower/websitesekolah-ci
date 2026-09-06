@@ -137,12 +137,12 @@
 .stat-card-num {
   font-size: var(--font-xl);
   font-weight: 700;
-  color: #fff;
+  color: var(--dark);
   line-height: 1.2;
 }
 .stat-card-label {
   font-size: var(--font-xs);
-  color: rgba(255,255,255,0.85);
+  color: var(--gray);
   font-weight: 500;
 }
 
@@ -267,8 +267,8 @@
 }
 .cs-label {
   font-size: var(--font-xs);
-  color: var(--gray-light);
-  font-weight: 500;
+  color: #4b5563;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
