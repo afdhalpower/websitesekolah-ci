@@ -1,146 +1,247 @@
-<div class="callout callout-info bg-light">
-	Hai <strong><em class="text-success"><?php echo Session()->get('nama') ?></em></strong>, Selamat datang di <strong><?php echo esc($this->website->namasekolah()) ?>. Semoga Anda senang.</strong>
+<!-- Welcome Banner -->
+<div class="dashboard-welcome">
+  <div class="welcome-content">
+    <div class="welcome-text">
+      <h4 class="welcome-greeting">Assalamu'alaikum, <strong><?php echo Session()->get('nama') ?></strong></h4>
+      <p class="welcome-sub">Selamat datang di panel <strong><?php echo esc($this->website->namasekolah()) ?></strong>. Kelola sistem informasi sekolah dengan mudah.</p>
+    </div>
+    <div class="welcome-quick">
+      <a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-quick">
+        <i class="fas fa-plus"></i> Tambah Berita
+      </a>
+      <a href="<?php echo base_url('admin/galeri/tambah') ?>" class="btn btn-quick">
+        <i class="fas fa-image"></i> Tambah Galeri
+      </a>
+      <a href="<?php echo base_url('admin/konfigurasi/sekolah') ?>" class="btn btn-quick">
+        <i class="fas fa-cog"></i> Setting
+      </a>
+    </div>
+  </div>
 </div>
 
-<!-- Info boxes -->
-<div class="row">
-	<div class="col-12 col-sm-6 col-md-3">
-		<div class="info-box">
-			<span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-question"></i></span>
-
-			<div class="info-box-content">
-				<span class="info-box-text">Panduan Penggunaan</span>
-				<span class="info-box-number">
-					<a href="<?php echo base_url('admin/dasbor/panduan') ?>" class="btn btn-xs btn-outline-success">
-						<i class="fa fa-eye"></i> Baca Panduan
-					</a>
-				</span>
-			</div>
-			<!-- /.info-box-content -->
-		</div>
-		<!-- /.info-box -->
-	</div>
-	<!-- col -->
-	<div class="col-12 col-sm-6 col-md-3">
-		<div class="info-box">
-			<span class="info-box-icon bg-info elevation-1"><i class="fas fa-calendar-check"></i></span>
-
-			<div class="info-box-content">
-				<span class="info-box-text">Periode PPDB</span>
-				<span class="info-box-number">
-					<a href="<?php echo base_url('admin/gelombang') ?>" class="btn btn-xs btn-outline-success">
-						<i class="fa fa-calendar-check"></i> Lihat dan Kelola
-					</a>
-				</span>
-			</div>
-			<!-- /.info-box-content -->
-		</div>
-		<!-- /.info-box -->
-	</div>
-	<!-- /.col -->
-	<div class="col-12 col-sm-6 col-md-3">
-		<div class="info-box mb-3">
-			<span class="info-box-icon bg-danger elevation-1"><i class="fas fa-newspaper"></i></span>
-
-			<div class="info-box-content">
-				<span class="info-box-text">Artikel dan Berita</span>
-				<span class="info-box-number">
-					<a href="<?php echo base_url('admin/berita') ?>" class="btn btn-xs btn-outline-success">
-						<i class="fa fa-check-circle"></i> Lihat dan Kelola
-					</a>
-				</span>
-			</div>
-			<!-- /.info-box-content -->
-		</div>
-		<!-- /.info-box -->
-	</div>
-	<!-- /.col -->
-	<?php if(Session()->get('akses_level')=='Admin') { ?>
-		<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box">
-				<span class="info-box-icon bg-success elevation-1"><i class="fas fa-image"></i></span>
-
-				<div class="info-box-content">
-					<span class="info-box-text">Banner dan Galeri</span>
-					<span class="info-box-number">
-						<a href="<?php echo base_url('admin/galeri') ?>" class="btn btn-xs btn-outline-success">
-							<i class="fa fa-users"></i> Lihat dan Kelola
-						</a>
-					</span>
-				</div>
-				<!-- /.info-box-content -->
-			</div>
-			<!-- /.info-box -->
-		</div>
-		<!-- /.col -->
-		<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box mb-3">
-				<span class="info-box-icon bg-primary elevation-1"><i class="fas fa-graduation-cap"></i></span>
-
-				<div class="info-box-content">
-					<span class="info-box-text">Guru dan Staff</span>
-					<span class="info-box-number">
-						<a href="<?php echo base_url('admin/staff') ?>" class="btn btn-xs btn-outline-success">
-							<i class="fa fa-graduation-cap"></i> Lihat dan Kelola
-						</a>
-					</span>
-				</div>
-				<!-- /.info-box-content -->
-			</div>
-			<!-- /.info-box -->
-		</div>
-		<!-- /.col -->
-		<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box">
-				<span class="info-box-icon bg-warning elevation-1"><i class="fab fa-youtube"></i></span>
-
-				<div class="info-box-content">
-					<span class="info-box-text">Video Youtube</span>
-					<span class="info-box-number">
-						<a href="<?php echo base_url('admin/video') ?>" class="btn btn-xs btn-outline-success">
-							<i class="fa fa-eye"></i> Lihat dan Kelola
-						</a>
-					</span>
-				</div>
-				<!-- /.info-box-content -->
-			</div>
-			<!-- /.info-box -->
-		</div>
-		<!-- /.col -->
-		<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box">
-				<span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-user-lock"></i></span>
-
-				<div class="info-box-content">
-					<span class="info-box-text">Pengguna Website</span>
-					<span class="info-box-number">
-						<a href="<?php echo base_url('admin/user') ?>" class="btn btn-xs btn-outline-success">
-							<i class="fa fa-user-lock"></i> Lihat dan Kelola
-						</a>
-					</span>
-				</div>
-				<!-- /.info-box-content -->
-			</div>
-			<!-- /.info-box -->
-		</div>
-		<!-- /.col -->
-		<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box mb-3">
-				<span class="info-box-icon bg-dark elevation-1"><i class="fas fa-home"></i></span>
-
-				<div class="info-box-content">
-					<span class="info-box-text">Informasi Sekolah</span>
-					<span class="info-box-number">
-						<a href="<?php echo base_url('admin/konfigurasi/sekolah') ?>" class="btn btn-xs btn-outline-success">
-							<i class="fa fa-home"></i> Lihat dan Kelola
-						</a>
-					</span>
-				</div>
-				<!-- /.info-box-content -->
-			</div>
-			<!-- /.info-box -->
-		</div>
-		<!-- /.col -->
-	<?php } ?>
+<!-- Stats Row -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-lg-3">
+    <div class="stat-card stat-green">
+      <div class="stat-icon">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <div class="stat-info">
+        <span class="stat-number"><?php echo $stats['siswa'] ?></span>
+        <span class="stat-label">Siswa Aktif</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="stat-card stat-blue">
+      <div class="stat-icon">
+        <i class="fas fa-newspaper"></i>
+      </div>
+      <div class="stat-info">
+        <span class="stat-number"><?php echo $stats['berita'] ?></span>
+        <span class="stat-label">Berita & Artikel</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="stat-card stat-purple">
+      <div class="stat-icon">
+        <i class="fas fa-images"></i>
+      </div>
+      <div class="stat-info">
+        <span class="stat-number"><?php echo $stats['galeri'] ?></span>
+        <span class="stat-label">Media Galeri</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-3">
+    <div class="stat-card stat-orange">
+      <div class="stat-icon">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <div class="stat-info">
+        <span class="stat-number"><?php echo $stats['tagihan_pending'] ?></span>
+        <span class="stat-label">Tagihan Pending</span>
+      </div>
+    </div>
+  </div>
 </div>
-        <!-- /.row -->
+
+<!-- Menu Cards -->
+<div class="row g-3 mb-4">
+  <!-- Card 1: PPDB -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/gelombang') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #059669, #10b981);">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">PPDB Online</h6>
+        <p class="dash-card-desc">Kelola pendaftaran siswa baru</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 2: Berita -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/berita') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #dc2626, #ef4444);">
+        <i class="fas fa-newspaper"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Berita & Profil</h6>
+        <p class="dash-card-desc"><?php echo $stats['berita'] ?> artikel terbit</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 3: Galeri -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/galeri') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #166308, #22c55e);">
+        <i class="fas fa-images"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Galeri & Banner</h6>
+        <p class="dash-card-desc"><?php echo $stats['galeri'] ?> media tersedia</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 4: Keuangan -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/biaya') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Keuangan</h6>
+        <p class="dash-card-desc"><?php echo $stats['tagihan'] ?> tagihan tercatat</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 5: Staff -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/staff') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">
+        <i class="fas fa-chalkboard-teacher"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Guru & Staff</h6>
+        <p class="dash-card-desc"><?php echo $stats['staff'] ?> personel terdaftar</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 6: Agenda -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/agenda') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Event & Agenda</h6>
+        <p class="dash-card-desc"><?php echo $stats['agenda'] ?> event terjadwal</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 7: Video -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/video') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #dc2626, #f87171);">
+        <i class="fab fa-youtube"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Video Youtube</h6>
+        <p class="dash-card-desc"><?php echo $stats['video'] ?> video terupload</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 8: Setting -->
+  <div class="col-6 col-lg-4 col-xl-3">
+    <a href="<?php echo base_url('admin/konfigurasi/sekolah') ?>" class="dash-card">
+      <div class="dash-card-icon" style="background: linear-gradient(135deg, #374151, #6b7280);">
+        <i class="fas fa-cog"></i>
+      </div>
+      <div class="dash-card-body">
+        <h6 class="dash-card-title">Setting Sekolah</h6>
+        <p class="dash-card-desc">Konfigurasi website</p>
+        <span class="dash-card-link">Buka <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Bottom Row: Siswa per Jenjang + Panduan -->
+<div class="row g-3">
+  <!-- Siswa per Jenjang -->
+  <div class="col-lg-8">
+    <div class="dash-panel">
+      <div class="dash-panel-header">
+        <h6 class="dash-panel-title"><i class="fas fa-chart-bar text-success me-2"></i> Siswa per Jenjang</h6>
+      </div>
+      <div class="dash-panel-body">
+        <?php if(empty($siswa_per_jenjang)): ?>
+          <p class="text-muted text-center py-3">Belum ada data siswa</p>
+        <?php else: ?>
+          <?php foreach($siswa_per_jenjang as $row): ?>
+            <div class="jenjang-bar">
+              <div class="jenjang-info">
+                <span class="jenjang-name"><?php echo esc($row->nama_jenjang ?? 'Tidak Ditetapkan') ?></span>
+                <span class="jenjang-count"><?php echo $row->jumlah ?> siswa</span>
+              </div>
+              <div class="jenjang-progress">
+                <div class="jenjang-fill" style="width: <?php echo $stats['siswa'] > 0 ? ($row->jumlah / $stats['siswa'] * 100) : 0 ?>%"></div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panduan Cepat -->
+  <div class="col-lg-4">
+    <div class="dash-panel">
+      <div class="dash-panel-header">
+        <h6 class="dash-panel-title"><i class="fas fa-question-circle text-success me-2"></i> Panduan Cepat</h6>
+      </div>
+      <div class="dash-panel-body">
+        <a href="<?php echo base_url('admin/dasbor/panduan') ?>" class="panduan-link">
+          <i class="fas fa-book"></i>
+          <div>
+            <strong>Manual Penggunaan</strong>
+            <small>Panduan lengkap admin panel</small>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </a>
+        <a href="<?php echo base_url('admin/konfigurasi/sekolah') ?>" class="panduan-link">
+          <i class="fas fa-school"></i>
+          <div>
+            <strong>Profil Sekolah</strong>
+            <small>Update informasi sekolah</small>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </a>
+        <a href="<?php echo base_url('admin/user') ?>" class="panduan-link">
+          <i class="fas fa-users-cog"></i>
+          <div>
+            <strong>Kelola Pengguna</strong>
+            <small>Tambah/hapus akun admin</small>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
