@@ -7,11 +7,22 @@ use App\Models\Akun_model;
 
 class Simple_login
 {
+
+	/**
+	 * Build absolute URL using CI4's URI service (works in library context).
+	 * base_url() is NOT available in libraries — returns empty/null.
+	 */
+	private function _url($path = ''): string
+	{
+		$path = (string) ($path ?? '');
+		$uri = service('uri');
+		return $uri->getBaseURL() . ltrim($path, '/');
+	}
+
 	// check login
 	public function login($username,$password,$pengalihan)
 	{
 		$this->session  = \Config\Services::session();
-		$uri            = service('uri');
 		$m_user 		= new User_model();
 
 		// Brute force protection: max 5 attempts per 5 minutes per username
@@ -32,7 +43,8 @@ class Simple_login
 
 		if (count($attempts) >= 5) {
 			$this->session->setFlashdata('warning','Terlalu banyak percobaan login. Silakan coba lagi dalam 5 menit.');
-			return redirect()->to(base_url('login'));
+			header("Location: " . $this->_url('login'));
+			exit;
 		}
 
 		$user 			= $m_user->login($username,$password);
@@ -47,22 +59,21 @@ class Simple_login
 			$this->session->set('id_staff',$user->id_staff);
 			$this->session->set('nama',$user->nama);
 			$this->session->set('akses_level',$user->akses_level);
-			// $this->session->setFlashdata('warning', 'Hai '.$user->nama.', Anda berhasil login');
-			// return redirect()->to(base_url('admin/dasbor'));
-			if($pengalihan!=='') {
-				header("Location: ".$pengalihan);
+
+			if(!empty($pengalihan)) {
+				header("Location: " . $this->_url($pengalihan));
 			}else{
-				header("Location: admin/dasbor");
+				header("Location: " . $this->_url('admin/dasbor'));
 			}
-			
-            exit;
+			exit;
 		}else{
 			// Track failed attempt for brute force protection
 			$attempts[] = time();
 			file_put_contents($rateFile, json_encode($attempts));
 			// jika username password salah
 			$this->session->setFlashdata('warning','Username atau password salah');
-			return redirect()->to(base_url('login'));
+			header("Location: " . $this->_url('login'));
+			exit;
 		}
 	}
 
@@ -70,7 +81,6 @@ class Simple_login
 	public function login_siswa_akun($username,$password)
 	{
 		$this->session  = \Config\Services::session();
-		$uri            = service('uri');
 		$m_siswa 		= new Siswa_model();
 		$m_akun 		= new Akun_model();
 		$user 			= $m_akun->login($username,sha1($password));
@@ -84,6 +94,8 @@ class Simple_login
 			$this->session->set('jenis_akun',$user->jenis_akun);
 			$this->session->set('nis',$user->nis);
 			$this->session->set('nisn',$user->nisn);
+			header("Location: " . $this->_url('siswa/dasbor'));
+			exit;
 		}
 	}
 
@@ -91,7 +103,6 @@ class Simple_login
 	public function login_siswa($username,$password)
 	{
 		$this->session  = \Config\Services::session();
-		$uri            = service('uri');
 		$m_siswa 		= new Siswa_model();
 		$m_akun 		= new Akun_model();
 
@@ -107,21 +118,23 @@ class Simple_login
 			$this->session->set('jenis_akun',$user->jenis_akun);
 			$this->session->set('nis',$user->nis);
 			$this->session->set('nisn',$user->nisn);
-			header("Location: siswa/dasbor");			
-            exit;
-        }elseif($user2) {
-        	// Jika username password benar
+			header("Location: " . $this->_url('siswa/dasbor'));
+			exit;
+		}elseif($user2) {
+			// Jika username password benar
 			$this->session->set('username_siswa',$username);
 			$this->session->set('id_akun',$user2->id_akun);
 			$this->session->set('nama_siswa',$user2->nama_siswa);
 			$this->session->set('jenis_akun',$user2->jenis_akun);
 			$this->session->set('nis',$user2->nis);
 			$this->session->set('nisn',$user2->nisn);
-			header("Location: siswa/dasbor");
+			header("Location: " . $this->_url('siswa/dasbor'));
+			exit;
 		}else{
 			// jika username password salah
 			$this->session->setFlashdata('warning','Username atau password salah');
-			return redirect()->to(base_url('signin'));
+			header("Location: " . $this->_url('signin'));
+			exit;
 		}
 	}
 
@@ -134,8 +147,8 @@ class Simple_login
 			$pengalihan = str_replace('index.php/','',current_url());
 			$this->session->set('pengalihan_siswa',$pengalihan);
 			$this->session->setFlashdata('warning','Anda belum login');
-			header("Location: ".base_url('signin')).'?redirect='.$pengalihan;
-	        exit;
+			header("Location: " . $this->_url('signin') . '?redirect=' . $pengalihan);
+			exit;
 		}
 	}
 
@@ -143,7 +156,6 @@ class Simple_login
 	public function login_client($username,$password)
 	{
 		$this->session  = \Config\Services::session();
-		$uri            = service('uri');
 		$m_client 		= new Client_model();
 		$user 			= $m_client->login($username,$password);
 		if($user) 
@@ -153,12 +165,13 @@ class Simple_login
 			$this->session->set('id_client',$user->id_client);
 			$this->session->set('nama_client',$user->nama);
 			$this->session->set('akses_level','Client');
-			header("Location: client/dasbor");			
-            exit;
+			header("Location: " . $this->_url('client/dasbor'));
+			exit;
 		}else{
 			// jika username password salah
 			$this->session->setFlashdata('warning','Username atau password salah');
-			return redirect()->to(base_url('signin'));
+			header("Location: " . $this->_url('signin'));
+			exit;
 		}
 	}
 
@@ -171,15 +184,15 @@ class Simple_login
 			$pengalihan = str_replace('index.php/','',current_url());
 			$this->session->set('pengalihan',$pengalihan);
 			$this->session->setFlashdata('warning','Anda belum login');
-			header("Location: ".base_url('login')).'?redirect='.$pengalihan;
-	        exit;
+			header("Location: " . $this->_url('login') . '?redirect=' . $pengalihan);
+			exit;
 		}
 		// Role-based access: only Admin level allowed
 		if($this->session->get('akses_level') !== 'Admin')
 		{
 			$this->session->setFlashdata('warning','Anda tidak memiliki akses ke halaman ini');
-			header("Location: ".base_url('login'));
-	        exit;
+			header("Location: " . $this->_url('login'));
+			exit;
 		}
 	}
 
@@ -192,8 +205,8 @@ class Simple_login
 			$pengalihan = str_replace('index.php/','',current_url());
 			$this->session->set('pengalihan_siswa',$pengalihan);
 			$this->session->setFlashdata('warning','Anda belum login');
-			header("Location: ".base_url('signin')).'?redirect='.$pengalihan;
-	        exit;
+			header("Location: " . $this->_url('signin') . '?redirect=' . $pengalihan);
+			exit;
 		}
 	}
 
@@ -207,8 +220,8 @@ class Simple_login
 		$this->session->remove('nama');
 		$this->session->remove('pengalihan');
 		$this->session->setFlashdata('sukses','Anda berhasil logout');
-		header("Location: ".base_url('login?logout=sukses'));
-        exit;
+		header("Location: " . $this->_url('login') . '?logout=sukses');
+		exit;
 	}
 
 	// logout_siswa
@@ -223,7 +236,7 @@ class Simple_login
 		$this->session->remove('nisn');
 		$this->session->remove('pengalihan_siswa');
 		$this->session->setFlashdata('sukses','Anda berhasil logout');
-		header("Location: ".base_url('signin?logout=sukses'));
-        exit;
+		header("Location: " . $this->_url('signin') . '?logout=sukses');
+		exit;
 	}
 }
