@@ -1,61 +1,38 @@
-<p>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
-		<i class="fa fa-plus"></i> Tambah Baru
-	</button>
-</p>
-<?php 
-echo form_open(base_url('admin/tahun')); 
-echo csrf_field(); 
-$tahun_selesai = date('Y')+1;
-?>
-<div class="modal fade" id="modal-default">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Tambah Baru</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
+<button type="button" class="btn-primary-action mb-3" data-toggle="modal" data-target="#modal-tambah">
+    <i class="fa fa-plus"></i> Tambah Baru
+</button>
 
-				<div class="form-group row">
-					<label class="col-3">Tahun Ajaran</label>
-					<div class="col-2">
-						<input type="number" name="tahun_mulai" class="form-control" placeholder="Tahun Mulai" value="<?php if(isset($_POST['tahun_mulai'])) { echo set_value('tahun_mulai'); }else{ echo date('Y'); } ?>" required>
-					</div>
-					<div class="col-1 text-center">/</div>
-					<div class="col-2">
-						<input type="number" name="tahun_selesai" class="form-control" placeholder="Tahun Selesai" value="<?php if(isset($_POST['tahun_selesai'])) { echo set_value('tahun_selesai'); }else{ echo esc($tahun_selesai); } ?>" required>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Nama Jenjang</label>
-					<div class="col-9">
-						<input type="text" name="nama_tahun" class="form-control" placeholder="Nama tahun" value="<?php echo set_value('nama_tahun') ?>" required>
-						<small class="text-gray">Misal: Tahun Ajaran <?php echo date('Y').'/'.$tahun_selesai; ?></small>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Keterangan Lengkap</label>
-					<div class="col-9">
-						<textarea name="keterangan" class="form-control" placeholder="Keterangan Lengkap"><?php echo set_value('keterangan') ?></textarea>
-					</div>
-				</div>
-
-				
-				
-			</div>
-			<div class="modal-footer justify-content-end">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-				<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
+<div class="modal fade" id="modal-tambah">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:var(--radius-lg);overflow:hidden;">
+            <div class="modal-header" style="background:var(--card);border-bottom:1px solid var(--border);padding:1rem 1.5rem;">
+                <h5 class="modal-title" style="font-size:1rem;font-weight:600;"><i class="fas fa-plus-circle" style="color:var(--green);"></i> Tambah Tahun Ajaran</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <?php echo form_open(base_url('admin/tahun')); ?>
+            <div class="modal-body" style="padding:1.5rem;">
+                <div class="form-section">
+                    <label class="form-label">Nama Tahun <span class="text-danger">*</span></label>
+                    <input type="text" name="nama_tahun" class="form-control" value="<?= set_value('nama_tahun') ?>" required placeholder="Contoh: 2025/2026">
+                </div>
+                <div class="form-section mt-3">
+                    <label class="form-label">Tahun Mulai <span class="text-danger">*</span></label>
+                    <input type="number" name="tahun_mulai" class="form-control" value="<?= set_value('tahun_mulai') ?>" required placeholder="2025" min="2000" max="2099">
+                </div>
+                <div class="form-section mt-3">
+                    <label class="form-label">Tahun Selesai <span class="text-danger">*</span></label>
+                    <input type="number" name="tahun_selesai" class="form-control" value="<?= set_value('tahun_selesai') ?>" required placeholder="2026" min="2000" max="2099">
+                </div>
+                <div class="form-section mt-3">
+                    <label class="form-label">Keterangan <span class="text-danger">*</span></label>
+                    <textarea name="keterangan" class="form-control" rows="3" required placeholder="Deskripsi tahun ajaran"><?= set_value('keterangan') ?></textarea>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top:1px solid var(--border);padding:0.75rem 1.5rem;">
+                <button type="button" class="btn-secondary-action" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+                <button type="submit" class="btn-success-action"><i class="fas fa-save"></i> Simpan</button>
+            </div>
+            <?php echo form_close(); ?>
+        </div>
+    </div>
 </div>
-<!-- /.modal -->
-<?php echo form_close(); ?>

@@ -33,8 +33,8 @@ class Kelas_model extends Model
         $builder = $this->db->table('kelas');
         $builder->select('kelas.*,jenjang.nama_jenjang, jenjang.keterangan AS keterangan_jenjang');
         $builder->join('jenjang','jenjang.id_jenjang = kelas.id_jenjang');
-        $builder->groupBy('jenjang.id_jenjang');
         $builder->orderBy('jenjang.urutan','ASC');
+        $builder->orderBy('kelas.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
     }

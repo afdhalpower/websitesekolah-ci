@@ -1,41 +1,33 @@
 <?php include('tambah.php'); ?>
-<table class="table table-bordered table-sm" id="example3">
-	<thead>
-		<tr class="bg-secondary text-center">
-			<th width="5%">No</th>
-			<th width="10%">Logo</th>
-			<th width="30%">Nama</th>
-			<th width="20%">Keterangan</th>
-			<th width="10%">Jumlah</th>
-			<th width="10%">Urutan</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php 
-		$no=1; foreach($kategori_cabang as $kategori_cabang) { 
-			$cabang 	= $m_kategori_cabang->cabang($kategori_cabang->id_kategori_cabang);
-		?>
-		<tr>
-			<td class="text-center"><?php echo esc($no) ?></td>
-			<td class="text-center">
-				<?php if($kategori_cabang->gambar=="") { echo '-'; }else{ ?>
-					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$kategori_cabang->gambar) ?>" class="img img-thumbnail">
-				<?php } ?>
-			</td>
-			<td><?php echo esc($kategori_cabang->nama_kategori_cabang) ?>
-				<small>
-					<br>Slug: <?php echo esc($kategori_cabang->slug_kategori_cabang) ?>
-				</small>
-			</td>
-			<td><?php echo esc($kategori_cabang->keterangan) ?></td>
-			<td class="text-center"><?php if($cabang) { echo esc($cabang->total); }else{ echo 0; } ?> Cabang</td>
-			<td class="text-center"><?php echo esc($kategori_cabang->urutan) ?></td>
-			<td>
-				<a href="<?php echo base_url('admin/kategori_cabang/edit/'.$kategori_cabang->id_kategori_cabang) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
-				<a href="<?php echo base_url('admin/kategori_cabang/delete/'.$kategori_cabang->id_kategori_cabang) ?>" class="btn btn-secondary btn-sm delete-link"><i class="fa fa-trash"></i></a>
-			</td>
-		</tr>
-		<?php $no++; } ?>
-	</tbody>
-</table>
+
+<div class="page-header-modern mb-4">
+    <h4><i class="fa fa-tags"></i> Kategori Cabang</h4>
+</div>
+
+<div class="card-modern">
+    <div class="table-responsive">
+        <table class="table-modern" id="example3">
+            <thead>
+                <tr>
+                    <th width="5%">No</th>
+                    <th>Nama</th>
+                    <th width="10%">Urutan</th>
+                    <th width="15%">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $no=1; foreach($kategori_cabang as $row) { ?>
+                <tr>
+                    <td class="text-center"><?= esc($no) ?></td>
+                    <td><?= esc($row->nama_kategori_cabang) ?></td>
+                    <td class="text-center"><?= esc($row->urutan) ?></td>
+                    <td>
+                        <a href="<?= base_url('admin/kategori_cabang/edit/'.$row->id_kategori_cabang) ?>" class="btn-secondary-action"><i class="fa fa-edit"></i></a>
+                        <a href="<?= base_url('admin/kategori_cabang/delete/'.$row->id_kategori_cabang) ?>" class="btn-danger-action delete-link"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                <?php $no++; } ?>
+            </tbody>
+        </table>
+    </div>
+</div>

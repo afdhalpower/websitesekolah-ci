@@ -1,70 +1,30 @@
-<p>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
-		<i class="fa fa-plus"></i> Tambah Baru
-	</button>
-</p>
-<form action="<?php echo base_url('admin/kategori_download') ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
+<button type="button" class="btn-primary-action mb-3" data-toggle="modal" data-target="#modal-tambah">
+    <i class="fa fa-plus"></i> Tambah Baru
+</button>
 
-<div class="modal fade" id="modal-default">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Tambah Baru</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-
-				<div class="form-group row">
-					<label class="col-3">Nama &amp; Status</label>
-					<div class="col-6">
-						<input type="text" name="nama_kategori_download" class="form-control" placeholder="Nama kategori download" value="<?php echo set_value('nama_kategori_download') ?>" required>
-						<small class="text-secondary">Nama Kategori Download</small>
-					</div>
-					<div class="col-3">
-						<select name="status_kategori_download" class="form-control">
-							<option value="Publish">Publish</option>
-							<option value="Draft">Draft</option>
-						</select>
-						<small class="text-secondary">Status Kategori Download</small>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Gambar/ Logo</label>
-					
-					<div class="col-9">
-						<input type="file" name="gambar" class="form-control" placeholder="Gambar? logo" value="<?php echo set_value('gambar') ?>">
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Keterangan</label>
-					<div class="col-9">
-						<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo set_value('keterangan') ?></textarea>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Urutan</label>
-					<div class="col-9">
-						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo set_value('urutan') ?>">
-					</div>
-				</div>
-
-			</div>
-			<div class="modal-footer justify-content-end">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-				<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
+<div class="modal fade" id="modal-tambah">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius:var(--radius-lg);overflow:hidden;">
+            <div class="modal-header" style="background:var(--card);border-bottom:1px solid var(--border);padding:1rem 1.5rem;">
+                <h5 class="modal-title" style="font-size:1rem;font-weight:600;"><i class="fas fa-plus-circle" style="color:var(--green);"></i> Tambah Kategori Download</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <?php echo form_open(base_url('admin/kategori_download')); ?>
+            <div class="modal-body" style="padding:1.5rem;">
+                <div class="form-section">
+                    <label class="form-label">Nama Kategori Download <span class="text-danger">*</span></label>
+                    <input type="text" name="nama_kategori_download" class="form-control" value="<?= set_value('nama_kategori_download') ?>" required placeholder="Masukkan nama">
+                </div>
+                <div class="form-section mt-3">
+                    <label class="form-label">Urutan <span class="text-danger">*</span></label>
+                    <input type="number" name="urutan" class="form-control" value="<?= set_value('urutan') ?>" required placeholder="0">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top:1px solid var(--border);padding:0.75rem 1.5rem;">
+                <button type="button" class="btn-secondary-action" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+                <button type="submit" class="btn-success-action"><i class="fas fa-save"></i> Simpan</button>
+            </div>
+            <?php echo form_close(); ?>
+        </div>
+    </div>
 </div>
-<!-- /.modal -->
-<?php echo form_close(); ?>
