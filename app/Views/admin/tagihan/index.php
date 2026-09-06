@@ -99,7 +99,7 @@
 <div class="card-modern">
   <div class="card-modern-body" style="padding:0;">
     <div class="table-responsive">
-      <table class="table-modern">
+      <table class="table-modern" id="example3">
         <thead>
           <tr>
             <th width="5%" class="text-center">No</th>
