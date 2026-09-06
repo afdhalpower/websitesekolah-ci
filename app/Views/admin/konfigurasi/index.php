@@ -1,228 +1,124 @@
-<?php 
-echo form_open(base_url('admin/konfigurasi')); 
-echo csrf_field(); 
+<?php
+$url_sekolah = base_url('admin/konfigurasi/sekolah');
+$url_banner = base_url('admin/konfigurasi/banner');
+$url_logo = base_url('admin/konfigurasi/logo');
+$url_icon = base_url('admin/konfigurasi/icon');
+$url_login = base_url('admin/konfigurasi/login');
+$url_email = base_url('admin/konfigurasi/email');
+$url_seo = base_url('admin/konfigurasi/seo');
+$url_pendaftaran = base_url('admin/konfigurasi/pendaftaran');
 ?>
 
-<h4>Informasi Dasar</h4>
-<hr>
-<div class="form-group row">
-	<label class="col-3">Nama Website</label>
-	<div class="col-9">
-		<input type="text" name="namaweb" class="form-control" value="<?php echo esc($konfigurasi->namaweb) ?>" required>
-	</div>
+<div class="page-header-modern">
+    <div>
+        <h5 class="page-title">Konfigurasi Website</h5>
+        <p class="page-subtitle">Pengaturan seluruh komponen website sekolah</p>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-3">Singkatan Website</label>
-	<div class="col-9">
-		<input type="text" name="singkatan" class="form-control" value="<?php echo esc($konfigurasi->singkatan) ?>">
-	</div>
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_sekolah ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-school" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Informasi Sekolah</h6>
+                    <small style="color:var(--gray);">Nama, alamat, yayasan, akreditasi, tanah & bangunan</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_banner ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-image" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Banner & About Us</h6>
+                    <small style="color:var(--gray);">Banner website, tentang, ringkasan, link video</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_logo ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#059669,#10b981);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-palette" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Logo Website</h6>
+                    <small style="color:var(--gray);">Upload dan ganti logo utama website</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_icon ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#ea580c,#f97316);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-icons" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Icon Website</h6>
+                    <small style="color:var(--gray);">Favicon / icon browser website</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_login ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#dc2626,#ef4444);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-sign-in-alt" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Background Login</h6>
+                    <small style="color:var(--gray);">Gambar latar halaman login admin</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_email ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#0891b2,#06b6d4);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-envelope" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Pengaturan Email</h6>
+                    <small style="color:var(--gray);">Konfigurasi SMTP untuk pengiriman email</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_seo ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#ca8a04,#eab308);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-search" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">SEO & Meta</h6>
+                    <small style="color:var(--gray);">Keywords, meta tag, Facebook Pixel, Google Analytics</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a href="<?= $url_pendaftaran ?>" class="text-decoration-none">
+            <div class="card-modern h-100">
+                <div class="card-modern-body text-center py-4">
+                    <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#a855f7);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                        <i class="fas fa-user-plus" style="color:#fff;font-size:1.5rem;"></i>
+                    </div>
+                    <h6 style="font-weight:600;color:var(--dark);margin-bottom:0.3rem;">Pendaftaran Online</h6>
+                    <small style="color:var(--gray);">Aktifkan/deaktifkan fitur PPDB online</small>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
-
-<div class="form-group row">
-	<label class="col-3">Tagline Website</label>
-	<div class="col-9">
-		<input type="text" name="tagline" class="form-control" value="<?php echo esc($konfigurasi->tagline) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Alamat Website</label>
-	<div class="col-6">
-		<input type="text" name="website" class="form-control" value="<?php echo esc($konfigurasi->website) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Setting Pagination</label>
-	<div class="col-3">
-		<input type="number" name="paginasi" class="form-control" value="<?php echo esc($konfigurasi->paginasi) ?>">
-		<small class="text-gray">Paginasi back end</small>
-	</div>
-	<div class="col-3">
-		<input type="number" name="paginasi_depan" class="form-control" value="<?php echo esc($konfigurasi->paginasi_depan) ?>">
-		<small class="text-gray">Paginasi front end</small>
-	</div>
-</div>
-
-
-
-<hr>
-<h4>Informasi Profil Website/Aplikasi</h4>
-<hr>
-<div class="form-group row">
-	<label class="col-3">Tentang Website</label>
-	<div class="col-9">
-		<textarea name="tentang" class="form-control konten" rows="5"><?php echo esc($konfigurasi->tentang) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Deskripsi Ringkas</label>
-	<div class="col-9">
-		<textarea name="deskripsi" class="form-control"><?php echo esc($konfigurasi->deskripsi) ?></textarea>
-	</div>
-</div>
-
-<hr>
-<h4>Kontak dan Alamat</h4>
-<hr>
-
-<div class="form-group row">
-	<label class="col-3">Official Email</label>
-	<div class="col-6">
-		<input type="text" name="email" class="form-control" value="<?php echo esc($konfigurasi->email) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Secondary Email</label>
-	<div class="col-6">
-		<input type="text" name="email_cadangan" class="form-control" value="<?php echo esc($konfigurasi->email_cadangan) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Telepon</label>
-	<div class="col-6">
-		<input type="text" name="telepon" class="form-control" value="<?php echo esc($konfigurasi->telepon) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">HP</label>
-	<div class="col-6">
-		<input type="text" name="hp" class="form-control" value="<?php echo esc($konfigurasi->hp) ?>">
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Alamat</label>
-	<div class="col-9">
-		<textarea name="alamat" class="form-control summernote"><?php echo esc($konfigurasi->alamat) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Google Map</label>
-	<div class="col-9">
-		<textarea name="google_map" class="form-control"><?php echo esc($konfigurasi->google_map) ?></textarea>
-	</div>
-</div>
-
-<hr>
-<h4>Kontak Whatsapp</h4>
-<hr>
-
-<div class="form-group row">
-	<label class="col-3">Nomor Whatsapp <i class="fab fa-whatsapp text-success"></i></label>
-	<div class="col-6">
-		<input type="text" name="whatsapp" class="form-control" value="<?php echo esc($konfigurasi->whatsapp) ?>">
-		<small class="text-warning">Format nomor: 628122727427</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Pesan Whatsapp</label>
-	<div class="col-9">
-		<textarea name="pesan_whatsapp" class="form-control"><?php echo esc($konfigurasi->pesan_whatsapp) ?></textarea>
-	</div>
-</div>
-
-<hr>
-<h4>Jejaring Sosial</h4>
-<hr>
-
-<div class="form-group row">
-	<label class="col-3">Facebook <i class="fab fa-facebook"></i></label>
-	<div class="col-3">
-		<input type="text" name="nama_facebook" class="form-control" value="<?php echo esc($konfigurasi->nama_facebook) ?>">
-		<small class="text-secondary">Nama akun</small>
-	</div>
-	<div class="col-6">
-		<input type="text" name="facebook" class="form-control" value="<?php echo esc($konfigurasi->facebook) ?>">
-		<small class="text-secondary">Alamat link akun</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Twitter <i class="fab fa-twitter"></i></label>
-	<div class="col-3">
-		<input type="text" name="nama_twitter" class="form-control" value="<?php echo esc($konfigurasi->nama_twitter) ?>">
-		<small class="text-secondary">Nama akun</small>
-	</div>
-	<div class="col-6">
-		<input type="text" name="twitter" class="form-control" value="<?php echo esc($konfigurasi->twitter) ?>">
-		<small class="text-secondary">Alamat link akun</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Instagram <i class="fab fa-instagram"></i></label>
-	<div class="col-3">
-		<input type="text" name="nama_instagram" class="form-control" value="<?php echo esc($konfigurasi->nama_instagram) ?>">
-		<small class="text-secondary">Nama akun</small>
-	</div>
-	<div class="col-6">
-		<input type="text" name="instagram" class="form-control" value="<?php echo esc($konfigurasi->instagram) ?>">
-		<small class="text-secondary">Alamat link akun</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Youtube <i class="fab fa-youtube"></i></label>
-	<div class="col-3">
-		<input type="text" name="nama_youtube" class="form-control" value="<?php echo esc($konfigurasi->nama_youtube) ?>">
-		<small class="text-secondary">Nama akun</small>
-	</div>
-	<div class="col-6">
-		<input type="text" name="youtube" class="form-control" value="<?php echo esc($konfigurasi->youtube) ?>">
-		<small class="text-secondary">Alamat link akun</small>
-	</div>
-</div>
-
-<hr>
-<h4>Informasi Pendaftaran Online</h4>
-<hr>
-
-<div class="form-group row">
-	<label class="col-3">Fitur Website untuk Pendaftaran Online</label>
-	<div class="col-6">
-		<select name="fitur_pendaftaran" class="form-control">
-			<option value="Off">Off - Non Aktif</option>
-			<option value="On" <?php if($konfigurasi->fitur_pendaftaran=='On') { echo 'selected'; } ?>>On - Aktif</option>
-		</select>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Periode Pendaftaran Online</label>
-	<div class="col-2">
-		<input type="text" name="mulai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->mulai_pendaftaran)) ?>">
-		<small class="text-secondary">Tanggal mulai</small>
-	</div>
-	<div class="col-2">
-		<input type="text" name="selesai_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->selesai_pendaftaran)) ?>">
-		<small class="text-secondary">Tanggal selesai</small>
-	</div>
-	<div class="col-2">
-		<input type="text" name="pengumuman_pendaftaran" placeholder="dd-mm-yyyy" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($konfigurasi->pengumuman_pendaftaran)) ?>">
-		<small class="text-secondary">Tanggal pengumuman</small>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3">Informasi pendaftaran</label>
-	<div class="col-9">
-		<textarea name="keterangan_pendaftaran" class="form-control konten" rows="5"><?php echo esc($konfigurasi->keterangan_pendaftaran) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-3"></label>
-	<div class="col-9">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
-</div>
-
-<?php echo form_close(); ?>

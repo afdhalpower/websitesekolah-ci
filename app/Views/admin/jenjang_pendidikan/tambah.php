@@ -1,120 +1,107 @@
-<p class="text-right">
-	<a href="<?php echo base_url('admin/jenjang_pendidikan') ?>" class="btn btn-outline-info btn-sm">
-		<i class="fa fa-arrow-left"></i> Kembali
-	</a>
-</p>
-<hr>
+<?php echo form_open_multipart(base_url('admin/jenjang_pendidikan/tambah')); ?>
+<?php echo csrf_field(); ?>
 
-<form action="<?php echo base_url('admin/jenjang_pendidikan/tambah') ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="form-group row">
-	<label class="col-md-2">Nama Jenjang Pendidikan <span class="text-danger">*</span></label>
-	<div class="col-md-10">
-		<input type="text" name="judul_jenjang_pendidikan" class="form-control" value="<?php echo set_value('judul_jenjang_pendidikan') ?>" required>
-	</div>
+<div class="page-header-modern">
+    <div>
+        <h5 class="page-title">Tambah Jenjang Pendidikan</h5>
+        <p class="page-subtitle">Isi data jenjang pendidikan baru</p>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Upload Gambar Jenjang Pendidikan</label>
-	<div class="col-md-10">
-		<input type="file" name="gambar" class="form-control" value="<?php echo set_value('gambar') ?>">
-	</div>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-graduation-cap" style="color:var(--green);margin-right:6px;"></i> Data Jenjang Pendidikan</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Jenjang Pendidikan <span style="color:var(--red);">*</span></label>
+                <input type="text" name="judul_jenjang_pendidikan" class="form-control" value="<?= set_value('judul_jenjang_pendidikan') ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Upload Gambar</label>
+                <div class="upload-zone" onclick="this.querySelector('input[type=file]').click();" style="cursor:pointer;text-align:center;padding:15px;">
+                    <input type="file" name="gambar" style="display:none;" onchange="this.closest('.upload-zone').querySelector('.upload-text').textContent=this.files[0]?.name||'Pilih file...';">
+                    <i class="fas fa-cloud-upload-alt" style="font-size:1.5rem;color:var(--gray);"></i>
+                    <p class="upload-text" style="margin:4px 0 0;color:var(--gray);font-size:0.8rem;">Pilih gambar</p>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenjang Pendidikan</label>
+                <select name="id_jenjang" class="form-control">
+                    <?php foreach($jenjang as $j) { ?>
+                        <option value="<?= esc($j->id_jenjang) ?>"><?= esc($j->nama_jenjang) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenis Konten</label>
+                <select name="jenis_jenjang_pendidikan" class="form-control">
+                    <option value="Jenjang">Jenjang Pendidikan</option>
+                    <option value="Yayasan">Informasi Yayasan</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status Publikasi</label>
+                <select name="status_jenjang_pendidikan" class="form-control">
+                    <option value="Publish">Publish</option>
+                    <option value="Draft">Draft</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Icon (Font Awesome)</label>
+                <input type="text" name="icon" class="form-control" value="<?= set_value('icon') ?>" placeholder="fas fa-graduation-cap">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Publish</label>
+                <input type="text" name="tanggal_publish" class="form-control tanggal" value="<?= date('d-m-Y') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jam Publish</label>
+                <input type="text" name="jam" class="form-control jam" value="<?= date('H:i:s') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Urutan</label>
+                <input type="number" name="urutan" class="form-control" value="0">
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Jenjang Pendidikan, Jenis &amp; Status <span class="text-danger">*</span></label>
-	<div class="col-md-3">
-		<select name="id_jenjang" class="form-control">
-			<?php foreach($jenjang as $jenjang) { ?>
-			<option value="<?php echo esc($jenjang->id_jenjang) ?>">
-				<?php echo esc($jenjang->nama_jenjang) ?>
-			</option>
-			<?php } ?>
-		</select>
-		<small class="text-secondary">Jenjang Pendidikan</small>
-	</div>
-	<div class="col-md-2">
-		<select name="jenis_jenjang_pendidikan" class="form-control">
-			<option value="Jenjang">Jenjang Pendidikan</option>
-			<option value="Yayasan">Informasi Yayasan</option>
-		</select>
-		<small class="text-secondary">Jenis konten</small>
-	</div>
-	<div class="col-md-2">
-		<select name="status_jenjang_pendidikan" class="form-control">
-			<option value="Publish">Publish</option>
-			<option value="Draft">Draft</option>
-		</select>
-		<small class="text-secondary">Status publikasi</small>
-	</div>
-	<div class="col-md-2">
-		<input type="text" name="icon" class="form-control" value="<?php echo set_value('icon') ?>">
-		<small class="text-secondary">Icon <a href="https://fontawesome.com/icons" target="_blank">Fontawsome</a></small>
-	</div>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-file-alt" style="color:var(--blue);margin-right:6px;"></i> Konten & SEO</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Ringkasan</label>
+                <textarea name="ringkasan" class="form-control" rows="3"><?= set_value('ringkasan') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Isi Jenjang Pendidikan <span style="color:var(--red);">*</span></label>
+                <div style="margin-bottom:6px;">
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-media"><i class="fas fa-plus-circle"></i> Media</button>
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-galeri"><i class="fas fa-image"></i> Galeri</button>
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-download"><i class="fas fa-download"></i> File</button>
+                </div>
+                <textarea name="isi" class="form-control konten" rows="6"><?= set_value('isi') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Keywords (SEO)</label>
+                <textarea name="keywords" class="form-control" rows="2"><?= set_value('keywords') ?></textarea>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Tanggal, jam Publikasi &amp; Urutan</label>
-	<div class="col-md-3">
-		<input type="text" name="tanggal_publish" class="form-control tanggal" value="<?php if(isset($_POST['tanggal_publis'])) { echo set_value('tanggal_publish'); }else{ echo date('d-m-Y'); } ?>">
-		<small class="text-secondary">Format <strong>dd-mm-yyyy</strong>. Misal: <?php echo date('d-m-Y') ?></small>
-	</div>
-	<div class="col-md-3">
-		<input type="text" name="jam" class="form-control jam" value="<?php if(isset($_POST['jam'])) { echo set_value('jam'); }else{ echo date('H:i:s'); } ?>">
-		<small class="text-secondary">Format <strong>HH:MM:SS</strong>. Misal: <?php echo date('H:i:s') ?></small>
-	</div>
-	<div class="col-md-3">
-		<input type="number" name="urutan" class="form-control" value="<?php if(isset($_POST['urutan'])) { echo set_value('urutan'); }else{ echo 0; } ?>">
-		<small class="text-secondary">Nomor urut tampil</small>
-	</div>
+<div class="form-actions">
+    <a href="<?= base_url('admin/jenjang_pendidikan') ?>" class="btn-secondary-action"><i class="fas fa-arrow-left"></i> Kembali</a>
+    <button type="reset" class="btn-secondary-action"><i class="fas fa-undo"></i> Reset</button>
+    <button type="submit" class="btn-success-action"><i class="fas fa-save"></i> Simpan</button>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Ringkasan</label>
-	<div class="col-md-10">
-		<textarea name="ringkasan" class="form-control"><?php echo set_value('ringkasan') ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2">Isi Jenjang Pendidikan <span class="text-danger">*</span></label>
-	<div class="col-md-10">
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-media">
-			<i class="fa fa-plus-circle"></i> Upload &amp; Kelola Media/File
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-galeri">
-			<i class="fa fa-image"></i> Lihat Galeri
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
-			<i class="fa fa-download"></i> Lihat File
-		</button>
-		<textarea name="isi" class="form-control konten"><?php echo set_value('isi') ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2">Keyword Jenjang Pendidikan (untuk SEO Google)</label>
-	<div class="col-md-10">
-		<textarea name="keywords" class="form-control"><?php echo set_value('keywords') ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2"></label>
-	<div class="col-md-10">
-		<a href="<?php echo base_url('admin/jenjang_pendidikan') ?>" class="btn btn-outline-info">
-			<i class="fa fa-arrow-left"></i> Kembali
-		</a>
-		<button type="reset" class="btn btn-secondary"><i class="fa fa-times"></i> Reset</button>
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
-</div>
-
-<?php 
-echo form_close(); 
+<?php echo form_close();
 include('media.php');
 include('galeri.php');
 include('download.php');

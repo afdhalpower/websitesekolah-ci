@@ -1,130 +1,110 @@
-<div class="row">
-	<div class="col-md-6">
-		<?php echo form_open(base_url('admin/download'), ' method="get"') ?>
-		<div class="input-group">
-          <input type="text" name="keywords" class="form-control" placeholder="Keywords..." value="<?php if(isset($_GET['keywords'])) { echo esc($_GET['keywords']); } ?>" required>
-          <span class="input-group-append">
-            <button type="submit" name="submit" value="Cari" class="btn btn-secondary btn-flat">
-            	<i class="fa fa-search"></i> Cari
-            </button>
-            <a href="<?php echo base_url('admin/download/tambah') ?>" class="btn btn-info">
-							<i class="fa fa-plus"></i> Tambah Baru
-						</a>
-						<?php if(isset($_GET['keywords'])) { ?>
-							<a href="<?php echo base_url('admin/download') ?>" class="btn btn-secondary">
-								<i class="fa fa-arrow-left"></i>
-							</a>
-						<?php } ?>
-          </span>
-        </div>
-        <?php echo form_close() ?>
-	</div>
-	<div class="col-md-6">
-			<?php if(isset($pagination)) { echo str_replace('index.php/','',$pagination); } ?>
-	</div>
-</div>
-<hr>
+<?php include('tambah.php'); ?>
 
-<?php echo form_open(base_url('admin/download/proses')) ?>
-<input type="hidden" name="pengalihan" value="<?php echo str_replace('index.php','',CURRENT_URL()) ?>">
-<div class="mailbox-controls">
-<div class="input-group">
-	<button type="submit" name="submit" value="Delete" class="btn btn-secondary" title="Hapus Download">
-		<i class="fa fa-trash"></i>
-	</button>
-	<button type="submit" name="submit" value="Draft" class="btn btn-dark" title="Jangan Publikasikan">
-		<i class="fa fa-eye-slash"></i>
-	</button>
-	<button type="submit" name="submit" value="Publish" class="btn btn-info" title="Publikasikan">
-		<i class="fa fa-eye"></i>
-	</button>
-	<select name="jenis_download" class="form-control">
-		<option value="Download">Download</option>
-		<option value="Panduan">Panduan</option>
-		<option value="Member">Member</option>
-	</select>
-	<span class="input-group-append">
-		<button type="submit" name="submit" value="Update" class="btn btn-warning">
-			<i class="fa fa-search"></i> Update
-		</button>
-	</span>
+<!-- Page Header -->
+<div class="page-header-modern mb-4">
+  <div>
+    <h1 class="page-title"><i class="fas fa-download"></i> Download</h1>
+    <p class="page-subtitle">Kelola file download, panduan, dan dokumen</p>
+  </div>
+  <button type="button" class="btn btn-primary-action" data-toggle="modal" data-target="#modal-tambah">
+    <i class="fas fa-plus"></i> Tambah Baru
+  </button>
 </div>
 
-<div class="table-responsive mailbox-messages mt-1">		
+<!-- Bulk Action Form -->
+<?= form_open(base_url('admin/download/proses')) ?>
+<input type="hidden" name="pengalihan" value="<?= str_replace('index.php','',CURRENT_URL()) ?>">
 
-<table class="tabelku table-sm" id="example2">
-	<thead>
-		<tr class="text-left bg-light">
-			<th width="5%" class="text-center">
-				<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-					<i class="far fa-square"></i>
-        </button>
-			</th>
-			<th width="50%">Judul</th>
-			<th width="20%">Deskripsi</th>
-			<th width="10%">Status</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php $no=1; foreach($download as $download) { ?>
-		<tr>
-			<td class="text-center">
-				<div class="icheck-primary">
-          <input type="checkbox" name="id_download[]" value="<?php echo esc($download->id_download) ?>" id="check_<?php echo esc($no) ?>">
-          <label for="check_<?php echo esc($no) ?>"></label>
-        </div>
-				<?php echo esc($no) ?>
-			</td>
-			
-			<td><a href="<?php echo base_url('admin/download/edit/'.$download->id_download) ?>">
-					<?php echo esc($download->judul_download) ?>
-				</a>
-				<small>
-					<br><i class="fa fa-download"></i> <?php echo base_url('download/unduh/'.$download->id_download) ?>
-					<br><i class="fa fa-link"></i> Link file:<br><textarea class="form-control form-control-sm" title="Copy link gambar/file ini"><?php echo base_url('assets/upload/file/'.$download->gambar) ?></textarea>
-					<i class="fa fa-calendar-check"></i> <?php echo esc($this->website->tanggal_bulan_menit($download->tanggal)) ?>
-					<br><i class="fa fa-calendar-plus"></i> <?php echo esc($this->website->tanggal_bulan_menit($download->tanggal_post)) ?>
-					<br><i class="fa fa-eye"></i> <?php echo esc($download->hits) ?>
-				</small>
-			</td>
-			<td><small>
-				<i class="fa fa-tags"></i> <a href="<?php echo base_url('admin/download/kategori_download/'.$download->id_kategori_download) ?>">
-					<?php echo esc($download->nama_kategori_download) ?>
-				</a>
-				<br><i class="fa fa-home"></i> <a href="<?php echo base_url('admin/download/jenis_download/'.$download->jenis_download) ?>">
-					<?php echo esc($download->jenis_download) ?></a>
-				<br><i class="fa fa-user"></i> <a href="<?php echo base_url('admin/download/author/'.$download->id_user) ?>"><?php echo esc($download->nama) ?></a>
-				<br><i class="fa fa-file-code"></i> <?php echo strtoupper($download->file_ext) ?>
-				<br><i class="fas fa-file"></i> <?php echo esc($download->file_size) ?> MB
-			</small>
-			</td>
-			<td>
-				<?php if($download->status_download=='Publish') { ?>
-					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo esc($download->status_download) ?>
-					</span>
-				<?php }else{ ?>
-					<span class="badge bg-secondary">
-						<i class="fa fa-eye-slash"></i> Not Published
-					</span>
-				<?php } ?>
-			</td>
-			<td>
-				<div  class="btn-group">
-					
-				
-				<?php if($download->gambar=="") { echo '-'; }else{ ?>
-					<a href="<?php echo base_url('admin/download/unduh/'.$download->id_download) ?>" class="btn btn-info btn-sm mt-1" target="_blank"><i class="fa fa-download"></i> Unduh</a>
-				<?php } ?>
-				<a href="<?php echo base_url('admin/download/edit/'.$download->id_download) ?>" class="btn btn-success btn-sm mt-1" title="Edit"><i class="fa fa-edit"></i></a>
-				<a href="<?php echo base_url('admin/download/delete/'.$download->id_download) ?>" class="btn btn-secondary btn-xs mt-1 delete-link" title="Hapus"><i class="fa fa-trash"></i></a>
-				</div>
-			</td>
-		</tr>
-		<?php $no++; } ?>
-	</tbody>
-</table>
+<div class="card-modern">
+  <div class="card-modern-body" style="padding:0;">
+    <div class="table-responsive">
+      <table class="table-modern" id="example3">
+        <thead>
+          <tr>
+            <th width="3%" class="text-center">
+              <input type="checkbox" id="check-all" onclick="toggleAll(this)">
+            </th>
+            <th width="5%">No</th>
+            <th>Judul Download</th>
+            <th width="18%">Kategori & Jenis</th>
+            <th width="8%">Status</th>
+            <th width="6%">Hits</th>
+            <th width="12%">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no=1; foreach($download as $d): ?>
+          <tr>
+            <td class="text-center">
+              <input type="checkbox" name="id_download[]" value="<?= esc($d->id_download) ?>"
+                     class="row-check" onchange="updateCount()">
+            </td>
+            <td class="text-center"><?= esc($no) ?></td>
+            <td>
+              <a href="<?= base_url('admin/download/edit/'.$d->id_download) ?>" style="font-weight:500;color:var(--text);text-decoration:none;">
+                <?= esc($d->judul_download) ?>
+              </a>
+              <div style="font-size:var(--font-xs);color:var(--muted);margin-top:2px;">
+                <i class="fas fa-file-code"></i> <?= strtoupper($d->file_ext) ?>
+                &nbsp;<i class="fas fa-file"></i> <?= esc($d->file_size) ?> MB
+                &nbsp;<i class="fas fa-eye"></i> <?= esc($d->hits) ?>
+              </div>
+            </td>
+            <td>
+              <span class="status-badge status-info" style="font-size:var(--font-xs);">
+                <?= esc($d->nama_kategori_download) ?>
+              </span>
+              <div style="font-size:var(--font-xs);color:var(--muted);margin-top:2px;"><?= esc($d->jenis_download) ?></div>
+            </td>
+            <td>
+              <?php if($d->status_download=='Publish'): ?>
+                <span class="status-badge status-success"><i class="fas fa-eye"></i> Publish</span>
+              <?php else: ?>
+                <span class="status-badge status-warning"><i class="fas fa-eye-slash"></i> Draft</span>
+              <?php endif; ?>
+            </td>
+            <td class="text-center" style="font-size:var(--font-xs);"><?= esc($d->hits) ?></td>
+            <td>
+              <div class="d-flex gap-1">
+                <?php if($d->gambar != ''): ?>
+                <a href="<?= base_url('admin/download/unduh/'.$d->id_download) ?>" class="btn btn-success-action btn-sm" title="Unduh" target="_blank">
+                  <i class="fas fa-download"></i>
+                </a>
+                <?php endif; ?>
+                <a href="<?= base_url('admin/download/edit/'.$d->id_download) ?>" class="btn btn-primary-action btn-sm" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <a href="<?= base_url('admin/download/delete/'.$d->id_download) ?>" class="btn btn-danger-action btn-sm delete-link" title="Hapus">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <?php $no++; endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+
+    <?php if(isset($pagination) && $pagination): ?>
+    <div class="pagination-row">
+      <?= str_replace('index.php/','',$pagination) ?>
+    </div>
+    <?php endif; ?>
+  </div>
 </div>
-</div>
-<?php echo form_close(); ?>
+
+<?= form_close() ?>
+
+<script>
+function toggleAll(el) {
+  const checks = document.querySelectorAll('.row-check');
+  const checked = el.type === 'checkbox' ? el.checked : !document.getElementById('check-all').checked;
+  checks.forEach(c => c.checked = checked);
+  document.getElementById('check-all').checked = checked;
+  updateCount();
+}
+function updateCount() {
+  const count = document.querySelectorAll('.row-check:checked').length;
+  document.getElementById('selected-count').textContent = count + ' dipilih';
+}
+</script>

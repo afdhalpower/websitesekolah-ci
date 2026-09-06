@@ -1,674 +1,432 @@
-<?php 
+<?php
 use App\Models\Agama_model;
 use App\Models\Jenjang_model;
 use App\Models\Pekerjaan_model;
 use App\Models\Hubungan_model;
 use App\Models\Kelas_model;
 use App\Models\Tahun_model;
-$m_agama 		= new Agama_model();
-$m_jenjang 		= new Jenjang_model();
-$m_pekerjaan 	= new Pekerjaan_model();
-$m_hubungan 	= new Hubungan_model();
-$m_tahun 		= new Tahun_model();
-$m_kelas 		= new Kelas_model();
+$m_agama = new Agama_model();
+$m_jenjang = new Jenjang_model();
+$m_pekerjaan = new Pekerjaan_model();
+$m_hubungan = new Hubungan_model();
+$m_tahun = new Tahun_model();
+$m_kelas = new Kelas_model();
 echo form_open_multipart(base_url('admin/siswa/tambah'));
-echo csrf_field(); 
+echo csrf_field();
 ?>
-<p class="text-right">
-	<a href="<?php echo base_url('admin/siswa') ?>" class="btn btn-outline-info">
-		<i class="fa fa-arrow-left"></i> Kembali
-	</a>
-</p>
-<!-- data dasar siswa -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA DASAR SISWA</h4>
-	</div>
-	<div class="card-body">
 
-		<div class="form-group row">
-			<label class="col-3">Nama Lengkap<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<input type="text" name="nama_siswa" class="form-control form-control-lg" placeholder="Nama lengkap siswa" value="<?php echo set_value('nama_siswa') ?>" required>
-				<small class="text-secondary">Nama lengkap Siswa</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Nama Panggilan<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<input type="text" name="nama_panggilan" class="form-control" placeholder="Nama panggilan" value="<?php echo set_value('nama_panggilan') ?>">
-				<small class="text-secondary">Nama panggilan</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">NIS dan NISN</label>
-			<div class="col-3">
-				<input type="text" name="nis" class="form-control" placeholder="Nomor Induk Siswa (NIS)" value="<?php echo set_value('nis') ?>">
-				<small class="text-secondary">Nomor Induk Siswa (NIS)</small>
-			</div>
-			<div class="col-3">
-				<input type="text" name="nisn" class="form-control" placeholder="Nomor Induk Siswa Nasional (NISN)" value="<?php echo set_value('nisn') ?>">
-				<small class="text-secondary">Nomor Induk Siswa Nasional (NISN)</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Agama &amp; Status Kewarganegaraan<span class="text-danger">*</span></label>
-			<div class="col-2">
-				<?php $agama = $m_agama->listing(); ?>
-				<select name="id_agama" class="form-control select2">
-					<?php foreach($agama as $agama) { ?>
-						<option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama')==$agama->id_agama) { echo 'selected'; } ?>>
-							<?php echo esc($agama->nama_agama) ?>
-						</option>
-					<?php } ?>
-				</select>
-				<small class="text-gray">Agama Siswa. <a href="<?php echo base_url('admin/agama') ?>" target="_blank">Kelola?</a></small>
-			</div>
-			<div class="col-2">
-				<select name="status_wn" class="form-control">
-					<option value="WNI">WNI</option>
-					<option value="WNA" <?php if(set_value('status_wn')=='WNA') { echo 'selected'; } ?>>WNA</option>
-				</select>
-			</div>
-			<div class="col-3">
-				<input type="text" name="negara_asal" class="form-control" value="<?php echo set_value('negara_asal') ?>" placeholder="Negara asal (jika WNA)">
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Jenis Kelamin<span class="text-danger">*</span></label>
-			<div class="col-3">
-				<div class="form-group">
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="jenis_kelamin" type="radio" id="customRadio1" value="L"  <?php if(set_value('jenis_kelamin')=='L') { echo 'checked'; } ?> required>
-						<label for="customRadio1" class="custom-control-label">Laki-laki</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="jenis_kelamin" type="radio" id="customRadio2" value="P" <?php if(set_value('jenis_kelamin')=='P') { echo 'checked'; } ?> required>
-						<label for="customRadio2" class="custom-control-label">Perempuan</label>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Status/Hubungan Anak dengan Wali<span class="text-danger">*</span></label>
-			<div class="col-2">
-				<?php $hubungan = $m_hubungan->listing(); ?>
-				<select name="id_hubungan" class="form-control select2">
-					<?php foreach($hubungan as $hubungan) { ?>
-						<option value="<?php echo esc($hubungan->id_hubungan) ?>" <?php if(set_value('id_hubungan')==$hubungan->id_hubungan) { echo 'selected'; } ?>>
-							<?php echo esc($hubungan->nama_hubungan) ?>
-						</option>
-					<?php } ?>
-				</select>
-				<small class="text-gray">Status Anak. <a href="<?php echo base_url('admin/hubungan') ?>" target="_blank">Kelola?</a></small>
-			</div>
-			<div class="col-2">
-				<input type="number" name="anak_ke" class="form-control" placeholder="Anak nomor ke?" value="<?php echo set_value('anak_ke') ?>" required>
-				<small class="text-gray">Anak nomor ke</small>
-			</div>
-			<div class="col-2">
-				<input type="number" name="jumlah_saudara" class="form-control" placeholder="Jumlah saudara" value="<?php echo set_value('jumlah_saudara') ?>" required>
-				<small class="text-gray">Jumlah saudara</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Tempat dan Tanggal Lahir<span class="text-danger">*</span></label>
-			<div class="col-3">
-				<input type="text" name="tempat_lahir" class="form-control" placeholder="Tempat lahir" value="<?php echo set_value('tempat_lahir') ?>" required>
-				<small class="text-secondary">Tempat lahir</small>
-			</div>
-			<div class="col-3">
-				<input type="text" name="tanggal_lahir" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?php echo set_value('tanggal_lahir') ?>" required>
-				<small class="text-secondary">Tanggal lahir</small>
-			</div>
-		</div>
-
-
-		<div class="form-group row">
-			<label class="col-3">Alamat<span class="text-danger">*</span></label>
-			<div class="col-9">
-				<textarea name="alamat" placeholder="Alamat" class="form-control" required><?php echo set_value('alamat') ?></textarea>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Kode Pos</label>
-			<div class="col-6">
-				<input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos" value="<?php echo set_value('kode_pos') ?>">
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Telepon dan Email</label>
-			<div class="col-3">
-				<input type="text" name="telepon" class="form-control" placeholder="Telepon/HP" value="<?php echo set_value('telepon') ?>">
-				<small class="text-secondary">Telepon/HP</small>
-			</div>
-			<div class="col-3">
-				<input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo set_value('email') ?>">
-				<small class="text-secondary">Email (Username)</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Gambar/Foto</label>
-			
-			<div class="col-6">
-				<input type="file" name="gambar" class="form-control" placeholder="Gambar/Foto" value="<?php echo set_value('gambar') ?>">
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
-</div>
-<!-- data dasar siswa -->
-
-<!-- data dasar siswa -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA PENERIMAAN DI SEKOLAH</h4>
-	</div>
-	<div class="card-body">
-
-		<div class="form-group row">
-			<label class="col-3">Jenis Masuk Siswa<span class="text-danger">*</span></label>
-			<div class="col-3">
-				<div class="form-group">
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="jenis_siswa" type="radio" id="jenis_siswa1" value="Langsung"  <?php if(set_value('jenis_siswa')=='Langsung') { echo 'checked'; }else{ echo 'checked'; } ?> required>
-						<label for="jenis_siswa1" class="custom-control-label">Langsung</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="jenis_siswa" type="radio" id="jenis_siswa2" value="Pindahan" <?php if(set_value('jenis_siswa')=='Pindahan') { echo 'checked'; } ?> required>
-						<label for="jenis_siswa2" class="custom-control-label">Pindahan</label>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Status Siswa<span class="text-danger">*</span></label>
-			<div class="col-3">
-				<div class="form-group">
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="status_siswa" type="radio" id="status_siswa1" value="Aktif"  <?php if(set_value('status_siswa')=='Aktif') { echo 'checked'; }else{ echo 'checked'; } ?> required>
-						<label for="status_siswa1" class="custom-control-label">Aktif</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="status_siswa" type="radio" id="status_siswa2" value="Lulus" <?php if(set_value('status_siswa')=='Lulus') { echo 'checked'; } ?> required>
-						<label for="status_siswa2" class="custom-control-label">Lulus</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="status_siswa" type="radio" id="status_siswa3" value="Pindah" <?php if(set_value('status_siswa')=='Pindah') { echo 'checked'; } ?> required>
-						<label for="status_siswa3" class="custom-control-label">Pindah</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="status_siswa" type="radio" id="status_siswa4" value="Meninggal" <?php if(set_value('status_siswa')=='Meninggal') { echo 'checked'; } ?> required>
-						<label for="status_siswa4" class="custom-control-label">Meninggal</label>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Tahun Ajaran Saat Masuk<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<?php $tahun = $m_tahun->listing(); ?>
-				<select name="id_tahun" class="form-control select2" required>
-					<option value="">Pilih Tahun Ajaran</option>
-					<?php foreach($tahun as $tahun) { ?>
-						<option value="<?php echo esc($tahun->id_tahun) ?>" <?php if(set_value('id_tahun')==$tahun->id_tahun) { echo 'selected'; } ?>>
-							<?php echo esc($tahun->tahun_mulai) ?>/<?php echo esc($tahun->tahun_selesai) ?> - <?php echo esc($tahun->nama_tahun) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Jenjang/Kelompok Saat Masuk<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<?php $jenjang = $m_jenjang->listing(); ?>
-				<select name="id_jenjang" class="form-control select2" required>
-					<option value="">Pilih Kelompok/Jenjang</option>
-					<?php foreach($jenjang as $jenjang) { ?>
-						<option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if(set_value('id_jenjang')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-							<?php echo esc($jenjang->nama_jenjang) ?>
-						</option>
-					<?php } ?>
-				</select>
-				<small class="text-gray">Jenjang/Kelompok Saat Masuk. <a href="<?php echo base_url('admin/jenjang') ?>" target="_blank">Kelola?</a></small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Kelas Saat Masuk<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<?php $kelas = $m_kelas->listing(); ?>
-				<select name="id_kelas" class="form-control select2" required>
-					<option value="">Pilih Kelas</option>
-					<?php foreach($kelas as $kelas) { ?>
-						<option value="<?php echo esc($kelas->id_kelas) ?>" <?php if(set_value('id_kelas')==$kelas->id_kelas) { echo 'selected'; } ?>>
-							<?php echo esc($kelas->nama_jenjang) ?> - <?php echo esc($kelas->nama_kelas) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Tanggal Masuk<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<input type="text" name="tanggal_masuk" class="form-control tanggal" placeholder="Tanggal masuk" value="<?php echo set_value('tanggal_masuk') ?>" required>
-				<small class="text-gray">Tanggal masuk. Format: dd-mm-yyyy</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Nama Sekolah Asal</label>
-			<div class="col-6">
-				<input type="text" name="asal_sekolah" class="form-control" placeholder="Nama Sekolah Asal" value="<?php echo set_value('asal_sekolah') ?>">
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Alamat Sekolah Asal</label>
-			<div class="col-6">
-				<textarea name="alamat_sekolah_asal" class="form-control" placeholder="Alamat Sekolah Asal"><?php echo set_value('alamat_sekolah_asal') ?></textarea>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Tanggal Pindah (Sesuai Surat Pindah)</label>
-			<div class="col-6">
-				<input type="text" name="tanggal_pindah" class="form-control tanggal" placeholder="Tanggal pindah" value="<?php echo set_value('tanggal_pindah') ?>">
-				<small class="text-gray">Tanggal pindah (Jika siswa pindahan). Format: dd-mm-yyyy</small>
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
+<div class="page-header-modern">
+    <div>
+        <h5 class="page-title">Tambah Siswa Baru</h5>
+        <p class="page-subtitle">Lengkapi semua data siswa baru</p>
+    </div>
 </div>
 
-<!-- data dasar siswa -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA KESEHATAN DAN INFORMASI SISWA LAINNYA</h4>
-	</div>
-	<div class="card-body">
-
-		<div class="form-group row">
-			<label class="col-3">Golongan Darah Siswa</label>
-			<div class="col-6">
-				<select name="goldar_siswa" class="form-control">
-					<option value="">Pilih Golongan Darah</option>
-					<option value="A" <?php if(set_value('goldar_siswa')=='A') { echo 'selected'; } ?>>A</option>
-					<option value="B" <?php if(set_value('goldar_siswa')=='B') { echo 'selected'; } ?>>B</option>
-					<option value="AB" <?php if(set_value('goldar_siswa')=='AB') { echo 'selected'; } ?>>AB</option>
-					<option value="O" <?php if(set_value('goldar_siswa')=='O') { echo 'selected'; } ?>>O</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Tinggi dan Berat Badan Siswa</label>
-			<div class="col-3">
-				<input type="number" name="tinggi" class="form-control" placeholder="Tinggi Badan" value="<?php echo set_value('tinggi') ?>">
-				<small class="text-gray">Tinggi Badan dalam Centimeter</small>
-			</div>
-			<div class="col-3">
-				<input type="number" name="berat" class="form-control" placeholder="Berat Badan" value="<?php echo set_value('berat') ?>">
-				<small class="text-gray">Berat Badan dalam Kilogram</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Penyakit yang pernah/sedang diderita Siswa</label>
-			<div class="col-6">
-				<textarea name="penyakit_siswa" class="form-control" placeholder="Penyakit yang pernah/sedang diderita Siswa"><?php echo set_value('penyakit_siswa') ?></textarea>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Hobi Siswa</label>
-			<div class="col-6">
-				<textarea name="hobi_siswa" class="form-control" placeholder="Hobi siswa"><?php echo set_value('hobi_siswa') ?></textarea>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Apakah Siswa Berkebutuhan Khusus?</label>
-			<div class="col-3">
-				<div class="form-group">
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="berkebutuhan_khusus" type="radio" id="berkebutuhan_khusus1" value="Tidak"  <?php if(set_value('berkebutuhan_khusus')=='Tidak') { echo 'checked'; }else{ echo 'checked'; } ?> required>
-						<label for="berkebutuhan_khusus1" class="custom-control-label">Tidak</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="berkebutuhan_khusus" type="radio" id="berkebutuhan_khusus2" value="Ya" <?php if(set_value('berkebutuhan_khusus')=='Ya') { echo 'checked'; } ?> required>
-						<label for="berkebutuhan_khusus2" class="custom-control-label">Ya</label>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Deskripsi Ringkas Tentang Siswa</label>
-			<div class="col-6">
-				<textarea name="isi" class="form-control" placeholder="Deskripsi Ringkas Tentang Siswa"><?php echo set_value('isi') ?></textarea>
-				<small class="text-gray">Misal: Siswa ini berkebutuhan khusus</small>
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
+<!-- DATA DASAR SISWA -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-user" style="color:var(--green);margin-right:6px;"></i> Data Diri Siswa</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Lengkap <span style="color:var(--red);">*</span></label>
+                <input type="text" name="nama_siswa" class="form-control" placeholder="Nama lengkap siswa" value="<?= set_value('nama_siswa') ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama Panggilan</label>
+                <input type="text" name="nama_panggilan" class="form-control" placeholder="Nama panggilan" value="<?= set_value('nama_panggilan') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">NIS</label>
+                <input type="text" name="nis" class="form-control" placeholder="Nomor Induk Siswa" value="<?= set_value('nis') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">NISN</label>
+                <input type="text" name="nisn" class="form-control" placeholder="Nomor Induk Siswa Nasional" value="<?= set_value('nisn') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Agama <span style="color:var(--red);">*</span></label>
+                <?php $agama = $m_agama->listing(); ?>
+                <select name="id_agama" class="form-control select2">
+                    <?php foreach($agama as $a) { ?>
+                        <option value="<?= esc($a->id_agama) ?>"><?= esc($a->nama_agama) ?></option>
+                    <?php } ?>
+                </select>
+                <small><a href="<?= base_url('admin/agama') ?>" target="_blank">Kelola?</a></small>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status WNI/WNA</label>
+                <select name="status_wn" class="form-control">
+                    <option value="WNI">WNI</option>
+                    <option value="WNA" <?= set_value('status_wn')=='WNA' ? 'selected' : '' ?>>WNA</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Negara Asal (Jika WNA)</label>
+                <input type="text" name="negara_asal" class="form-control" value="<?= set_value('negara_asal') ?>" placeholder="Negara asal">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenis Kelamin <span style="color:var(--red);">*</span></label>
+                <div style="display:flex;gap:16px;padding-top:6px;">
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="jenis_kelamin" value="L" <?= set_value('jenis_kelamin')=='L' ? 'checked' : '' ?> required> Laki-laki
+                    </label>
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="jenis_kelamin" value="P" <?= set_value('jenis_kelamin')=='P' ? 'checked' : '' ?> required> Perempuan
+                    </label>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status/Hubungan Anak dengan Wali</label>
+                <?php $hubungan = $m_hubungan->listing(); ?>
+                <select name="id_hubungan" class="form-control select2">
+                    <?php foreach($hubungan as $h) { ?>
+                        <option value="<?= esc($h->id_hubungan) ?>"><?= esc($h->nama_hubungan) ?></option>
+                    <?php } ?>
+                </select>
+                <small><a href="<?= base_url('admin/hubungan') ?>" target="_blank">Kelola?</a></small>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Anak ke-</label>
+                <input type="number" name="anak_ke" class="form-control" placeholder="Anak nomor ke?" value="<?= set_value('anak_ke') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jumlah Saudara</label>
+                <input type="number" name="jumlah_saudara" class="form-control" placeholder="Jumlah saudara" value="<?= set_value('jumlah_saudara') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tempat Lahir <span style="color:var(--red);">*</span></label>
+                <input type="text" name="tempat_lahir" class="form-control" placeholder="Tempat lahir" value="<?= set_value('tempat_lahir') ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Lahir <span style="color:var(--red);">*</span></label>
+                <input type="text" name="tanggal_lahir" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?= set_value('tanggal_lahir') ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Alamat <span style="color:var(--red);">*</span></label>
+                <textarea name="alamat" placeholder="Alamat lengkap" class="form-control" required><?= set_value('alamat') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kode Pos</label>
+                <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos" value="<?= set_value('kode_pos') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Telepon/HP</label>
+                <input type="text" name="telepon" class="form-control" placeholder="Telepon/HP" value="<?= set_value('telepon') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email (Username)" value="<?= set_value('email') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Gambar/Foto</label>
+                <input type="file" name="gambar" class="form-control">
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- data ayah -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA ORANG TUA SISWA - AYAH</h4>
-	</div>
-	<div class="card-body">
-
-		<div class="form-group row">
-			<label class="col-3">Nama Ayah<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<input type="text" name="nama_ayah" class="form-control" placeholder="Nama Ayah" value="<?php echo set_value('nama_ayah') ?>">
-				<small class="text-secondary">Nama ayah</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Agama Ayah</label>
-			<div class="col-6">
-				<?php $agama = $m_agama->listing(); ?>
-				<select name="id_agama_ayah" class="form-control select2">
-					<option value="">Pilih Agama</option>
-					<?php foreach($agama as $agama) { ?>
-						<option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_ayah')==$agama->id_agama) { echo 'selected'; } ?>>
-							<?php echo esc($agama->nama_agama) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Pekerjaan Ayah</label>
-			<div class="col-6">
-				<?php $pekerjaan = $m_pekerjaan->listing(); ?>
-				<select name="id_pekerjaan_ayah" class="form-control select2">
-					<option value="">Pilih Pekerjaan</option>
-					<?php foreach($pekerjaan as $pekerjaan) { ?>
-						<option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_ayah')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-							<?php echo esc($pekerjaan->nama_pekerjaan) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Pendidikan Ayah</label>
-			<div class="col-6">
-				<?php $jenjang = $m_jenjang->listing(); ?>
-				<select name="id_jenjang_ayah" class="form-control select2">
-					<option value="">Pilih Jenjang Pendidikan</option>
-					<?php foreach($jenjang as $jenjang) { ?>
-						<option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if(set_value('id_jenjang_ayah')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-							<?php echo esc($jenjang->nama_jenjang) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Alamat Ayah<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<textarea name="alamat_ayah" placeholder="Alamat Ayah" class="form-control"><?php echo set_value('alamat_ayah') ?></textarea>
-			</div>
-		</div>
-
-
-		<div class="form-group row">
-			<label class="col-3">Telepon/HP Ayah</label>
-			<div class="col-6">
-				<input type="text" name="telepon_ayah" class="form-control" placeholder="Telepon/HP Ayah" value="<?php echo set_value('telepon_ayah') ?>">
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
+<!-- DATA PENERIMAAN -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-graduation-cap" style="color:var(--blue);margin-right:6px;"></i> Data Penerimaan di Sekolah</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Jenis Masuk <span style="color:var(--red);">*</span></label>
+                <div style="display:flex;gap:16px;padding-top:6px;">
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="jenis_siswa" value="Langsung" <?= set_value('jenis_siswa')=='Langsung' ? 'checked' : 'checked' ?> required> Langsung
+                    </label>
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="jenis_siswa" value="Pindahan" <?= set_value('jenis_siswa')=='Pindahan' ? 'checked' : '' ?> required> Pindahan
+                    </label>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status Siswa <span style="color:var(--red);">*</span></label>
+                <div style="display:flex;gap:16px;padding-top:6px;flex-wrap:wrap;">
+                    <?php foreach(['Aktif','Lulus','Pindah','Meninggal'] as $st) { ?>
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="status_siswa" value="<?= $st ?>" <?= ($st=='Aktif') ? 'checked' : (set_value('status_siswa')==$st ? 'checked' : '') ?> required> <?= $st ?>
+                    </label>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tahun Ajaran <span style="color:var(--red);">*</span></label>
+                <?php $tahun = $m_tahun->listing(); ?>
+                <select name="id_tahun" class="form-control select2" required>
+                    <option value="">Pilih Tahun Ajaran</option>
+                    <?php foreach($tahun as $t) { ?>
+                        <option value="<?= esc($t->id_tahun) ?>"><?= esc($t->tahun_mulai) ?>/<?= esc($t->tahun_selesai) ?> - <?= esc($t->nama_tahun) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenjang/Kelompok <span style="color:var(--red);">*</span></label>
+                <?php $jenjang = $m_jenjang->listing(); ?>
+                <select name="id_jenjang" class="form-control select2" required>
+                    <option value="">Pilih Kelompok</option>
+                    <?php foreach($jenjang as $j) { ?>
+                        <option value="<?= esc($j->id_jenjang) ?>"><?= esc($j->nama_jenjang) ?></option>
+                    <?php } ?>
+                </select>
+                <small><a href="<?= base_url('admin/jenjang') ?>" target="_blank">Kelola?</a></small>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kelas <span style="color:var(--red);">*</span></label>
+                <?php $kelas = $m_kelas->listing(); ?>
+                <select name="id_kelas" class="form-control select2" required>
+                    <option value="">Pilih Kelas</option>
+                    <?php foreach($kelas as $k) { ?>
+                        <option value="<?= esc($k->id_kelas) ?>"><?= esc($k->nama_jenjang) ?> - <?= esc($k->nama_kelas) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Masuk <span style="color:var(--red);">*</span></label>
+                <input type="text" name="tanggal_masuk" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?= set_value('tanggal_masuk') ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Sekolah Asal</label>
+                <input type="text" name="asal_sekolah" class="form-control" placeholder="Nama sekolah asal" value="<?= set_value('asal_sekolah') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Alamat Sekolah Asal</label>
+                <textarea name="alamat_sekolah_asal" class="form-control" placeholder="Alamat sekolah asal"><?= set_value('alamat_sekolah_asal') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Pindah</label>
+                <input type="text" name="tanggal_pindah" class="form-control tanggal" placeholder="dd-mm-yyyy" value="<?= set_value('tanggal_pindah') ?>">
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- data ibu -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA ORANG TUA SISWA - IBU</h4>
-	</div>
-	<div class="card-body">
-
-		<div class="form-group row">
-			<label class="col-3">Nama Ibu<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<input type="text" name="nama_ibu" class="form-control" placeholder="Nama Ibu" value="<?php echo set_value('nama_ibu') ?>">
-				<small class="text-secondary">Nama ibu</small>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Agama Ibu</label>
-			<div class="col-6">
-				<?php $agama = $m_agama->listing(); ?>
-				<select name="id_agama_ibu" class="form-control select2">
-					<option value="">Pilih Agama</option>
-					<?php foreach($agama as $agama) { ?>
-						<option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_ibu')==$agama->id_agama) { echo 'selected'; } ?>>
-							<?php echo esc($agama->nama_agama) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Pekerjaan Ibu</label>
-			<div class="col-6">
-				<?php $pekerjaan = $m_pekerjaan->listing(); ?>
-				<select name="id_pekerjaan_ibu" class="form-control select2">
-					<option value="">Pilih Pekerjaan</option>
-					<?php foreach($pekerjaan as $pekerjaan) { ?>
-						<option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_ibu')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-							<?php echo esc($pekerjaan->nama_pekerjaan) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Pendidikan Ibu</label>
-			<div class="col-6">
-				<?php $jenjang = $m_jenjang->listing(); ?>
-				<select name="id_jenjang_ibu" class="form-control select2">
-					<option value="">Pilih Jenjang Pendidikan</option>
-					<?php foreach($jenjang as $jenjang) { ?>
-						<option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if(set_value('id_jenjang_ibu')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-							<?php echo esc($jenjang->nama_jenjang) ?>
-						</option>
-					<?php } ?>
-				</select>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<label class="col-3">Alamat Ibu<span class="text-danger">*</span></label>
-			<div class="col-6">
-				<textarea name="alamat_ibu" placeholder="Alamat Ibu" class="form-control"><?php echo set_value('alamat_ibu') ?></textarea>
-			</div>
-		</div>
-
-
-		<div class="form-group row">
-			<label class="col-3">Telepon/HP Ibu</label>
-			<div class="col-6">
-				<input type="text" name="telepon_ibu" class="form-control" placeholder="Telepon/HP Ibu" value="<?php echo set_value('telepon_ibu') ?>">
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
+<!-- DATA KESEHATAN -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-heartbeat" style="color:var(--red);margin-right:6px;"></i> Data Kesehatan & Informasi Tambahan</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Golongan Darah</label>
+                <select name="goldar_siswa" class="form-control">
+                    <option value="">Pilih</option>
+                    <?php foreach(['A','B','AB','O'] as $g) { ?>
+                        <option value="<?= $g ?>" <?= set_value('goldar_siswa')==$g ? 'selected' : '' ?>><?= $g ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tinggi Badan (cm)</label>
+                <input type="number" name="tinggi" class="form-control" placeholder="cm" value="<?= set_value('tinggi') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Berat Badan (kg)</label>
+                <input type="number" name="berat" class="form-control" placeholder="kg" value="<?= set_value('berat') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Penyakit</label>
+                <textarea name="penyakit_siswa" class="form-control" placeholder="Penyakit yang pernah/sedang diderita"><?= set_value('penyakit_siswa') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Hobi</label>
+                <textarea name="hobi_siswa" class="form-control" placeholder="Hobi siswa"><?= set_value('hobi_siswa') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Berkebutuhan Khusus?</label>
+                <div style="display:flex;gap:16px;padding-top:6px;">
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="berkebutuhan_khusus" value="Tidak" <?= set_value('berkebutuhan_khusus')=='Tidak' ? 'checked' : 'checked' ?> required> Tidak
+                    </label>
+                    <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                        <input type="radio" name="berkebutuhan_khusus" value="Ya" <?= set_value('berkebutuhan_khusus')=='Ya' ? 'checked' : '' ?> required> Ya
+                    </label>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Deskripsi Ringkas</label>
+                <textarea name="isi" class="form-control" placeholder="Deskripsi tentang siswa"><?= set_value('isi') ?></textarea>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- data wali -->
-<div class="card">
-	<div class="card-header bg-light text-center">
-		<h4>DATA ORANG TUA SISWA - WALI MURID</h4>
-	</div>
-	<div class="card-body">
+<!-- DATA AYAH -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-male" style="color:var(--blue);margin-right:6px;"></i> Data Orang Tua - Ayah</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Ayah</label>
+                <input type="text" name="nama_ayah" class="form-control" placeholder="Nama Ayah" value="<?= set_value('nama_ayah') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Agama Ayah</label>
+                <select name="id_agama_ayah" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $agama = $m_agama->listing(); foreach($agama as $a) { ?>
+                        <option value="<?= esc($a->id_agama) ?>"><?= esc($a->nama_agama) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Pekerjaan Ayah</label>
+                <select name="id_pekerjaan_ayah" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $pekerjaan = $m_pekerjaan->listing(); foreach($pekerjaan as $p) { ?>
+                        <option value="<?= esc($p->id_pekerjaan) ?>"><?= esc($p->nama_pekerjaan) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Pendidikan Ayah</label>
+                <select name="id_jenjang_ayah" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $jenjang = $m_jenjang->listing(); foreach($jenjang as $j) { ?>
+                        <option value="<?= esc($j->id_jenjang) ?>"><?= esc($j->nama_jenjang) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Alamat Ayah</label>
+                <textarea name="alamat_ayah" class="form-control" placeholder="Alamat Ayah"><?= set_value('alamat_ayah') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Telepon/HP Ayah</label>
+                <input type="text" name="telepon_ayah" class="form-control" placeholder="Telepon/HP Ayah" value="<?= set_value('telepon_ayah') ?>">
+            </div>
+        </div>
+    </div>
+</div>
 
-		<div class="form-group row">
-			<label class="col-3">Identitas Wali Murid</label>
-			<div class="col-3">
-				<div class="form-group">
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="identitas_wali" type="radio" id="identitas_wali1" value="Ayah" onclick="Ayah()" <?php if(set_value('identitas_wali')=='Ayah') { echo 'checked'; } ?>>
-						<label for="identitas_wali1" class="custom-control-label">Sama dengan Ayah</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="identitas_wali" type="radio" id="identitas_wali2" value="Ibu" onclick="Ibu()" <?php if(set_value('identitas_wali')=='Ibu') { echo 'checked'; } ?>>
-						<label for="identitas_wali2" class="custom-control-label">Sama dengan Ibu</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input class="custom-control-input" name="identitas_wali" type="radio" id="identitas_wali3" value="Berbeda" onclick="Berbeda()" <?php if(set_value('identitas_wali')=='Berbeda') { echo 'checked'; }else{ echo 'checked'; } ?>>
-						<label for="identitas_wali3" class="custom-control-label">Berbeda dengan Ayah dan Ibu</label>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- DATA IBU -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-female" style="color:var(--amber);margin-right:6px;"></i> Data Orang Tua - Ibu</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Ibu</label>
+                <input type="text" name="nama_ibu" class="form-control" placeholder="Nama Ibu" value="<?= set_value('nama_ibu') ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Agama Ibu</label>
+                <select name="id_agama_ibu" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $agama = $m_agama->listing(); foreach($agama as $a) { ?>
+                        <option value="<?= esc($a->id_agama) ?>"><?= esc($a->nama_agama) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Pekerjaan Ibu</label>
+                <select name="id_pekerjaan_ibu" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $pekerjaan = $m_pekerjaan->listing(); foreach($pekerjaan as $p) { ?>
+                        <option value="<?= esc($p->id_pekerjaan) ?>"><?= esc($p->nama_pekerjaan) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Pendidikan Ibu</label>
+                <select name="id_jenjang_ibu" class="form-control select2">
+                    <option value="">Pilih</option>
+                    <?php $jenjang = $m_jenjang->listing(); foreach($jenjang as $j) { ?>
+                        <option value="<?= esc($j->id_jenjang) ?>"><?= esc($j->nama_jenjang) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Alamat Ibu</label>
+                <textarea name="alamat_ibu" class="form-control" placeholder="Alamat Ibu"><?= set_value('alamat_ibu') ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Telepon/HP Ibu</label>
+                <input type="text" name="telepon_ibu" class="form-control" placeholder="Telepon/HP Ibu" value="<?= set_value('telepon_ibu') ?>">
+            </div>
+        </div>
+    </div>
+</div>
 
-		<div id="myDIV">
+<!-- DATA WALI -->
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-user-shield" style="color:var(--green);margin-right:6px;"></i> Data Wali Murid</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-section mb-3">
+            <label class="form-label">Identitas Wali Murid</label>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                    <input type="radio" name="identitas_wali" value="Ayah" onclick="document.getElementById('myDIV').style.display='none'" <?= set_value('identitas_wali')=='Ayah' ? 'checked' : '' ?>> Sama dengan Ayah
+                </label>
+                <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                    <input type="radio" name="identitas_wali" value="Ibu" onclick="document.getElementById('myDIV').style.display='none'" <?= set_value('identitas_wali')=='Ibu' ? 'checked' : '' ?>> Sama dengan Ibu
+                </label>
+                <label style="display:flex;align-items:center;gap:4px;font-size:0.85rem;cursor:pointer;">
+                    <input type="radio" name="identitas_wali" value="Berbeda" onclick="document.getElementById('myDIV').style.display='block'" <?= set_value('identitas_wali')=='Berbeda' ? 'checked' : 'checked' ?>> Berbeda
+                </label>
+            </div>
+        </div>
+        <div id="myDIV">
+            <div class="form-grid">
+                <div class="form-section">
+                    <label class="form-label">Nama Wali</label>
+                    <input type="text" name="nama_wali" class="form-control" placeholder="Nama Wali" value="<?= set_value('nama_wali') ?>">
+                </div>
+                <div class="form-section">
+                    <label class="form-label">Agama Wali</label>
+                    <select name="id_agama_wali" class="form-control select2">
+                        <option value="">Pilih</option>
+                        <?php $agama = $m_agama->listing(); foreach($agama as $a) { ?>
+                            <option value="<?= esc($a->id_agama) ?>"><?= esc($a->nama_agama) ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label class="form-label">Pekerjaan Wali</label>
+                    <select name="id_pekerjaan_wali" class="form-control select2">
+                        <option value="">Pilih</option>
+                        <?php $pekerjaan = $m_pekerjaan->listing(); foreach($pekerjaan as $p) { ?>
+                            <option value="<?= esc($p->id_pekerjaan) ?>"><?= esc($p->nama_pekerjaan) ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label class="form-label">Pendidikan Wali</label>
+                    <select name="id_jenjang_wali" class="form-control select2">
+                        <option value="">Pilih</option>
+                        <?php $jenjang = $m_jenjang->listing(); foreach($jenjang as $j) { ?>
+                            <option value="<?= esc($j->id_jenjang) ?>"><?= esc($j->nama_jenjang) ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label class="form-label">Alamat Wali</label>
+                    <textarea name="alamat_wali" class="form-control" placeholder="Alamat Wali"><?= set_value('alamat_wali') ?></textarea>
+                </div>
+                <div class="form-section">
+                    <label class="form-label">Telepon/HP Wali</label>
+                    <input type="text" name="telepon_wali" class="form-control" placeholder="Telepon/HP Wali" value="<?= set_value('telepon_wali') ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-			<div class="form-group row">
-				<label class="col-3">Nama Wali<span class="text-danger">*</span></label>
-				<div class="col-6">
-					<input type="text" name="nama_wali" class="form-control" placeholder="Nama Wali" value="<?php echo set_value('nama_wali') ?>">
-					<small class="text-secondary">Nama wali</small>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-3">Agama Wali</label>
-				<div class="col-6">
-					<?php $agama = $m_agama->listing(); ?>
-					<select name="id_agama_wali" class="form-control select2">
-						<option value="">Pilih Agama</option>
-						<?php foreach($agama as $agama) { ?>
-							<option value="<?php echo esc($agama->id_agama) ?>" <?php if(set_value('id_agama_wali')==$agama->id_agama) { echo 'selected'; } ?>>
-								<?php echo esc($agama->nama_agama) ?>
-							</option>
-						<?php } ?>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-3">Pekerjaan Wali</label>
-				<div class="col-6">
-					<?php $pekerjaan = $m_pekerjaan->listing(); ?>
-					<select name="id_pekerjaan_wali" class="form-control select2">
-						<option value="">Pilih Pekerjaan</option>
-						<?php foreach($pekerjaan as $pekerjaan) { ?>
-							<option value="<?php echo esc($pekerjaan->id_pekerjaan) ?>" <?php if(set_value('id_pekerjaan_wali')==$pekerjaan->id_pekerjaan) { echo 'selected'; } ?>>
-								<?php echo esc($pekerjaan->nama_pekerjaan) ?>
-							</option>
-						<?php } ?>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-3">Pendidikan Wali</label>
-				<div class="col-6">
-					<?php $jenjang = $m_jenjang->listing(); ?>
-					<select name="id_jenjang_wali" class="form-control select2">
-						<option value="">Pilih Jenjang Pendidikan</option>
-						<?php foreach($jenjang as $jenjang) { ?>
-							<option value="<?php echo esc($jenjang->id_jenjang) ?>"  <?php if(set_value('id_jenjang_wali')==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-								<?php echo esc($jenjang->nama_jenjang) ?>
-							</option>
-						<?php } ?>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-3">Alamat Wali<span class="text-danger">*</span></label>
-				<div class="col-6">
-					<textarea name="alamat_wali" placeholder="Alamat Wali" class="form-control"><?php echo set_value('alamat_wali') ?></textarea>
-				</div>
-			</div>
-
-
-			<div class="form-group row">
-				<label class="col-3">Telepon/HP Wali</label>
-				<div class="col-6">
-					<input type="text" name="telepon_wali" class="form-control" placeholder="Telepon/HP Wali" value="<?php echo set_value('telepon_wali') ?>">
-				</div>
-			</div>
-		</div>
-
-	</div>
-	<div class="card-footer bg-light text-right border-top">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
+<div class="form-actions">
+    <a href="<?= base_url('admin/siswa') ?>" class="btn-secondary-action"><i class="fas fa-arrow-left"></i> Kembali</a>
+    <button type="reset" class="btn-secondary-action"><i class="fas fa-undo"></i> Reset</button>
+    <button type="submit" class="btn-success-action"><i class="fas fa-save"></i> Simpan</button>
 </div>
 
 <?php echo form_close(); ?>
-
-<script>
-function Ayah() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function Ibu() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function Berbeda() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>

@@ -1,90 +1,69 @@
-<p>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
-		<i class="fa fa-plus"></i> Tambah Baru
-	</button>
-</p>
-<form action="<?php echo base_url('admin/video') ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="modal fade" id="modal-default">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Tambah Baru</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-
-				<div class="form-group row">
-					<label class="col-3">Judul &amp; Status</label>
-					<div class="col-9">
-						<input type="text" name="judul" class="form-control" placeholder="Judul Judul" value="<?php echo set_value('judul') ?>" required>
-						<small class="text-secondary">Judul Video</small>
-					</div>
-					
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Kode Video Youtube</label>
-					<div class="col-9">
-		                  
-							<input type="text" name="video" class="form-control" placeholder="Kode video youtube" value="<?php echo set_value('video') ?>" required>
-							
-						
-						<small class="text-secondary">Misal: https://youtu.be/cxLeZXObWDA?si=r_WiHBY4V91cb7Ql. Klik <strong>Share</strong> pada video Youtube. Lalu copy link yang disediakan.</small>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Gambar Thumbnail dan Status</label>
-					
-					<div class="col-3">
-						<input type="file" name="gambar" class="form-control" placeholder="Gambar? logo" value="<?php echo set_value('gambar') ?>">
-						<small class="text-secondary">Gambar Thumbnail Video. Format: JPG, JPEG, PNG, GIF</small>
-					</div>
-					<div class="col-3">
-						<select name="status_video" class="form-control">
-							<option value="Publish">Publish</option>
-							<option value="Draft">Draft</option>
-						</select>
-						<small class="text-secondary">Status Video</small>
-					</div>
-					<div class="col-3">
-						<select name="posisi_video" class="form-control">
-							<option value="Beranda">Beranda</option>
-							<option value="Video">Galeri Video</option>
-						</select>
-						<small class="text-secondary">Posisi Video</small>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Keterangan</label>
-					<div class="col-9">
-						<textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo set_value('keterangan') ?></textarea>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-3">Urutan</label>
-					<div class="col-9">
-						<input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil" value="<?php echo set_value('urutan') ?>">
-					</div>
-				</div>
-
-			</div>
-			<div class="modal-footer justify-content-end">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-				<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
+<div class="mb-3">
+  <button type="button" class="btn btn-primary-action mb-3" data-toggle="modal" data-target="#modal-tambah">
+    <i class="fas fa-plus"></i> Tambah Video Baru
+  </button>
 </div>
-<!-- /.modal -->
-<?php echo form_close(); ?>
+
+<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content" style="border-radius:var(--radius-lg);border:none;">
+      <div class="modal-header" style="background:var(--primary);color:#fff;border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:1rem 1.5rem;">
+        <h5 class="modal-title"><i class="fas fa-video"></i> Tambah Video Baru</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <?= form_open(base_url('admin/video'), 'enctype="multipart/form-data"') ?>
+      <div class="modal-body" style="padding:1.5rem;">
+        <div class="form-grid">
+          <div class="form-section">
+            <label class="form-label">Judul Video <span class="text-danger">*</span></label>
+            <input type="text" name="judul" class="form-control" value="<?= set_value('judul') ?>" required placeholder="Judul video">
+          </div>
+          <div class="form-section">
+            <label class="form-label">Kode Video YouTube</label>
+            <input type="text" name="video" class="form-control" value="<?= set_value('video') ?>" placeholder="cxLeZXObWDA" required>
+            <small style="font-size:var(--font-xs);color:var(--muted);">Bagian ID dari link YouTube. Contoh: <strong>youtu.be/cxLeZXObWDA</strong> → isi cxLeZXObWDA</small>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-section">
+            <label class="form-label">Upload Thumbnail</label>
+            <input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif,.webp">
+            <small style="font-size:var(--font-xs);color:var(--muted);">Format: JPG, PNG, GIF. Maks 5MB.</small>
+          </div>
+          <div class="form-section">
+            <label class="form-label">Status Publikasi</label>
+            <select name="status_video" class="form-select">
+              <option value="Publish">Publish</option>
+              <option value="Draft">Draft</option>
+            </select>
+          </div>
+          <div class="form-section">
+            <label class="form-label">Posisi Video</label>
+            <select name="posisi_video" class="form-select">
+              <option value="Beranda">Beranda</option>
+              <option value="Video">Galeri Video</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section mt-3">
+          <label class="form-label">Keterangan</label>
+          <textarea name="keterangan" class="form-control" rows="3" placeholder="Deskripsi singkat video..."><?= set_value('keterangan') ?></textarea>
+        </div>
+
+        <div class="form-section mt-3">
+          <label class="form-label">Urutan</label>
+          <input type="number" name="urutan" class="form-control" value="<?= set_value('urutan') ?>" placeholder="Nomor urut tampil" style="max-width:200px;">
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid var(--border);padding:1rem 1.5rem;">
+        <button type="button" class="btn btn-secondary-action" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+        <button type="submit" class="btn btn-success-action"><i class="fas fa-save"></i> Simpan</button>
+      </div>
+      <?= form_close() ?>
+    </div>
+  </div>
+</div>

@@ -1,99 +1,96 @@
-<p class="text-right">
-	<a href="<?php echo base_url('admin/portfolio') ?>" class="btn btn-outline-info btn-sm">
-		<i class="fa fa-arrow-left"></i> Kembali
-	</a>
-</p>
-<hr>
-
-<form action="<?php echo base_url('admin/portfolio/edit/'.$portfolio->id_portfolio) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="form-group row">
-	<label class="col-md-3">Judul Portfolio</label>
-	<div class="col-md-9">
-		<input type="text" name="judul_portfolio" class="form-control" value="<?php echo esc($portfolio->judul_portfolio) ?>" required>
-	</div>
+<!-- Back Button -->
+<div class="mb-3">
+  <a href="<?= base_url('admin/portfolio') ?>" class="btn btn-secondary-action">
+    <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+  </a>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-3">Upload Gambar Portfolio</label>
-	<div class="col-md-8">
-		<input type="file" name="gambar" class="form-control" value="<?php echo esc($portfolio->gambar) ?>">
-	</div>
-	<div class="col-md-1">
-		<img src="<?php echo base_url('assets/upload/image/thumbs/'.$portfolio->gambar) ?>" class="img img-thumbnail">
-	</div>
-</div>
+<!-- Form Card -->
+<div class="card-modern">
+  <div class="card-modern-header">
+    <h5 class="card-modern-title"><i class="fas fa-edit"></i> Edit: <?= esc($portfolio->judul_portfolio) ?></h5>
+  </div>
+  <div class="card-modern-body">
+    <?= form_open_multipart(base_url('admin/portfolio/edit/'.$portfolio->id_portfolio)) ?>
 
-<div class="form-group row">
-	<label class="col-md-3">Kategori, Jenis &amp; Status</label>
-	<div class="col-md-3">
-		<select name="id_kategori_portfolio" class="form-control">
-			<?php foreach($kategori_portfolio as $kategori_portfolio) { ?>
-			<option value="<?php echo esc($kategori_portfolio->id_kategori_portfolio) ?>" <?php if($portfolio->id_kategori_portfolio==$kategori_portfolio->id_kategori_portfolio) { echo 'selected'; } ?>>
-				<?php echo esc($kategori_portfolio->nama_kategori_portfolio) ?>
-			</option>
-			<?php } ?>
-		</select>
-		<small class="text-secondary">Kategori</small>
-	</div>
-	<div class="col-md-2">
-		<select name="jenis_portfolio" class="form-control">
-			<option value="Portfolio">Portfolio</option>
-			<option value="Homepage" <?php if($portfolio->jenis_portfolio=="Homepage") { echo 'selected'; } ?>>Homepage Slider</option>
-			<option value="Header" <?php if($portfolio->jenis_portfolio=="Header") { echo 'selected'; } ?>>Header Halaman</option>
-			<option value="Pop Up" <?php if($portfolio->jenis_portfolio=="Pop Up") { echo 'selected'; } ?>>Pop Up Homepage</option>
-		</select>
-		<small class="text-secondary">Jenis konten</small>
-	</div>
-	
-	<div class="col-md-2">
-		<select name="status_text" class="form-control">
-			<option value="Ya">Aktif</option>
-			<option value="Tidak" <?php if($portfolio->status_text=="Tidak") { echo 'selected'; } ?>>Tidak Aktif</option>
-		</select>
-		<small class="text-secondary">Text pada slider</small>
-	</div>
-	<div class="col-md-2">
-		<select name="status_portfolio" class="form-control">
-			<option value="Publish">Publish</option>
-			<option value="Draft" <?php if($portfolio->status_portfolio=="Draft") { echo 'selected'; } ?>>Draft</option>
-		</select>
-		<small class="text-secondary">Status status_portfolio</small>
-	</div>
-</div>
+    <div class="form-grid">
+      <div class="form-section">
+        <label class="form-label">Judul Portfolio <span class="text-danger">*</span></label>
+        <input type="text" name="judul_portfolio" class="form-control" value="<?= esc($portfolio->judul_portfolio) ?>" required>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Upload Gambar</label>
+        <?php if($portfolio->gambar != ''): ?>
+        <div class="mb-2">
+          <img src="<?= base_url('assets/upload/image/thumbs/'.$portfolio->gambar) ?>" style="width:80px;height:80px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--border);" alt="">
+        </div>
+        <?php endif; ?>
+        <input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif,.webp">
+        <small style="font-size:var(--font-xs);color:var(--muted);">Kosongkan jika tidak ingin mengganti gambar</small>
+      </div>
+    </div>
 
-<div class="form-group row">
-	<label class="col-md-3">Isi Portfolio</label>
-	<div class="col-md-9">
-		<textarea name="isi" class="form-control konten"><?php echo esc($portfolio->isi) ?></textarea>
-	</div>
-</div>
+    <div class="form-grid">
+      <div class="form-section">
+        <label class="form-label">Kategori</label>
+        <select name="id_kategori_portfolio" class="form-select">
+          <?php foreach($kategori_portfolio as $kp): ?>
+          <option value="<?= esc($kp->id_kategori_portfolio) ?>" <?= ($kp->id_kategori_portfolio == $portfolio->id_kategori_portfolio) ? 'selected' : '' ?>>
+            <?= esc($kp->nama_kategori_portfolio) ?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Jenis Konten</label>
+        <select name="jenis_portfolio" class="form-select">
+          <option value="Portfolio" <?= ($portfolio->jenis_portfolio == 'Portfolio') ? 'selected' : '' ?>>Portfolio</option>
+          <option value="Homepage" <?= ($portfolio->jenis_portfolio == 'Homepage') ? 'selected' : '' ?>>Homepage Slider</option>
+          <option value="Header" <?= ($portfolio->jenis_portfolio == 'Header') ? 'selected' : '' ?>>Header Halaman</option>
+          <option value="Pop Up" <?= ($portfolio->jenis_portfolio == 'Pop Up') ? 'selected' : '' ?>>Pop Up Homepage</option>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Status Teks Slider</label>
+        <select name="status_text" class="form-select">
+          <option value="Ya" <?= ($portfolio->status_text == 'Ya') ? 'selected' : '' ?>>Aktif</option>
+          <option value="Tidak" <?= ($portfolio->status_text == 'Tidak') ? 'selected' : '' ?>>Tidak Aktif</option>
+        </select>
+      </div>
+      <div class="form-section">
+        <label class="form-label">Status Publikasi</label>
+        <select name="status_portfolio" class="form-select">
+          <option value="Publish" <?= ($portfolio->status_portfolio == 'Publish') ? 'selected' : '' ?>>Publish</option>
+          <option value="Draft" <?= ($portfolio->status_portfolio == 'Draft') ? 'selected' : '' ?>>Draft</option>
+        </select>
+      </div>
+    </div>
 
-<div class="form-group row">
-	<label class="col-md-3">Text untuk tombol link</label>
-	<div class="col-md-9">
-		<input type="text" name="text_website" class="form-control" value="<?php echo esc($portfolio->text_website) ?>">
-	</div>
-</div>
+    <div class="form-section mt-3">
+      <label class="form-label">Isi Portfolio</label>
+      <textarea name="isi" class="form-control konten" rows="5"><?= esc($portfolio->isi) ?></textarea>
+    </div>
 
-<div class="form-group row">
-	<label class="col-md-3">Link/URL untuk Banner</label>
-	<div class="col-md-9">
-		<input type="text" name="website" class="form-control" value="<?php echo esc($portfolio->website) ?>">
-	</div>
-</div>
+    <div class="form-grid">
+      <div class="form-section mt-3">
+        <label class="form-label">Text Tombol Link</label>
+        <input type="text" name="text_website" class="form-control" value="<?= esc($portfolio->text_website) ?>">
+      </div>
+      <div class="form-section mt-3">
+        <label class="form-label">Link/URL</label>
+        <input type="text" name="website" class="form-control" value="<?= esc($portfolio->website) ?>">
+      </div>
+    </div>
 
-<div class="form-group row">
-	<label class="col-md-3"></label>
-	<div class="col-md-9">
-		<a href="<?php echo base_url('admin/portfolio') ?>" class="btn btn-outline-info">
-			<i class="fa fa-arrow-left"></i> Kembali
-		</a>
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
-</div>
+    <div class="form-actions mt-4">
+      <a href="<?= base_url('admin/portfolio') ?>" class="btn btn-secondary-action">
+        <i class="fas fa-arrow-left"></i> Batal
+      </a>
+      <button type="submit" class="btn btn-success-action">
+        <i class="fas fa-save"></i> Simpan Perubahan
+      </button>
+    </div>
 
-<?php echo form_close(); ?>
+    <?= form_close() ?>
+  </div>
+</div>

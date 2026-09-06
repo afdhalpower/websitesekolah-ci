@@ -1,186 +1,209 @@
-<?php 
-echo form_open(base_url('admin/konfigurasi/sekolah')); 
-echo csrf_field(); 
+<?php
+$url_cetak = base_url('admin/konfigurasi/unduh');
 ?>
+<div class="page-header-modern">
+    <div>
+        <h5 class="page-title">Informasi Sekolah</h5>
+        <p class="page-subtitle">Data dasar, kontak, akreditasi, yayasan, dan tanah/bangunan</p>
+    </div>
+    <div>
+        <a href="<?= $url_cetak ?>" class="btn-secondary-action" target="_blank">
+            <i class="fas fa-file-pdf"></i> Cetak/Unduh PDF
+        </a>
+    </div>
+</div>
 
-<p class="text-right">
-	<a href="<?php echo base_url('admin/konfigurasi/unduh') ?>" class="btn btn-outline-danger" target="_blank">
-		<i class="fa fa-file-pdf"></i> Cetak/Unduh
-	</a>
-	<button type="submit" class="btn btn-success" name="submit" value="submit">
-		<i class="fa fa-save"></i> Simpan dan Update
-	</button>
-</p>
+<?php echo form_open(base_url('admin/konfigurasi/sekolah')); ?>
+<?php echo csrf_field(); ?>
 
-<table class="table table-sm table-bordered">
-	<tbody>
-		<tr>
-		  <td colspan="2" class="bg-secondary text-center"><h3>DATA DASAR SEKOLAH</h3></td>
-	  </tr>
-		<tr>
-			<td class="bg-light" width="25%">Nama lengkap sekolah</td>
-			<td><input type="text" name="nama_sekolah" class="form-control" value="<?php echo esc($sekolah->nama_sekolah) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light" width="25%">Nama lengkap sekolah cover</td>
-			<td><input type="text" name="nama_sekolah_cover" class="form-control" value="<?php echo esc($sekolah->nama_sekolah_cover) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nama Singkat</td>
-			<td><input type="text" name="nama_singkat" class="form-control" value="<?php echo esc($sekolah->nama_singkat) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">NPSN/NSS/NISN</td>
-			<td><input type="text" name="nis" class="form-control" value="<?php echo esc($sekolah->nis) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Status Sekolah</td>
-			<td><input type="text" name="status_sekolah" class="form-control" value="<?php echo esc($sekolah->status_sekolah) ?>"></td>
-		</tr>
-		<tr>
-		  <td colspan="2" class="bg-secondary text-center"><h3>KONTAK DAN ALAMAT SEKOLAH</h3></td>
-	  </tr>
-		<tr>
-			<td class="bg-light">Alamat</td>
-			<td><textarea name="alamat" class="form-control"><?php echo esc($sekolah->alamat) ?></textarea></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Kelurahan</td>
-			<td><input type="text" name="kelurahan" class="form-control" value="<?php echo esc($sekolah->kelurahan) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Kecamatan</td>
-			<td><input type="text" name="kecamatan" class="form-control" value="<?php echo esc($sekolah->kecamatan) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Kabupaten</td>
-			<td><input type="text" name="kabupaten" class="form-control" value="<?php echo esc($sekolah->kabupaten) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Provinsi</td>
-			<td><input type="text" name="provinsi" class="form-control" value="<?php echo esc($sekolah->provinsi) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Kode Pos</td>
-			<td><input type="text" name="kode_pos" class="form-control" value="<?php echo esc($sekolah->kode_pos) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Telepon</td>
-			<td><input type="text" name="telepon" class="form-control" value="<?php echo esc($sekolah->telepon) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Email</td>
-			<td><input type="email" name="email" class="form-control" value="<?php echo esc($sekolah->email) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Website</td>
-			<td><input type="text" name="website" class="form-control" value="<?php echo esc($sekolah->website) ?>"></td>
-		</tr>
-		<tr>
-		  <td colspan="2" class="bg-secondary text-center"><h3>INFORMASI, AKREDITASI DAN YAYASAN</h3></td>
-	  </tr>
-		<tr>
-			<td class="bg-light">Nama Yayasan</td>
-			<td><input type="text" name="nama_yayasan" class="form-control" value="<?php echo esc($sekolah->nama_yayasan) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nama Yayasan Cover Rapor</td>
-			<td><input type="text" name="nama_cover" class="form-control" value="<?php echo esc($sekolah->nama_cover) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nama Kota Cover Rapor</td>
-			<td><input type="text" name="kota_cover" class="form-control" value="<?php echo esc($sekolah->kota_cover) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nama Yayasan Tampil di Footer Rapor</td>
-			<td><input type="text" name="nama_footer" class="form-control" value="<?php echo esc($sekolah->nama_footer) ?>"></td>
-		</tr>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-school" style="color:var(--green);margin-right:6px;"></i> Data Dasar Sekolah</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Lengkap Sekolah</label>
+                <input type="text" name="nama_sekolah" class="form-control" value="<?= esc($sekolah->nama_sekolah) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama di Cover</label>
+                <input type="text" name="nama_sekolah_cover" class="form-control" value="<?= esc($sekolah->nama_sekolah_cover) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama Singkat</label>
+                <input type="text" name="nama_singkat" class="form-control" value="<?= esc($sekolah->nama_singkat) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">NPSN/NSS/NISN</label>
+                <input type="text" name="nis" class="form-control" value="<?= esc($sekolah->nis) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status Sekolah</label>
+                <input type="text" name="status_sekolah" class="form-control" value="<?= esc($sekolah->status_sekolah) ?>">
+            </div>
+        </div>
+    </div>
+</div>
 
-		<tr>
-			<td class="bg-light">Tanggal berdiri Yayasan/Sekolah</td>
-			<td><input type="text" name="tanggal_berdiri" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_berdiri)) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nama Kepala Sekolah</td>
-			<td><input type="text" name="nama_kepsek" class="form-control" value="<?php echo esc($sekolah->nama_kepsek) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Jumlah Rombel</td>
-			<td><input type="text" name="jumlah_rombel" class="form-control" value="<?php echo esc($sekolah->jumlah_rombel) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Jumlah Siswa</td>
-			<td><input type="text" name="jumlah_murid" class="form-control" value="<?php echo esc($sekolah->jumlah_murid) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Jumlah Pegawai</td>
-			<td><input type="text" name="jumlah_pegawai" class="form-control" value="<?php echo esc($sekolah->jumlah_pegawai) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Jumlah Akreditasi</td>
-			<td>
-				<select name="nilai_akreditasi" class="form-control">
-					<option value="A">A</option>
-					<option value="B" <?php if($sekolah->nilai_akreditasi=='B') { echo 'selected'; } ?>>B</option>
-					<option value="C" <?php if($sekolah->nilai_akreditasi=='C') { echo 'selected'; } ?>>C</option>
-					<option value="D" <?php if($sekolah->nilai_akreditasi=='D') { echo 'selected'; } ?>>D</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td class="bg-light">Tahun Akreditasi</td>
-			<td><input type="text" name="tahun_akreditasi" class="form-control" value="<?php echo esc($sekolah->tahun_akreditasi) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Tanggal Akreditasi</td>
-			<td><input type="text" name="tanggal_berlaku" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_berlaku)) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Tanggal Kadaluarsa Akreditasi</td>
-			<td><input type="number" name="tanggal_kadaluarsa" class="form-control tanggal" value="<?php echo esc($this->website->tanggal_id($sekolah->tanggal_kadaluarsa)) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nomor Izin Sekolah</td>
-			<td><input type="text" name="nomor_izin" class="form-control" value="<?php echo esc($sekolah->nomor_izin) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Keterangan lain</td>
-			<td><textarea name="keterangan" class="form-control"><?php echo esc($sekolah->keterangan) ?></textarea></td>
-		</tr>
-		<tr>
-		  <td colspan="2" class="bg-secondary text-center"><h3>INFORMASI TANAH DAN BANGUNAN</h3></td>
-	  </tr>
-		<tr>
-			<td class="bg-light">Luas Tanah</td>
-			<td><input type="text" name="luas_tanah" class="form-control" value="<?php echo esc($sekolah->luas_tanah) ?>">
-				<small class="text-secondary">Dalam meter persegi</small></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Luas Bangunan</td>
-			<td><input type="text" name="luas_bangunan" class="form-control" value="<?php echo esc($sekolah->luas_bangunan) ?>"><small class="text-secondary">Dalam meter persegi</small></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Status Kepemilikan</td>
-			<td><input type="text" name="status_tanah" class="form-control" value="<?php echo esc($sekolah->status_tanah) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nomor IMB</td>
-			<td><input type="text" name="imb" class="form-control" value="<?php echo esc($sekolah->imb) ?>"></td>
-		</tr>
-		<tr>
-			<td class="bg-light">Nomor Sertifikat Tanah</td>
-			<td><input type="text" name="nomor_sertifikat" class="form-control" value="<?php echo esc($sekolah->nomor_sertifikat) ?>"></td>
-		</tr>
-		
-		<tr>
-			<td class="bg-light"></td>
-			<td>
-				<button type="submit" class="btn btn-success" name="submit" value="submit">
-					<i class="fa fa-save"></i> Simpan
-				</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-map-marker-alt" style="color:var(--blue);margin-right:6px;"></i> Kontak dan Alamat Sekolah</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Alamat</label>
+                <textarea name="alamat" class="form-control" rows="2"><?= esc($sekolah->alamat) ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kelurahan</label>
+                <input type="text" name="kelurahan" class="form-control" value="<?= esc($sekolah->kelurahan) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kecamatan</label>
+                <input type="text" name="kecamatan" class="form-control" value="<?= esc($sekolah->kecamatan) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kabupaten</label>
+                <input type="text" name="kabupaten" class="form-control" value="<?= esc($sekolah->kabupaten) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Provinsi</label>
+                <input type="text" name="provinsi" class="form-control" value="<?= esc($sekolah->provinsi) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kode Pos</label>
+                <input type="text" name="kode_pos" class="form-control" value="<?= esc($sekolah->kode_pos) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Telepon</label>
+                <input type="text" name="telepon" class="form-control" value="<?= esc($sekolah->telepon) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" value="<?= esc($sekolah->email) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Website</label>
+                <input type="text" name="website" class="form-control" value="<?= esc($sekolah->website) ?>">
+            </div>
+        </div>
+    </div>
+</div>
 
-<?php echo form_close() ?>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-certificate" style="color:var(--amber);margin-right:6px;"></i> Informasi, Akreditasi dan Yayasan</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Yayasan</label>
+                <input type="text" name="nama_yayasan" class="form-control" value="<?= esc($sekolah->nama_yayasan) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama Cover Rapor</label>
+                <input type="text" name="nama_cover" class="form-control" value="<?= esc($sekolah->nama_cover) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Kota Cover Rapor</label>
+                <input type="text" name="kota_cover" class="form-control" value="<?= esc($sekolah->kota_cover) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama Footer Rapor</label>
+                <input type="text" name="nama_footer" class="form-control" value="<?= esc($sekolah->nama_footer) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Berdiri</label>
+                <input type="text" name="tanggal_berdiri" class="form-control tanggal" value="<?= esc($this->website->tanggal_id($sekolah->tanggal_berdiri)) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nama Kepala Sekolah</label>
+                <input type="text" name="nama_kepsek" class="form-control" value="<?= esc($sekolah->nama_kepsek) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jumlah Rombel</label>
+                <input type="text" name="jumlah_rombel" class="form-control" value="<?= esc($sekolah->jumlah_rombel) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jumlah Siswa</label>
+                <input type="text" name="jumlah_murid" class="form-control" value="<?= esc($sekolah->jumlah_murid) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jumlah Pegawai</label>
+                <input type="text" name="jumlah_pegawai" class="form-control" value="<?= esc($sekolah->jumlah_pegawai) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nilai Akreditasi</label>
+                <select name="nilai_akreditasi" class="form-control">
+                    <option value="A" <?= $sekolah->nilai_akreditasi=='A' ? 'selected' : '' ?>>A</option>
+                    <option value="B" <?= $sekolah->nilai_akreditasi=='B' ? 'selected' : '' ?>>B</option>
+                    <option value="C" <?= $sekolah->nilai_akreditasi=='C' ? 'selected' : '' ?>>C</option>
+                    <option value="D" <?= $sekolah->nilai_akreditasi=='D' ? 'selected' : '' ?>>D</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tahun Akreditasi</label>
+                <input type="text" name="tahun_akreditasi" class="form-control" value="<?= esc($sekolah->tahun_akreditasi) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Akreditasi</label>
+                <input type="text" name="tanggal_berlaku" class="form-control tanggal" value="<?= esc($this->website->tanggal_id($sekolah->tanggal_berlaku)) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Kadaluarsa</label>
+                <input type="text" name="tanggal_kadaluarsa" class="form-control tanggal" value="<?= esc($this->website->tanggal_id($sekolah->tanggal_kadaluarsa)) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nomor Izin Sekolah</label>
+                <input type="text" name="nomor_izin" class="form-control" value="<?= esc($sekolah->nomor_izin) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Keterangan</label>
+                <textarea name="keterangan" class="form-control" rows="2"><?= esc($sekolah->keterangan) ?></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-building" style="color:var(--blue);margin-right:6px;"></i> Informasi Tanah dan Bangunan</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Luas Tanah (m&sup2;)</label>
+                <input type="text" name="luas_tanah" class="form-control" value="<?= esc($sekolah->luas_tanah) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Luas Bangunan (m&sup2;)</label>
+                <input type="text" name="luas_bangunan" class="form-control" value="<?= esc($sekolah->luas_bangunan) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status Kepemilikan</label>
+                <input type="text" name="status_tanah" class="form-control" value="<?= esc($sekolah->status_tanah) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nomor IMB</label>
+                <input type="text" name="imb" class="form-control" value="<?= esc($sekolah->imb) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Nomor Sertifikat Tanah</label>
+                <input type="text" name="nomor_sertifikat" class="form-control" value="<?= esc($sekolah->nomor_sertifikat) ?>">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-actions">
+    <a href="<?= base_url('admin/konfigurasi') ?>" class="btn-secondary-action">
+        <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+    <button type="submit" class="btn-success-action">
+        <i class="fas fa-save"></i> Simpan
+    </button>
+</div>
+
+<?php echo form_close(); ?>

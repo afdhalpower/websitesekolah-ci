@@ -52,7 +52,6 @@ class Rombel_model extends Model
         $builder->join('tahun','tahun.id_tahun = rombel.id_tahun');
         $builder->join('jenjang','jenjang.id_jenjang = kelas.id_jenjang');
         $builder->where('rombel.id_tahun',$id_tahun);
-        $builder->groupBy('rombel.id_tahun');
         $builder->orderBy('kelas.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -74,7 +73,7 @@ class Rombel_model extends Model
         $builder->join('tahun','tahun.id_tahun = rombel.id_tahun');
         $builder->join('jenjang','jenjang.id_jenjang = kelas.id_jenjang');
         $builder->where('rombel.id_tahun',$id_tahun);
-        $builder->groupBy('rombel.id_kelas');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -100,7 +99,7 @@ class Rombel_model extends Model
         $builder->join('staff_rombel','staff_rombel.id_rombel = rombel.id_rombel');
         $builder->where('rombel.id_tahun',$id_tahun);
         $builder->where('staff_rombel.id_staff',$id_staff);
-        $builder->groupBy('rombel.id_kelas');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -122,7 +121,6 @@ class Rombel_model extends Model
         $builder->join('tahun','tahun.id_tahun = rombel.id_tahun');
         $builder->join('jenjang','jenjang.id_jenjang = kelas.id_jenjang');
         $builder->where('rombel.id_tahun',$id_tahun);
-        $builder->groupBy('rombel.id_tahun');
         $builder->orderBy('kelas.urutan','ASC');
         $query = $builder->get();
         return $query->getRow();
@@ -145,7 +143,7 @@ class Rombel_model extends Model
         $builder->join('tahun','tahun.id_tahun = rombel.id_tahun');
         $builder->join('jenjang','jenjang.id_jenjang = kelas.id_jenjang');
         $builder->where('rombel.id_tahun',$id_tahun);
-        $builder->groupBy('kelas.id_jenjang');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -171,7 +169,7 @@ class Rombel_model extends Model
         $builder->join('staff_rombel','staff_rombel.id_rombel = rombel.id_rombel');
         $builder->where('rombel.id_tahun',$id_tahun);
         $builder->where('staff_rombel.id_staff',$id_staff);
-        $builder->groupBy('kelas.id_jenjang');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -197,7 +195,7 @@ class Rombel_model extends Model
         $builder->join('staff_rombel','staff_rombel.id_rombel = rombel.id_rombel');
         $builder->where('rombel.id_tahun',$id_tahun);
         $builder->where('jenjang.id_jenjang',$id_jenjang);
-        $builder->groupBy('rombel.id_kelas');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();
@@ -224,7 +222,7 @@ class Rombel_model extends Model
         $builder->where('rombel.id_tahun',$id_tahun);
         $builder->where('jenjang.id_jenjang',$id_jenjang);
         $builder->where('staff_rombel.id_staff',$id_staff);
-        $builder->groupBy('rombel.id_kelas');
+
         $builder->orderBy('jenjang.urutan','ASC');
         $query = $builder->get();
         return $query->getResult();

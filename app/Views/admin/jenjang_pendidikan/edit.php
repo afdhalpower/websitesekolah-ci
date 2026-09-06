@@ -1,120 +1,107 @@
-<p class="text-right">
-	<a href="<?php echo base_url('admin/jenjang_pendidikan') ?>" class="btn btn-outline-info btn-sm">
-		<i class="fa fa-arrow-left"></i> Kembali
-	</a>
-</p>
-<hr>
+<?php echo form_open_multipart(base_url('admin/jenjang_pendidikan/edit/'.$jenjang_pendidikan->id_jenjang_pendidikan)); ?>
+<?php echo csrf_field(); ?>
 
-<form action="<?php echo base_url('admin/jenjang_pendidikan/edit/'.$jenjang_pendidikan->id_jenjang_pendidikan) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="form-group row">
-	<label class="col-md-2">Nama Jenjang Pendidikan</label>
-	<div class="col-md-10">
-		<input type="text" name="judul_jenjang_pendidikan" class="form-control" value="<?php echo esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?>" required>
-	</div>
+<div class="page-header-modern">
+    <div>
+        <h5 class="page-title">Edit: <?= esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?></h5>
+        <p class="page-subtitle">Edit data jenjang pendidikan</p>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Upload Gambar Jenjang Pendidikan</label>
-	<div class="col-md-10">
-		<input type="file" name="gambar" class="form-control" value="<?php echo esc($jenjang_pendidikan->gambar) ?>">
-	</div>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-graduation-cap" style="color:var(--green);margin-right:6px;"></i> Data Jenjang Pendidikan</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Nama Jenjang Pendidikan <span style="color:var(--red);">*</span></label>
+                <input type="text" name="judul_jenjang_pendidikan" class="form-control" value="<?= esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?>" required>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Upload Gambar</label>
+                <div class="upload-zone" onclick="this.querySelector('input[type=file]').click();" style="cursor:pointer;text-align:center;padding:15px;">
+                    <input type="file" name="gambar" style="display:none;" onchange="this.closest('.upload-zone').querySelector('.upload-text').textContent=this.files[0]?.name||'Pilih file...';">
+                    <i class="fas fa-cloud-upload-alt" style="font-size:1.5rem;color:var(--gray);"></i>
+                    <p class="upload-text" style="margin:4px 0 0;color:var(--gray);font-size:0.8rem;">Ganti gambar</p>
+                </div>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenjang Pendidikan</label>
+                <select name="id_jenjang" class="form-control">
+                    <?php foreach($jenjang as $j) { ?>
+                        <option value="<?= esc($j->id_jenjang) ?>" <?= $jenjang_pendidikan->id_jenjang==$j->id_jenjang ? 'selected' : '' ?>><?= esc($j->nama_jenjang) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jenis Konten</label>
+                <select name="jenis_jenjang_pendidikan" class="form-control">
+                    <option value="Jenjang" <?= $jenjang_pendidikan->jenis_jenjang_pendidikan=="Jenjang" ? 'selected' : '' ?>>Jenjang Pendidikan</option>
+                    <option value="Yayasan" <?= $jenjang_pendidikan->jenis_jenjang_pendidikan=="Yayasan" ? 'selected' : '' ?>>Informasi Yayasan</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Status Publikasi</label>
+                <select name="status_jenjang_pendidikan" class="form-control">
+                    <option value="Publish" <?= $jenjang_pendidikan->status_jenjang_pendidikan=="Publish" ? 'selected' : '' ?>>Publish</option>
+                    <option value="Draft" <?= $jenjang_pendidikan->status_jenjang_pendidikan=="Draft" ? 'selected' : '' ?>>Draft</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Icon</label>
+                <input type="text" name="icon" class="form-control" value="<?= esc($jenjang_pendidikan->icon) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Tanggal Publish</label>
+                <input type="text" name="tanggal_publish" class="form-control tanggal" value="<?= esc($this->website->tanggal_id($jenjang_pendidikan->tanggal_publish)) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Jam Publish</label>
+                <input type="text" name="jam" class="form-control jam" value="<?= date('H:i:s',strtotime($jenjang_pendidikan->tanggal_publish)) ?>">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Urutan</label>
+                <input type="number" name="urutan" class="form-control" value="<?= esc($jenjang_pendidikan->urutan) ?>">
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Jenjang Pendidikan, Jenis &amp; Status</label>
-	<div class="col-md-3">
-		<select name="id_jenjang" class="form-control">
-			<?php foreach($jenjang as $jenjang) { ?>
-			<option value="<?php echo esc($jenjang->id_jenjang) ?>" <?php if($jenjang_pendidikan->id_jenjang==$jenjang->id_jenjang) { echo 'selected'; } ?>>
-				<?php echo esc($jenjang->nama_jenjang) ?>
-			</option>
-			<?php } ?>
-		</select>
-		<small class="text-secondary">Jenjang Pendidikan</small>
-	</div>
-	<div class="col-md-2">
-		<select name="jenis_jenjang_pendidikan" class="form-control">
-			<option value="Jenjang">Jenjang Pendidikan</option>
-			<option value="Yayasan" <?php if($jenjang_pendidikan->jenis_jenjang_pendidikan=="Yayasan") { echo 'selected'; } ?>>Informasi Yayasan</option>
-		</select>
-		<small class="text-secondary">Jenis konten</small>
-	</div>
-	<div class="col-md-2">
-		<select name="status_jenjang_pendidikan" class="form-control">
-			<option value="Publish">Publish</option>
-			<option value="Draft" <?php if($jenjang_pendidikan->status_jenjang_pendidikan=="Draft") { echo 'selected'; } ?>>Draft</option>
-		</select>
-		<small class="text-secondary">Status publikasi</small>
-	</div>
-	<div class="col-md-2">
-		<input type="text" name="icon" class="form-control" value="<?php echo esc($jenjang_pendidikan->icon) ?>">
-		<small class="text-secondary">Icon <a href="https://fontawesome.com/icons" target="_blank">Fontawsome</a></small>
-	</div>
+<div class="card-modern mb-3">
+    <div class="card-modern-header">
+        <h6 style="margin:0;font-weight:600;"><i class="fas fa-file-alt" style="color:var(--blue);margin-right:6px;"></i> Konten & SEO</h6>
+    </div>
+    <div class="card-modern-body">
+        <div class="form-grid">
+            <div class="form-section">
+                <label class="form-label">Ringkasan</label>
+                <textarea name="ringkasan" class="form-control" rows="3"><?= esc($jenjang_pendidikan->ringkasan) ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Isi Jenjang Pendidikan</label>
+                <div style="margin-bottom:6px;">
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-media"><i class="fas fa-plus-circle"></i> Media</button>
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-galeri"><i class="fas fa-image"></i> Galeri</button>
+                    <button type="button" class="btn-secondary-action" style="font-size:0.75rem;padding:4px 10px;" data-toggle="modal" data-target="#modal-download"><i class="fas fa-download"></i> File</button>
+                </div>
+                <textarea name="isi" class="form-control konten" rows="6"><?= esc($jenjang_pendidikan->isi) ?></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Keywords (SEO)</label>
+                <textarea name="keywords" class="form-control" rows="2"><?= esc($jenjang_pendidikan->keywords) ?></textarea>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Tanggal, jam Publikasi &amp; Urutan</label>
-	<div class="col-md-3">
-		<input type="text" name="tanggal_publish" class="form-control tanggal" value="<?php if(isset($_POST['tanggal_publis'])) { echo set_value('tanggal_publish'); }else{ echo esc($this->website->tanggal_id($jenjang_pendidikan->tanggal_publish)); } ?>">
-		<small class="text-secondary">Format <strong>dd-mm-yyyy</strong>. Misal: <?php echo date('d-m-Y') ?></small>
-	</div>
-	<div class="col-md-3">
-		<input type="text" name="jam" class="form-control jam" value="<?php if(isset($_POST['jam'])) { echo set_value('jam'); }else{ echo date('H:i:s',strtotime($jenjang_pendidikan->tanggal_publish)); } ?>">
-		<small class="text-secondary">Format <strong>HH:MM:SS</strong>. Misal: <?php echo date('H:i:s') ?></small>
-	</div>
-	<div class="col-md-3">
-		<input type="number" name="urutan" class="form-control" value="<?php if(isset($_POST['urutan'])) { echo set_value('urutan'); }else{ echo esc($jenjang_pendidikan->urutan); } ?>">
-		<small class="text-secondary">Nomor urut tampil</small>
-	</div>
+<div class="form-actions">
+    <a href="<?= base_url('admin/jenjang_pendidikan') ?>" class="btn-secondary-action"><i class="fas fa-arrow-left"></i> Kembali</a>
+    <button type="reset" class="btn-secondary-action"><i class="fas fa-undo"></i> Reset</button>
+    <button type="submit" class="btn-success-action"><i class="fas fa-save"></i> Simpan</button>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-2">Ringkasan</label>
-	<div class="col-md-10">
-		<textarea name="ringkasan" class="form-control"><?php echo esc($jenjang_pendidikan->ringkasan) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2">Isi Jenjang Pendidikan</label>
-	<div class="col-md-10">
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-media">
-			<i class="fa fa-plus-circle"></i> Upload &amp; Kelola Media/File
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-galeri">
-			<i class="fa fa-image"></i> Lihat Galeri
-		</button>
-		<button type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal-download">
-			<i class="fa fa-download"></i> Lihat File
-		</button>
-		<textarea name="isi" class="form-control konten"><?php echo esc($jenjang_pendidikan->isi) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2">Keyword Jenjang Pendidikan (untuk SEO Google)</label>
-	<div class="col-md-10">
-		<textarea name="keywords" class="form-control"><?php echo esc($jenjang_pendidikan->keywords) ?></textarea>
-	</div>
-</div>
-
-<div class="form-group row">
-	<label class="col-md-2"></label>
-	<div class="col-md-10">
-		<a href="<?php echo base_url('admin/jenjang_pendidikan') ?>" class="btn btn-outline-info">
-			<i class="fa fa-arrow-left"></i> Kembali
-		</a>
-		<button type="reset" class="btn btn-secondary"><i class="fa fa-times"></i> Reset</button>
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-	</div>
-</div>
-
-<?php 
-echo form_close(); 
+<?php echo form_close();
 include('media.php');
 include('galeri.php');
 include('download.php');
