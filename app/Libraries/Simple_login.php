@@ -15,6 +15,9 @@ class Simple_login
 	private function _url($path = ''): string
 	{
 		$path = (string) ($path ?? '');
+		if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+			return $path;
+		}
 		$uri = service('uri');
 		return $uri->getBaseURL() . ltrim($path, '/');
 	}
@@ -61,10 +64,10 @@ class Simple_login
 			$this->session->set('akses_level',$user->akses_level);
 
 			if(!empty($pengalihan)) {
-				header("Location: " . $this->_url($pengalihan));
-			}else{
-				header("Location: " . $this->_url('admin/dasbor'));
-			}
+						header("Location: " . $this->_url($pengalihan));
+					}else{
+						header("Location: " . $this->_url('admin/dasbor'));
+					}
 			exit;
 		}else{
 			// Track failed attempt for brute force protection
