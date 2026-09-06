@@ -22,46 +22,46 @@
 <!-- Stats Row -->
 <div class="row g-3 mb-4">
   <div class="col-6 col-lg-3">
-    <div class="stat-card stat-green">
-      <div class="stat-icon">
+    <div class="stat-card">
+      <div class="stat-card-icon stat-card-green">
         <i class="fas fa-user-graduate"></i>
       </div>
-      <div class="stat-info">
-        <span class="stat-number"><?php echo $stats['siswa'] ?></span>
-        <span class="stat-label">Siswa Aktif</span>
+      <div class="stat-card-info">
+        <span class="stat-card-num"><?php echo $stats['siswa'] ?></span>
+        <span class="stat-card-label">Siswa Aktif</span>
       </div>
     </div>
   </div>
   <div class="col-6 col-lg-3">
-    <div class="stat-card stat-blue">
-      <div class="stat-icon">
+    <div class="stat-card">
+      <div class="stat-card-icon stat-card-blue">
         <i class="fas fa-newspaper"></i>
       </div>
-      <div class="stat-info">
-        <span class="stat-number"><?php echo $stats['berita'] ?></span>
-        <span class="stat-label">Berita & Artikel</span>
+      <div class="stat-card-info">
+        <span class="stat-card-num"><?php echo $stats['berita'] ?></span>
+        <span class="stat-card-label">Berita & Artikel</span>
       </div>
     </div>
   </div>
   <div class="col-6 col-lg-3">
-    <div class="stat-card stat-purple">
-      <div class="stat-icon">
+    <div class="stat-card">
+      <div class="stat-card-icon stat-card-purple">
         <i class="fas fa-images"></i>
       </div>
-      <div class="stat-info">
-        <span class="stat-number"><?php echo $stats['galeri'] ?></span>
-        <span class="stat-label">Media Galeri</span>
+      <div class="stat-card-info">
+        <span class="stat-card-num"><?php echo $stats['galeri'] ?></span>
+        <span class="stat-card-label">Media Galeri</span>
       </div>
     </div>
   </div>
   <div class="col-6 col-lg-3">
-    <div class="stat-card stat-orange">
-      <div class="stat-icon">
+    <div class="stat-card">
+      <div class="stat-card-icon stat-card-amber">
         <i class="fas fa-money-bill-wave"></i>
       </div>
-      <div class="stat-info">
-        <span class="stat-number"><?php echo $stats['tagihan_pending'] ?></span>
-        <span class="stat-label">Tagihan Pending</span>
+      <div class="stat-card-info">
+        <span class="stat-card-num"><?php echo $stats['tagihan_pending'] ?></span>
+        <span class="stat-card-label">Tagihan Pending</span>
       </div>
     </div>
   </div>

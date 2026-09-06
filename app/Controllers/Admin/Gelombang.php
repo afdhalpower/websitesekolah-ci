@@ -28,16 +28,42 @@ class Gelombang extends BaseController
 	public function index()
 	{
 		$m_gelombang 	= new Gelombang_model();
+		$m_siswa 		= new Siswa_model();
 		$gelombang 		= $m_gelombang->listing();
 		$total 			= $m_gelombang->total();	
 
-		$data = [	'title'				=> 'Data Periode PPDB: '.$total->total,
-					'gelombang'			=> $gelombang,
-					'm_gelombang'		=> $m_gelombang,
-					'm_siswa'			=> new Siswa_model(),
-					'content'			=> 'admin/gelombang/index'
-				];
-		echo view('admin/layout/wrapper',$data);
+		// Stats per gelombang
+		$gelombang_stats = [];
+		$total_semua = 0;
+		$total_menunggu = 0;
+		$total_diperiksa = 0;
+		$total_diterima = 0;
+
+		foreach($gelombang as $g) {
+			$semua     = $m_siswa->total_gelombang_status_siswa($g->id_gelombang, 'Semua', 'Semua')->total ?? 0;
+			$menunggu  = $m_siswa->total_gelombang_status_siswa($g->id_gelombang, 'Menunggu', 'Semua')->total ?? 0;
+			$diperiksa = $m_siswa->total_gelombang_status_siswa($g->id_gelombang, 'Diperiksa', 'Semua')->total ?? 0;
+			$diterima  = $m_siswa->total_gelombang_status_siswa($g->id_gelombang, 'Diterima', 'Semua')->total ?? 0;
+			$tidak     = $m_siswa->total_gelombang_status_siswa($g->id_gelombang, 'Tidak-Diterima', 'Semua')->total ?? 0;
+
+			$gelombang_stats[$g->id_gelombang] = compact('semua', 'menunggu', 'diperiksa', 'diterima', 'tidak');
+
+			$total_semua     += $semua;
+			$total_menunggu  += $menunggu;
+			$total_diperiksa += $diperiksa;
+			$total_diterima  += $diterima;
+		}
+
+		$data = [
+			'title'              => 'Data Periode PPDB: ' . $total->total,
+			'content'            => 'admin/gelombang/index',
+			'gelombang'          => $gelombang,
+			'gelombang_stats'    => $gelombang_stats,
+			'total_semua'        => $total_semua,
+			'total_proses'       => $total_menunggu + $total_diperiksa,
+			'total_diterima'     => $total_diterima,
+		];
+		echo view('admin/layout/wrapper', $data);
 	}
 
 	// edit
