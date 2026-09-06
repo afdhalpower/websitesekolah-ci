@@ -26,6 +26,18 @@ class Tagihan extends BaseController
         $kelas   = $m_kelas->listing();
         $tahun   = $m_tahun->listing();
 
+        // Stats (unfiltered)
+        $builder       = $this->db->table('tagihan t');
+        $builder->select('
+            COUNT(*) as total_tagihan,
+            SUM(CASE WHEN t.status = \'Lunas\' THEN 1 ELSE 0 END) as lunas,
+            SUM(CASE WHEN t.status = \'Belum\' THEN 1 ELSE 0 END) as belum,
+            SUM(CASE WHEN t.status = \'Dibatalkan\' THEN 1 ELSE 0 END) as dibatalkan,
+            SUM(t.nominal_tagihan) as grand_total,
+            SUM(CASE WHEN t.status = \'Lunas\' THEN t.nominal_tagihan ELSE 0 END) as total_dibayar
+        ');
+        $stats = $builder->get()->getRow();
+
         $data = [
             'title'   => 'Tagihan Pendidikan',
             'tagihan' => $tagihan,
@@ -33,6 +45,7 @@ class Tagihan extends BaseController
             'tahun'   => $tahun,
             'filters' => $filters,
             'content' => 'admin/tagihan/index',
+            'stats'   => $stats,
         ];
         echo view('admin/layout/wrapper', $data);
     }

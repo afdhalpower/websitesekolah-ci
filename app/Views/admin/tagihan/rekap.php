@@ -1,99 +1,106 @@
-<!-- Pilih Siswa -->
-<div class="card card-outline card-info">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa fa-search"></i> Pilih Siswa</h3>
-    </div>
-    <div class="card-body">
-        <form method="GET" action="<?php echo base_url('admin/tagihan/rekap') ?>">
-            <div class="row">
-                <div class="col-md-8">
-                    <select name="id_siswa" class="form-control select2" required>
-                        <option value="">— Pilih Siswa —</option>
-                        <?php foreach ($siswa_list as $s) { ?>
-                            <option value="<?php echo esc($s['id_siswa']) ?>"
-                                <?php if (($id_siswa ?? '') == $s['id_siswa']) echo 'selected' ?>>
-                                <?php echo esc($s['nama_siswa']) ?> — <?php echo esc($s['nama_kelas']) ?> (<?php echo esc($s['nama_jenjang']) ?>)
-                            </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-info"><i class="fa fa-search"></i> Lihat Rekap</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<!-- Student Selector -->
+<div class="card-modern mb-4">
+  <div class="card-modern-header">
+    <h5 class="card-modern-title"><i class="fas fa-search"></i> Pilih Siswa</h5>
+  </div>
+  <div class="card-modern-body">
+    <form method="GET" action="<?= base_url('admin/tagihan/rekap') ?>">
+      <div style="display:flex;gap:0.75rem;align-items:end;flex-wrap:wrap;">
+        <div style="flex:1;min-width:300px;">
+          <label style="font-size:var(--font-sm);font-weight:600;color:var(--dark);display:block;margin-bottom:0.35rem;">
+            Pilih Siswa
+          </label>
+          <select name="id_siswa" class="form-select" required style="width:100%;">
+            <option value="">— Pilih Siswa —</option>
+            <?php foreach ($siswa_list as $s): ?>
+              <option value="<?= esc($s['id_siswa']) ?>"
+                <?= (($id_siswa ?? '') == $s['id_siswa']) ? 'selected' : '' ?>>
+                <?= esc($s['nama_siswa']) ?> — <?= esc($s['nama_kelas']) ?> (<?= esc($s['nama_jenjang']) ?>)
+              </option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-action btn-primary-action">
+            <i class="fas fa-search"></i> Lihat Rekap
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-<?php if ($tagihan) { ?>
+<?php if ($tagihan): ?>
 <!-- Summary -->
-<div class="row">
-    <div class="col-md-4">
-        <div class="info-box">
-            <span class="info-box-icon bg-info"><i class="fa fa-file-invoice"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Total Tagihan</span>
-                <span class="info-box-number">Rp <?php echo number_format($summary->grand_total ?? 0, 0, ',', '.') ?></span>
-                <span class="info-box-number"><small><?php echo esc($summary->total_tagihan ?? 0) ?> tagihan</small></span>
-            </div>
-        </div>
+<div class="summary-row">
+  <div class="summary-item-card">
+    <div class="summary-icon blue"><i class="fas fa-file-invoice"></i></div>
+    <div class="summary-text">
+      <div class="summary-label">Total Tagihan</div>
+      <div class="summary-value">Rp <?= number_format($summary->grand_total ?? 0, 0, ',', '.') ?></div>
+      <div class="summary-sub"><?= $summary->total_tagihan ?? 0 ?> tagihan</div>
     </div>
-    <div class="col-md-4">
-        <div class="info-box">
-            <span class="info-box-icon bg-success"><i class="fa fa-check-circle"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Sudah Dibayar</span>
-                <span class="info-box-number">Rp <?php echo number_format($summary->total_dibayar ?? 0, 0, ',', '.') ?></span>
-            </div>
-        </div>
+  </div>
+  <div class="summary-item-card">
+    <div class="summary-icon green"><i class="fas fa-check-circle"></i></div>
+    <div class="summary-text">
+      <div class="summary-label">Sudah Dibayar</div>
+      <div class="summary-value">Rp <?= number_format($summary->total_dibayar ?? 0, 0, ',', '.') ?></div>
     </div>
-    <div class="col-md-4">
-        <div class="info-box">
-            <span class="info-box-icon bg-danger"><i class="fa fa-exclamation-circle"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Belum Dibayar</span>
-                <span class="info-box-number">Rp <?php echo number_format($summary->total_sisa ?? 0, 0, ',', '.') ?></span>
-            </div>
-        </div>
+  </div>
+  <div class="summary-item-card">
+    <div class="summary-icon red"><i class="fas fa-exclamation-circle"></i></div>
+    <div class="summary-text">
+      <div class="summary-label">Belum Dibayar</div>
+      <div class="summary-value">Rp <?= number_format($summary->total_sisa ?? 0, 0, ',', '.') ?></div>
     </div>
+  </div>
 </div>
 
-<!-- Tabel Rekap -->
-<table class="table table-bordered table-sm" id="example3">
-    <thead>
-        <tr class="bg-secondary text-center">
-            <th width="5%">No</th>
+<!-- Table -->
+<div class="card-modern">
+  <div class="card-modern-body" style="padding:0;">
+    <div class="table-responsive">
+      <table class="table-modern">
+        <thead>
+          <tr>
+            <th width="5%" class="text-center">No</th>
             <th>Biaya</th>
-            <th>Periode</th>
-            <th>Nominal</th>
-            <th>Status</th>
-            <th>Tanggal Bayar</th>
+            <th class="text-center">Periode</th>
+            <th class="text-right">Nominal</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Tanggal Bayar</th>
             <th>Verifikasi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $no = 1; foreach ($tagihan as $t) { ?>
-        <tr>
-            <td class="text-center"><?php echo esc($no++) ?></td>
-            <td><?php echo esc($t['nama_biaya']) ?></td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no = 1; foreach ($tagihan as $t): ?>
+          <tr>
+            <td class="text-center"><?= $no++ ?></td>
+            <td><strong><?= esc($t['nama_biaya']) ?></strong></td>
             <td class="text-center">
-                <?php
-                $nama_bulan = ['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-                echo $nama_bulan[$t['bulan']] . ' ' . esc($t['tahun']);
-                ?>
+              <?php
+              $nama_bulan = ['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+              echo $nama_bulan[$t['bulan']] . ' ' . esc($t['tahun']);
+              ?>
             </td>
-            <td class="text-right">Rp <?php echo number_format($t['nominal_tagihan'], 0, ',', '.') ?></td>
+            <td class="text-right">
+              <span class="amount-display-sm">Rp <?= number_format($t['nominal_tagihan'], 0, ',', '.') ?></span>
+            </td>
             <td class="text-center">
-                <?php if ($t['status'] == 'Lunas') { ?>
-                    <span class="badge badge-success">Lunas</span>
-                <?php } else { ?>
-                    <span class="badge badge-danger">Belum</span>
-                <?php } ?>
+              <?php if ($t['status'] === 'Lunas'): ?>
+                <span class="status-badge status-success"><i class="fas fa-check"></i> Lunas</span>
+              <?php else: ?>
+                <span class="status-badge status-danger"><i class="fas fa-clock"></i> Belum</span>
+              <?php endif; ?>
             </td>
-            <td class="text-center"><?php echo esc($t['tanggal_bayar'] ?? '-') ?></td>
-            <td><?php echo esc($t['admin_verifikasi'] ?? '-') ?></td>
-        </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<?php } ?>
+            <td class="text-center"><?= esc($t['tanggal_bayar'] ?? '-') ?></td>
+            <td><?= esc($t['admin_verifikasi'] ?? '-') ?></td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<?php endif; ?>

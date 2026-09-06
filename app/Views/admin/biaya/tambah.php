@@ -1,85 +1,80 @@
-<p>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-tambah">
-        <i class="fa fa-plus"></i> Tambah Baru
-    </button>
-</p>
-<?php echo form_open(base_url('admin/biaya')); ?>
-<?php echo csrf_field(); ?>
-<div class="modal fade" id="modal-tambah">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Tambah Biaya Pendidikan</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label class="col-4">Jenjang</label>
-                    <div class="col-8">
-                        <select name="id_jenjang" class="form-control select2" required>
-                            <option value="">Pilih Jenjang</option>
-                            <?php foreach ($jenjang as $j) { ?>
-                                <option value="<?php echo esc($j->id_jenjang) ?>">
-                                    <?php echo esc($j->nama_jenjang) ?> - <?php echo esc($j->keterangan) ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Nama Biaya</label>
-                    <div class="col-8">
-                        <input type="text" name="nama_biaya" class="form-control" required
-                               placeholder="Contoh: SPP Bulanan PAUD">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Nominal (Rp)</label>
-                    <div class="col-8">
-                        <input type="number" name="nominal" class="form-control" required min="0"
-                               placeholder="500000">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Periode</label>
-                    <div class="col-8">
-                        <select name="periode" class="form-control" required>
-                            <option value="Bulanan">Bulanan</option>
-                            <option value="Tahunan">Tahunan</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Tahun Mulai</label>
-                    <div class="col-8">
-                        <input type="number" name="tahun_mulai" class="form-control" required
-                               value="<?php echo date('Y') ?>" min="2020" max="2050">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Tahun Selesai</label>
-                    <div class="col-8">
-                        <input type="number" name="tahun_selesai" class="form-control"
-                               placeholder="Kosongkan jika masih aktif" min="2020" max="2050">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Status</label>
-                    <div class="col-8">
-                        <select name="status" class="form-control">
-                            <option value="Aktif">Aktif</option>
-                            <option value="Non Aktif">Non Aktif</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-        </div>
-    </div>
+<!-- Back -->
+<div class="mb-3">
+  <a href="<?= base_url('admin/biaya') ?>" class="btn btn-action btn-secondary-action">
+    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Biaya
+  </a>
 </div>
-<?php echo form_close(); ?>
+
+<!-- Form Card -->
+<div class="form-card">
+  <div class="form-card-header">
+    <i class="fas fa-plus-circle"></i>
+    <h5 class="form-card-title">Tambah Biaya Pendidikan</h5>
+  </div>
+  <?php echo form_open(base_url('admin/biaya/tambah')); ?>
+  <?php echo csrf_field(); ?>
+  <div class="form-card-body">
+    <div class="form-grid">
+      <label>Jenjang <span style="color:var(--red)">*</span></label>
+      <div>
+        <select name="id_jenjang" class="form-select" required>
+          <option value="">— Pilih Jenjang —</option>
+          <?php foreach ($jenjang as $j): ?>
+            <option value="<?= esc($j->id_jenjang) ?>">
+              <?= esc($j->nama_jenjang) ?> — <?= esc($j->keterangan) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <label>Nama Biaya <span style="color:var(--red)">*</span></label>
+      <div>
+        <input type="text" name="nama_biaya" class="form-control" required
+               placeholder="Contoh: SPP Bulanan PAUD">
+      </div>
+
+      <label>Nominal (Rp) <span style="color:var(--red)">*</span></label>
+      <div>
+        <input type="number" name="nominal" class="form-control" required min="0"
+               placeholder="500000">
+      </div>
+
+      <label>Periode <span style="color:var(--red)">*</span></label>
+      <div>
+        <select name="periode" class="form-select" required>
+          <option value="Bulanan">Bulanan</option>
+          <option value="Tahunan">Tahunan</option>
+        </select>
+      </div>
+
+      <label>Tahun Mulai <span style="color:var(--red)">*</span></label>
+      <div>
+        <input type="number" name="tahun_mulai" class="form-control" required
+               value="<?= date('Y') ?>" min="2020" max="2050">
+      </div>
+
+      <label>Tahun Selesai</label>
+      <div>
+        <input type="number" name="tahun_selesai" class="form-control"
+               placeholder="Kosongkan jika masih aktif" min="2020" max="2050">
+      </div>
+
+      <label>Status</label>
+      <div>
+        <select name="status" class="form-select">
+          <option value="Aktif">Aktif</option>
+          <option value="Non Aktif">Non Aktif</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-card-footer">
+    <a href="<?= base_url('admin/biaya') ?>" class="btn btn-action btn-secondary-action">
+      <i class="fas fa-arrow-left"></i> Batal
+    </a>
+    <button type="submit" class="btn btn-action btn-primary-action">
+      <i class="fas fa-save"></i> Simpan Biaya
+    </button>
+  </div>
+  <?php echo form_close(); ?>
+</div>
