@@ -1,115 +1,111 @@
-<p>
-    <a href="<?php echo base_url('admin/agenda') ?>" class="btn btn-dark">
-        <i class="fa fa-backward"></i> Kembali
+<!-- Page Header -->
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div>
+    <a href="<?= base_url('admin/agenda') ?>" class="btn btn-secondary-action">
+      <i class="fas fa-arrow-left"></i> Kembali ke Daftar
     </a>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
-        <i class="fa fa-plus"></i> Tambah Baru
-    </button>
-</p>
-<form action="<?php echo base_url('admin/agenda/gambar/'.$agenda['id_agenda']) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Tambah Baru</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-
-                <div class="form-group row">
-                    <label class="col-3">Gambar Agenda</label>
-                    
-                    <div class="col-9">
-                        <input type="file" name="gambar" class="form-control" placeholder="gambar" value="<?php echo set_value('gambar') ?>" required>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-3">Nama Gambar Agenda</label>
-                    
-                    <div class="col-9">
-                        <input type="text" name="nama_gambar_agenda" class="form-control" placeholder="Nama gambar" value="<?php echo set_value('nama_gambar_agenda') ?>">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-3">Keterangan</label>
-                    <div class="col-9">
-                        <textarea name="keterangan" placeholder="Keterangan" class="form-control"><?php echo set_value('keterangan') ?></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-3">Urutan</label>
-                    <div class="col-9">
-                        <input type="number" name="urutan" class="form-control" placeholder="Nomor urut tampil kategori_agenda" value="<?php if(isset($_POST['urutan'])) { echo set_value('urutan'); }else{ echo count($gambar_agenda)+1; } ?>">
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                <button type="submit" class="btn btn-success" name="simpan"><i class="fa fa-save"></i> Simpan</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+    <span style="margin-left:0.5rem;font-size:var(--font-sm);color:var(--muted);">
+      Agenda: <strong><?= esc($agenda['nama_agenda']) ?></strong>
+    </span>
+  </div>
+  <button type="button" class="btn btn-primary-action" data-toggle="modal" data-target="#modal-tambah-gambar">
+    <i class="fas fa-plus"></i> Tambah Gambar
+  </button>
 </div>
-<!-- /.modal -->
-<?php echo form_close(); ?>
-<table class="table table-bordered projects" id="dataTables-example">
-<thead>
-<tr>
-    <th>#</th>
-    <th>Gambar</th>
-    <th>Judul gambar</th>
-    <th>Keterangan</th>
-    <th>Urutan</th>
-    <th>Action</th>
-</tr>
-</thead>
-<tbody>
 
+<!-- Modal Tambah -->
+<div class="modal fade" id="modal-tambah-gambar">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border-radius:var(--radius-lg);overflow:hidden;">
+      <div class="modal-header" style="background:var(--card);border-bottom:1px solid var(--border);padding:1rem 1.5rem;">
+        <h5 class="modal-title" style="font-size:1rem;font-weight:600;"><i class="fas fa-plus-circle" style="color:var(--green);"></i> Tambah Gambar</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <?= form_open_multipart(base_url('admin/agenda/gambar/'.$agenda['id_agenda'])) ?>
+      <div class="modal-body" style="padding:1.5rem;">
+        <div class="form-grid">
+          <div class="form-section">
+            <label class="form-label">Gambar <span class="text-danger">*</span></label>
+            <input type="file" name="gambar" class="form-control" accept=".jpg,.jpeg,.png,.gif,.webp" required>
+          </div>
+          <div class="form-section">
+            <label class="form-label">Nama Gambar</label>
+            <input type="text" name="nama_gambar_agenda" class="form-control" placeholder="Nama gambar">
+          </div>
+        </div>
+        <div class="form-section mt-3">
+          <label class="form-label">Keterangan</label>
+          <textarea name="keterangan" class="form-control" rows="2" placeholder="Deskripsi singkat gambar"></textarea>
+        </div>
+        <div class="form-section mt-3">
+          <label class="form-label">Urutan</label>
+          <input type="number" name="urutan" class="form-control" value="<?= count($gambar_agenda)+1 ?>" min="1">
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid var(--border);padding:0.75rem 1.5rem;">
+        <button type="button" class="btn btn-secondary-action" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+        <button type="submit" name="simpan" class="btn btn-success-action"><i class="fas fa-save"></i> Simpan</button>
+      </div>
+      <?= form_close() ?>
+    </div>
+  </div>
+</div>
 
-<tr class="odd gradeX bg-primary">
-    <td><?php echo 1 ?></td>
-    <td>
-    <?php if($agenda['gambar'] != "") { ?>
-    <img src="<?php echo base_url('assets/upload/image/thumbs/'.$agenda['gambar']) ?>" width="60" class="img img-responsive">
-    <?php }else{ echo 'Tidak ada'; } ?>
-    </td>
-    <td><?php echo esc($agenda['nama_agenda']) ?></td>
-    <td><?php echo 'Gambar utama' ?></td>
-    <td>1</td>
-    <td></td>
-</tr>
-
-<?php $i=2; foreach($gambar_agenda as $gambar_agenda) { ?>
-
-<tr class="odd gradeX">
-    <td><?php echo esc($i) ?></td>
-    <td>
-    <?php if($gambar_agenda['gambar'] != "") { ?>
-    <img src="<?php echo base_url('assets/upload/image/thumbs/'.$gambar_agenda['gambar']) ?>" width="60" class="img img-responsive">
-    <?php }else{ echo 'Tidak ada'; } ?>
-    </td>
-    <td><?php echo esc($gambar_agenda['nama_gambar_agenda']) ?></td>
-    <td><?php echo esc($gambar_agenda['keterangan']) ?></td>
-    <td><?php echo esc($gambar_agenda['urutan']) ?></td>
-    <td> 
-        <?php include('edit_gambar.php') ?>
-        
-</tr>
-
-<?php $i++; } ?>
-
-</tbody>
-</table>
+<!-- Table -->
+<div class="card-modern">
+  <div class="card-modern-header">
+    <h5 class="card-modern-title"><i class="fas fa-images"></i> Daftar Gambar (<?= count($gambar_agenda)+1 ?>)</h5>
+  </div>
+  <div class="card-modern-body" style="padding:0;">
+    <div class="table-responsive">
+      <table class="table-modern" id="example3">
+        <thead>
+          <tr>
+            <th width="5%" class="text-center">#</th>
+            <th width="10%">Gambar</th>
+            <th width="20%">Nama</th>
+            <th>Keterangan</th>
+            <th width="8%">Urutan</th>
+            <th width="12%">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Gambar utama -->
+          <tr style="background:rgba(22,99,8,0.04);">
+            <td class="text-center"><strong>1</strong></td>
+            <td>
+              <?php if($agenda['gambar'] != ''): ?>
+                <img src="<?= base_url('assets/upload/image/thumbs/'.$agenda['gambar']) ?>" class="berita-thumb" alt="">
+              <?php else: ?>
+                <span style="font-size:var(--font-xs);color:var(--muted);">Tidak ada</span>
+              <?php endif; ?>
+            </td>
+            <td><strong><?= esc($agenda['nama_agenda']) ?></strong></td>
+            <td><span class="status-badge status-success">Gambar Utama</span></td>
+            <td class="text-center">1</td>
+            <td></td>
+          </tr>
+          <!-- Gambar tambahan -->
+          <?php $i=2; foreach($gambar_agenda as $g): ?>
+          <tr>
+            <td class="text-center"><?= esc($i) ?></td>
+            <td>
+              <?php if($g['gambar'] != ''): ?>
+                <img src="<?= base_url('assets/upload/image/thumbs/'.$g['gambar']) ?>" class="berita-thumb" alt="">
+              <?php else: ?>
+                <span style="font-size:var(--font-xs);color:var(--muted);">Tidak ada</span>
+              <?php endif; ?>
+            </td>
+            <td><?= esc($g['nama_gambar_agenda']) ?></td>
+            <td><?= esc($g['keterangan']) ?></td>
+            <td class="text-center"><?= esc($g['urutan']) ?></td>
+            <td>
+              <?php include('edit_gambar.php') ?>
+            </td>
+          </tr>
+          <?php $i++; endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,46 +1,35 @@
-<form action="<?php echo base_url('admin/agenda/lokasi/'.$agenda['id_agenda']) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<?php 
-echo csrf_field(); 
-?>
-<input type="hidden" name="id_lokasi_agenda" value="<?php echo esc($lokasi_agenda['id_lokasi_agenda']) ?>">
+<button type="button" class="btn btn-primary-action btn-sm" data-toggle="modal" data-target="#edit-lokasi-<?= esc($lokasi_agenda['id_lokasi_agenda']) ?>" title="Edit">
+  <i class="fas fa-edit"></i>
+</button>
 
-<div class="modal fade" id="edit-<?php echo esc($lokasi_agenda['id_lokasi_agenda']) ?>">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Lokasi Agenda</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-info">
-                    Pilih lokasi desa untuk agenda.
-                </div>
-                <div class="form-group row">
-                    <label class="col-4">Nama Desa</label>
-                    <div class="col-8">
-                        <?php
-                        use App\Models\Desa_model;
-                        $m_desa = new Desa_model();
-                        $desa = $m_desa->listing();?>
-                        <select name="id_desa" class="form-control" required="">
-                            <option value="">Pilih lokasi agenda</option>
-                            <?php foreach($desa as $desa){ ?>
-                                <option value="<?php echo esc($desa['id_desa']); ?>" <?php if($desa['id_desa'] == $lokasi_agenda['id_desa']) { echo "Selected";} ?>><?php echo esc($desa['nama_desa']); ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                <button type="submit" name="update" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-            </div>
+<!-- Modal Edit -->
+<div class="modal fade" id="edit-lokasi-<?= esc($lokasi_agenda['id_lokasi_agenda']) ?>">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border-radius:var(--radius-lg);overflow:hidden;">
+      <div class="modal-header" style="background:var(--card);border-bottom:1px solid var(--border);padding:1rem 1.5rem;">
+        <h5 class="modal-title" style="font-size:1rem;font-weight:600;"><i class="fas fa-edit" style="color:var(--amber);"></i> Edit Lokasi</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <?= form_open(base_url('admin/agenda/lokasi/'.$agenda['id_agenda'])) ?>
+      <input type="hidden" name="id_lokasi_agenda" value="<?= esc($lokasi_agenda['id_lokasi_agenda']) ?>">
+      <div class="modal-body" style="padding:1.5rem;">
+        <div class="form-section">
+          <label class="form-label">Nama Desa <span class="text-danger">*</span></label>
+          <select name="id_desa" class="form-select" required>
+            <option value="">— Pilih Lokasi —</option>
+            <?php foreach($desa as $d): ?>
+            <option value="<?= esc($d['id_desa']) ?>" <?= ($d['id_desa'] == $lokasi_agenda['id_desa']) ? 'selected' : '' ?>>
+              <?= esc($d['nama_desa']) ?>
+            </option>
+            <?php endforeach; ?>
+          </select>
         </div>
-        <!-- /.modal-content -->
+      </div>
+      <div class="modal-footer" style="border-top:1px solid var(--border);padding:0.75rem 1.5rem;">
+        <button type="button" class="btn btn-secondary-action" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+        <button type="submit" name="simpan" class="btn btn-success-action"><i class="fas fa-save"></i> Simpan</button>
+      </div>
+      <?= form_close() ?>
     </div>
-    <!-- /.modal-dialog -->
+  </div>
 </div>
-<!-- /.modal -->
-<?php echo form_close(); ?>
