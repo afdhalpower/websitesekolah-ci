@@ -1,77 +1,207 @@
-<p>
-	<a href="<?php echo base_url('admin/gelombang/tambah') ?>" class="btn btn-info">
-		<i class="fa fa-plus"></i> Tambah Baru
-	</a>
-</p>
+<!-- Page Header -->
+<div class="page-header-modern">
+  <div class="page-header-left">
+    <h5 class="page-title">Data Periode PPDB</h5>
+    <p class="page-subtitle">Kelola periode pendaftaran siswa baru</p>
+  </div>
+  <div class="page-header-right">
+    <a href="<?php echo base_url('admin/gelombang/tambah') ?>" class="btn btn-modern btn-success">
+      <i class="fas fa-plus"></i> Tambah Periode
+    </a>
+  </div>
+</div>
 
-<table class="tabelku table-sm" id="example3">
-	<thead>
-		<tr>
-			<th width="2%" rowspan="2" class="text-left align-middle">No</th>
-			<th width="5%" rowspan="2" class="text-left align-middle">Gambar</th>
-			<th width="30%" rowspan="2" class="text-left align-middle">Periode PPDB</th>
-			<th width="8%" rowspan="2" class="text-left align-middle">Status</th>
-			<th width="25%" colspan="5" class="text-center align-middle">Jumlah</th>
-			
-			<th rowspan="2"></th>
-		</tr>
-		<tr>
-			<th width="6%" class="text-center align-middle"><small>Pendaftar</small></th>
-			<th width="6%" class="text-center align-middle"><small>Menunggu</small></th>
-			<th width="6%" class="text-center align-middle"><small>Diperiksa</small></th>
-			<th width="6%" class="text-center align-middle"><small>Diterima</small></th>
-			<th width="6%" class="text-center align-middle"><small>Tidak Diterima</small></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php 
-		$no=1; foreach($gelombang as $gelombang) { 
-			$siswa1 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Semua','Semua');
-			$siswa4 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Menunggu','Semua');
-			$siswa5 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Diperiksa','Semua');
-			$siswa2 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Diterima','Semua');
-			$siswa3 	= $m_siswa->total_gelombang_status_siswa($gelombang->id_gelombang,'Tidak-Diterima','Semua');
-		?>
-		<tr>
-			<td class="text-center"><?php echo esc($no) ?></td>
-			<td>
-				<?php if($gelombang->gambar=="") { echo '-'; }else{ ?>
-					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$gelombang->gambar) ?>" class="img img-thumbnail">
-				<?php } ?>
-			</td>
-			<td><strong><?php echo esc($gelombang->judul) ?></strong>
-				<small>
-					<br><span class="text-secondary">Pembukaan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_buka)) ?>
-					<br><span class="text-secondary">Penutupan:</span> <?php echo esc($this->website->hari($gelombang->tanggal_tutup)) ?>
-					<br><span class="text-secondary">Pengumuman:</span> <?php echo esc($this->website->hari($gelombang->tanggal_pengumuman)) ?>
-				</small>
-			</td>
-			<td>
-				<?php if($gelombang->status_gelombang=='Buka') { ?>
-					<span class="badge bg-info">
-						<i class="fa fa-eye"></i> <?php echo esc($gelombang->status_gelombang) ?>
-					</span>
-				<?php }else{ ?>
-					<span class="badge bg-secondary">
-						<i class="fa fa-eye-slash"></i> <?php echo esc($gelombang->status_gelombang) ?>
-					</span>
-				<?php } ?>
-			</td>
-			<td class="text-center"><?php if($siswa1) { echo esc($siswa1->total); }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa4) { echo esc($siswa4->total); }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa5) { echo esc($siswa5->total); }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa2) { echo esc($siswa2->total); }else{ echo 0; } ?></td>
-			<td class="text-center"><?php if($siswa3) { echo esc($siswa3->total); }else{ echo 0; } ?></td>
-			
-			<td>
-				<a href="<?php echo base_url('admin/gelombang/detail/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-info btn-xs mb-1"><i class="fa fa-user-check"></i> Data Pendaftar</a>
-				<a href="<?php echo base_url('admin/gelombang/export/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-success btn-xs mb-1" target="_blank"><i class="fa fa-file-excel"></i> Ekspor</a>
-				<a href="<?php echo base_url('admin/gelombang/unduh_data/'.$gelombang->id_gelombang.'/Semua/Semua') ?>" class="btn btn-danger btn-xs mb-1" target="_blank"><i class="fa fa-file-pdf"></i> Unduh</a>
-				
-				<a href="<?php echo base_url('admin/gelombang/edit/'.$gelombang->id_gelombang) ?>" class="btn btn-secondary btn-xs mb-1"><i class="fa fa-edit"></i></a>
-				<a href="<?php echo base_url('admin/gelombang/delete/'.$gelombang->id_gelombang) ?>" class="btn btn-secondary btn-xs mb-1 delete-link"><i class="fa fa-trash"></i></a>
-			</td>
-		</tr>
-		<?php $no++; } ?>
-	</tbody>
-</table>
+<!-- Summary Stats -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="mini-stat">
+      <div class="mini-stat-icon" style="background: linear-gradient(135deg, #166308, #22c55e);">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="mini-stat-info">
+        <span class="mini-stat-num"><?php echo count($gelombang) ?></span>
+        <span class="mini-stat-label">Total Periode</span>
+      </div>
+    </div>
+  </div>
+  <?php
+    $total_semua = 0; $total_menunggu = 0; $total_diperiksa = 0; $total_diterima = 0; $total_tidak = 0;
+    foreach($gelombang as $g) {
+      $s_semua = $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Semua','Semua');
+      $s_menunggu = $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Menunggu','Semua');
+      $s_diperiksa = $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Diperiksa','Semua');
+      $s_diterima = $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Diterima','Semua');
+      $s_tidak = $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Tidak-Diterima','Semua');
+      $total_semua += $s_semua->total ?? 0;
+      $total_menunggu += $s_menunggu->total ?? 0;
+      $total_diperiksa += $s_diperiksa->total ?? 0;
+      $total_diterima += $s_diterima->total ?? 0;
+      $total_tidak += $s_tidak->total ?? 0;
+    }
+  ?>
+  <div class="col-6 col-md-3">
+    <div class="mini-stat">
+      <div class="mini-stat-icon" style="background: linear-gradient(135deg, #1d4ed8, #3b82f6);">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="mini-stat-info">
+        <span class="mini-stat-num"><?php echo $total_semua ?></span>
+        <span class="mini-stat-label">Total Pendaftar</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="mini-stat">
+      <div class="mini-stat-icon" style="background: linear-gradient(135deg, #d97706, #fbbf24);">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="mini-stat-info">
+        <span class="mini-stat-num"><?php echo $total_menunggu + $total_diperiksa ?></span>
+        <span class="mini-stat-label">Proses Review</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="mini-stat">
+      <div class="mini-stat-icon" style="background: linear-gradient(135deg, #059669, #34d399);">
+        <i class="fas fa-user-check"></i>
+      </div>
+      <div class="mini-stat-info">
+        <span class="mini-stat-num"><?php echo $total_diterima ?></span>
+        <span class="mini-stat-label">Diterima</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Gelombang Cards -->
+<?php if(empty($gelombang)): ?>
+  <div class="empty-state">
+    <i class="fas fa-calendar-plus"></i>
+    <h6>Belum Ada Periode PPDB</h6>
+    <p>Klik "Tambah Periode" untuk membuat periode pendaftaran baru.</p>
+    <a href="<?php echo base_url('admin/gelombang/tambah') ?>" class="btn btn-modern btn-success">
+      <i class="fas fa-plus"></i> Tambah Periode
+    </a>
+  </div>
+<?php else: ?>
+  <?php
+    // Hitung stats untuk setiap gelombang
+    $gelombang_stats = [];
+    foreach($gelombang as $g) {
+      $gelombang_stats[$g->id_gelombang] = [
+        'semua'     => $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Semua','Semua')->total ?? 0,
+        'menunggu'  => $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Menunggu','Semua')->total ?? 0,
+        'diperiksa' => $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Diperiksa','Semua')->total ?? 0,
+        'diterima'  => $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Diterima','Semua')->total ?? 0,
+        'tidak'     => $m_siswa->total_gelombang_status_siswa($g->id_gelombang,'Tidak-Diterima','Semua')->total ?? 0,
+      ];
+    }
+  ?>
+
+  <div class="row g-3">
+    <?php $no=1; foreach($gelombang as $g): 
+      $stats = $gelombang_stats[$g->id_gelombang];
+      $is_buka = ($g->status_gelombang == 'Buka');
+    ?>
+    <div class="col-lg-6">
+      <div class="gelombang-card">
+        <!-- Card Header -->
+        <div class="gelombang-card-header">
+          <div class="gelombang-card-title-row">
+            <?php if($g->gambar != ""): ?>
+              <img src="<?php echo base_url('assets/upload/image/thumbs/'.$g->gambar) ?>" class="gelombang-thumb" alt="">
+            <?php else: ?>
+              <div class="gelombang-thumb gelombang-thumb-placeholder">
+                <i class="fas fa-calendar"></i>
+              </div>
+            <?php endif; ?>
+            <div>
+              <h6 class="gelombang-card-title"><?php echo esc($g->judul) ?></h6>
+              <div class="gelombang-dates">
+                <span><i class="fas fa-door-open"></i> <?php echo esc($this->website->hari($g->tanggal_buka)) ?></span>
+                <span><i class="fas fa-door-closed"></i> <?php echo esc($this->website->hari($g->tanggal_tutup)) ?></span>
+                <span><i class="fas fa-bullhorn"></i> <?php echo esc($this->website->hari($g->tanggal_pengumuman)) ?></span>
+              </div>
+            </div>
+          </div>
+          <div class="gelombang-status">
+            <?php if($is_buka): ?>
+              <span class="status-badge status-buka">
+                <i class="fas fa-circle"></i> Buka
+              </span>
+            <?php else: ?>
+              <span class="status-badge status-tutup">
+                <i class="fas fa-circle"></i> Tutup
+              </span>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="gelombang-stats">
+          <div class="gstat">
+            <span class="gstat-num gstat-total"><?php echo $stats['semua'] ?></span>
+            <span class="gstat-label">Total</span>
+          </div>
+          <div class="gstat">
+            <span class="gstat-num gstat-menunggu"><?php echo $stats['menunggu'] ?></span>
+            <span class="gstat-label">Menunggu</span>
+          </div>
+          <div class="gstat">
+            <span class="gstat-num gstat-diperiksa"><?php echo $stats['diperiksa'] ?></span>
+            <span class="gstat-label">Diperiksa</span>
+          </div>
+          <div class="gstat">
+            <span class="gstat-num gstat-diterima"><?php echo $stats['diterima'] ?></span>
+            <span class="gstat-label">Diterima</span>
+          </div>
+          <div class="gstat">
+            <span class="gstat-num gstat-tidak"><?php echo $stats['tidak'] ?></span>
+            <span class="gstat-label">Ditolak</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <?php if($stats['semua'] > 0): ?>
+        <div class="gelombang-progress">
+          <div class="progress-track">
+            <div class="progress-fill progress-diterima" style="width: <?php echo ($stats['diterima'] / $stats['semua'] * 100) ?>%" title="Diterima"></div>
+            <div class="progress-fill progress-diperiksa" style="width: <?php echo ($stats['diperiksa'] / $stats['semua'] * 100) ?>%" title="Diperiksa"></div>
+            <div class="progress-fill progress-menunggu" style="width: <?php echo ($stats['menunggu'] / $stats['semua'] * 100) ?>%" title="Menunggu"></div>
+          </div>
+          <div class="progress-legend">
+            <span class="legend-item"><span class="legend-dot" style="background:#166308"></span> Diterima</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#d97706"></span> Diperiksa</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#6b7280"></span> Menunggu</span>
+          </div>
+        </div>
+        <?php endif; ?>
+
+        <!-- Actions -->
+        <div class="gelombang-actions">
+          <div class="actions-left">
+            <a href="<?php echo base_url('admin/gelombang/detail/'.$g->id_gelombang.'/Semua/Semua') ?>" class="btn btn-sm btn-action btn-action-primary" title="Data Pendaftar">
+              <i class="fas fa-user-check"></i> Pendaftar
+            </a>
+            <a href="<?php echo base_url('admin/gelombang/export/'.$g->id_gelombang.'/Semua/Semua') ?>" class="btn btn-sm btn-action btn-action-success" title="Ekspor Excel" target="_blank">
+              <i class="fas fa-file-excel"></i> Ekspor
+            </a>
+            <a href="<?php echo base_url('admin/gelombang/unduh_data/'.$g->id_gelombang.'/Semua/Semua') ?>" class="btn btn-sm btn-action btn-action-danger" title="Unduh PDF" target="_blank">
+              <i class="fas fa-file-pdf"></i> Unduh
+            </a>
+          </div>
+          <div class="actions-right">
+            <a href="<?php echo base_url('admin/gelombang/edit/'.$g->id_gelombang) ?>" class="btn btn-sm btn-action btn-action-edit" title="Edit">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a href="<?php echo base_url('admin/gelombang/delete/'.$g->id_gelombang) ?>" class="btn btn-sm btn-action btn-action-delete delete-link" title="Hapus">
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php $no++; endforeach; ?>
+  </div>
+<?php endif; ?>
