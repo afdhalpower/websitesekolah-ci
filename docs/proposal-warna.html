@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Warna — HAQI Learning Centre</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a2e;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --card: #f8fafc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --fg: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --card: #1e293b;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; padding: 2rem; max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
+  h3 { font-size: 1.1rem; margin: 1.2rem 0 0.5rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+  .palette { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.8rem 0; }
+  .swatch { width: 80px; height: 80px; border-radius: 10px; display: flex; align-items: flex-end; justify-content: center; padding: 4px; font-size: 0.7rem; font-weight: 600; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.4); position: relative; }
+  .swatch span { background: rgba(0,0,0,0.3); border-radius: 4px; padding: 1px 5px; }
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .option { border: 2px solid var(--border); border-radius: 12px; padding: 1.2rem; cursor: pointer; transition: border-color 0.2s; }
+  .option:hover { border-color: #3b82f6; }
+  .option.recommended { border-color: #22c55e; background: rgba(34,197,94,0.05); }
+  .option.recommended::before { content: '✓ REKOMENDASI'; display: inline-block; background: #22c55e; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin: 2px; }
+  .tag-green { background: #dcfce7; color: #166534; }
+  .tag-blue { background: #dbeafe; color: #1e40af; }
+  .tag-amber { background: #fef3c7; color: #92400e; }
+  .tag-red { background: #fee2e2; color: #991b1b; }
+  table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+  th, td { padding: 8px 12px; border: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
+  th { background: var(--card); font-weight: 600; }
+  .psychology-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .psychology-bar .label { width: 100px; font-size: 0.8rem; color: var(--muted); }
+  .psychology-bar .bar { height: 8px; border-radius: 4px; flex: 1; background: var(--border); overflow: hidden; }
+  .psychology-bar .fill { height: 100%; border-radius: 4px; }
+  .mockup { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; margin: 1rem 0; }
+  .mockup-nav { padding: 12px 20px; color: white; font-weight: 700; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; }
+  .mockup-hero { padding: 3rem 2rem; text-align: center; color: white; }
+  .mockup-hero h2 { color: white; border: none; font-size: 1.6rem; }
+  .mockup-hero p { opacity: 0.9; margin-top: 0.5rem; }
+  .mockup-btn { display: inline-block; padding: 8px 20px; border-radius: 6px; font-weight: 600; margin-top: 1rem; font-size: 0.85rem; }
+  .mockup-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem; }
+  .mockup-card { padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.8rem; font-weight: 600; }
+  .current-tag { background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+  ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; font-size: 0.95rem; }
+  .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>🎨 Proposal Skema Warna</h1>
+<p class="subtitle">HAQI Learning Centre — Berdasarkan Psikologi Warna untuk Institusi Pendidikan Anak Usia Dini</p>
+
+<div class="current-tag">🔴 Skema Saat Ini: Merah Dominan (#d33 / bg-haqi)</div>
+
+<h2>1. Analisis: Mengapa Merah Kurang Cocok untuk Sekolah PAUD/TK</h2>
+
+<div class="card">
+<h3>Psikologi Warna Merah</h3>
+<table>
+  <tr><th>Aspek</th><th>Dampak</th></tr>
+  <tr><td>Emosi</td><td>🔥 Memicu urgency, agresivitas, dan ketegangan</td></tr>
+  <tr><td>Fisik</td><td>Menambah degup jantung, meningkatkan tekanan darah</td></tr>
+  <tr><td>Konteks</td><td>Cocok untuk: restoran cepat saji, clearance sale, brand sport</td></tr>
+  <tr><td>Untuk anak-anak</td><td>⚠️ Overstimulasi — bisa membuat anak lebih gelisah, bukan tenang belajar</td></tr>
+</table>
+
+<div style="margin-top: 1rem;">
+  <h3>Bandingkan dengan warna yang digunakan sekolah top:</h3>
+  <table>
+    <tr><th>Jenis Sekolah</th><th>Warna Dominan</th><th>Alasan</th></tr>
+    <tr><td>Montessori Global</td><td>Hijau & Earth Tones</td><td>Natural, calming, growth</td></tr>
+    <tr><td>Sekolah Islam Premium</td><td>Hijau & Emas</td><td>Surga, kemakmuran, kebijaksanaan</td></tr>
+    <tr><td>Sekolah Kristen</td><td>Biru & Ungu</td><td>Kepercayaan, spiritualitas</td></tr>
+    <tr><td>TK Negeri</td><td>Kuning & Hijau</td><td>Ceria, hangat, ramah anak</td></tr>
+    <tr><td>Internasional School</td><td>Navy & Gold</td><td>Profesional, prestigious</td></tr>
+  </table>
+</div>
+</div>
+
+<h2>2. Psikologi Warna — Pilihan untuk Sekolah</h2>
+
+<div class="card">
+<table>
+  <tr><th>Warna</th><th>Psikologi</th><th>Cocok untuk Sekolah?</th><th>Contoh Brand</th></tr>
+  <tr>
+    <td><span class="tag tag-green">🟢 Hijau</span></td>
+    <td>Pertumbuhan, ketenangan, alam, keseimbangan</td>
+    <td>⭐⭐⭐⭐⭐ Ideal untuk PAUD/TK</td>
+    <td>Starbucks, Animal Planet, Whole Foods</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-blue">🔵 Biru</span></td>
+    <td>Kepercayaan, kecerdasan, ketenangan, profesional</td>
+    <td>⭐⭐⭐⭐ Sangat baik untuk pendidikan</td>
+    <td>Facebook, Samsung, Dell, PayPal</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-amber">🟡 Kuning/Emas</span></td>
+    <td>Keceriaan, optimisme, energi, kehangatan</td>
+    <td>⭐⭐⭐⭐ Baik sebagai aksen</td>
+    <td>McDonald's, IKEA, Best Buy</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-red">🔴 Merah</span></td>
+    <td>Urgency, passion, agresivitas</td>
+    <td>⚠️ Terlalu kuat untuk anak-anak</td>
+    <td>Coca-Cola, YouTube, Netflix</td>
+  </tr>
+  <tr>
+    <td><span class="tag" style="background:#f3e8ff;color:#6b21a8">🟣 Ungu</span></td>
+    <td>Kreativitas, imajinasi, spiritualitas</td>
+    <td>⭐⭐⭐ Bagus sebagai aksen</td>
+    <td>Wonka, Hallmark, Cadbury</td>
+  </tr>
+</table>
+</div>
+
+<h2>3. Tiga Skema Warna yang Direkomendasikan</h2>
+
+<!-- OPTION A -->
+<div class="option recommended">
+  <h3>🟢 Opsi A: "Alam & Pertumbuhan" — Hijau Dominan (REKOMENDASI)</h3>
+  <p style="color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0;">Cocok untuk: PAUD/TK Islam — kesan natural, tenang, dan Islami</p>
+  
+  <div class="palette">
+    <div class="swatch" style="background: #166308"><span>#166308</span></div>
+    <div class="swatch" style="background: #22c55e"><span>#22C55E</span></div>
+    <div class="swatch" style="background: #f0fdf4; color: #166308"><span style="background:none;color:#166308">#F0FDF4</span></div>
+    <div class="swatch" style="background: #f59e0b"><span>#F59E0B</span></div>
+    <div class="swatch" style="background: #1e293b"><span>#1E293B</span></div>
+    <div class="swatch" style="background: #ffffff; color: #64748b; border: 1px solid #e2e8f0"><span style="background:none;color:#64748b">#FFFFFF</span></div>
+  </div>
+  
+  <div class="psychology-bar">
+    <div class="label">Ketenangan</div>
+    <div class="bar"><div class="fill" style="width:90%; background: #22c55e"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Pertumbuhan</div>
+    <div class="bar"><div class="fill" style="width:95%; background: #22c55e"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Ramah Anak</div>
+    <div class="bar"><div class="fill" style="width:85%; background: #22c55e"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Kesan Islami</div>
+    <div class="bar"><div class="fill" style="width:90%; background: #22c55e"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Profesional</div>
+    <div class="bar"><div class="fill" style="width:75%; background: #22c55e"></div></div>
+  </div>
+  
+  <ul>
+    <li><strong>Hijau Tua (#166308)</strong> — navbar, header, sidebar admin → kesan kepercayaan & Islami</li>
+    <li><strong>Hijau Muda (#22C55E)</strong> — tombol CTA, badge, highlight → ceria & menyegarkan</li>
+    <li><strong>Kuning/Gold (#F59E0B)</strong> — aksen spesial, badge prestasi → kehangatan & optimisme</li>
+    <li><strong>Slate (#1E293B)</strong> — teks utama, footer → mudah dibaca, profesional</li>
+  </ul>
+</div>
+
+<!-- OPTION B -->
+<div class="option">
+  <h3>🔵 Opsi B: "Kecerdasan & Kepercayaan" — Biru Dominan</h3>
+  <p style="color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0;">Cocok untuk: sekolah dengan nuansa akademis & modern</p>
+  
+  <div class="palette">
+    <div class="swatch" style="background: #1e40af"><span>#1E40AF</span></div>
+    <div class="swatch" style="background: #3b82f6"><span>#3B82F6</span></div>
+    <div class="swatch" style="background: #eff6ff; color: #1e40af"><span style="background:none;color:#1e40af">#EFF6FF</span></div>
+    <div class="swatch" style="background: #f97316"><span>#F97316</span></div>
+    <div class="swatch" style="background: #1e293b"><span>#1E293B</span></div>
+    <div class="swatch" style="background: #ffffff; color: #64748b; border: 1px solid #e2e8f0"><span style="background:none;color:#64748b">#FFFFFF</span></div>
+  </div>
+  
+  <div class="psychology-bar">
+    <div class="label">Ketenangan</div>
+    <div class="bar"><div class="fill" style="width:85%; background: #3b82f6"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Pertumbuhan</div>
+    <div class="bar"><div class="fill" style="width:70%; background: #3b82f6"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Ramah Anak</div>
+    <div class="bar"><div class="fill" style="width:65%; background: #3b82f6"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Kesan Islami</div>
+    <div class="bar"><div class="fill" style="width:60%; background: #3b82f6"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Profesional</div>
+    <div class="bar"><div class="fill" style="width:95%; background: #3b82f6"></div></div>
+  </div>
+  
+  <ul>
+    <li><strong>Biru Tua (#1E40AF)</strong> — navbar, header → kepercayaan & kecerdasan</li>
+    <li><strong>Biru Muda (#3B82F6)</strong> — tombol CTA, link → modern & bersahabat</li>
+    <li><strong>Oranye (#F97316)</strong> — aksen CTA, highlight → energi & kreativitas</li>
+    <li><strong>Slate (#1E293B)</strong> — teks utama → kontras tinggi, mudah dibaca</li>
+  </ul>
+</div>
+
+<!-- OPTION C -->
+<div class="option">
+  <h3>🟣 Opsi C: "Kreativitas & Imajinasi" — Ungu & Kuning</h3>
+  <p style="color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0;">Cocok untuk: sekolah seni & kreativitas</p>
+  
+  <div class="palette">
+    <div class="swatch" style="background: #7c3aed"><span>#7C3AED</span></div>
+    <div class="swatch" style="background: #a78bfa"><span>#A78BFA</span></div>
+    <div class="swatch" style="background: #f5f3ff; color: #7c3aed"><span style="background:none;color:#7c3aed">#F5F3FF</span></div>
+    <div class="swatch" style="background: #eab308"><span>#EAB308</span></div>
+    <div class="swatch" style="background: #1e293b"><span>#1E293B</span></div>
+    <div class="swatch" style="background: #ffffff; color: #64748b; border: 1px solid #e2e8f0"><span style="background:none;color:#64748b">#FFFFFF</span></div>
+  </div>
+  
+  <div class="psychology-bar">
+    <div class="label">Ketenangan</div>
+    <div class="bar"><div class="fill" style="width:60%; background: #a78bfa"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Pertumbuhan</div>
+    <div class="bar"><div class="fill" style="width:70%; background: #a78bfa"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Ramah Anak</div>
+    <div class="bar"><div class="fill" style="width:80%; background: #a78bfa"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Kesan Islami</div>
+    <div class="bar"><div class="fill" style="width:50%; background: #a78bfa"></div></div>
+  </div>
+  <div class="psychology-bar">
+    <div class="label">Profesional</div>
+    <div class="bar"><div class="fill" style="width:70%; background: #a78bfa"></div></div>
+  </div>
+  
+  <ul>
+    <li><strong>Ungu (#7C3AED)</strong> — navbar, header → kreativitas & imajinasi</li>
+    <li><strong>Ungu Muda (#A78BFA)</strong> — aksen → lembut & Ramah anak</li>
+    <li><strong>Kuning (#EAB308)</strong> — tombol CTA → ceria & penuh energi</li>
+    <li><strong>Slate (#1E293B)</strong> — teks → kontras tinggi</li>
+  </ul>
+</div>
+
+<h2>4. Perbandingan Skema</h2>
+
+<div class="card">
+<table>
+  <tr>
+    <th>Aspek</th>
+    <th>🔴 Saat Ini (Merah)</th>
+    <th style="background:#dcfce7">🟢 Opsi A (Hijau)</th>
+    <th>🔵 Opsi B (Biru)</th>
+    <th>🟣 Opsi C (Ungu)</th>
+  </tr>
+  <tr>
+    <td><strong>Mood</strong></td>
+    <td>Urgent, panas</td>
+    <td style="background:#f0fdf4">Tenang, natural</td>
+    <td>Profesional, cerdas</td>
+    <td>Kreatif, imajinatif</td>
+  </tr>
+  <tr>
+    <td><strong>Anak-anak</strong></td>
+    <td>⚠️ Overstimulasi</td>
+    <td style="background:#f0fdf4">✅ Tenang belajar</td>
+    <td>✅ Fokus & tenang</td>
+    <td>✅ Stimulasi kreatif</td>
+  </tr>
+  <tr>
+    <td><strong>Orang tua</strong></td>
+    <td>Kurang nyaman</td>
+    <td style="background:#f0fdf4">Percaya, tenang</td>
+    <td>Percaya, profesional</td>
+    <td>Antusias</td>
+  </tr>
+  <tr>
+    <td><strong>Islami</strong></td>
+    <td>Netral</td>
+    <td style="background:#f0fdf4">⭐ Sangat kuat</td>
+    <td>Netral</td>
+    <td>Netral</td>
+  </tr>
+  <tr>
+    <td><strong>WCAG Contrast</strong></td>
+    <td>✅ Baik</td>
+    <td style="background:#f0fdf4">✅ Sangat baik</td>
+    <td>✅ Sangat baik</td>
+    <td>✅ Baik</td>
+  </tr>
+  <tr>
+    <td><strong>Implementasi</strong></td>
+    <td>Sudah ada</td>
+    <td style="background:#f0fdf4">Ganti CSS utility classes</td>
+    <td>Ganti CSS utility classes</td>
+    <td>Ganti CSS utility classes</td>
+  </tr>
+</table>
+</div>
+
+<h2>5. Preview Mockup — Opsi A (Hijau)</h2>
+
+<div class="mockup">
+  <div class="mockup-nav" style="background: #166308">
+    <span>🏫 HAQI Learning Centre</span>
+    <span style="font-weight: 400; font-size: 0.8rem;">Beranda | Profil | PPDB | Galeri | Kontak</span>
+  </div>
+  <div class="mockup-hero" style="background: linear-gradient(135deg, #166308 0%, #22c55e 100%)">
+    <h2>Membangun Karakter, Menginspirasi Prestasi</h2>
+    <p>Pendidikan Anak Usia Dini yang berkualitas dan berlandaskan nilai-nilai Islami</p>
+    <div class="mockup-btn" style="background: #f59e0b; color: #1e293b;">Daftarkan Anak Anda →</div>
+  </div>
+  <div class="mockup-cards" style="background: #f0fdf4">
+    <div class="mockup-card" style="background: white; border: 1px solid #bbf7d0;">
+      <div style="font-size: 2rem;">🎓</div>
+      <div style="color: #166308;">PAUD</div>
+      <div style="color: #64748b; font-weight: 400; font-size: 0.75rem;">Usia 2-4 Tahun</div>
+    </div>
+    <div class="mockup-card" style="background: white; border: 1px solid #bbf7d0;">
+      <div style="font-size: 2rem;">🎨</div>
+      <div style="color: #166308;">TK A</div>
+      <div style="color: #64748b; font-weight: 400; font-size: 0.75rem;">Usia 4-5 Tahun</div>
+    </div>
+    <div class="mockup-card" style="background: white; border: 1px solid #bbf7d0;">
+      <div style="font-size: 2rem;">📚</div>
+      <div style="color: #166308;">TK B</div>
+      <div style="color: #64748b; font-weight: 400; font-size: 0.75rem;">Usia 5-6 Tahun</div>
+    </div>
+  </div>
+</div>
+
+<h2>6. Implementasi Teknis</h2>
+
+<div class="card">
+<h3>Perubahan yang Diperlukan</h3>
+<table>
+  <tr><th>File/Area</th><th>Yang Diubah</th></tr>
+  <tr><td>CSS custom class</td><td><code>.bg-haqi</code> → <code>#166308</code>, <code>.text-haqi</code> → <code>#166308</code></td></tr>
+  <tr><td>Bootstrap override</td><td><code>$primary: #166308</code> → <code>$primary: #22c55e</code></td></tr>
+  <tr><td>AdminLTE sidebar</td><td>bg sidebar → hijau tua</td></tr>
+  <tr><td>Frontend navbar</td><td>bg navbar → hijau tua</td></tr>
+  <tr><td>Hero section</td><td>gradient hijau tua → muda</td></tr>
+  <tr><td>CTA buttons</td><td><code>btn-primary</code> → hijau muda, <code>btn-warning</code> → gold</td></tr>
+  <tr><td>Footer</td><td>bg footer → slate gelap</td></tr>
+</table>
+
+<h3 style="margin-top: 1rem;">CSS Variables (Tailwind-ready)</h3>
+<pre style="background: var(--card); padding: 1rem; border-radius: 8px; font-size: 0.85rem; overflow-x: auto;">
+:root {
+  --primary: #166308;
+  --primary-light: #22c55e;
+  --primary-lighter: #f0fdf4;
+  --accent: #f59e0b;
+  --accent-light: #fef3c7;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #ffffff;
+  --bg-alt: #f8fafc;
+  --footer: #1e293b;
+}
+</pre>
+</div>
+
+<div class="footer">
+  <p>Proposal disusun berdasarkan Psikologi Warna (Ellen Lupton, "Thinking with Type") + riset brand pendidikan global</p>
+  <p>HAQI Learning Centre — 2026</p>
+</div>
+
+</body>
+</html>
