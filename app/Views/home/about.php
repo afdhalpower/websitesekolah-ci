@@ -9,10 +9,10 @@
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8">
-                <h2 class="display-4 mb-3 text-white text-center"><?php echo esc($site->ringkasan) ?></h2>
+                <h2 class="display-4 mb-3 text-white text-center"><?php echo nl2br($site->ringkasan) ?></h2>
             
                 <div class="text-white konten">
-                  <?php echo esc($site->tentang) ?>
+                  <?php echo $site->tentang ?>
                 </div>
               </div>
               <div class="col-md-2"></div>

@@ -112,9 +112,9 @@ About Area
                         <span class="sub-title"><?php echo esc($this->website->tagline()) ?></span>
                         <h2 class="sec-title fw-semibold">Tentang <?php echo esc($this->website->namaweb()) ?></h2>
                     </div>
-                    <h5 class="mt-n2 mb-25"><?php echo esc($site->ringkasan) ?></h5>
+                    <h5 class="mt-n2 mb-25"><?php echo nl2br($site->ringkasan) ?></h5>
                     <div class="checklist style2 mb-35">
-                        <?php echo esc($site->tentang) ?>
+                        <?php echo $site->tentang ?>
                     </div>
                     <div class="btn-group">
                         <a href="<?php echo$site->link_website ?>" class="as-btn"><?php echo$site->link_text ?><i class="fas fa-arrow-right ms-2"></i></a>
