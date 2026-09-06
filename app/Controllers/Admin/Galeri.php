@@ -40,12 +40,21 @@ class Galeri extends BaseController
 		}
 		// end galeri
 
+		// stats
+		$builder = $m_galeri->builder();
+		$stats = [
+			'total'   => $m_galeri->total(),
+			'galeri'  => (clone $builder)->where('jenis_galeri', 'Galeri')->countAllResults(),
+			'slider'  => (clone $builder)->where('jenis_galeri', 'Homepage')->countAllResults(),
+		];
+
 		$data = [	'title'				=> $title,
-					'galeri'			=> $galeri,
-					'kategori_galeri'	=> $kategori_galeri,
-					'pagination'		=> $pager_links,
-					'content'			=> 'admin/galeri/index'
-				];
+						'galeri'			=> $galeri,
+						'kategori_galeri'	=> $kategori_galeri,
+						'pagination'		=> $pager_links,
+						'stats'				=> $stats,
+						'content'			=> 'admin/galeri/index'
+					];
 		echo view('admin/layout/wrapper',$data);
 	}
 
