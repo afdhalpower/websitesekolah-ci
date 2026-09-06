@@ -1179,3 +1179,220 @@
   font-size: var(--font-xs);
   font-weight: 500;
 }
+
+/* --- Dashboard Modern Cards & Panels --- */
+.dashboard-welcome {
+  background: linear-gradient(135deg, #166308, #22c55e);
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(22, 99, 8, 0.15);
+}
+.welcome-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.welcome-greeting {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+.welcome-sub {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+.welcome-quick {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn-quick {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+}
+.btn-quick:hover {
+  background: #fff;
+  color: #166308;
+  border-color: #fff;
+}
+
+.dash-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+  height: 100%;
+}
+.dash-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: rgba(22, 99, 8, 0.15);
+}
+.dash-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.dash-card-body {
+  flex-grow: 1;
+  min-width: 0;
+}
+.dash-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dash-card-desc {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-bottom: 0.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dash-card-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #166308;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.dash-panel {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.5rem;
+  height: 100%;
+}
+.dash-panel-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.dash-panel-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.dash-panel-body {
+  padding: 1.25rem;
+}
+
+.jenjang-bar {
+  margin-bottom: 1rem;
+}
+.jenjang-bar:last-child {
+  margin-bottom: 0;
+}
+.jenjang-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.3rem;
+}
+.jenjang-count {
+  color: #6b7280;
+  font-weight: 500;
+}
+.jenjang-progress {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.jenjang-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #166308, #22c55e);
+  border-radius: 4px;
+}
+
+.panduan-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  color: #1f2937;
+  text-decoration: none !important;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+.panduan-link:last-child {
+  margin-bottom: 0;
+}
+.panduan-link:hover {
+  background: #f0fdf4;
+  border-color: rgba(22, 99, 8, 0.2);
+  color: #166308;
+  transform: translateX(4px);
+}
+.panduan-link i:first-child {
+  width: 36px;
+  height: 36px;
+  background: #dcfce7;
+  color: #166308;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.panduan-link div {
+  flex-grow: 1;
+}
+.panduan-link strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.panduan-link small {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+.panduan-link i:last-child {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
