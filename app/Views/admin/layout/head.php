@@ -47,6 +47,7 @@ $uri = service('uri');
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/admin.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/admin-sidebar-modern.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/daterangepicker/daterangepicker.css">
   <!-- jQuery -->

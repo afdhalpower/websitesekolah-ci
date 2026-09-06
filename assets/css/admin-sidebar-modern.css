@@ -1,0 +1,226 @@
+/* ============================================
+   HAQI Admin — Modern Sidebar Override
+   Warna: Hijau dominan (#166308) — psikologi warna
+   ============================================ */
+
+/* --- Brand Area --- */
+.main-sidebar .brand-link {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
+}
+.main-sidebar .brand-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.main-sidebar .brand-image {
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+.main-sidebar .brand-link:hover .brand-image {
+  box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+}
+.main-sidebar .brand-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+/* --- Sidebar Background --- */
+.sidebar-dark-lightblue .main-sidebar,
+.main-sidebar.sidebar-dark-lightblue {
+  background: linear-gradient(180deg, #1a2332 0%, #0f1923 50%, #162030 100%);
+}
+
+/* --- Menu Section Headers --- */
+.sidebar .nav-header {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 1.2rem 1rem 0.5rem 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+/* --- Menu Items --- */
+.sidebar .nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1px 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.sidebar .nav-item .nav-link:hover {
+  color: #ffffff;
+  background: rgba(34, 197, 94, 0.08);
+}
+.sidebar .nav-item .nav-link:hover .nav-icon {
+  color: #22c55e;
+}
+
+/* --- Active Menu Item --- */
+.sidebar .nav-item>.nav-link.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(22, 99, 8, 0.35), rgba(34, 197, 94, 0.15)) !important;
+  box-shadow: 0 2px 8px rgba(22, 99, 8, 0.2);
+  font-weight: 600;
+}
+.sidebar .nav-item>.nav-link.active .nav-icon {
+  color: #22c55e !important;
+}
+.sidebar .nav-item>.nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  background: linear-gradient(180deg, #22c55e, #166308);
+  border-radius: 0 3px 3px 0;
+}
+
+/* --- Menu Open (expanded dropdown) --- */
+.sidebar .nav-item.menu-open>.nav-link {
+  color: #ffffff;
+  font-weight: 600;
+}
+.sidebar .nav-item.menu-open>.nav-link .nav-icon {
+  color: #22c55e;
+}
+
+/* --- Sub-menu items --- */
+.sidebar .nav-treeview>.nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.5rem 0.4rem 2.5rem;
+  border-radius: 0.4rem;
+  margin: 1px 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.sidebar .nav-treeview>.nav-item .nav-link:hover {
+  color: #ffffff;
+  background: rgba(34, 197, 94, 0.06);
+}
+.sidebar .nav-treeview>.nav-item .nav-link:hover::before {
+  content: '';
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+.sidebar .nav-treeview>.nav-item .nav-link.active {
+  color: #22c55e !important;
+  font-weight: 600;
+  background: rgba(22, 99, 8, 0.12);
+}
+.sidebar .nav-treeview>.nav-item .nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
+}
+
+/* --- Sub-menu arrow icon --- */
+.sidebar .nav-treeview>.nav-item .nav-link .fa-arrow-right {
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.2s ease;
+}
+.sidebar .nav-treeview>.nav-item .nav-link:hover .fa-arrow-right {
+  color: #22c55e;
+}
+.sidebar .nav-treeview>.nav-item .nav-link.active .fa-arrow-right {
+  color: #22c55e;
+}
+
+/* --- Dropdown arrow --- */
+.sidebar .nav-link>.right.fas {
+  transition: transform 0.25s ease;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+.sidebar .nav-item.menu-open>.nav-link>.right.fas {
+  transform: rotate(-90deg);
+  color: #22c55e;
+}
+
+/* --- All nav icons --- */
+.sidebar .nav-icon {
+  transition: color 0.2s ease;
+}
+
+/* --- Scrollbar styling --- */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Sub-menu divider (top border for visual grouping) --- */
+.sidebar .nav-sidebar>.nav-item+.nav-item {
+  margin-top: 2px;
+}
+
+/* --- Sidebar footer / logout area --- */
+.sidebar .nav-sidebar>.nav-item:last-child {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Pulse animation for active icon --- */
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.sidebar .nav-item>.nav-link.active .nav-icon {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+/* --- Collapsed sidebar tweaks --- */
+.sidebar-collapse .main-sidebar .brand-image {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+.sidebar-collapse .nav-treeview {
+  position: absolute;
+  left: 3.8rem;
+  top: 0;
+  background: #1a2332;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.3rem;
+  min-width: 180px;
+  z-index: 1050;
+}
+
+/* --- Responsive: tablet --- */
+@media (max-width: 991.98px) {
+  .sidebar-dark-lightblue .main-sidebar {
+    background: #1a2332;
+  }
+}
