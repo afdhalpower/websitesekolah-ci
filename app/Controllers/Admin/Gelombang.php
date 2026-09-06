@@ -72,44 +72,79 @@ class Gelombang extends BaseController
 		$m_gelombang 				= new Gelombang_model();
 		$m_siswa 					= new Siswa_model();
 		$m_jenjang_pendidikan 		= new Jenjang_pendidikan_model();
+		$m_jenis_dokumen 			= new Jenis_dokumen_model();
+		$m_dokumen 					= new Dokumen_model();
 		$gelombang 					= $m_gelombang->detail($id_gelombang);
 		$siswa 						= $m_siswa->gelombang_status_siswa($id_gelombang,$status_pendaftaran,$id_jenjang_pendidikan);
 		$akumulasi 					= $m_siswa->gelombang($id_gelombang);
+
 		if($id_jenjang_pendidikan =='Semua') {
 			$judul_jenjang_pendidikan 	= 'Semua Program/Jenjang Pendidikan';
 		}else{
 			$jenjang_pendidikan 		= $m_jenjang_pendidikan->detail($id_jenjang_pendidikan);
 			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan;
 		}
-		if(isset($_POST['submit'])) {
-			$pengalihan 	= $this->request->getVar('pengalihan');
-			$id_siswa 		= $this->request->getVar('id_siswa');
 
-   			for($i=0; $i < sizeof($id_siswa);$i++) {
-				$data = array(	'id_siswa'				=> $id_siswa[$i],
-								'id_user'				=> $this->session->get('id_user'),
-								'status_pendaftaran'	=> $this->request->getVar('status_pendaftaran')
-							);
-   				$m_siswa->edit($data);
-   			}
-   			return redirect()->to($pengalihan)->with('sukses', 'Data Siswa berhasil diupdate statusnya');
+		// Hitung usia untuk setiap siswa + siapkan data dokumen
+		$siswa_data = [];
+		$today = date('Y-m-d');
+		foreach($siswa as $s) {
+			$diff   = abs(strtotime($today) - strtotime($s->tanggal_lahir));
+			$years  = floor($diff / (365*60*60*24));
+			$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+			$days   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24) / (60*60*24));
+
+			$wajib 				= $m_jenis_dokumen->group_status_jenis_dokumen_detail('Wajib');
+			$tidak_wajib 		= $m_jenis_dokumen->group_status_jenis_dokumen_detail('Tidak Wajib');
+			$dokumen_wajib 		= $m_dokumen->total_check($s->id_siswa, $wajib->status_jenis_dokumen);
+			$dokumen_tidak_wajib = $m_dokumen->total_check($s->id_siswa, $tidak_wajib->status_jenis_dokumen);
+
+			$s->usia_teks = $years . ' Tahun ' . $months . ' Bulan ' . $days . ' Hari';
+			$s->dokumen_wajib_total = $wajib->total;
+			$s->dokumen_wajib_upload = $dokumen_wajib;
+			$s->dokumen_tidak_wajib_total = $tidak_wajib->total;
+			$s->dokumen_tidak_wajib_upload = $dokumen_tidak_wajib;
 		}
 
-		$data = [	'title'					=> $gelombang->judul,
-					'judul_jenjang_pendidikan'	=> $judul_jenjang_pendidikan,
-					'gelombang'				=> $gelombang,
-					'm_gelombang'			=> $m_gelombang,
-					'siswa'					=> $siswa,
-					'status_pendaftaran'	=> $status_pendaftaran,
-					'id_jenjang_pendidikan'	=> $id_jenjang_pendidikan,
-					'id_gelombang'			=> $id_gelombang,
-					'm_siswa'				=> $m_siswa,
-					'akumulasi'				=> $akumulasi,
-					'm_jenis_dokumen'		=> new Jenis_dokumen_model(),
-                    'm_dokumen'				=> new Dokumen_model(),
-					'content'				=> 'admin/gelombang/detail'
+		// Status filter tabs
+		$semua 		= $m_siswa->total_gelombang_status_siswa($id_gelombang, 'Semua', $id_jenjang_pendidikan)->total ?? 0;
+		$menunggu 	= $m_siswa->total_gelombang_status_siswa($id_gelombang, 'Menunggu', $id_jenjang_pendidikan)->total ?? 0;
+		$diterima 	= $m_siswa->total_gelombang_status_siswa($id_gelombang, 'Diterima', $id_jenjang_pendidikan)->total ?? 0;
+		$tidak 		= $m_siswa->total_gelombang_status_siswa($id_gelombang, 'Tidak-Diterima', $id_jenjang_pendidikan)->total ?? 0;
+		$diperiksa 	= $m_siswa->total_gelombang_status_siswa($id_gelombang, 'Diperiksa', $id_jenjang_pendidikan)->total ?? 0;
+
+		if(isset($_POST['submit'])) {
+			$pengalihan = $this->request->getVar('pengalihan');
+			$id_siswa 	= $this->request->getVar('id_siswa');
+			for($i=0; $i < sizeof($id_siswa);$i++) {
+				$data = [
+					'id_siswa'            => $id_siswa[$i],
+					'id_user'             => $this->session->get('id_user'),
+					'status_pendaftaran'  => $this->request->getVar('status_pendaftaran')
 				];
-		echo view('admin/layout/wrapper',$data);
+				$m_siswa->edit($data);
+			}
+			return redirect()->to($pengalihan)->with('sukses', 'Data Siswa berhasil diupdate statusnya');
+		}
+
+		$data = [
+			'title'                    => $gelombang->judul,
+			'content'                  => 'admin/gelombang/detail',
+			'gelombang'                => $gelombang,
+			'judul_jenjang_pendidikan' => $judul_jenjang_pendidikan,
+			'siswa'                    => $siswa,
+			'akumulasi'                => $akumulasi,
+			'status_pendaftaran'       => $status_pendaftaran,
+			'id_jenjang_pendidikan'    => $id_jenjang_pendidikan,
+			'id_gelombang'             => $id_gelombang,
+			// Stats for filter tabs
+			's_semua'    => $semua,
+			's_menunggu' => $menunggu,
+			's_diterima' => $diterima,
+			's_tidak'    => $tidak,
+			's_diperiksa' => $diperiksa,
+		];
+		echo view('admin/layout/wrapper', $data);
 	}
 
 	// export
