@@ -124,7 +124,7 @@ Header Area
                                                 <a href="https://wa.me/<?php echo esc($this->website->whatsapp()) ?>?text=<?php echo esc($this->website->pesan_whatsapp()) ?>" class="btn btn-success btn-xs mb-1" target="_blank"><i class="fab fa-whatsapp"></i> Chat WA</a>
                                                 <?php if($this->website->fitur_pendaftaran()=='On') { ?>
                                                 <a href="<?php echo base_url('signin') ?>" class="btn btn-primary btn-sm"><i class="fa fa-lock"></i> Masuk</a>
-                                                <a href="<?php echo base_url('register') ?>" class="btn btn-danger btn-sm"><i class="fa fa-edit"></i> Daftar</a>
+                                                <a href="<?php echo base_url('register') ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Daftar</a>
                                             <?php }} ?>
                                                 
                                         </div>

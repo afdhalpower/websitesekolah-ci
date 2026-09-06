@@ -238,14 +238,14 @@ p, h1, h2, h3, h4, h5, h6 {
   color: #8231D3 !important;
 }
 .bg-haqi {
-    color: #ccb43e;
-    background-color: #9c2424 !important;
+    color: #ffffff;
+    background-color: #166308 !important;
 }
 .text-haqi {
-  color: #ccb43e;
+  color: #166308;
 }
 .text-haqi-dark {
-  color: #9c2424;
+  color: #0f4d06;
 }
 
 /* alert */

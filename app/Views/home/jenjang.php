@@ -21,7 +21,7 @@
                     </p>
                     <h4 class="text-uppercase"><?php echo esc($jenjang_pendidikan->judul_jenjang_pendidikan) ?></h4>
                     <!-- <p class="mb-2"><?php echo esc($jenjang_pendidikan->ringkasan) ?></p> -->
-                    <a href="<?php echo base_url('jenjang_pendidikan/read/'.$jenjang_pendidikan->slug_jenjang_pendidikan) ?>" class="btn btn-danger btn-sm">Learn More...</a>
+                    <a href="<?php echo base_url('jenjang_pendidikan/read/'.$jenjang_pendidikan->slug_jenjang_pendidikan) ?>" class="btn btn-success btn-sm">Learn More...</a>
                   </div>
                 </div>
               </div>

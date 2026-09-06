@@ -27,7 +27,7 @@ if($popup) {
                 <div class="col-md-12 text-center">
                   <!-- Begin Mailchimp Signup Form -->
                   <div id="mc_embed_signup">
-                    <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times"></i> &nbsp; Close
                     </button>
                     <a href="<?php echo esc($popup->website) ?>" class="btn btn-primary" target="_blank">
@@ -63,7 +63,7 @@ Hero Area
 
                     <div class="d-flex justify-content-center justify-content-lg-start mb-5" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
                       <span>
-                        <a href="<?php echo base_url('kontak') ?>" target="_blank" class="btn btn-danger rounded-pill btn-lg"> 
+                        <a href="<?php echo base_url('kontak') ?>" target="_blank" class="btn btn-success rounded-pill btn-lg"> 
                             Hubungi Kami <i class="fa fa-arrow-right"></i>
                         </a>
 
