@@ -76,13 +76,35 @@ class Gelombang extends BaseController
 		$m_dokumen 					= new Dokumen_model();
 		$gelombang 					= $m_gelombang->detail($id_gelombang);
 		$siswa 						= $m_siswa->gelombang_status_siswa($id_gelombang,$status_pendaftaran,$id_jenjang_pendidikan);
-		$akumulasi 					= $m_siswa->gelombang($id_gelombang);
+		$akumulasi_raw 	= $m_siswa->gelombang($id_gelombang);
 
-		if($id_jenjang_pendidikan =='Semua') {
+			// Pivot akumulasi: group by jenjang, collect status counts
+			$akumulasi_pivot = [];
+			foreach($akumulasi_raw as $row) {
+				$key = $row->id_jenjang_pendidikan;
+				if(!isset($akumulasi_pivot[$key])) {
+					$akumulasi_pivot[$key] = (object) [
+						'id_jenjang_pendidikan'   => $row->id_jenjang_pendidikan,
+						'judul_jenjang_pendidikan' => $row->judul_jenjang_pendidikan,
+						'menunggu'  => 0,
+						'diterima'  => 0,
+						'tidak'     => 0,
+						'diperiksa' => 0,
+					];
+				}
+				$status = $row->status_pendaftaran;
+				$count  = $row->jumlah_siswa;
+				if(isset($akumulasi_pivot[$key]->$status)) {
+					$akumulasi_pivot[$key]->$status = $count;
+				}
+			}
+			$akumulasi = array_values($akumulasi_pivot);
+
+			if($id_jenjang_pendidikan =='Semua') {
 			$judul_jenjang_pendidikan 	= 'Semua Program/Jenjang Pendidikan';
 		}else{
 			$jenjang_pendidikan 		= $m_jenjang_pendidikan->detail($id_jenjang_pendidikan);
-			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan;
+			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan ?? 'Jenjang #' . $id_jenjang_pendidikan;
 		}
 
 		// Hitung usia untuk setiap siswa + siapkan data dokumen
@@ -160,7 +182,7 @@ class Gelombang extends BaseController
 			$judul_jenjang_pendidikan 	= 'Semua Program/Jenjang Pendidikan';
 		}else{
 			$jenjang_pendidikan 		= $m_jenjang_pendidikan->detail($id_jenjang_pendidikan);
-			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan;
+			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan ?? 'Jenjang #' . $id_jenjang_pendidikan;
 		}
 
 		$data = [	'title'					=> $gelombang->judul,
@@ -192,7 +214,7 @@ class Gelombang extends BaseController
 			$judul_jenjang_pendidikan 	= 'Semua Program/Jenjang Pendidikan';
 		}else{
 			$jenjang_pendidikan 		= $m_jenjang_pendidikan->detail($id_jenjang_pendidikan);
-			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan;
+			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan ?? 'Jenjang #' . $id_jenjang_pendidikan;
 		}
 
 		$data = [	'title'					=> $gelombang->judul,
@@ -232,7 +254,7 @@ class Gelombang extends BaseController
 			$judul_jenjang_pendidikan 	= 'Semua Program/Jenjang Pendidikan';
 		}else{
 			$jenjang_pendidikan 		= $m_jenjang_pendidikan->detail($id_jenjang_pendidikan);
-			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan;
+			$judul_jenjang_pendidikan 	= $jenjang_pendidikan->judul_jenjang_pendidikan ?? 'Jenjang #' . $id_jenjang_pendidikan;
 		}
 
 		$data = [	'title'					=> $gelombang->judul,
