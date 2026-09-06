@@ -117,7 +117,10 @@ class Rombel extends BaseController
 		if(isset($_GET['lihat'])) {
 			return redirect()->to(base_url('admin/rombel?id_tahun='.$this->request->getVar('id_tahun')));
 		}
-		$id_tahun 		= $_GET['id_tahun'];
+		$id_tahun 		= $_GET['id_tahun'] ?? null;
+		if(!$id_tahun) {
+			return redirect()->to(base_url('admin/rombel'));
+		}
 		$m_rombel 		= new Rombel_model();
 		$m_jenjang 		= new Jenjang_model();
 		$m_tahun 		= new Tahun_model();
